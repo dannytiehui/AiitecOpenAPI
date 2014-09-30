@@ -42,10 +42,12 @@
         [self setValue:value forKey:@"action"];
     }
     else if([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"identifier"];
+//        [self setValue:value forKey:@"identifier"];
+        self.identifier = [value integerValue];
     }
     else if([key isEqualToString:@"s"]) {
-        [self setValue:value forKey:@"status"];
+//        [self setValue:value forKey:@"status"];
+        self.status = [value integerValue];
     }
     else if([key isEqualToString:@"d"]) {
         [self setValue:value forKey:@"desc"];
@@ -76,7 +78,7 @@
     [mutableDictionary removeObjectForKey:k];
     
     k = @"status";
-    if ([dict objectForKey:k] && ![[dict objectForKey:k] isKindOfClass:[NSNull class]]) {
+    if ([[dict objectForKey:k] integerValue]) {
         [mutableDictionary setObject:[dict objectForKey:k] forKey:@"s"];
     }
     [mutableDictionary removeObjectForKey:k];

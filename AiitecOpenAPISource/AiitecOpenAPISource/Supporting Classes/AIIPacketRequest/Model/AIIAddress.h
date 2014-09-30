@@ -20,7 +20,7 @@
 
 @property (nonatomic, copy) NSString *regionInfo;
 @property (nonatomic, copy) NSString *street;
-@property (nonatomic, copy) NSString *desc;//!< 省 市 区 街道 详细地址（空格隔开）
+//@property (nonatomic, copy) NSString *desc;//!< 省 市 区 街道 详细地址（空格隔开）
 
 #pragma mark - Option
 @property (nonatomic, copy) NSString *postcode;//!< 邮政编码

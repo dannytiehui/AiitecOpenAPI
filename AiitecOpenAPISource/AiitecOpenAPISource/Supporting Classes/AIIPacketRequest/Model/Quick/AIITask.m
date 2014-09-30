@@ -26,7 +26,7 @@
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     NSLog(@"AIITask.setValue:%@ forKey:%@", value, key);
-    
+
     if ([key isEqualToString:@"unfreeze"]) {
         self.unfreeze = [value isEqualToString:@"1"] ? YES : NO;
     }
@@ -38,6 +38,9 @@
 //        self.order = [[AIIOrder alloc] init];
         [self.order setValuesForKeysWithDictionary:value];
     }
+    else if ([key isEqualToString:self.imageCollection.key]) {
+        [self.imageCollection setObjectWithArray:value];
+    }
     else {
         [super setValue:value forKey:key];
     }
@@ -45,7 +48,7 @@
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    NSLog(@"setValue:%@ forUndefinedKey%@", value, key);
+    NSLog(@"setValue:%@ forUndefinedKey:%@", value, key);
     
     if ([key isEqualToString:self.imageCollection.key]) {
         [self.imageCollection setObjectWithArray:value];

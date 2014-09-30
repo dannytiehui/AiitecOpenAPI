@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, AIIQueryAction) {
 
 @property (nonatomic, assign) AIIQueryAction action;
 @property (nonatomic, assign) NSUInteger identifier;
-@property (nonatomic, copy) NSString *status;
+@property (nonatomic, assign) NSUInteger status;
 @property (nonatomic, copy) NSString *desc;
 @property (nonatomic, copy) NSString *timestamp;
 

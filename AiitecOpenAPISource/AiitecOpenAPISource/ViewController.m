@@ -21,6 +21,8 @@
 
 //    [[NSUserDefaults standardUserDefaults] setObject:@"py108ouc7comfaqjfst8w4fd5gze4221" forKey:@"sessionId"];
 //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sessionId"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"20140930172259" forKey:DeviceTokenKey];
 
 //    [self testDeviceTokenSwitchRequest];
 //    [self testMessageSubmitRequest];
@@ -33,14 +35,14 @@
 //    [self testDeleteActionRequest];
 //    [self testCategoryListRequest];
 
-    [self testUserLoginRequest];
+//    [self testUserLoginRequest];
 //    [self testUserLogoutRequest];
 //    [self testUserRegisterRequest];
 //    [self testUserBindMobileRequest];
 //    [self testUserUploadImageRequest];
 //    [self testUserUpdatePasswordRequest];
 //    [self testUserResetPasswordRequest];
-//    [self testUserDetailsRequest];
+    [self testUserDetailsRequest];
 //    [self testUserUpdateRequest];
 //    [self testRankListRequest];
 //    [self testRecordListRequest];
@@ -53,8 +55,8 @@
 //    [self testEventListRequest];
 //    [self testEventJoinRequest];
 //
-//    [self testTaskListRequest];
-//    [self testTaskDetailsRequest];
+//    [self testTaskListRequest];//!< List
+//    [self testTaskDetailsRequest];//!< Details
 //    [self testTaskSubmitRequest];
 //    [self testTaskStatusUpdateRequest];
 //    [self testTaskReportSubmitRequest];
@@ -373,9 +375,9 @@
     where.labelId = 1;
     where.latitude = 23.132921;
     where.longitude = 113.252281;
-    table.where = where;
+//    table.where = where;
     
-    request.query.table = table;
+//    request.query.table = table;
     
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
@@ -533,7 +535,7 @@
 - (void)packetConnectionFinished:(AIIPacketConnection *)connection
 {
     if([connection.response isKindOfClass:[AIIUserLoginResponse class]]){
-        if ([connection.response.query.status isEqualToString:@"0"]) {
+        if (0 == connection.response.query.status) {
             // 成功
             ;
         }
@@ -543,7 +545,7 @@
         }
     }
     else if ([connection.response isKindOfClass:[AIIMessageListResponse class]]) {
-        if ([connection.response.query.status isEqualToString:@"0"]) {
+        if (!connection.response.query.status) {
             // 成功
             AIIListResponseQuery *responseQuery = (AIIListResponseQuery *)connection.response.query;
             AIIMessageCollection *messageCollection = (AIIMessageCollection *)responseQuery.modelCollection;

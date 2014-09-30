@@ -11,8 +11,6 @@
 #import "AIIModelCollectionQuery.h"
 #import "AIITable.h"
 
-#import "AIIDataTable.h"
-
 @interface AIIListRequestQuery : AIIQuery
 
 @property (nonatomic, copy) NSString *ids;

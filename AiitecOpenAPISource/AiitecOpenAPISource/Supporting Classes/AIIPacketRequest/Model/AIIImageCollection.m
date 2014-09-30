@@ -9,10 +9,4 @@
 #import "AIIImageCollection.h"
 
 @implementation AIIImageCollection
-
-//- (Class)objectClass
-//{
-//    return [AIIImage class];
-//}
-
 @end

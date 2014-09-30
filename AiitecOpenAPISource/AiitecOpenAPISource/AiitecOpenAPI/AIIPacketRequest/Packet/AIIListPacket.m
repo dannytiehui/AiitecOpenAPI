@@ -13,7 +13,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        self.table = [[AIITable alloc] init];
+//        self.table = [[AIITable alloc] init];
     }
     return self;
 }
@@ -24,6 +24,7 @@
 {
     id value;
     if([key isEqualToString:self.table.key]) {
+        self.table = [[AIITable alloc] init];
         value = [self valueForKey:@"table"];
     }
     else {
@@ -54,7 +55,7 @@
     }
     
     k = @"table";
-    if ([keys containsObject:@"table"]) {
+    if ([keys containsObject:@"table"] && ![[dict objectForKey:k] isKindOfClass:[NSNull class]]) {
         [mutableDictionary setObject:[self.table dictionaryWithValuesForKeys:self.table.keys] forKey:self.table.key];
     }
     [mutableDictionary removeObjectForKey:k];
@@ -73,10 +74,26 @@
 
 
 @implementation AIIListRequest
+
+#pragma mark - super
+
+- (Class)queryClass
+{
+    return [AIIListRequestQuery class];
+}
+
 @end
 
 
 
 @implementation AIIListResponse
+
+#pragma mark - super
+
+- (Class)queryClass
+{
+    return [AIIListResponseQuery class];
+}
+
 @end
 

@@ -14,8 +14,6 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    NSLog(@"AIIOrder.setValue:%@ forKey:%@", value, key);
-    
     if ([key isEqualToString:@"commentStatus"]) {
         self.commentStatus = [value boolValue];
     }

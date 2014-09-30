@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8806542D19D93AFF00424AB0 /* AIIUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806542C19D93AFF00424AB0 /* AIIUserTests.m */; };
+		8806543019D95C5500424AB0 /* AIIUserPacketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806542F19D95C5500424AB0 /* AIIUserPacketTests.m */; };
 		886C19CA19D515E300FC76FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19C919D515E300FC76FC /* main.m */; };
 		886C19CD19D515E300FC76FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CC19D515E300FC76FC /* AppDelegate.m */; };
 		886C19D019D515E300FC76FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CF19D515E300FC76FC /* ViewController.m */; };
@@ -182,6 +184,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8806542C19D93AFF00424AB0 /* AIIUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUserTests.m; sourceTree = "<group>"; };
+		8806542F19D95C5500424AB0 /* AIIUserPacketTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUserPacketTests.m; sourceTree = "<group>"; };
 		886C19C419D515E300FC76FC /* AiitecOpenAPISource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiitecOpenAPISource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		886C19C819D515E300FC76FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		886C19C919D515E300FC76FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -529,6 +533,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8806542B19D93AD800424AB0 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				8806542C19D93AFF00424AB0 /* AIIUserTests.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		8806542E19D95C3200424AB0 /* Packet */ = {
+			isa = PBXGroup;
+			children = (
+				8806542F19D95C5500424AB0 /* AIIUserPacketTests.m */,
+			);
+			path = Packet;
+			sourceTree = "<group>";
+		};
 		886C19BB19D515E300FC76FC = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +604,8 @@
 			isa = PBXGroup;
 			children = (
 				886C19E319D515E300FC76FC /* AiitecOpenAPISourceTests.m */,
+				8806542B19D93AD800424AB0 /* Entity */,
+				8806542E19D95C3200424AB0 /* Packet */,
 				886C19E119D515E300FC76FC /* Supporting Files */,
 			);
 			path = AiitecOpenAPISourceTests;
@@ -1403,6 +1425,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8806542D19D93AFF00424AB0 /* AIIUserTests.m in Sources */,
+				8806543019D95C5500424AB0 /* AIIUserPacketTests.m in Sources */,
 				886C19E419D515E300FC76FC /* AiitecOpenAPISourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1518,7 +1542,7 @@
 		886C19E819D515E300FC76FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AiitecOpenAPISource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1530,7 +1554,7 @@
 		886C19E919D515E300FC76FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AiitecOpenAPISource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1592,6 +1616,7 @@
 				886C19E919D515E300FC76FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		886C19EA19D515E300FC76FC /* Build configuration list for PBXNativeTarget "AiitecOpenAPISourceTests" */ = {
 			isa = XCConfigurationList;
@@ -1600,6 +1625,7 @@
 				886C19EC19D515E300FC76FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

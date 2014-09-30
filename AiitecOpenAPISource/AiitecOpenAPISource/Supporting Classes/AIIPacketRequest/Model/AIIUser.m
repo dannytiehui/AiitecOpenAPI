@@ -30,8 +30,6 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    NSLog(@"AIIUser.setValue:%@ forKey:%@", value, key);
-
     if ([key isEqualToString:self.address.key]) {
         [self.address setValuesForKeysWithDictionary:value];
     }
@@ -43,24 +41,8 @@
     }
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
-{
-    NSLog(@"AIIUser.valueForUndefinedKey:key = %@", key);
-    
-    id value;
-    if([key isEqualToString:self.itemCollection.key]) {
-        value = self.itemCollection;
-    }
-    else {
-        value = [super valueForUndefinedKey:key];
-    }
-    return value;
-}
-
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    NSLog(@"setValue:%@ forUndefinedKey%@", value, key);
-
     if([@[@"delete"] containsObject:key]) {
         
     }
@@ -85,11 +67,10 @@
     }
     
     k = @"itemCollection";
-//    if ([dict objectForKey:k] || [dict objectForKey:self.itemCollection.key]) {
-    if ([keys containsObject:k]) {
+    if ([dict objectForKey:k] && [dict objectForKey:k]) {
         [mutableDictionary setObject:[self.itemCollection arrayWithObject] forKey:self.itemCollection.key];
-        [mutableDictionary removeObjectForKey:k];
     }
+    [mutableDictionary removeObjectForKey:k];
       
     dict = mutableDictionary;
     

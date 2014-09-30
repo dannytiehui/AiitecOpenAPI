@@ -27,7 +27,7 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    if ([key isEqualToString:@"where"]) {
+    if ([key isEqualToString:self.where.key]) {
         self.where = [[AIIWhere alloc] init];
         [self.where setValuesForKeysWithDictionary:value];
     }
@@ -66,7 +66,7 @@
     [mutableDictionary removeObjectForKey:k];
     
     k = @"where";
-    if ([self.keys containsObject:k] && [dict objectForKey:k]) {
+    if ([self.keys containsObject:k] && ![[dict objectForKey:k] isKindOfClass:[NSNull class]]) {
         [mutableDictionary setObject:[self.where dictionaryWithValuesForKeys:self.where.keys] forKey:@"w"];
     }
     [mutableDictionary removeObjectForKey:k];

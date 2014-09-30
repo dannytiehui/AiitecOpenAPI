@@ -21,6 +21,6 @@ typedef NS_ENUM(NSUInteger, AIIComplaintsStatus) {
 @property (nonatomic, assign) AIITaskStatus status;//!< 订单/任务状态
 @property (nonatomic, assign) BOOL commentStatus;//!< 评价状态:0未评价;1已评价;
 @property (nonatomic, assign) AIIComplaintsStatus complaintsStatus;//!< 维权状态
-@property (nonatomic, copy) NSString *code;//!< 快应码
+@property (nonatomic, assign) NSUInteger code;//!< 快应码
 
 @end

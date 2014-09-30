@@ -254,8 +254,8 @@ static NSMutableArray *_packetHttpConnectionQueue;
         [AIIPacketManager defaultManager].sessionResponseNotNil = sessionId.length ? YES : NO;
     }
     /// 情况二: sessionId失效（或服务器删除了session表里面对应的数据）,需要重新获取.
-    else if ([self.response.query.status isEqualToString:@"1002"]) {  //!<
-       
+    else if (self.response.query.status == 1002) {  //!<
+
         if (!_packetHttpConnectionQueue) {
             _packetHttpConnectionQueue = [[NSMutableArray alloc] init];
         }

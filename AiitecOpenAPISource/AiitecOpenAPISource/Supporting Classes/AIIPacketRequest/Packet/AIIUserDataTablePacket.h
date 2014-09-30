@@ -7,6 +7,7 @@
 //
 
 #import "AIIListPacket.h"
+#import "AIIDataTable.h"
 
 @interface AIIUserDataTableRequest : AIIListRequest
 
