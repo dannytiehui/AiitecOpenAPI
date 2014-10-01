@@ -67,7 +67,7 @@
     }
     
     k = @"itemCollection";
-    if ([dict objectForKey:k] && [dict objectForKey:k]) {
+    if ([dict objectForKey:k]) {
         [mutableDictionary setObject:[self.itemCollection arrayWithObject] forKey:self.itemCollection.key];
     }
     [mutableDictionary removeObjectForKey:k];

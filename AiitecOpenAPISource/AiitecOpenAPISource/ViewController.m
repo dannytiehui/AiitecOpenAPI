@@ -22,7 +22,9 @@
 //    [[NSUserDefaults standardUserDefaults] setObject:@"py108ouc7comfaqjfst8w4fd5gze4221" forKey:@"sessionId"];
 //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sessionId"];
     
-    [[NSUserDefaults standardUserDefaults] setObject:@"20140930172259" forKey:DeviceTokenKey];
+    [[NSUserDefaults standardUserDefaults] setObject:@"20141001224159" forKey:DeviceTokenKey];
+    
+    [self testModelCollection];
 
 //    [self testDeviceTokenSwitchRequest];
 //    [self testMessageSubmitRequest];
@@ -31,18 +33,18 @@
 //    [self testAdListRequest];
 //    [self testSettingRequest];
 //    [self testReferenceItemListRequest];
-//    [self testUploadImageRequest];
+//    [self testUploadImageRequest];//!< Collection
 //    [self testDeleteActionRequest];
 //    [self testCategoryListRequest];
 
 //    [self testUserLoginRequest];
 //    [self testUserLogoutRequest];
-//    [self testUserRegisterRequest];
+    [self testUserRegisterRequest];//!< Entity
 //    [self testUserBindMobileRequest];
 //    [self testUserUploadImageRequest];
 //    [self testUserUpdatePasswordRequest];
 //    [self testUserResetPasswordRequest];
-    [self testUserDetailsRequest];
+//    [self testUserDetailsRequest];
 //    [self testUserUpdateRequest];
 //    [self testRankListRequest];
 //    [self testRecordListRequest];
@@ -72,6 +74,7 @@
 //    [self testWishSubmitRequest];
 //    [self testPositionUpdateRequest];
 //    [self testFetchPositionRequest];
+//    [self testCoordinateCollectionSubmitRequest];
     
 }
 
@@ -165,8 +168,16 @@
     UIImage *image = [UIImage imageNamed:@"UploadImage"];
     AIIFile *file = [[AIIFile alloc] initWithData:UIImageJPEGRepresentation(image, 0.5) filename:@"UploadImage.jpg" contentType:@"image/jpg"];
     [fileCollection addObject:file];
+    UIImage *image1 = [UIImage imageNamed:@"yjsk.jpeg"];
+    AIIFile *file1 = [[AIIFile alloc] initWithData:UIImageJPEGRepresentation(image1, 1) filename:@"yjsk.jpeg" contentType:@"image/jpg"];
+    [fileCollection addObject:file1];
     
     request.query.fileCollection = fileCollection;
+    
+    fileCollection.entityProperties = @[@"filename", @"contentType"];
+
+    NSLog(@"%@", [fileCollection arrayWithObject]);
+    NSLog(@"jsonString:%@", [request jsonStringWithObject]);
     
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
@@ -194,7 +205,7 @@
     AIIUserLoginRequest *request = [[AIIUserLoginRequest alloc] init];
     request.query.action = AIIQueryActionFirst;
     request.query.name = @"13527262005";
-    request.query.password = @"123456";
+    request.query.password = @"000000";
 //    NSString *jsonString = [request jsonStringWithObject];
 //    NSLog(@"jsonString:%@", jsonString);
     
@@ -222,7 +233,9 @@
     request.query.entity = user;
     request.query.smscodeId = 34;
     
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+    NSLog(@"%@", [request jsonStringWithObject]);
+    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
 - (void)testUserBindMobileRequest
@@ -385,7 +398,7 @@
 - (void)testTaskDetailsRequest
 {
     AIITaskDetailsRequest *request = [[AIITaskDetailsRequest alloc] init];
-    request.query.identifier = 1350935;
+    request.query.identifier = 176;//!< 1350935;
     request.query.latitude = 23.132921;
     request.query.longitude = 113.252281;
     
@@ -530,6 +543,29 @@
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
+- (void)testCoordinateCollectionSubmitRequest
+{
+    AIICoordinateCollectionSubmitRequest *request = [[AIICoordinateCollectionSubmitRequest alloc] init];
+   
+    AIIAddressCollection *addressCollection = [[AIIAddressCollection alloc] init];
+    AIIAddress *address = [[AIIAddress alloc] init];
+    address.latitude = 23.132911;
+    address.longitude = 113.252211;
+    AIIAddress *address1 = [[AIIAddress alloc] init];
+    address1.latitude = 23.132922;
+    address1.longitude = 113.252222;
+    [addressCollection addObject:address];
+    [addressCollection addObject:address1];
+    addressCollection.entityProperties = @[@"latitude", @"longitude"];
+    
+    request.query.modelCollection = addressCollection;
+    
+    NSLog(@"%@", [addressCollection arrayWithObject]);
+    NSLog(@"%@", [request jsonStringWithObject]);
+    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+}
+
 #pragma mark - PacketHttpConnectionDelegate
 
 - (void)packetConnectionFinished:(AIIPacketConnection *)connection
@@ -556,6 +592,27 @@
             ;
         }
     }
+}
+
+- (void)testModelCollection
+{
+    /* 注意:
+     * 1. 若:@property (nonatomic, assign) NSUInteger total;
+            a)返回的JSONString:"total":16,不需要实现"- (void)setValue:(id)value forKey:(NSString *)key"方法;
+            b)返回的JSONString:"total":"16",需要实现"- (void)setValue:(id)value forKey:(NSString *)key"方法;
+     * 2. 若:@property (nonatomic, copy) NSString *total;
+            返回的JSONString:("total":16)还是("total":"16"),都不需要实现"- (void)setValue:(id)value forKey:(NSString *)key"方法;
+     */
+    
+    // 1.
+    NSString *jsonString = @"{\"n\":\"TaskList\",\"s\":\"5s2tgc8o0wyel5ppf4ny7c5c1gg8dq4x\",\"q\":{\"s\":\"0\",\"d\":\"\u64cd\u4f5c\u6210\u529f\",\"total\":\"16\",\"tasks\":[],\"t\":\"2014-10-02 00:28:07\"}}";
+
+    // 2.
+//    NSString *jsonString = @"{\"n\":\"TaskList\",\"s\":\"5s2tgc8o0wyel5ppf4ny7c5c1gg8dq4x\",\"q\":{\"s\":\"0\",\"d\":\"\u64cd\u4f5c\u6210\u529f\",\"total\":16,\"tasks\":[],\"t\":\"2014-10-02 00:28:07\"}}";
+    
+    AIITaskListResponse *response = [[AIITaskListResponse alloc] initWithJSONString:jsonString];
+    AIITaskListResponseQuery *query = (AIITaskListResponseQuery *)response.query;
+    NSLog(@"%d", query.total);
 }
 
 

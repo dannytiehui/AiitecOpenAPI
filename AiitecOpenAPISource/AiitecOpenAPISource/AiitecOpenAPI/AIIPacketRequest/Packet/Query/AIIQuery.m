@@ -109,6 +109,11 @@
 
 #pragma mark - super
 
+- (NSString *)key
+{
+    return @"q";
+}
+
 /**
  *  @brief  组包时,获取对象的默认属性.默认不包含key,且｀action、identifier、status、desc、timestamp｀为空时不包含.
  *

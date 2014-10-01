@@ -87,6 +87,7 @@
 #import "AIIWishSubmitPacket.h"
 #import "AIIPositionUpdatePacket.h"
 #import "AIIFetchPositionPacket.h"
+#import "AIICoordinateCollectionSubmitPacket.h"
 
 
 @interface PacketRequest : NSObject

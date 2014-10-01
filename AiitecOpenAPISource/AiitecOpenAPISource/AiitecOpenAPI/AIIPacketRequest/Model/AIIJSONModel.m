@@ -43,6 +43,41 @@
     return self;
 }
 
+#pragma mark - NSObject(NSKeyValueCoding)
+
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    @try {
+        /// 解决返回数字(整型/浮点型)包含双引号的情况.
+        NSString *regexFloat = @"^-?([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*|0?\\.0+|0)$";//!< 匹配浮点数
+        NSString *regexInt = @"^-?[1-9]\\d*$";//!< 匹配整数
+        
+        NSPredicate *predicateFloat = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexFloat];
+        NSPredicate *predicateInt = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexInt];
+        BOOL isMatchFloat = [predicateFloat evaluateWithObject:value];
+        BOOL isMatchInt = [predicateInt evaluateWithObject:value];
+        
+//        NSLog(@"AIIJSONModel.regex. %@:%@, %d, %d", value, key, isMatchFloat, isMatchInt);
+        
+        if (isMatchFloat) {
+            value = [NSNumber numberWithFloat:[value floatValue]];
+        }
+        else if (isMatchInt) {
+            value = [NSNumber numberWithInteger:[value integerValue]];
+        }
+    }
+    @catch (NSException *exception) {
+#ifdef DEBUG
+        NSLog(@"AIIJSONModel.NSException:%@", exception.description);
+#endif
+    }
+    @finally {
+        
+    }
+    
+    [super setValue:value forKey:key];
+}
+
 #pragma mark - self
 
 - (NSArray *)defaultProperties

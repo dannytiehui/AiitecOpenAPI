@@ -57,29 +57,6 @@
 
 #pragma mark - NSObject(NSKeyValueCoding)
 
-- (void)setValue:(id)value forKey:(NSString *)key
-{
-    /// 解决返回数字(整型/浮点型)包含双引号的情况.
-    NSString *regexFloat = @"^-?([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*|0?\\.0+|0)$";//!< 匹配浮点数
-    NSString *regexInt = @"^-?[1-9]\\d*$";//!< 匹配整数
-    
-    NSPredicate *predicateFloat = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexFloat];
-    NSPredicate *predicateInt = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexInt];
-    BOOL isMatchFloat = [predicateFloat evaluateWithObject:value];
-    BOOL isMatchInt = [predicateInt evaluateWithObject:value];
-    
-//    NSLog(@"regex. %@:%@, %d, %d", value, key, isMatchFloat, isMatchInt);
-    
-    if (isMatchFloat) {
-        value = [NSNumber numberWithFloat:[value floatValue]];
-    }
-    else if (isMatchInt) {
-        value = [NSNumber numberWithInteger:[value integerValue]];
-    }
-
-    [super setValue:value forKey:key];
-}
-
 //- (id)valueForUndefinedKey:(NSString *)key
 //{
 //    NSLog(@"AIIEntity.valueForUndefinedKey:key = %@", key);

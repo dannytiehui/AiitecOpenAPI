@@ -12,22 +12,32 @@
 
 #pragma mark - NSObject(NSKeyValueCoding)
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (void)setValue:(id)value forKey:(NSString *)key
 {
-    if([key isEqualToString:self.modelCollection.key]) {
+    if ([key isEqualToString:self.modelCollection.key]) {
         [self.modelCollection setObjectWithArray:value];
     }
     else {
-        [super setValue:value forUndefinedKey:key];
+        [super setValue:value forKey:key];
     }
 }
+
+//- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+//{
+//    if([key isEqualToString:self.modelCollection.key]) {
+//        [self.modelCollection setObjectWithArray:value];
+//    }
+//    else {
+//        [super setValue:value forUndefinedKey:key];
+//    }
+//}
 
 - (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys
 {
     NSDictionary *dict = [super dictionaryWithValuesForKeys:keys];
     
     NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithDictionary:dict];
-    NSString *k = self.modelCollection.key;
+    NSString *k = @"modelCollection";
     if ([[dict objectForKey:k] isKindOfClass:[AIIModelCollection class]]) {
         [mutableDictionary setObject:[self.modelCollection arrayWithObject] forKey:self.modelCollection.key];
     }

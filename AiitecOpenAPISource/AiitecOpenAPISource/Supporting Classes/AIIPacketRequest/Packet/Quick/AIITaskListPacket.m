@@ -10,13 +10,13 @@
 
 @implementation AIITaskListWhere
 
-#pragma mark - super
-
-- (NSArray *)properties
-{
-    /// 子类可重写
-    return [[super properties] arrayByAddingObjectsFromArray:[AIIUtility classPropertys:[AIITaskListWhere class]]];
-}
+//#pragma mark - super
+//
+//- (NSArray *)properties
+//{
+//    /// 子类可重写
+//    return [[super properties] arrayByAddingObjectsFromArray:[AIIUtility classPropertys:[AIITaskListWhere class]]];
+//}
 
 @end
 

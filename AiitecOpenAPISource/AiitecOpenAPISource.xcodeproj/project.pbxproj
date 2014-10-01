@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8806542D19D93AFF00424AB0 /* AIIUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806542C19D93AFF00424AB0 /* AIIUserTests.m */; };
-		8806543019D95C5500424AB0 /* AIIUserPacketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8806542F19D95C5500424AB0 /* AIIUserPacketTests.m */; };
+		46B01D7819DC80D1002996AD /* yjsk.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 46B01D7719DC80D1002996AD /* yjsk.jpeg */; };
+		46B01D7E19DC979E002996AD /* AIICoordinateCollectionSubmitPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B01D7D19DC979E002996AD /* AIICoordinateCollectionSubmitPacket.m */; };
 		886C19CA19D515E300FC76FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19C919D515E300FC76FC /* main.m */; };
 		886C19CD19D515E300FC76FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CC19D515E300FC76FC /* AppDelegate.m */; };
 		886C19D019D515E300FC76FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CF19D515E300FC76FC /* ViewController.m */; };
@@ -184,8 +184,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8806542C19D93AFF00424AB0 /* AIIUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUserTests.m; sourceTree = "<group>"; };
-		8806542F19D95C5500424AB0 /* AIIUserPacketTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUserPacketTests.m; sourceTree = "<group>"; };
+		46B01D7719DC80D1002996AD /* yjsk.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yjsk.jpeg; sourceTree = "<group>"; };
+		46B01D7C19DC979E002996AD /* AIICoordinateCollectionSubmitPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIICoordinateCollectionSubmitPacket.h; sourceTree = "<group>"; };
+		46B01D7D19DC979E002996AD /* AIICoordinateCollectionSubmitPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIICoordinateCollectionSubmitPacket.m; sourceTree = "<group>"; };
 		886C19C419D515E300FC76FC /* AiitecOpenAPISource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiitecOpenAPISource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		886C19C819D515E300FC76FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		886C19C919D515E300FC76FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -536,7 +537,6 @@
 		8806542B19D93AD800424AB0 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				8806542C19D93AFF00424AB0 /* AIIUserTests.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -544,7 +544,6 @@
 		8806542E19D95C3200424AB0 /* Packet */ = {
 			isa = PBXGroup;
 			children = (
-				8806542F19D95C5500424AB0 /* AIIUserPacketTests.m */,
 			);
 			path = Packet;
 			sourceTree = "<group>";
@@ -796,6 +795,7 @@
 		886C1AA419D5212A00FC76FC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				46B01D7719DC80D1002996AD /* yjsk.jpeg */,
 				886C1AA519D5212A00FC76FC /* UploadImage.png */,
 			);
 			path = Images;
@@ -970,6 +970,8 @@
 				886C1B2F19D5212A00FC76FC /* AIIUserUpdatePasswordPacket.m */,
 				886C1B3019D5212A00FC76FC /* AIIUserUploadImagePacket.h */,
 				886C1B3119D5212A00FC76FC /* AIIUserUploadImagePacket.m */,
+				46B01D7C19DC979E002996AD /* AIICoordinateCollectionSubmitPacket.h */,
+				46B01D7D19DC979E002996AD /* AIICoordinateCollectionSubmitPacket.m */,
 				886C1B3219D5212A00FC76FC /* ExceptionResponse.h */,
 				886C1B3319D5212A00FC76FC /* ExceptionResponse.m */,
 				886C1B3419D5212A00FC76FC /* FileListPacket.h */,
@@ -1243,6 +1245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				886C1C2E19D5212A00FC76FC /* transparencyPattern.png in Resources */,
+				46B01D7819DC80D1002996AD /* yjsk.jpeg in Resources */,
 				886C19D319D515E300FC76FC /* Main.storyboard in Resources */,
 				886C1BCC19D5212A00FC76FC /* UploadImage.png in Resources */,
 				886C19D819D515E300FC76FC /* LaunchScreen.xib in Resources */,
@@ -1344,6 +1347,7 @@
 				886C1BE519D5212A00FC76FC /* AIIRegion.m in Sources */,
 				886C1BBA19D5212A00FC76FC /* AIIEntityPacket.m in Sources */,
 				886C1C2419D5212A00FC76FC /* AIITaskStatusUpdatePacket.m in Sources */,
+				46B01D7E19DC979E002996AD /* AIICoordinateCollectionSubmitPacket.m in Sources */,
 				886C1C0419D5212A00FC76FC /* AIIUserCheckNamePacket.m in Sources */,
 				886C1BC519D5212A00FC76FC /* Table.m in Sources */,
 				886C1C2B19D5212A00FC76FC /* RegionTable.m in Sources */,
@@ -1425,8 +1429,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8806542D19D93AFF00424AB0 /* AIIUserTests.m in Sources */,
-				8806543019D95C5500424AB0 /* AIIUserPacketTests.m in Sources */,
 				886C19E419D515E300FC76FC /* AiitecOpenAPISourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1547,6 +1549,7 @@
 				INFOPLIST_FILE = AiitecOpenAPISource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1559,6 +1562,7 @@
 				INFOPLIST_FILE = AiitecOpenAPISource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1566,6 +1570,7 @@
 		886C19EB19D515E300FC76FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1585,6 +1590,7 @@
 		886C19EC19D515E300FC76FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

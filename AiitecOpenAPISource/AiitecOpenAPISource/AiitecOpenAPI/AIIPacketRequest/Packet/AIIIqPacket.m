@@ -79,15 +79,15 @@
 //    }
 //}
 
-- (void)setValue:(id)value forKey:(NSString *)key
-{
-    if ([key isEqualToString:@"query"]) {
-        [self.query setValuesForKeysWithDictionary:value];
-    }
-    else {
-        [super setValue:value forKey:key];
-    }
-}
+//- (void)setValue:(id)value forKey:(NSString *)key
+//{
+//    if ([key isEqualToString:@"query"]) {
+//        [self.query setValuesForKeysWithDictionary:value];
+//    }
+//    else {
+//        [super setValue:value forKey:key];
+//    }
+//}
 
 - (id)valueForUndefinedKey:(NSString *)key
 {
@@ -98,11 +98,11 @@
     else if([key isEqualToString:@"s"]) {
 //        [[NSUserDefaults standardUserDefaults] setObject:value forKey:@"sessionId"];
     }
-    else if([key isEqualToString:@"q"]) {
+    else if([key isEqualToString:self.query.key]) {
         value = [self valueForKey:@"query"];
     }
     else {
-//        value = [super valueForUndefinedKey:key];
+        value = [super valueForUndefinedKey:key];
     }
     return value;
 }
@@ -115,11 +115,11 @@
     else if([key isEqualToString:@"s"]) {
         
     }
-    else if([key isEqualToString:@"q"]) {
+    else if([key isEqualToString:self.query.key]) {
         [self.query setValuesForKeysWithDictionary:value];
     }
     else {
-//        [super setValue:value forUndefinedKey:key];
+        [super setValue:value forUndefinedKey:key];
     }
 }
 

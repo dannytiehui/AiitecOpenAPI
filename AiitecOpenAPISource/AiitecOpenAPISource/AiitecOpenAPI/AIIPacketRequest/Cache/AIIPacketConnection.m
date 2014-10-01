@@ -500,7 +500,7 @@ static NSMutableArray *_packetConnectionArray;
     
 //    response.nameSpace = request.nameSpace;
 //    response.sessionId = request.sessionId;
-    response.query.status = @"0";
+    response.query.status = 0;
     response.query.desc = @"获取缓存数据成功";
     NSDate *now = [NSDate date];
     NSTimeZone *timeZone = [NSTimeZone systemTimeZone];
