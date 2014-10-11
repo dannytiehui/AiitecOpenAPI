@@ -15,6 +15,7 @@
 		886C1A2A19D51E0800FC76FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 886C1A2919D51E0800FC76FC /* Images.xcassets */; };
 		886C1A2D19D51E0800FC76FC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 886C1A2B19D51E0800FC76FC /* LaunchScreen.xib */; };
 		886C1A3919D51E0800FC76FC /* AiitecOpenAPIDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A3819D51E0800FC76FC /* AiitecOpenAPIDemoTests.m */; };
+		88F3BE6819E932D200054E2C /* libAiitecOpenAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F3BE6719E932D200054E2C /* libAiitecOpenAPI.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		886C1A3219D51E0800FC76FC /* AiitecOpenAPIDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AiitecOpenAPIDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		886C1A3719D51E0800FC76FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		886C1A3819D51E0800FC76FC /* AiitecOpenAPIDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiitecOpenAPIDemoTests.m; sourceTree = "<group>"; };
+		88F3BE6619E932D200054E2C /* AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiitecOpenAPI.h; sourceTree = "<group>"; };
+		88F3BE6719E932D200054E2C /* libAiitecOpenAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAiitecOpenAPI.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F3BE6819E932D200054E2C /* libAiitecOpenAPI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +98,7 @@
 				886C1A2919D51E0800FC76FC /* Images.xcassets */,
 				886C1A2B19D51E0800FC76FC /* LaunchScreen.xib */,
 				886C1A1919D51E0800FC76FC /* Supporting Files */,
+				88F3BD9E19E9280A00054E2C /* Supporting Classes */,
 			);
 			path = AiitecOpenAPIDemo;
 			sourceTree = "<group>";
@@ -122,6 +127,47 @@
 				886C1A3719D51E0800FC76FC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		88F3BD9E19E9280A00054E2C /* Supporting Classes */ = {
+			isa = PBXGroup;
+			children = (
+				88F3BE6319E932D200054E2C /* AiitecOpenAPI */,
+				88F3BDA419E9280A00054E2C /* Utility */,
+			);
+			path = "Supporting Classes";
+			sourceTree = "<group>";
+		};
+		88F3BDA419E9280A00054E2C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		88F3BE6319E932D200054E2C /* AiitecOpenAPI */ = {
+			isa = PBXGroup;
+			children = (
+				88F3BE6419E932D200054E2C /* include */,
+				88F3BE6719E932D200054E2C /* libAiitecOpenAPI.a */,
+			);
+			path = AiitecOpenAPI;
+			sourceTree = "<group>";
+		};
+		88F3BE6419E932D200054E2C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				88F3BE6519E932D200054E2C /* AiitecOpenAPI */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		88F3BE6519E932D200054E2C /* AiitecOpenAPI */ = {
+			isa = PBXGroup;
+			children = (
+				88F3BE6619E932D200054E2C /* AiitecOpenAPI.h */,
+			);
+			path = AiitecOpenAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +400,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AiitecOpenAPIDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AiitecOpenAPIDemo/Supporting\\ Classes/AiitecOpenAPI",
+					"$(PROJECT_DIR)/AiitecOpenAPIDemo/Supporting",
+					Classes/AiitecOpenAPI,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -365,6 +417,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AiitecOpenAPIDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AiitecOpenAPIDemo/Supporting\\ Classes/AiitecOpenAPI",
+					"$(PROJECT_DIR)/AiitecOpenAPIDemo/Supporting",
+					Classes/AiitecOpenAPI,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -10,4 +10,9 @@
 
 @implementation AiitecOpenAPI
 
+- (void)danny
+{
+    NSLog(@"Danny say: ok!");
+}
+
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AIIPacketRequest.h"
 
 @interface AiitecOpenAPI : NSObject
+
+- (void)danny;
 
 @end

@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		8867C9CD19E5366F00D17F2E /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 8867C9D019E5366F00D17F2E /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				8867C9D119E5367200D17F2E /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		46B01D7819DC80D1002996AD /* yjsk.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 46B01D7719DC80D1002996AD /* yjsk.jpeg */; };
 		46B01D7E19DC979E002996AD /* AIICoordinateCollectionSubmitPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B01D7D19DC979E002996AD /* AIICoordinateCollectionSubmitPacket.m */; };
@@ -1211,6 +1225,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Aiitec;
 				TargetAttributes = {
+					8867C9CD19E5366F00D17F2E = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
 					886C19C319D515E300FC76FC = {
 						CreatedOnToolsVersion = 6.0.1;
 					};
@@ -1235,6 +1252,7 @@
 			targets = (
 				886C19C319D515E300FC76FC /* AiitecOpenAPISource */,
 				886C19DC19D515E300FC76FC /* AiitecOpenAPISourceTests */,
+				8867C9CD19E5366F00D17F2E /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -1262,6 +1280,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8867C9D119E5367200D17F2E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"AiitecOpenAPI\" \\\n--project-company \"爱特安为\" \\\n--company-id \"com.aiitec\" \\\n--output ../documentation \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--no-warn-undocumented-object \\\n--no-warn-undocumented-member \\\n--exit-threshold 2 \\\n--ignore .m \\\n--ignore AiitecOpenAPISourceTests \\\n\"${PROJECT_DIR}/AiitecOpenAPISource/AiitecOpenAPI\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		886C19C019D515E300FC76FC /* Sources */ = {
@@ -1463,6 +1497,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8867C9CE19E5366F00D17F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8867C9CF19E5366F00D17F2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		886C19E519D515E300FC76FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1606,6 +1654,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8867C9D019E5366F00D17F2E /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8867C9CE19E5366F00D17F2E /* Debug */,
+				8867C9CF19E5366F00D17F2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		886C19BF19D515E300FC76FC /* Build configuration list for PBXProject "AiitecOpenAPISource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

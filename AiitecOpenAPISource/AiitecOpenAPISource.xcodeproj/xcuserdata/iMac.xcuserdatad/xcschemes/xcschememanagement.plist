@@ -9,9 +9,34 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Documentation.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>usr/local/bin/appledoc \ --project-name "AiitecOpenAPI2" \ --project-company "爱特安为" \ --company-id "com.aiitec" \ --output ../documentation \ . Documentation.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>8867C9C319E5242900D17F2E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8867C9C819E52D3600D17F2E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8867C9CD19E5366F00D17F2E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>886C19C319D515E300FC76FC</key>
 		<dict>
 			<key>primary</key>

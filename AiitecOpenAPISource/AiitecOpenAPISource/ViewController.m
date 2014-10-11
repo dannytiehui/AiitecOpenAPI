@@ -39,7 +39,7 @@
 
 //    [self testUserLoginRequest];
 //    [self testUserLogoutRequest];
-    [self testUserRegisterRequest];//!< Entity
+//    [self testUserRegisterRequest];//!< Entity
 //    [self testUserBindMobileRequest];
 //    [self testUserUploadImageRequest];
 //    [self testUserUpdatePasswordRequest];
@@ -75,6 +75,8 @@
 //    [self testPositionUpdateRequest];
 //    [self testFetchPositionRequest];
 //    [self testCoordinateCollectionSubmitRequest];
+    
+    NSLog(@"cachesPath:%@", [AIIUtility cachesPath]);
     
 }
 

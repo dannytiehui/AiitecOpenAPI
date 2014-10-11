@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AiitecOpenAPI.h"
 
 @interface FirstViewController : UIViewController
 

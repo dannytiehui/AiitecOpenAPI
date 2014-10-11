@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/iMac/Library/Developer/Shared/Documentation/DocSets/com.aiitec.AiitecOpenAPI.docset
+Time: 2014-10-08 10:32:15 +0000
