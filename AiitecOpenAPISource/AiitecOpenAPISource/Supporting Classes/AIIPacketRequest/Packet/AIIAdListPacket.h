@@ -17,6 +17,9 @@
 @end
 
 
+@interface AIIAdListResponseQuery : AIIListResponseQuery
+@end
+
 
 @interface AIIAdListRequest : AIIListRequest
 

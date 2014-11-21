@@ -20,6 +20,9 @@ typedef NS_ENUM(NSUInteger, HttpMethod){
 };
 
 @interface AIIPacketHttpConnection ()
+{
+    NSMutableData *_receiveData;
+}
 
 @property (nonatomic, weak) id target;
 @property (nonatomic) SEL action;
@@ -27,15 +30,17 @@ typedef NS_ENUM(NSUInteger, HttpMethod){
 @property (nonatomic, strong) AIIRequest *request;
 @property (nonatomic, strong) AIIResponse *response;
 @property (nonatomic, weak) id context;
-@property (nonatomic, weak) NSString *responseString;
+@property (nonatomic, copy) NSString *responseString;
 
 - (NSString *)apiPath;
 - (NSString *)responseClassName;
 + (AIIResponse *)sendSynchronous:(AIIRequest *)request method:(HttpMethod)method;
 + (void)sendAsynchronous:(AIIPacketHttpConnection *)connection request:(AIIRequest *)request;
-+ (ASIFormDataRequest *)formDataRequest:(AIIRequest *)request URLString:(NSString *)URLString;
++ (NSMutableURLRequest *)formDataRequest:(AIIRequest *)request URLString:(NSString *)URLString;
 
 + (void)sessionIdRequest:(AIIPacketHttpConnection *)connection;
+
+- (void)connectionDidFinish;
 
 @end
 
@@ -45,6 +50,34 @@ typedef NS_ENUM(NSUInteger, HttpMethod){
 
 static NSMutableArray *_packetHttpConnectionArray;
 static NSMutableArray *_packetHttpConnectionQueue;
+
+
+#pragma mark - NSURLConnectionDelegate
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"ERROR.connection:didFailWithError %@", error);
+    [self connectionDidFinish];
+}
+
+#pragma mark - NSURLConnectionDataDelegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    _receiveData = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [_receiveData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [self connectionDidFinish];
+}
+
+#pragma mark - Private
 
 - (NSString *)apiPath
 {
@@ -66,7 +99,7 @@ static NSMutableArray *_packetHttpConnectionQueue;
     packetHttpConnection.request = request;
     NSString *className = [packetHttpConnection responseClassName];
     NSString *path = packetHttpConnection.apiPath;
-    ASIHTTPRequest *req;
+    NSMutableURLRequest *req;
     
     switch (method) {
         case HttpMethodGet:
@@ -74,13 +107,15 @@ static NSMutableArray *_packetHttpConnectionQueue;
             NSString *urlStr = [path stringByAppendingFormat:@"json=%@", [request jsonStringWithObject]];
             urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]; // 编码
             NSURL *url = [NSURL URLWithString:urlStr];
-            req = [ASIHTTPRequest requestWithURL:url];
+            req = [NSMutableURLRequest requestWithURL:url];
+            req.HTTPMethod = @"GET";
         }
             break;
             
         case HttpMethodPost:
         {
-            req = [AIIPacketHttpConnection formDataRequest:request URLString:path];           
+            req = (NSMutableURLRequest *)[AIIPacketHttpConnection formDataRequest:request URLString:path];
+            req.HTTPMethod = @"POST";
         }
             break;
             
@@ -94,12 +129,23 @@ static NSMutableArray *_packetHttpConnectionQueue;
         return [[NSClassFromString(className) alloc] initWithJSONString:nil];
     }
     
-    [req startSynchronous];
-    NSError *error = [req error];
-    if (!error) {
-        NSLog(@"%@", [req responseString]);
-        packetHttpConnection.response = [[NSClassFromString(className) alloc] initWithJSONString:[req responseString]];
+    
+    NSURLResponse *response = nil;
+    NSError *error = nil;
+    NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
+
+    NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+#ifdef DEBUG
+    NSLog(@"%@, %@(responseString) = %@", req.HTTPMethod, request.nameSpace, responseString);
+#endif
+    
+    if (data || !error) {
+        packetHttpConnection.response = [[NSClassFromString(className) alloc] initWithJSONString:responseString];
     }
+    else {
+        NSLog(@"sendSynchronousRequest.Error: %@", error);
+    }
+    
     return packetHttpConnection.response;
 }
 
@@ -108,22 +154,23 @@ static NSMutableArray *_packetHttpConnectionQueue;
     if (!_packetHttpConnectionArray) {
         _packetHttpConnectionArray = [[NSMutableArray alloc] init];
     }
-  
+    
 //    NSLog(@"--%@, %d", request.nameSpace, [_packetHttpConnectionArray containsObject:connection]);
     if (![_packetHttpConnectionArray containsObject:connection]) {
         [_packetHttpConnectionArray addObject:connection];
     }
     
     NSString *path = connection.apiPath;
-    ASIFormDataRequest *req = [AIIPacketHttpConnection formDataRequest:request URLString:path];
-
+//    ASIFormDataRequest *req = [AIIPacketHttpConnection formDataRequest:request URLString:path];
+    NSMutableURLRequest *req = [AIIPacketHttpConnection formDataRequest:request URLString:path];
+    
     if (![ReachabilityUtility defaultManager].isReachable) {
         NSLog(NotReachableAlertMessage);
         
         double delayInSeconds = 0.1;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [connection requestOver:req];
+            [connection connectionDidFinish];
         });
         return;
     }
@@ -138,7 +185,7 @@ static NSMutableArray *_packetHttpConnectionQueue;
         double delayInSeconds = 0.1;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [connection requestOver:req];
+            [connection connectionDidFinish];
         });
         return;
     }
@@ -163,28 +210,60 @@ static NSMutableArray *_packetHttpConnectionQueue;
         }
         return;
     }
-
+    
     NSLog(@"主线:%@", [request jsonStringWithObject]);
-    [req setDelegate:connection];
-    [req startAsynchronous];
+    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:req delegate:connection];
+    if (!urlConnection) {
+        NSLog(@"NSURLConnection.%@", @"创建失败");
+    }
 }
 
-+ (ASIFormDataRequest *)formDataRequest:(AIIRequest *)request URLString:(NSString *)URLString
+#define BOUNDARY @"uploadBoundary"
+
++ (NSMutableURLRequest *)formDataRequest:(AIIRequest *)request URLString:(NSString *)URLString
 {
-    NSURL *url = [NSURL URLWithString:URLString];
-    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:url];
-    [req setPostValue:[request jsonStringWithObject] forKey:@"json"];
+    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
+    [req setHTTPMethod:@"POST"];
     
     // Upload Image(or File)
     if ([request.query respondsToSelector:@selector(fileCollection)]) {
+        
+        [req setValue:[@"multipart/form-data; boundary=" stringByAppendingString:BOUNDARY] forHTTPHeaderField:@"Content-Type"];
+        
+        NSMutableData *body = [NSMutableData data];
+        
+        NSMutableString *param = [NSMutableString string];
+        [param appendFormat:@"--%@\r\n", BOUNDARY];
+        [param appendFormat:@"Content-Disposition: form-data; name=\"json\"\r\n\r\n%@\r\n", [request jsonStringWithObject]];
+        
+        [body appendData:[param dataUsingEncoding:NSUTF8StringEncoding]];
+        
         AIIUploadFileRequest *uploadFileRequest = (AIIUploadFileRequest *)request;
         AIIFile *file;
         NSUInteger count = uploadFileRequest.query.fileCollection.count;
         for (NSUInteger i = 0; i < count; i++) {
             file = [uploadFileRequest.query.fileCollection objectAtIndex:i];
-            [req addData:file.data withFileName:file.filename andContentType:file.contentType forKey:@"file[]"];
+            
+            NSMutableString *temp = [NSMutableString string];
+            [temp appendFormat:@"--%@\r\n", BOUNDARY];
+            [temp appendFormat:@"Content-Disposition: form-data; name=\"file[]\"; filename=\"%@\"\r\n", file.filename];
+            [temp appendFormat:@"Content-Type: application/octet-stream\r\n\r\n"];
+            
+            [body appendData:[temp dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:file.data];
+            [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
         }
+        
+        NSString *endString = [NSString stringWithFormat:@"--%@--",BOUNDARY];
+        [body appendData:[endString dataUsingEncoding:NSUTF8StringEncoding]];
+        [req setHTTPBody:body];
     }
+    else {
+        NSString *param = [NSString stringWithFormat:@"json=%@", [request jsonStringWithObject]];
+//        param = [param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];//!< 转码.
+        req.HTTPBody = [param dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    
     return req;
 }
 
@@ -195,67 +274,28 @@ static NSMutableArray *_packetHttpConnectionQueue;
     [AIIPacketHttpConnection sendAsynchronous:request delegate:connection.delegate context:connection.context];
 }
 
-#pragma mark - Public Method
-
-+ (AIIResponse *)sendSynchronous:(AIIRequest *)request
+- (void)connectionDidFinish
 {
-    return [AIIPacketHttpConnection sendSynchronous:request method:HttpMethodPost];
-}
-
-+ (void)sendAsynchronous:(AIIRequest *)request delegate:(id<PacketHttpConnectionDelegate>)delegate context:(id)context;
-{
-    AIIPacketHttpConnection *connection = [[AIIPacketHttpConnection alloc] init];
-    connection.request = request;
-    connection.context = context;
-    connection.delegate = delegate;
-    
-    [AIIPacketHttpConnection sendAsynchronous:connection request:request];
-}
-
-+ (void)sendAsynchronous:(AIIRequest *)request target:(id)target action:(SEL)action context:(id)context
-{
-    AIIPacketHttpConnection *connection = [[AIIPacketHttpConnection alloc] init];
-    connection.request = request;
-    connection.context = context;
-    connection.target = target;
-    connection.action = action;
-    
-    [AIIPacketHttpConnection sendAsynchronous:connection request:request];    
-}
-
-#pragma mark - ASIHTTPRequestDelegate
-
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-    [self requestOver:request];
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request
-{
-    [self requestOver:request];
-}
-
-- (void)requestOver:(ASIHTTPRequest *)request
-{
-//#ifdef DEBUG
-    NSLog(@"%@(responseString) = %@", self.request.nameSpace, request.responseString);
-//#endif
+    _responseString = [[NSString alloc] initWithData:_receiveData encoding:NSUTF8StringEncoding];
+    //#ifdef DEBUG
+    NSLog(@"%@(responseString) = %@", self.request.nameSpace, _responseString);
+    //#endif
     NSString *className = [self responseClassName];
-    self.response = [[NSClassFromString(className) alloc] initWithJSONString:request.responseString];
+    self.response = [[NSClassFromString(className) alloc] initWithJSONString:_responseString];
     
     BOOL bSessionResponse = [self.request.nameSpace isEqualToString:@"Session"];
     if (bSessionResponse) {
         NSString *sessionId = ((AIISessionResponse *)self.response).sessionId;
         [AIIPacketManager defaultManager].sessionRequesting = NO;
-//        [AIIPacketManager defaultManager].sessionId = ((AIISessionResponse *)self.response).sessionId;
+        //        [AIIPacketManager defaultManager].sessionId = ((AIISessionResponse *)self.response).sessionId;
         [[NSUserDefaults standardUserDefaults] setObject:sessionId forKey:@"sessionId"];
         [AIIPacketManager defaultManager].expire = ((AIISessionResponse *)self.response).query.expire;
-//        [AIIPacketManager defaultManager].sessionResponseNotNil = [AIIPacketManager defaultManager].sessionId.length ? YES : NO;
+        //        [AIIPacketManager defaultManager].sessionResponseNotNil = [AIIPacketManager defaultManager].sessionId.length ? YES : NO;
         [AIIPacketManager defaultManager].sessionResponseNotNil = sessionId.length ? YES : NO;
     }
     /// 情况二: sessionId失效（或服务器删除了session表里面对应的数据）,需要重新获取.
     else if (self.response.query.status == 1002) {  //!<
-
+        
         if (!_packetHttpConnectionQueue) {
             _packetHttpConnectionQueue = [[NSMutableArray alloc] init];
         }
@@ -292,6 +332,34 @@ static NSMutableArray *_packetHttpConnectionQueue;
     }
     
     [_packetHttpConnectionArray removeObject:self];
+}
+
+#pragma mark - Public Method
+
++ (AIIResponse *)sendSynchronous:(AIIRequest *)request
+{
+    return [AIIPacketHttpConnection sendSynchronous:request method:HttpMethodPost];
+}
+
++ (void)sendAsynchronous:(AIIRequest *)request delegate:(id<PacketHttpConnectionDelegate>)delegate context:(id)context;
+{
+    AIIPacketHttpConnection *connection = [[AIIPacketHttpConnection alloc] init];
+    connection.request = request;
+    connection.context = context;
+    connection.delegate = delegate;
+    
+    [AIIPacketHttpConnection sendAsynchronous:connection request:request];
+}
+
++ (void)sendAsynchronous:(AIIRequest *)request target:(id)target action:(SEL)action context:(id)context
+{
+    AIIPacketHttpConnection *connection = [[AIIPacketHttpConnection alloc] init];
+    connection.request = request;
+    connection.context = context;
+    connection.target = target;
+    connection.action = action;
+    
+    [AIIPacketHttpConnection sendAsynchronous:connection request:request];    
 }
 
 @end

@@ -12,17 +12,35 @@
 
 #pragma mark - NSObject(NSKeyValueCoding)
 
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    if ([key isEqualToString:@"open"]) {
+        self.status = [value isEqualToString:@"1"] ? YES : NO;
+    }
+    else {
+        [super setValue:value forKey:key];
+    }
+}
+
 - (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys
 {
     NSDictionary *dict = [super dictionaryWithValuesForKeys:keys];
     
     NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithDictionary:dict];
+    
     NSString *k = @"deviceToken";
 //    if (![[dict objectForKey:k] isKindOfClass:[NSNull class]]) {
-        [mutableDictionary setObject:[[NSUserDefaults standardUserDefaults] objectForKey:DeviceTokenKey] forKey:k];
+    [mutableDictionary setObject:[[NSUserDefaults standardUserDefaults] objectForKey:DeviceTokenKey] forKey:k];
 //    }
     dict = mutableDictionary;
     
+    k = @"open";
+    if ([keys containsObject:k]) {
+        NSString *status = self.status ? @"1" : @"2";
+        [mutableDictionary setObject:status forKey:k];
+    }
+    
+    dict = mutableDictionary;
     return dict;
 }
 

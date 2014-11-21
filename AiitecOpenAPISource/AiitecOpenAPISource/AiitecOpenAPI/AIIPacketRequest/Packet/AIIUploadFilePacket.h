@@ -12,19 +12,19 @@
 
 @interface AIIUploadFileRequestQuery : AIIQuery
 
-@property (nonatomic, strong) AIIFileCollection *fileCollection;//!< 图片(或文件)集合
+/** 图片(或文件)集合. */
+@property (nonatomic, strong) AIIFileCollection *fileCollection;
 
 @end
-
 
 
 @interface AIIUploadFileResponseQuery : AIIUploadFileRequestQuery
 
 @property (nonatomic, copy) NSString *imagePath;//!< 弃用
-@property (nonatomic, copy) NSArray *ids;//!< ids数组,对[1,2,3]格式的字符串进行解包.
+/** ids数组,对[1,2,3]格式的字符串进行解包. */
+@property (nonatomic, copy) NSArray *ids;
 
 @end
-
 
 
 @interface AIIUploadFileRequest : AIIRequest
@@ -32,7 +32,6 @@
 @property (nonatomic, strong) AIIUploadFileRequestQuery *query;
 
 @end
-
 
 
 @interface AIIUploadFileResponse : AIIResponse

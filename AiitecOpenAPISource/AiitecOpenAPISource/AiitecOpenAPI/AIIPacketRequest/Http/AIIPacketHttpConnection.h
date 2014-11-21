@@ -6,8 +6,6 @@
 //  Copyright (c) 2013年 Aiitec. All rights reserved.
 //
 
-#import "ASIFormDataRequest.h"
-
 #import "AppConfig.h"
 #import "AIIPacketConfig.h"
 
@@ -30,7 +28,7 @@
 @end
 
 
-@interface AIIPacketHttpConnection : NSObject <ASIHTTPRequestDelegate>
+@interface AIIPacketHttpConnection : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 - (id<PacketHttpConnectionDelegate>)delegate;
 - (AIIRequest *)request;

@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, AIICacheWay){
 
 typedef NS_ENUM(NSUInteger, AIICache){
     AIICacheNone,             //!< 0默认.
-    AIICacheNormalFirst = 1,  //!< 1[按需缓存]获取id/timestamp_update数组.
+    AIICacheNormalFirst,      //!< 1[按需缓存]获取id/timestamp_update数组.
     AIICacheNormalSecond,     //!< 2[按需缓存]获取ids数据明细.
     AIICacheFullThird,        //!< 3[完全缓存]获取 > timestampLatest 新数据[仅针对列表].
     AIICacheFullFourth        //!< 4[完全缓存]获取 > timestampLatest且delete数据[仅针对列表].
@@ -38,8 +38,9 @@ typedef NS_ENUM(NSUInteger, AIICache){
 /// timestampLatest:上一次请求时间,第一次初始化值为0; eg. @"2014-08-27 18:59:59"
 @property (nonatomic, copy) NSString *timestampLatest;//!< timestampLatest:上一次请求时间,第一次初始化值为0; eg. @"2014-08-31 01:29:59"
 @property (nonatomic, assign) AIICache cache;
+@property (nonatomic, assign) AIICacheSupporting cacheSupporting;
 
-- (AIICacheSupporting)cacheSupporting;
+//- (AIICacheSupporting)cacheSupporting;
 - (AIICacheWay)cacheWay;
 - (NSString *)packetNickname;
 

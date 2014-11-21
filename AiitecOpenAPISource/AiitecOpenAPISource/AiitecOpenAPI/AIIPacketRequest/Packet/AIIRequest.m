@@ -89,10 +89,10 @@
 
 #pragma mark - self
 
-- (AIICacheSupporting)cacheSupporting
-{
-    return AIICacheSupportingNone;
-}
+//- (AIICacheSupporting)cacheSupporting
+//{
+//    return AIICacheSupportingNone;
+//}
 
 - (AIICacheWay)cacheWay
 {

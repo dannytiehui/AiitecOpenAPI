@@ -9,27 +9,16 @@
 #import "AIIEntityPacket.h"
 #import "AIIFavorites.h"
 
-/**
- *  操作类型
- */
-typedef NS_ENUM(NSUInteger, AIIFavoritesSwitchAction){
-    /**
-     *  收藏（默认）
-     */
-    AIIFavoritesSwitchActionDefault = 1,
-    /**
-     *  预约
-     */
-    AIIFavoritesSwitchActionReservation
-};
+@interface AIIFavoritesSwitchRequestQuery : AIIQuery
 
-@interface AIIFavoritesSwitchRequest : AIIEntityRequest
-
-@property (nonatomic, assign) AIIFavoritesSwitchAction action;
-
-@property (nonatomic, assign) NSUInteger identifier;
-//@property (nonatomic, assign) BOOL favorites;
 @property (nonatomic, assign) BOOL open;
+
+@end
+
+
+@interface AIIFavoritesSwitchRequest : AIIRequest
+
+@property (nonatomic, strong) AIIFavoritesSwitchRequestQuery *query;
 
 @end
 

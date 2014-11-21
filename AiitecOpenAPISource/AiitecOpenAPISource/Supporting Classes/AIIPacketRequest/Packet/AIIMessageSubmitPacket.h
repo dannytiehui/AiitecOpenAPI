@@ -9,14 +9,6 @@
 #import "AIIEntityPacket.h"
 #import "AIIMessage.h"
 
-//@interface AIIMessageSubmitRequestQuery : AIIEntityRequestQuery
-//@end
-
-
-//@interface AIIMessageSubmitResponseQuery : AIIEntityResponseQuery
-//@end
-
-
 @interface AIIMessageSubmitRequest : AIIEntityRequest
 @end
 

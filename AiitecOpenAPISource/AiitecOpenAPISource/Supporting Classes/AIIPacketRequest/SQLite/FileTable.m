@@ -23,14 +23,10 @@
     AIIFile *item = [[AIIFile alloc] init];
     [self FMResultSetToObject:rs entity:item];
     
-    item.userId = [[rs stringForColumn:@"user_id"] integerValue];
-    item.userName = [rs stringForColumn:@"user_name"];
     item.filename = [rs stringForColumn:@"filename"];
     item.path = [rs stringForColumn:@"path"];
-    item.favorites = [[rs stringForColumn:@"favorite_times"] integerValue];
     item.size = [[rs stringForColumn:@"size"] floatValue];
     item.extension = [rs stringForColumn:@"extension"];
-    item.ip = [rs stringForColumn:@"ip"];
     item.desc = [rs stringForColumn:@"description"];
 
     return item;
@@ -89,7 +85,7 @@
 - (int)replaceIntoItem:(AIIFile *)item
 {
 
-    NSString *sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, name, user_id, user_name, filename, path, favorite_times, size, extension, ip, description, is_delete, timestamp_update, timestamp) VALUES (%lu, '%@', %lu, '%@', '%@', '%@', %lu, %f, '%@', '%@', '%@', %d, '%@', '%@')", [self tableName], (unsigned long)item.identifier, item.name, (unsigned long)item.userId, item.userName, item.filename, item.path, (unsigned long)item.favorites, item.size, item.extension, item.ip, item.desc, 0, item.timestampUpdate, item.timestamp];
+    NSString *sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, name, filename, path, size, extension, description, is_delete, timestamp_update, timestamp) VALUES (%lu, '%@', '%@', '%@', %f, '%@', '%@', %d, '%@', '%@')", [self tableName], (unsigned long)item.identifier, item.name, item.filename, item.path, item.size, item.extension, item.desc, 0, item.timestampUpdate, item.timestamp];
     return [SQLiteConnection update:sql];
 }
 
@@ -102,7 +98,7 @@
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
         
-        sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, name, user_id, user_name, filename, path, favorite_times, size, extension, ip, description, is_delete, timestamp_update, timestamp) VALUES (%lu, '%@', %lu, '%@', '%@', '%@', %lu, %f, '%@', '%@', '%@', %d, '%@', '%@')", [self tableName], (unsigned long)item.identifier, item.name, (unsigned long)item.userId, item.userName, item.filename, item.path, (unsigned long)item.favorites, item.size, item.extension, item.ip, item.desc, 0, item.timestampUpdate, item.timestamp];
+        sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, name, filename, path, size, extension, description, is_delete, timestamp_update, timestamp) VALUES (%lu, '%@', '%@', '%@', %f, '%@', '%@', %d, '%@', '%@')", [self tableName], (unsigned long)item.identifier, item.name, item.filename, item.path, item.size, item.extension, item.desc, 0, item.timestampUpdate, item.timestamp];
         numberOfChanges += [SQLiteConnection update:sql];
     }
     return numberOfChanges;

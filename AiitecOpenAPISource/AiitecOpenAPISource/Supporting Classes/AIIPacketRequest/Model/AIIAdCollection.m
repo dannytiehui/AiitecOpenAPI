@@ -10,9 +10,9 @@
 
 @implementation AIIAdCollection
 
-- (Class)objectClass
-{
-    return [AIIAd class];
-}
+//- (Class)objectClass
+//{
+//    return [AIIAd class];
+//}
 
 @end

@@ -27,7 +27,7 @@ NSString *const DeviceTokenKey = @"deviceId";
     static NSString *path = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        path = [[AIIUtility cachesPath] stringByAppendingPathComponent:@"com.aiitec.AIIPacketRequest"];
+        path = [[AIIUtility cachesPath] stringByAppendingPathComponent:@"com.aiitec.AiitecOpenAPI"];
     });
     return path;
 }
@@ -59,7 +59,7 @@ NSString *const DeviceTokenKey = @"deviceId";
 + (void)setInteger:(NSUInteger)integer forKey:(id <NSCopying>)aKey toDictionary:(NSMutableDictionary *)dict allowZero:(BOOL)allow
 {
     if (allow || integer) {
-        dict[aKey] = [NSString stringWithFormat:@"%d", integer];
+        dict[aKey] = [NSString stringWithFormat:@"%lu", integer];
     }
 }
 
@@ -181,7 +181,8 @@ NSString *const DeviceTokenKey = @"deviceId";
     }
     const char *cStr = [str UTF8String];
     unsigned char result[16];
-    CC_MD5(cStr, strlen(cStr), result);
+//    CC_MD5(cStr, strlen(cStr), result);//!< 用下面的一行代码替换 [Danny 2014-11-21].
+    CC_MD5(cStr, (uint32_t)strlen(cStr), result);
     return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
             result[0], result[1], result[2], result[3],
             result[4], result[5], result[6], result[7],
@@ -287,5 +288,55 @@ NSString *const DeviceTokenKey = @"deviceId";
     
     return prop;
 }
+
++ (NSDictionary *)classPropertysAttributes:(Class)aClass
+{
+    NSMutableDictionary *mDict = [[NSMutableDictionary alloc] init];
+    
+    unsigned int outCount, i;
+    objc_property_t *properties = class_copyPropertyList(aClass, &outCount);//!< [aClass class];
+    for (i=0; i<outCount; i++) {
+        objc_property_t property = properties[i];
+        NSString *key = [[NSString alloc] initWithCString:property_getName(property)  encoding:NSUTF8StringEncoding];
+        NSString *temp = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
+        NSArray *tempArray = [temp componentsSeparatedByString:@","];
+        [mDict setObject:tempArray forKey:key];
+    }
+    
+    return mDict;
+}
+
+#pragma mark - File
+
++ (BOOL)removeItemAtPath:(NSString *)path
+{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    return [fm removeItemAtPath:path error:nil];
+}
+
++ (unsigned long long)fileSizeAtPath:(NSString*)path
+{
+    unsigned long long size = 0;
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if ([fm fileExistsAtPath:path]){
+        size = [[fm attributesOfItemAtPath:path error:nil] fileSize];
+        //        NSLog(@"%llu, %@", size, path);
+    }
+    return size;
+}
+
++ (unsigned long long)folderSizeAtPath:(NSString*)path
+{
+    unsigned long long size = 0;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSEnumerator *childFilesEnumerator = [[fm subpathsAtPath:path] objectEnumerator];
+    NSString *fileName;
+    while ((fileName = [childFilesEnumerator nextObject]) != nil){
+        size += [self fileSizeAtPath:[path stringByAppendingPathComponent:fileName]];
+    }
+    return size;
+}
+
 
 @end

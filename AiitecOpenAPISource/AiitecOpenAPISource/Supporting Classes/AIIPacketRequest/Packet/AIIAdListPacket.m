@@ -12,6 +12,18 @@
 @end
 
 
+@implementation AIIAdListResponseQuery
+
+- (id)init
+{
+    if (self = [super init]) {
+        self.modelCollection = [[AIIAdCollection alloc] init];
+    }
+    return self;
+}
+
+@end
+
 
 @implementation AIIAdListRequest
 

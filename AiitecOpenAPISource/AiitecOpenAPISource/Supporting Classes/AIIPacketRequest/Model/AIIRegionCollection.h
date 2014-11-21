@@ -13,4 +13,13 @@
 
 - (AIIRegionCollection *)recursive;
 
+- (AIIRegionCollection *)filterWithParentId:(NSUInteger)pId;
+
+/**
+ * @brief 按拼音排序.
+ *
+ * @return 返回按拼音排序后的AIIRegionCollection集合对象.
+ */
+- (AIIRegionCollection *)sortedCollectionUsingPinyin;
+
 @end

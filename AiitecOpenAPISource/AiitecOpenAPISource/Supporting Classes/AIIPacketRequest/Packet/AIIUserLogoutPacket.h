@@ -13,6 +13,5 @@
 @end
 
 
-
 @interface AIIUserLogoutResponse : AIIResponse
 @end

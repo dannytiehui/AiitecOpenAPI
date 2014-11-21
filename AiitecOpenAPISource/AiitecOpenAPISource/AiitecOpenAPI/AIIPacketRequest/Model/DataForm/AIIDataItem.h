@@ -10,7 +10,6 @@
 
 @interface AIIDataItem : AIIEntity
 
-//@property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *value;
 
 @end

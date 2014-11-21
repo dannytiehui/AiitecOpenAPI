@@ -7,11 +7,6 @@
 //
 
 #import "AIIUserDetailsPacket.h"
-//
-//@implementation AIIUserDetailsRequestQuery
-//@end
-//
-//
 
 @implementation AIIUserDetailsResponseQuery
 
@@ -19,62 +14,16 @@
 {
     if (self = [super init]) {
         self.entity = [[AIIUser alloc] init];
+        _merchant = [[AIIUser alloc] init];
+        _merchant.key = @"merchant";
     }
     return self;
 }
 
-//#pragma mark - NSObject(NSKeyValueCoding)
-//
-//- (id)valueForUndefinedKey:(NSString *)key
-//{
-//    NSLog(@"AIIUserDetailsResponseQuery.valueForUndefinedKey:key = %@", key);
-//    
-//    id value;
-//    if([key isEqualToString:self.entity.key]) {
-//        value = [self valueForKey:self.entity.key];
-//    }
-//    else {
-//        value = [super valueForUndefinedKey:key];
-//    }
-//    return value;
-//}
-//
-//- (void)setValue:(id)value forUndefinedKey:(NSString *)key
-//{
-//    NSLog(@"AIIUserDetailsResponseQuery.setValue:%@, forUndefinedKey:%@", key, value);
-//
-//    if([key isEqualToString:self.entity.key]) {
-//        [self.entity setValuesForKeysWithDictionary:value];
-//    }
-//    else {
-//        [super setValue:value forUndefinedKey:key];
-//    }
-//}
-//
-//- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys
-//{
-//    NSDictionary *dict = [super dictionaryWithValuesForKeys:keys];
-//    
-//    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithDictionary:dict];
-//    NSString *k = @"entity";
-//    if ([dict objectForKey:k]) {
-//        [mutableDictionary setObject:[self.entity dictionaryWithValuesForKeys:self.entity.properties] forKey:@"user"];
-//        [mutableDictionary removeObjectForKey:k];
-//    }
-//    dict = mutableDictionary;
-//    
-//    return dict;
-//}
-//
 @end
 
 
 @implementation AIIUserDetailsRequest
-
-//- (NSString *)nameSpace
-//{
-//    return @"UserDetails";
-//}
 
 - (NSString *)packetNickname
 {

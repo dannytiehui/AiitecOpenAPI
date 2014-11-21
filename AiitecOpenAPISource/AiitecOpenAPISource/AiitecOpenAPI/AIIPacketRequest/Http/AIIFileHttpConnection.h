@@ -6,7 +6,6 @@
 //  Copyright (c) 2013年 Aiitec. All rights reserved.
 //
 
-#import "ASIHTTPRequest.h"
 #import "ReachabilityUtility.h"
 
 @class AIIFileHttpConnection;
@@ -17,7 +16,7 @@
 @end
 
 
-@interface AIIFileHttpConnection : NSObject <ASIHTTPRequestDelegate>
+@interface AIIFileHttpConnection : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 - (id<FileHttpConnectionDelegate>)delegate;
 - (NSData *)data;

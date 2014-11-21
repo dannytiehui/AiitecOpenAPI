@@ -16,15 +16,15 @@
 
 @implementation AIIRegionCollection
 
-- (Class)objectClass
-{
-    return [AIIRegion class];
-}
+//- (Class)objectClass
+//{
+//    return [AIIRegion class];
+//}
 
-- (NSString *)key
-{
-    return @"regionInfo";
-}
+//- (NSString *)key
+//{
+//    return @"regionInfo";
+//}
 
 - (AIIRegionCollection *)recursive;
 {
@@ -42,16 +42,36 @@
             [self recursive:entity.children parentId:entity.identifier];
         }
     }
+}
 
-//    NSUInteger count = [self count];
-//    for (NSUInteger i = 0; i < count; i ++) {
-//        AIIRegion *entity = [self objectAtIndex:i];
-//        if (entity.parentId == pId) {
-//            [collection addObject:entity];
-//            entity.children = [[RegionCollection alloc] init];
-//            [self recursive:entity.children parentId:entity.identifier];
-//        }
-//    }
+- (AIIRegionCollection *)filterWithParentId:(NSUInteger)pId
+{
+    AIIRegionCollection *regionCollection = [[AIIRegionCollection alloc] init];
+    for (AIIRegion *entity in self) {
+        if (entity.parentId == pId) {
+            [regionCollection addObject:entity];
+        }
+    }
+    return regionCollection;
+}
+
+- (AIIRegionCollection *)sortedCollectionUsingPinyin
+{
+    AIIRegionCollection *regionCollection = [[AIIRegionCollection alloc] init];
+    
+    NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
+    for (AIIRegion *item in self) {
+        [mutableArray addObject:item];
+    }
+    
+    NSArray *tempArray = [mutableArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [((AIIRegion *)obj1).pinyin localizedCompare:((AIIRegion *)obj2).pinyin];
+    }];
+    
+    for (id item in tempArray) {
+        [regionCollection addObject:item];
+    }
+    return regionCollection;
 }
 
 @end

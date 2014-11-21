@@ -470,7 +470,7 @@ static NSMutableArray *_packetConnectionArray;
     Table *table = [[NSClassFromString(className) alloc] init];
     
     if ([request.nameSpace isEqualToString:@"RegionList"]) {
-//        response = [AIIPacketConnection queryCacheRegionList:(AIIRegionListRequest *)request table:(RegionTable *)table];
+        response = [AIIPacketConnection queryCacheRegionList:(AIIRegionListRequest *)request table:(RegionTable *)table];
     }
     else if ([request.nameSpace isEqualToString:@"AddressbookList"]) {
 //        response = [AIIPacketConnection queryCacheAddressbookList:(AddressbookListRequest *)request table:(AddressbookTable *)table];

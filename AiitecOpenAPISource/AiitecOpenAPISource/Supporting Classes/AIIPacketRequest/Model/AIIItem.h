@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) NSString *value;
 
-/// Option
+#pragma mark - Option
 @property (nonatomic, copy) NSString *imagePath;
 @property (nonatomic, copy) NSString *pinyin;
 

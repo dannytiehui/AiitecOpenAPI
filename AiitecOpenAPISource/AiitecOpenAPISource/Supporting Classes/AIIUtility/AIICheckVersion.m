@@ -9,50 +9,59 @@
 #import "AIICheckVersion.h"
 
 @interface AIICheckVersion ()
+{
+    NSMutableData *_receiveData;
+}
 
 + (void)checkVersion:(id<AIICheckVersionDelegate>)delegate path:(NSString *)path;
+- (void)connectionDidFinish;
 
 @end
 
 
-
 @implementation AIICheckVersion
 
-static BOOL _checkItunes; // 是否检测itunes app版本
+static BOOL _checkItunes; //!< 是否检测itunes app版本
 static NSMutableArray *_objectArray;
+
+
+#pragma mark - NSURLConnectionDelegate
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"ERROR.connection:didFailWithError %@", error);
+    [self connectionDidFinish];
+}
+
+#pragma mark - NSURLConnectionDataDelegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    _receiveData = [[NSMutableData alloc] init];
+    
+//    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+//    if ([response respondsToSelector:@selector(allHeaderFields)]) {
+//        NSDictionary *dictionary = [httpResponse allHeaderFields];
+//        NSLog(@"allHeaderFields: %@",dictionary);
+//    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [_receiveData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [self connectionDidFinish];
+}
+
+#pragma mark - Public
 
 + (NSString *)currentVersion
 {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     return [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-}
-
-+ (void)checkVersion:(id<AIICheckVersionDelegate>)delegate path:(NSString *)path
-{
-    AIICheckVersion *checkVersion = [[AIICheckVersion alloc] init];
-    checkVersion.delegate = delegate;
-    if (!_objectArray) {
-        _objectArray = [[NSMutableArray alloc] init];
-    }
-    [_objectArray addObject:checkVersion];
-
-    NSURL *url = [NSURL URLWithString:path];
-    ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:url];
-    
-    if (![ReachabilityUtility defaultManager].isReachable) {
-        NSLog(NotReachableAlertMessage);
-        
-        double delayInSeconds = 0.1;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [checkVersion requestOver:req];
-        });
-        
-        return;
-    }
-    
-    req.delegate = checkVersion;
-    [req startAsynchronous];
 }
 
 + (void)checkVersion:(id<AIICheckVersionDelegate>)delegate
@@ -67,21 +76,48 @@ static NSMutableArray *_objectArray;
     [AIICheckVersion checkVersion:delegate path:ITUNES_CHECKVERSION_PATH];
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request
+#pragma mark - Private
+
++ (void)checkVersion:(id<AIICheckVersionDelegate>)delegate path:(NSString *)path
 {
-    [self requestOver:request];
+    AIICheckVersion *checkVersion = [[AIICheckVersion alloc] init];
+    checkVersion.delegate = delegate;
+    if (!_objectArray) {
+        _objectArray = [[NSMutableArray alloc] init];
+    }
+    [_objectArray addObject:checkVersion];
+
+    NSURL *url = [NSURL URLWithString:path];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+//    request.HTTPBody = [param dataUsingEncoding:NSUTF8StringEncoding];
+    
+    if (![ReachabilityUtility defaultManager].isReachable) {
+        NSLog(NotReachableAlertMessage);
+        
+        double delayInSeconds = 0.1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [checkVersion connectionDidFinish];
+        });
+        
+        return;
+    }
+
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:checkVersion];
+    if (!connection) {
+        NSLog(@"checkVersion:%@", @"NSURLConnection 创建失败！");
+    }
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request
+- (void)connectionDidFinish
 {
-    NSLog(@"ERROR:%@", [[request error] localizedDescription]);
-    [self requestOver:request];
-}
-
-- (void)requestOver:(ASIHTTPRequest *)request
-{
-    NSData *data = [request responseData];
+    NSData *data = _receiveData;
     NSError *error;
+
+#ifdef DEBUG
+    NSLog(@"AIICheckVersion(responseString) = %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+#endif
     
     // 网络等未知问题导致data=nil时触发
     if (!data) {
@@ -100,28 +136,22 @@ static NSMutableArray *_objectArray;
     _newVersion = NO;
     _forcedUpdate = NO;
 
-    if (_checkItunes) {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-        NSArray *infoArray = [dic objectForKey:@"results"];
-        
-        if ([infoArray count] > 0) {
-            NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
-            _version = [releaseInfo objectForKey:@"version"];
-            _link = [releaseInfo objectForKey:@"trackViewUrl"];
-            _message = [releaseInfo objectForKey:@"description"];
-        }
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    NSArray *infoArray = [dic objectForKey:@"results"];
+    NSDictionary *releaseInfo;
+    
+    if (_checkItunes && infoArray.count) {
+        releaseInfo = [infoArray objectAtIndex:0];
+        _version = [releaseInfo objectForKey:@"version"];
+        _link = [releaseInfo objectForKey:@"trackViewUrl"];
+        _message = [releaseInfo objectForKey:@"description"];
     }
-    else {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-        NSArray *infoArray = [dic objectForKey:@"results"];
-        
-        if ([infoArray count] > 0) {
-            NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
-            _version = [releaseInfo objectForKey:@"version"];
-            _link = [releaseInfo objectForKey:@"trackViewUrl"];
-            _message = [releaseInfo objectForKey:@"description"];
-            _forcedUpdate = [[releaseInfo objectForKey:@"forcedUpdate"] boolValue];
-        }
+    else if (infoArray.count) {
+        releaseInfo = [infoArray objectAtIndex:0];
+        _version = [releaseInfo objectForKey:@"version"];
+        _link = [releaseInfo objectForKey:@"trackViewUrl"];
+        _message = [releaseInfo objectForKey:@"description"];
+        _forcedUpdate = [[releaseInfo objectForKey:@"forcedUpdate"] boolValue];
     }
     
     NSArray *bundleShortVersionArray = [bundleShortVersion componentsSeparatedByString:@"."];

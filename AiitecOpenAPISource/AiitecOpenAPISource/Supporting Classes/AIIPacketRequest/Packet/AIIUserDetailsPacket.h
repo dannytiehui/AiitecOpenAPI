@@ -9,11 +9,10 @@
 #import "AIIDetailsPacket.h"
 #import "AIIUser.h"
 
-//@interface AIIUserDetailsRequestQuery : AIIDetailsRequestQuery
-//@end
-
-
 @interface AIIUserDetailsResponseQuery : AIIEntityQuery
+
+@property (nonatomic, strong) AIIEntity *merchant;
+
 @end
 
 

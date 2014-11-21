@@ -35,7 +35,9 @@
 #import "AIIUserDetailsPacket.h"
 #import "AIIUserUpdatePacket.h"
 #import "AIIUserPartnerLoginPacket.h"
-#import "AIIRankListPacket.h"
+#import "AIIUserBadgeNumberPacket.h"
+#import "AIIAddressListPacket.h"
+#import "AIIAddressSubmitPacket.h"
 #import "AIIRecordListPacket.h"
 
 #import "AIIUserDataTablePacket.h"
@@ -58,36 +60,24 @@
 #import "AIIArticleListPacket.h"
 #import "AIIArticleDetailsPacket.h"
 
-#pragma mark - 财务
-#import "AIIPaySubmitPacket.h"
-#import "AIIPointExchangeSubmitPacket.h"
-
-#pragma mark - 活动
-#import "AIIEventListPacket.h"
-#import "AIIEventJoinPacket.h"
-
-#pragma mark - 任务
-#import "AIITaskListPacket.h"
-#import "AIITaskDetailsPacket.h"
-#import "AIITaskSubmitPacket.h"
-#import "AIITaskStatusUpdatePacket.h"
-#import "AIITaskReportSubmitPacket.h"
-#import "AIIFetchRankPacket.h"
-
-#pragma mark - 订单
+#pragma mark - 猫王联盟
+#import "AIIMerchantListPacket.h"
+#import "AIIMerchantDetailsPacket.h"
+#import "AIIGoodsListPacket.h"
+#import "AIIGoodsDetailsPacket.h"
+#import "AIIOrderListPacket.h"
+#import "AIIOrderDetailsPacket.h"
+#import "AIIOrderTrackingListPacket.h"
+#import "AIIOrderSubmitPacket.h"
 #import "AIIOrderStatusUpdatePacket.h"
+#import "AIIOrderCommentListPacket.h"
 #import "AIIOrderCommentSubmitPacket.h"
-#import "AIIOrderComplaintSubmitPacket.h"
+#import "AIIReportSubmitPacket.h"
 
-#pragma mark - 积分
-#import "AIIPointSubmitPacket.h"
-#import "AIIPointDetailsPacket.h"
-
-#pragma mark - 其它
-#import "AIIWishSubmitPacket.h"
-#import "AIIPositionUpdatePacket.h"
-#import "AIIFetchPositionPacket.h"
-#import "AIICoordinateCollectionSubmitPacket.h"
+#import "AIIQuestionDetailsPacket.h"
+#import "AIIExchangeSubmitPacket.h"
+#import "AIIEventJoinPacket.h"
+#import "AIIBusinessesSubmitPacket.h"
 
 
 @interface PacketRequest : NSObject

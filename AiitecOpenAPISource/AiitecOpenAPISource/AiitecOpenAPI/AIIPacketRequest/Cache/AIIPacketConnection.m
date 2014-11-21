@@ -515,16 +515,20 @@ static NSMutableArray *_packetConnectionArray;
 {
     AIIRegionListResponse *response = [[AIIRegionListResponse alloc] init];
     
-//    if (request.parentId != 0) {
-//        response.modelCollection = [table queryWithParentId:request.parentId];
-//    }
-//    else if (request.identifier != 0) {
-//        response.modelCollection = [table queryWithIdentifier:request.identifier];
-//    }
-//    else if (![request.name isEqualToString:@""]) {
-//        response.modelCollection = [table queryWithName:request.name];
-//    }
-//    response.total = response.modelCollection.count;
+    if (request.query.parentId != 0) {
+        response.query.modelCollection = [table queryWithParentId:request.query.parentId];
+    }
+    else if (request.query.identifier != 0) {
+        response.query.modelCollection = [table queryWithIdentifier:request.query.identifier];
+    }
+    else if (request.query.name.length) {
+        response.query.modelCollection = [table queryWithName:request.query.name];
+    }
+    else {
+        response.query.modelCollection = [table query];
+    }
+    
+    response.query.total = response.query.modelCollection.count;
     return response;
 }
 

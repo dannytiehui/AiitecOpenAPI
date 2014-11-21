@@ -23,9 +23,13 @@
 //@property (nonatomic, copy) NSString *desc;//!< 省 市 区 街道 详细地址（空格隔开）
 
 #pragma mark - Option
-@property (nonatomic, copy) NSString *postcode;//!< 邮政编码
-@property (nonatomic, copy) NSString *contacts;//!< 联系人
-@property (nonatomic, copy) NSString *mobile;//!< 联系电话
+
+/** 邮政编码. */
+@property (nonatomic, copy) NSString *postcode;
+/** 联系人. */
+@property (nonatomic, copy) NSString *contacts;
+/** 联系电话. */
+@property (nonatomic, copy) NSString *mobile;
 
 @property (nonatomic, strong) AIIRegion *provinceRegion;//!<省
 @property (nonatomic, strong) AIIRegion *cityRegion;//!<市

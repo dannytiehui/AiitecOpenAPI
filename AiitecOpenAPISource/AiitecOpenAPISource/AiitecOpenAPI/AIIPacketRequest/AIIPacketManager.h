@@ -26,7 +26,8 @@
  *  @brief SessionId 过期时间
  *  @note 若过期,则需重新获取sessionId
  */
-@property (nonatomic, copy) NSDate *expire;
+//@property (nonatomic, copy) NSDate *expire;
+@property (nonatomic, copy) NSString *expire;
 
 /**
  *  @brief SessionId 过期时间

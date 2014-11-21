@@ -22,9 +22,12 @@
 //    [[NSUserDefaults standardUserDefaults] setObject:@"py108ouc7comfaqjfst8w4fd5gze4221" forKey:@"sessionId"];
 //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sessionId"];
     
-    [[NSUserDefaults standardUserDefaults] setObject:@"20141001224159" forKey:DeviceTokenKey];
+    [[NSUserDefaults standardUserDefaults] setObject:@"20141111111111000" forKey:DeviceTokenKey];
     
-    [self testModelCollection];
+//    [self testModelCollection];
+    
+//    [self testRegionListRequest];
+//    [self testCacheRegionListRequest];
 
 //    [self testDeviceTokenSwitchRequest];
 //    [self testMessageSubmitRequest];
@@ -33,7 +36,7 @@
 //    [self testAdListRequest];
 //    [self testSettingRequest];
 //    [self testReferenceItemListRequest];
-//    [self testUploadImageRequest];//!< Collection
+    [self testUploadImageRequest];//!< Collection
 //    [self testDeleteActionRequest];
 //    [self testCategoryListRequest];
 
@@ -44,6 +47,8 @@
 //    [self testUserUploadImageRequest];
 //    [self testUserUpdatePasswordRequest];
 //    [self testUserResetPasswordRequest];
+    
+//    [self testSynchronousUserDetailsRequest];//!< 测试同步请求.
 //    [self testUserDetailsRequest];
 //    [self testUserUpdateRequest];
 //    [self testRankListRequest];
@@ -76,13 +81,28 @@
 //    [self testFetchPositionRequest];
 //    [self testCoordinateCollectionSubmitRequest];
     
-    NSLog(@"cachesPath:%@", [AIIUtility cachesPath]);
+//    NSLog(@"cachesPath:%@", [AIIUtility cachesPath]);
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)testRegionListRequest
+{
+    AIIRegionListRequest *request = [[AIIRegionListRequest alloc] init];
+    request.cacheSupporting = AIICacheSupportingNone;
+    request.query.action = AIIQueryActionSecond;
+    [AIIPacketConnection sendAsynchronous:request delegate:self context:nil];
+}
+
+- (void)testCacheRegionListRequest
+{
+    AIIRegionListRequest *request = [[AIIRegionListRequest alloc] init];
+    request.query.action = AIIQueryActionFirst;
+    [AIIPacketConnection sendAsynchronous:request delegate:self context:nil];
 }
 
 - (void)testDeviceTokenSwitchRequest
@@ -168,7 +188,7 @@
     
     AIIFileCollection *fileCollection = [[AIIFileCollection alloc] init];
     UIImage *image = [UIImage imageNamed:@"UploadImage"];
-    AIIFile *file = [[AIIFile alloc] initWithData:UIImageJPEGRepresentation(image, 0.5) filename:@"UploadImage.jpg" contentType:@"image/jpg"];
+    AIIFile *file = [[AIIFile alloc] initWithData:UIImageJPEGRepresentation(image, 0.5) filename:@"UploadImage.png" contentType:@"image/png"];
     [fileCollection addObject:file];
     UIImage *image1 = [UIImage imageNamed:@"yjsk.jpeg"];
     AIIFile *file1 = [[AIIFile alloc] initWithData:UIImageJPEGRepresentation(image1, 1) filename:@"yjsk.jpeg" contentType:@"image/jpg"];
@@ -250,6 +270,15 @@
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
+- (void)testSynchronousUserDetailsRequest
+{
+    AIIUserDetailsRequest *request = [[AIIUserDetailsRequest alloc] init];
+    AIIUserDetailsResponse *response = (AIIUserDetailsResponse *)[AIIPacketConnection sendSynchronous:request];
+    AIIUser *user = (AIIUser *)response.query.entity;
+    NSLog(@"user:%@", user);
+    ;
+}
+
 - (void)testUserDetailsRequest
 {
     AIIUserDetailsRequest *request = [[AIIUserDetailsRequest alloc] init];
@@ -300,12 +329,12 @@
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
-- (void)testRankListRequest
-{
-    AIIRankListRequest *request = [[AIIRankListRequest alloc] init];
-    request.query.action = AIIQueryActionFirst;
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testRankListRequest
+//{
+//    AIIRankListRequest *request = [[AIIRankListRequest alloc] init];
+//    request.query.action = AIIQueryActionFirst;
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
 - (void)testRecordListRequest
 {
@@ -325,46 +354,46 @@
 
 #pragma mark - 财务
 
-- (void)testPaySubmitRequest
-{
-    AIIPaySubmitRequest *request = [[AIIPaySubmitRequest alloc] init];
-    request.query.type = AIITradeTypeAlipay;
-    request.query.money = 12.34;
-    request.query.transferNo = @"20140916151800";
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testPaySubmitRequest
+//{
+//    AIIPaySubmitRequest *request = [[AIIPaySubmitRequest alloc] init];
+//    request.query.type = AIITradeTypeAlipay;
+//    request.query.money = 12.34;
+//    request.query.transferNo = @"20140916151800";
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
-- (void)testPointExchangeSubmitRequest
-{
-    AIIPointExchangeSubmitRequest *request = [[AIIPointExchangeSubmitRequest alloc] init];
-    request.query.action = AIIQueryActionFirst;
-    request.query.money = 1;
-    request.query.account = @"dannytiehui@hotmail.com";
-    request.query.properties = @[@"action", @"money"];
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testPointExchangeSubmitRequest
+//{
+//    AIIPointExchangeSubmitRequest *request = [[AIIPointExchangeSubmitRequest alloc] init];
+//    request.query.action = AIIQueryActionFirst;
+//    request.query.money = 1;
+//    request.query.account = @"dannytiehui@hotmail.com";
+//    request.query.properties = @[@"action", @"money"];
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
 #pragma mark - 活动
 
-- (void)testEventListRequest
-{
-    AIIEventListRequest *request = [[AIIEventListRequest alloc] init];
-    request.query.action = AIIQueryActionFirst;
-    
-    AIITable *table = [[AIITable alloc] init];
-    table.page = 1;
-    table.limit = 5;
-    
-    AIIEventListWhere *where = [[AIIEventListWhere alloc] init];
-    where.latitude = 23.105407;
-    where.longitude = 113.305758;
-    table.where = where;
-    //    table.properties = @[@"where"];
-    
-    request.query.table = table;
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testEventListRequest
+//{
+//    AIIEventListRequest *request = [[AIIEventListRequest alloc] init];
+//    request.query.action = AIIQueryActionFirst;
+//    
+//    AIITable *table = [[AIITable alloc] init];
+//    table.page = 1;
+//    table.limit = 5;
+//    
+//    AIIEventListWhere *where = [[AIIEventListWhere alloc] init];
+//    where.latitude = 23.105407;
+//    where.longitude = 113.305758;
+//    table.where = where;
+//    //    table.properties = @[@"where"];
+//    
+//    request.query.table = table;
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
 - (void)testEventJoinRequest
 {
@@ -375,99 +404,99 @@
 
 #pragma mark - 任务
 
-- (void)testTaskListRequest
-{
-    AIITaskListRequest *request = [[AIITaskListRequest alloc] init];
-    request.query.action = AIIQueryActionThird;
-    
-    AIITable *table = [[AIITable alloc] init];
-    table.page = 1;
-    table.limit = 5;
-    table.orderBy = AIIOrderByFirst;
-    
-    AIITaskListWhere *where = [[AIITaskListWhere alloc] init];
-    where.orderStatus = AIITaskStatusSecond;
-    where.labelId = 1;
-    where.latitude = 23.132921;
-    where.longitude = 113.252281;
-//    table.where = where;
-    
-//    request.query.table = table;
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testTaskListRequest
+//{
+//    AIITaskListRequest *request = [[AIITaskListRequest alloc] init];
+//    request.query.action = AIIQueryActionThird;
+//    
+//    AIITable *table = [[AIITable alloc] init];
+//    table.page = 1;
+//    table.limit = 5;
+//    table.orderBy = AIIOrderByFirst;
+//    
+//    AIITaskListWhere *where = [[AIITaskListWhere alloc] init];
+//    where.orderStatus = AIITaskStatusSecond;
+//    where.labelId = 1;
+//    where.latitude = 23.132921;
+//    where.longitude = 113.252281;
+////    table.where = where;
+//    
+////    request.query.table = table;
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
-- (void)testTaskDetailsRequest
-{
-    AIITaskDetailsRequest *request = [[AIITaskDetailsRequest alloc] init];
-    request.query.identifier = 176;//!< 1350935;
-    request.query.latitude = 23.132921;
-    request.query.longitude = 113.252281;
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testTaskDetailsRequest
+//{
+//    AIITaskDetailsRequest *request = [[AIITaskDetailsRequest alloc] init];
+//    request.query.identifier = 176;//!< 1350935;
+//    request.query.latitude = 23.132921;
+//    request.query.longitude = 113.252281;
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
-- (void)testTaskSubmitRequest
-{
-    AIITaskSubmitRequest *request = [[AIITaskSubmitRequest alloc] init];
-    
-    AIITask *task = [[AIITask alloc] init];
-    //    task.identifier = 1351013;
-    task.reward = 1.25;
-    task.rewardPlus = 0.0;
-    
-    AIIImage *image = [[AIIImage alloc] init];
-    image.identifier = 1;
-    image.properties = @[@"identifier"];//!<
-    AIIImage *image2 = [[AIIImage alloc] init];
-    image2.identifier = 2;
-    image2.properties = @[@"identifier"];//!<
-    AIIImageCollection *imageCollection = [[AIIImageCollection alloc] init];
-    [imageCollection addObject:image];
-    [imageCollection addObject:image2];
-    
-    task.imageCollection = imageCollection;
-    task.deadline = @"2014-09-20 12:59:59";
-    task.labelId = 3;
-    task.desc = @"发布任务的描述IOS";
-    task.latitude = 23.132921;
-    task.longitude = 113.252281;
-    task.regionId = 440430;
-    task.street = @"周门北路38号";
-    
-    task.properties = @[@"identifier",@"reward", @"rewardPlus", @"imageCollection", @"deadline", @"labelId", @"desc", @"latitude", @"longitude", @"regionId", @"street"];
-    request.query.entity = task;
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testTaskSubmitRequest
+//{
+//    AIITaskSubmitRequest *request = [[AIITaskSubmitRequest alloc] init];
+//    
+//    AIITask *task = [[AIITask alloc] init];
+//    //    task.identifier = 1351013;
+//    task.reward = 1.25;
+//    task.rewardPlus = 0.0;
+//    
+//    AIIImage *image = [[AIIImage alloc] init];
+//    image.identifier = 1;
+//    image.properties = @[@"identifier"];//!<
+//    AIIImage *image2 = [[AIIImage alloc] init];
+//    image2.identifier = 2;
+//    image2.properties = @[@"identifier"];//!<
+//    AIIImageCollection *imageCollection = [[AIIImageCollection alloc] init];
+//    [imageCollection addObject:image];
+//    [imageCollection addObject:image2];
+//    
+//    task.imageCollection = imageCollection;
+//    task.deadline = @"2014-09-20 12:59:59";
+//    task.labelId = 3;
+//    task.desc = @"发布任务的描述IOS";
+//    task.latitude = 23.132921;
+//    task.longitude = 113.252281;
+//    task.regionId = 440430;
+//    task.street = @"周门北路38号";
+//    
+//    task.properties = @[@"identifier",@"reward", @"rewardPlus", @"imageCollection", @"deadline", @"labelId", @"desc", @"latitude", @"longitude", @"regionId", @"street"];
+//    request.query.entity = task;
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
-- (void)testTaskStatusUpdateRequest
-{
-    AIITaskStatusUpdateRequest *request = [[AIITaskStatusUpdateRequest alloc] init];
-    request.query.action = AIIQueryActionSecond;
-    request.query.identifier = 1351013;
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testTaskStatusUpdateRequest
+//{
+//    AIITaskStatusUpdateRequest *request = [[AIITaskStatusUpdateRequest alloc] init];
+//    request.query.action = AIIQueryActionSecond;
+//    request.query.identifier = 1351013;
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
-- (void)testTaskReportSubmitRequest
-{
-    AIITaskReportSubmitRequest *request = [[AIITaskReportSubmitRequest alloc] init];
-    request.query.type = AIITaskReportTypeFirst;
-    request.query.identifier = 1351012;
-    request.query.desc = @"联系电话虚假!.!.";
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testTaskReportSubmitRequest
+//{
+//    AIITaskReportSubmitRequest *request = [[AIITaskReportSubmitRequest alloc] init];
+//    request.query.type = AIITaskReportTypeFirst;
+//    request.query.identifier = 1351012;
+//    request.query.desc = @"联系电话虚假!.!.";
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
-- (void)testFetchRankRequest
-{
-    AIIFetchRankRequest *request = [[AIIFetchRankRequest alloc] init];
-    request.query.reward = 0.99;
-    request.query.labelId = 3;
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testFetchRankRequest
+//{
+//    AIIFetchRankRequest *request = [[AIIFetchRankRequest alloc] init];
+//    request.query.reward = 0.99;
+//    request.query.labelId = 3;
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
 #pragma mark - 订单
 
@@ -476,9 +505,9 @@
     AIIOrderStatusUpdateRequest *request = [[AIIOrderStatusUpdateRequest alloc] init];
     request.query.action = AIIQueryActionThird;
     request.query.identifier = 1;
-    request.query.code = @"1234";
-    request.query.cancelType = AIIOrderCancelTypeFirst;
-    request.query.reason = @"1已友善协商，不需要服务了;";
+//    request.query.code = @"1234";
+//    request.query.cancelType = AIIOrderCancelTypeFirst;
+//    request.query.reason = @"1已友善协商，不需要服务了;";
     
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
@@ -487,86 +516,86 @@
 {
     AIIOrderCommentSubmitRequest *request = [[AIIOrderCommentSubmitRequest alloc] init];
     request.query.identifier = 1;
-    request.query.content = @"订单1的评价。";
+//    request.query.content = @"订单1的评价。";
     
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
-- (void)testOrderComplaintSubmitRequest
-{
-    AIIOrderComplaintSubmitRequest *request = [[AIIOrderComplaintSubmitRequest alloc] init];
-    request.query.type = AIIOrderComplaintSubmitTypeFirst;
-    request.query.identifier = 1;
-    request.query.desc = @"订单1的投诉。";
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testOrderComplaintSubmitRequest
+//{
+//    AIIOrderComplaintSubmitRequest *request = [[AIIOrderComplaintSubmitRequest alloc] init];
+//    request.query.type = AIIOrderComplaintSubmitTypeFirst;
+//    request.query.identifier = 1;
+//    request.query.desc = @"订单1的投诉。";
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
 #pragma mark - 积分
 
-- (void)testPointSubmitRequest
-{
-    AIIPointSubmitRequest *request = [[AIIPointSubmitRequest alloc] init];
-    request.query.action = AIIQueryActionFourth;
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testPointSubmitRequest
+//{
+//    AIIPointSubmitRequest *request = [[AIIPointSubmitRequest alloc] init];
+//    request.query.action = AIIQueryActionFourth;
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
-- (void)testPointDetailsRequest
-{
-    AIIPointDetailsRequest *request = [[AIIPointDetailsRequest alloc] init];
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//- (void)testPointDetailsRequest
+//{
+//    AIIPointDetailsRequest *request = [[AIIPointDetailsRequest alloc] init];
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
 #pragma mark - 其它
 
-- (void)testWishSubmitRequest
-{
-    AIIWishSubmitRequest *request = [[AIIWishSubmitRequest alloc] init];
-    request.query.content = @"我种下的第一棵小苹果树";
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
-
-- (void)testPositionUpdateRequest
-{
-    AIIPositionUpdateRequest *request = [[AIIPositionUpdateRequest alloc] init];
-    request.query.latitude = 23.132922;
-    request.query.longitude = 113.252282;
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
-
-- (void)testFetchPositionRequest
-{
-    AIIFetchPositionRequest *request = [[AIIFetchPositionRequest alloc] init];
-    request.query.identifier = 100020;
-    
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
-
-- (void)testCoordinateCollectionSubmitRequest
-{
-    AIICoordinateCollectionSubmitRequest *request = [[AIICoordinateCollectionSubmitRequest alloc] init];
-   
-    AIIAddressCollection *addressCollection = [[AIIAddressCollection alloc] init];
-    AIIAddress *address = [[AIIAddress alloc] init];
-    address.latitude = 23.132911;
-    address.longitude = 113.252211;
-    AIIAddress *address1 = [[AIIAddress alloc] init];
-    address1.latitude = 23.132922;
-    address1.longitude = 113.252222;
-    [addressCollection addObject:address];
-    [addressCollection addObject:address1];
-    addressCollection.entityProperties = @[@"latitude", @"longitude"];
-    
-    request.query.modelCollection = addressCollection;
-    
-    NSLog(@"%@", [addressCollection arrayWithObject]);
-    NSLog(@"%@", [request jsonStringWithObject]);
-    
+//- (void)testWishSubmitRequest
+//{
+//    AIIWishSubmitRequest *request = [[AIIWishSubmitRequest alloc] init];
+//    request.query.content = @"我种下的第一棵小苹果树";
+//    
 //    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-}
+//}
+//
+//- (void)testPositionUpdateRequest
+//{
+//    AIIPositionUpdateRequest *request = [[AIIPositionUpdateRequest alloc] init];
+//    request.query.latitude = 23.132922;
+//    request.query.longitude = 113.252282;
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
+//
+//- (void)testFetchPositionRequest
+//{
+//    AIIFetchPositionRequest *request = [[AIIFetchPositionRequest alloc] init];
+//    request.query.identifier = 100020;
+//    
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
+//
+//- (void)testCoordinateCollectionSubmitRequest
+//{
+//    AIICoordinateCollectionSubmitRequest *request = [[AIICoordinateCollectionSubmitRequest alloc] init];
+//   
+//    AIIAddressCollection *addressCollection = [[AIIAddressCollection alloc] init];
+//    AIIAddress *address = [[AIIAddress alloc] init];
+//    address.latitude = 23.132911;
+//    address.longitude = 113.252211;
+//    AIIAddress *address1 = [[AIIAddress alloc] init];
+//    address1.latitude = 23.132922;
+//    address1.longitude = 113.252222;
+//    [addressCollection addObject:address];
+//    [addressCollection addObject:address1];
+//    addressCollection.entityProperties = @[@"latitude", @"longitude"];
+//    
+//    request.query.modelCollection = addressCollection;
+//    
+//    NSLog(@"%@", [addressCollection arrayWithObject]);
+//    NSLog(@"%@", [request jsonStringWithObject]);
+//    
+////    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//}
 
 #pragma mark - PacketHttpConnectionDelegate
 
@@ -582,12 +611,55 @@
             ;
         }
     }
+    else if ([connection.response isKindOfClass:[AIIUserDetailsResponse class]]) {
+        if (!connection.response.query.status) {
+            // 成功
+            AIIUserDetailsResponseQuery *responseQuery = (AIIUserDetailsResponseQuery *)connection.response.query;
+            AIIUser *user = (AIIUser *)responseQuery.entity;
+            NSLog(@"user:%@", user);
+        }
+        else {
+            // 失败
+            ;
+        }
+    }
+
     else if ([connection.response isKindOfClass:[AIIMessageListResponse class]]) {
         if (!connection.response.query.status) {
             // 成功
             AIIListResponseQuery *responseQuery = (AIIListResponseQuery *)connection.response.query;
             AIIMessageCollection *messageCollection = (AIIMessageCollection *)responseQuery.modelCollection;
             NSLog(@"messageCollection:%@", messageCollection);
+        }
+        else {
+            // 失败
+            ;
+        }
+    }
+    else if ([connection.response isKindOfClass:[AIIRegionListResponse class]]) {
+        if (!connection.response.query.status) {
+            // 成功
+            AIIRegionListResponseQuery *responseQuery = (AIIRegionListResponseQuery *)connection.response.query;
+            AIIRegionCollection *regionCollection = (AIIRegionCollection *)responseQuery.modelCollection;
+            NSLog(@"regionCollection:%lu", regionCollection.count);
+            AIIRegionCollection *regionCollection2 = [regionCollection recursive];
+            NSLog(@"regionCollection2:%lu", regionCollection2.count);
+            
+//            AIIRegion *region = (AIIRegion *)[regionCollection2 objectAtIndex:10];
+//            AIIRegionCollection *childrenCollection = region.children;
+//            
+//            for (AIIRegion *item in childrenCollection) {
+//                NSLog(@"-%lu,%@,%@", item.identifier, item.name, item.pinyin);
+//            }
+//            
+//            AIIRegionCollection *sortedRegionCollection = [childrenCollection sortedCollectionUsingPinyin];
+//            for (AIIRegion *item in sortedRegionCollection) {
+//                NSLog(@"+%lu,%@,%@", item.identifier, item.name, item.pinyin);
+//            }
+            
+            AIIRegionCollection *regionCollection3 = [regionCollection sortedCollectionUsingPinyin];
+            NSLog(@"regionCollection3:%lu", regionCollection3.count);
+            
         }
         else {
             // 失败
@@ -607,14 +679,14 @@
      */
     
     // 1.
-    NSString *jsonString = @"{\"n\":\"TaskList\",\"s\":\"5s2tgc8o0wyel5ppf4ny7c5c1gg8dq4x\",\"q\":{\"s\":\"0\",\"d\":\"\u64cd\u4f5c\u6210\u529f\",\"total\":\"16\",\"tasks\":[],\"t\":\"2014-10-02 00:28:07\"}}";
+//    NSString *jsonString = @"{\"n\":\"TaskList\",\"s\":\"5s2tgc8o0wyel5ppf4ny7c5c1gg8dq4x\",\"q\":{\"s\":\"0\",\"d\":\"\u64cd\u4f5c\u6210\u529f\",\"total\":\"16\",\"tasks\":[],\"t\":\"2014-10-02 00:28:07\"}}";
 
     // 2.
 //    NSString *jsonString = @"{\"n\":\"TaskList\",\"s\":\"5s2tgc8o0wyel5ppf4ny7c5c1gg8dq4x\",\"q\":{\"s\":\"0\",\"d\":\"\u64cd\u4f5c\u6210\u529f\",\"total\":16,\"tasks\":[],\"t\":\"2014-10-02 00:28:07\"}}";
     
-    AIITaskListResponse *response = [[AIITaskListResponse alloc] initWithJSONString:jsonString];
-    AIITaskListResponseQuery *query = (AIITaskListResponseQuery *)response.query;
-    NSLog(@"%d", query.total);
+//    AIITaskListResponse *response = [[AIITaskListResponse alloc] initWithJSONString:jsonString];
+//    AIITaskListResponseQuery *query = (AIITaskListResponseQuery *)response.query;
+//    NSLog(@"%d", query.total);
 }
 
 

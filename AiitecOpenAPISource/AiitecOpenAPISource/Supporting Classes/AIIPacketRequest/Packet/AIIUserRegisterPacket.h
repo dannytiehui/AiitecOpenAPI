@@ -7,6 +7,7 @@
 //
 
 #import "AIIEntityPacket.h"
+#import "AIIUser.h"
 
 @interface AIIUserRegisterRequestQuery : AIIEntityQuery
 

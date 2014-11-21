@@ -9,10 +9,6 @@
 #import "AIIListPacket.h"
 #import "AIIMessageCollection.h"
 
-//@interface AIIMessageListRequestQuery : AIIListRequestQuery
-//@end
-
-
 @interface AIIMessageListResponseQuery : AIIListResponseQuery
 @end
 

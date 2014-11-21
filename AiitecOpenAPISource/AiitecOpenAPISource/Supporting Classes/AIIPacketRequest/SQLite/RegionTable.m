@@ -79,7 +79,7 @@
 
 - (AIIRegionCollection *)queryWithParentId:(NSUInteger)parentId
 {
-    NSString *WHEREString = [NSString stringWithFormat:@"WHERE parent_id = %d", parentId];
+    NSString *WHEREString = [NSString stringWithFormat:@"WHERE parent_id = %lu", parentId];
     AIIRegionCollection *collection = [[AIIRegionCollection alloc] init];
     FMResultSet *rs = [self queryResultSetWithWhere:WHEREString];
     while ([rs next]) {
@@ -128,7 +128,7 @@
     if (item) {
         [regionCollection addObject:item];
         
-        WHEREString = [NSString stringWithFormat:@"WHERE id = %d", item.parentId];
+        WHEREString = [NSString stringWithFormat:@"WHERE id = %lu", item.parentId];
         FMResultSet *rs = [self queryResultSetWithWhere:WHEREString];
         while ([rs next]) {
             item2 = [self FMResultSetToObject:rs];
@@ -138,7 +138,7 @@
     if (item2) {
         [regionCollection addObject:item2];
         
-        WHEREString = [NSString stringWithFormat:@"WHERE id = %d", item2.parentId];
+        WHEREString = [NSString stringWithFormat:@"WHERE id = %lu", item2.parentId];
         FMResultSet *rs = [self queryResultSetWithWhere:WHEREString];
         while ([rs next]) {
             item3 = [self FMResultSetToObject:rs];
@@ -154,19 +154,19 @@
 
 - (int)replaceIntoItem:(AIIRegion *)item
 {
-    NSString *sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, parent_id, name, pinyin) VALUES (%d, %d, '%@', '%@')", [self tableName], item.identifier, item.parentId, item.name, item.pinyin];
+    NSString *sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, parent_id, name, pinyin) VALUES (%lu, %lu, '%@', '%@')", [self tableName], item.identifier, item.parentId, item.name, item.pinyin];
     return [SQLiteConnection update:sql];
 }
 
 - (int)replaceIntoCollection:(AIIRegionCollection *)collection
 {
     int numberOfChanges = 0;
-    int count = [collection count];
+    NSUInteger count = [collection count];
     NSString *sql;
     AIIRegion *item;
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
-        sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, parent_id, name, pinyin) VALUES (%d, %d, '%@', '%@')", [self tableName], item.identifier, item.parentId, item.name, item.pinyin];
+        sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, parent_id, name, pinyin) VALUES (%lu, %lu, '%@', '%@')", [self tableName], item.identifier, item.parentId, item.name, item.pinyin];
         numberOfChanges += [SQLiteConnection update:sql];
     }
     return numberOfChanges;

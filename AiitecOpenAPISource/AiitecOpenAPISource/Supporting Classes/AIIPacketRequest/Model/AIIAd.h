@@ -11,15 +11,18 @@
 
 @interface AIIAd : AIIEntity
 
-/** 广告链接 */
+/** 广告链接. */
 @property (nonatomic, copy) NSString *link;
-/** 开始时间 "0000-00-00 00:00:00"表示立即生效 */
+/** 开始时间 "0000-00-00 00:00:00"表示立即生效. */
 @property (nonatomic, copy) NSString *startTime;
-/** 结束时间 "0000-00-00 00:00:00"表示长期有效*/
+/** 结束时间 "0000-00-00 00:00:00"表示长期有效. */
 @property (nonatomic, copy) NSString *endTime;
-/** 广告位id */
+/** 广告位id. */
 @property (nonatomic, assign) NSUInteger positionId;
-/** 广告图片 */
+/** 广告图片路径. */
+@property (nonatomic, copy) NSString *imagePath;
+
+#pragma mark - Option
 @property (nonatomic, strong) AIIImage *image;
 
 @end

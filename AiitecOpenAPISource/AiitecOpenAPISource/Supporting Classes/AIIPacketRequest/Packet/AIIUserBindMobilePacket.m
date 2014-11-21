@@ -12,7 +12,6 @@
 @end
 
 
-
 @implementation AIIUserBindMobileRequest
 
 //- (NSString *)packetNickname
@@ -21,7 +20,6 @@
 //}
 
 @end
-
 
 
 @implementation AIIUserBindMobileResponse

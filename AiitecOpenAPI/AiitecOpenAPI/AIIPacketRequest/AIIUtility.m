@@ -27,7 +27,7 @@ NSString *const DeviceTokenKey = @"deviceId";
     static NSString *path = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        path = [[AIIUtility cachesPath] stringByAppendingPathComponent:@"com.aiitec.AIIPacketRequest"];
+        path = [[AIIUtility cachesPath] stringByAppendingPathComponent:@"com.aiitec.AiitecOpenAPI"];
     });
     return path;
 }

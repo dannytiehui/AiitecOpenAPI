@@ -21,11 +21,18 @@
 @interface AIIModelCollection : AIIJSONCollection <ValueToArray, ValueFromArray>
 
 /**
- *  @brief  获取对象的key键值.
+ *  @brief  获取当前AIIModelCollection对象的key键值.
  *
  *  @return 对象的key键值.
  */
 @property (nonatomic, copy) NSString *key;
+
+/**
+ *  @brief  获取AIIEntity对象的key键值.
+ *
+ *  @return 对象的key键值.
+ */
+@property (nonatomic, copy) NSString *entityKey;
 
 /**
  *  @brief  组包时,设置／获取集合中每一个实例类的必须属性.默认不包含properties本身、key, 若不设置则默认用entityClass的properties.

@@ -38,7 +38,7 @@
 
 //- (NSString *)packetNickname
 //{
-//    return @"登陆";
+//    return @"登录";
 //}
 
 @end

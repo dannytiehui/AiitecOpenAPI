@@ -71,11 +71,11 @@
         WHEREString = [WHEREString stringByAppendingString:where];
     }
     if (groupId != 0 && WHEREString.length) {
-        NSString *where = [NSString stringWithFormat:@" AND addressbook_group_id = %d ", groupId];
+        NSString *where = [NSString stringWithFormat:@" AND addressbook_group_id = %lu ", groupId];
         WHEREString = [WHEREString stringByAppendingString:where];
     }
     else if (groupId != 0) {
-        NSString *where = [NSString stringWithFormat:@" WHERE addressbook_group_id = %d ", groupId];
+        NSString *where = [NSString stringWithFormat:@" WHERE addressbook_group_id = %lu ", groupId];
         WHEREString = [WHEREString stringByAppendingString:where];
     }
     NSString *sql = [self querySQLString:page limit:numberOfPage orderBy:orderBy type:type where:WHEREString];
@@ -123,20 +123,20 @@
 
 - (int)replaceIntoItem:(AIIAddressbook *)item
 {
-    NSString *sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, addressbook_group_id, name, sex, birthday, image, company, department, position, telephone, mobile, fax, email, qq, weibo, region_id, region_info, description, is_delete, timestamp_update, timestamp) VALUES (%d, %d, '%@', %d, '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', %d, '%@', '%@', %d, '%@', '%@')", [self tableName], item.identifier, item.addressbookGroupId, item.name, item.sex, item.birthday, item.imagePath, item.company, item.department, item.position, item.telephone, item.mobile, item.fax, item.email, item.qq, item.weibo, item.address.regionId, item.address.regionInfo, item.desc, 0, item.timestampUpdate, item.timestamp];
+    NSString *sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, addressbook_group_id, name, sex, birthday, image, company, department, position, telephone, mobile, fax, email, qq, weibo, region_id, region_info, description, is_delete, timestamp_update, timestamp) VALUES (%lu, %lu, '%@', %lu, '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', %lu, '%@', '%@', %d, '%@', '%@')", [self tableName], item.identifier, item.addressbookGroupId, item.name, item.sex, item.birthday, item.imagePath, item.company, item.department, item.position, item.telephone, item.mobile, item.fax, item.email, item.qq, item.weibo, item.address.regionId, item.address.regionInfo, item.desc, 0, item.timestampUpdate, item.timestamp];
     return [SQLiteConnection update:sql];
 }
 
 - (int)replaceIntoCollection:(AIIAddressbookCollection *)collection
 {
     int numberOfChanges = 0;
-    int count = [collection count];
+    NSUInteger count = [collection count];
     NSString *sql;
     AIIAddressbook *item;
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
 
-        sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, addressbook_group_id, name, sex, birthday, image, company, department, position, telephone, mobile, fax, email, qq, weibo, region_id, region_info, description, is_delete, timestamp_update, timestamp) VALUES (%d, %d, '%@', %d, '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', %d, '%@', '%@', %d, '%@', '%@')", [self tableName], item.identifier, item.addressbookGroupId, item.name, item.sex, item.birthday, item.imagePath, item.company, item.department, item.position, item.telephone, item.mobile, item.fax, item.email, item.qq, item.weibo, item.address.regionId, item.address.regionInfo, item.desc, 0, item.timestampUpdate, item.timestamp];
+        sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, addressbook_group_id, name, sex, birthday, image, company, department, position, telephone, mobile, fax, email, qq, weibo, region_id, region_info, description, is_delete, timestamp_update, timestamp) VALUES (%lu, %lu, '%@', %lu, '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', %lu, '%@', '%@', %d, '%@', '%@')", [self tableName], item.identifier, item.addressbookGroupId, item.name, item.sex, item.birthday, item.imagePath, item.company, item.department, item.position, item.telephone, item.mobile, item.fax, item.email, item.qq, item.weibo, item.address.regionId, item.address.regionInfo, item.desc, 0, item.timestampUpdate, item.timestamp];
         numberOfChanges += [SQLiteConnection update:sql];
     }
     return numberOfChanges;

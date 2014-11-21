@@ -8,48 +8,6 @@
 
 #import "AIIMessageSubmitPacket.h"
 
-//@implementation AIIMessageSubmitRequestQuery
-
-//- (id)init
-//{
-//    if (self = [super init]) {
-//        self.entity = [[AIIMessage alloc] init];
-//    }
-//    return self;
-//}
-
-//#pragma mark - NSObject(NSKeyValueCoding)
-//
-////- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys
-////{
-////    NSDictionary *dict = [super dictionaryWithValuesForKeys:keys];
-////    
-////    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithDictionary:dict];
-////    NSString *k = @"entity";
-////    [mutableDictionary setObject:[self.entity dictionaryWithValuesForKeys:self.entity.properties] forKey:self.entity.key];
-////    [mutableDictionary removeObjectForKey:k];
-////    
-////    dict = mutableDictionary;
-////    
-////    return dict;
-////}
-//
-//@end
-//
-//
-//@implementation AIIMessageSubmitResponseQuery
-//@end
-//
-//
-//@implementation AIIMessageSubmitRequest
-//
-//- (NSString *)packetNickname
-//{
-//    return @"留言";
-//}
-//
-//@end
-
 @implementation AIIMessageSubmitRequest
 @end
 

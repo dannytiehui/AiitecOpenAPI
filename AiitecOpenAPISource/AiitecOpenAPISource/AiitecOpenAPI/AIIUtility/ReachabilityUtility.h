@@ -14,7 +14,7 @@
 
 @interface ReachabilityUtility : NSObject
 
-//@property (nonatomic, strong) Reachability *reachiability;
+@property (nonatomic, strong) Reachability *reachiability;
 @property (nonatomic, assign) BOOL isReachable;
 
 + (ReachabilityUtility *)defaultManager;

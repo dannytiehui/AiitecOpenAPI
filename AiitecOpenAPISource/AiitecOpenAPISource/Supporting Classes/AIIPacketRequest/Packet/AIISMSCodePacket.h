@@ -16,11 +16,13 @@
 @end
 
 
-
 typedef NS_ENUM(NSUInteger, AIISMSCodeType) {
     AIISMSCodeTypeRegister = 1,        //!< 1注册
-    AIISMSCodeTypeBindMobile,          //!< 2绑定手机
-    AIISMSCodeTypeFindPassword         //!< 3找回密码／重置密码（用户）
+    AIISMSCodeTypeBindMobile,          //!< 2绑定手机,第二步
+    AIISMSCodeTypeBindResetPassword,   //!< 3重置密码(用户)
+    AIISMSCodeTypeBindResetPassword2,  //!< 4重置密码（商家）
+    AIISMSCodeTypeBindMobileFifth,     //!< 5绑定手机（用户）,第一步
+//    AIISMSCodeTypeFindPassword         //!< 3找回密码／重置密码（用户）
 };
 
 @interface AIISMSCodeRequestQuery : AIIQuery
@@ -32,19 +34,11 @@ typedef NS_ENUM(NSUInteger, AIISMSCodeType) {
 @end
 
 
-
-//@interface AIISMSCodeResponseQuery : AIIQuery
-//
-//@end
-
-
-
 @interface AIISMSCodeRequest : AIIRequest
 
 @property (nonatomic, strong) AIISMSCodeRequestQuery *query;
 
 @end
-
 
 
 @interface AIISMSCodeResponse : AIIEntityResponse

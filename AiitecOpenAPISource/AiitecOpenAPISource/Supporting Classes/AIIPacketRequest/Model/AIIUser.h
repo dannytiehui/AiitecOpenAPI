@@ -79,6 +79,8 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, copy) NSString *cardNumber;
 /** 用户级别。如普通会员. */
 @property (nonatomic, copy) NSString *grade;
+/** 推荐人ID. */
+@property (nonatomic, assign) NSUInteger referrerId;
 /** 推荐人. */
 @property (nonatomic, copy) NSString *referrer;
 /** 上一次登录时间. */
@@ -127,7 +129,7 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, assign) NSUInteger statTask;
 /** 总接订单数. */
 @property (nonatomic, assign) NSUInteger statOrder;
-/** 累计推荐. */
+/** 累计推荐人数. */
 @property (nonatomic, assign) NSUInteger statReferrer;
 /** 用户等级. */
 @property (nonatomic, copy) NSString *level;
@@ -149,5 +151,18 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, assign) NSUInteger schoolId;
 /** 区域id. */
 @property (nonatomic, assign) NSUInteger regionId;
+
+#pragma mark - 猫王联盟
+
+/** 金猫余额. */
+@property (nonatomic, assign) float goldenCat;
+/** 银猫余额. */
+@property (nonatomic, assign) float silverCat;
+/** 摇钱树使用次数. */
+@property (nonatomic, assign) NSUInteger moneymakerNumber;
+/** 累计消费金猫. */
+@property (nonatomic, assign) float statisticsConsumer;
+/** 是否已经签到:0未签到;1已签到. */
+@property (nonatomic, assign) BOOL sign;
 
 @end

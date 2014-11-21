@@ -42,6 +42,10 @@
     /// 快速枚举（父类需实现NSFastEnumeration协议）
     for (AIIEntity *entity in self) {
         entity.properties = self.entityProperties;
+        
+        if (self.entityKey) {
+            entity.key = self.entityKey;
+        }
 
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         dict[entity.key] = [entity dictionaryWithValuesForKeys:entity.keys];
@@ -57,6 +61,11 @@
 {
     for (NSDictionary *item in array) {
         AIIEntity *entity = [[self.entityClass alloc] init];
+        
+        if (self.entityKey) {
+            entity.key = self.entityKey;
+        }
+        
         [entity setValuesForKeysWithDictionary:[item objectForKey:entity.key]];
         [self addObject:entity];
     }

@@ -9,11 +9,7 @@
 #import "AIIUploadFilePacket.h"
 
 /** AIIUserUploadImageRequest. */
-@interface AIIUserUploadImageRequest : AIIRequest
-
-///** 图像id. */
-//@property (nonatomic, assign) NSUInteger identifier;
-
+@interface AIIUserUploadImageRequest : AIIUploadFileRequest
 @end
 
 

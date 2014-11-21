@@ -18,6 +18,9 @@
         self.cityRegion = [[AIIRegion alloc] init];
         self.areaRegion = [[AIIRegion alloc] init];
         
+        _regionCollection = [[AIIRegionCollection alloc] init];
+        _regionCollection.key = @"regionInfo";
+
         self.properties = @[@"identifier", @"name", @"regionId", @"latitude", @"longitude", @"selected", @"street", @"desc", @"postcode", @"contacts", @"mobile"];
     }
     return self;
@@ -30,12 +33,13 @@
     if([key isEqualToString:@"selected"]) {
         self.selected = [value isEqualToString:@"1"] ? true : false;
     }
-    else if([key isEqualToString:@"regionInfo"]) {
+//    else if([key isEqualToString:@"regionInfo"]) {
+    else if([key isEqualToString:self.regionCollection.key]) {
         self.regionInfo = value;
         
         if ([(NSArray *)self.regionInfo count]) {
-            self.regionCollection = [[AIIRegionCollection alloc] init];
-            [self.regionCollection setValuesForKeysWithDictionary:value];
+//            self.regionCollection = [[AIIRegionCollection alloc] init];
+            [self.regionCollection setObjectWithArray:value];
             
             NSUInteger provinceRegionParentId = 1;///> 1为省份的父id
             for (AIIRegion *entity in self.regionCollection) {

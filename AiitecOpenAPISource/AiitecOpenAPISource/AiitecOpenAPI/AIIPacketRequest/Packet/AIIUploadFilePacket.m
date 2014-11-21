@@ -40,10 +40,8 @@
 @end
 
 
-
 @implementation AIIUploadFileResponseQuery
 @end
-
 
 
 @implementation AIIUploadFileRequest
@@ -57,7 +55,6 @@
 }
 
 @end
-
 
 
 @implementation AIIUploadFileResponse

@@ -8,10 +8,6 @@
 
 #import "AIIMessageListPacket.h"
 
-//@implementation AIIMessageListRequestQuery
-//@end
-
-
 @implementation AIIMessageListResponseQuery
 
 - (id)init
@@ -21,19 +17,6 @@
     }
     return self;
 }
-
-//#pragma mark - NSObject(NSKeyValueCoding)
-//
-//- (void)setValue:(id)value forKey:(NSString *)key
-//{
-//    NSLog(@"AIIMessageListResponseQuery.setValue:%@ forKey:%@", value, key);
-//    if ([key isEqualToString:self.modelCollection.key]) {
-//        [self.modelCollection setObjectWithArray:value];
-//    }
-//    else {
-//        [super setValue:value forKey:key];
-//    }
-//}
 
 @end
 

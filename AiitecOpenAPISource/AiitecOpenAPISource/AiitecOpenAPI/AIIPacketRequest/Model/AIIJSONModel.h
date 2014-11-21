@@ -43,4 +43,18 @@
  */
 - (NSArray *)keys;
 
+/**
+ *  @brief  反射获取类属性的类型字典.
+ *
+ *  @return 属性的类型字典.
+ */
+- (NSDictionary *)propertysAttributes;
+
+/**
+ *  @brief  JSON中键（key）对象的缩写集合.
+ *
+ *  @return JSON中键（key）对象的缩写集合.
+ */
+@property (nonatomic, readonly) NSDictionary *abbreviationKeys;
+
 @end

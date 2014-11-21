@@ -8,24 +8,18 @@
 
 #import "AIIEntityPacket.h"
 
-//typedef NS_ENUM(NSUInteger, AIIUserLoginAction) {
-//    AIIUserLoginActionDefault = 1,     //!< 1用户登录（默认）
-//};
-
 @interface AIIUserLoginRequestQuery : AIIQuery
 
-//@property (nonatomic, assign) AIIUserLoginAction action;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *password;
-//@property (nonatomic, assign) BOOL admin;
 //@property (nonatomic, copy) NSString *verificationCode;
 
 @end
 
-//@interface AIIUserLoginResponseQuery : AIIEntityResponseQuery
+
 @interface AIIUserLoginResponseQuery : AIIEntityQuery
 
-/// Option
+#pragma mark - Option
 /** 是否开启验证码. */
 @property (nonatomic, assign) BOOL verity; //!< 是否开启验证码
 

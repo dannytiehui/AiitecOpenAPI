@@ -117,7 +117,7 @@
 - (int)replaceIntoCollection:(AIIArticleCollection *)collection
 {
     int numberOfChanges = 0;
-    int count = [collection count];
+    NSUInteger count = [collection count];
     NSString *sql;
     AIIArticle *item;
     NSMutableDictionary *properties;

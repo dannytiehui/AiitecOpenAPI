@@ -12,7 +12,6 @@
 @end
 
 
-
 @implementation AIISMSCodeRequestQuery
 
 - (id)init
@@ -27,8 +26,6 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    NSLog(@"AIISMSCodeRequestQuery.setValue:%@ forKey:%@", value, key);
-    
     if ([key isEqualToString:self.where.key]) {
         [self.where setValuesForKeysWithDictionary:value];
     }
@@ -43,7 +40,7 @@
     
     NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithDictionary:dict];
     NSString *k = @"where";
-    if ([dict objectForKey:k]) {
+    if ([self.keys containsObject:k] && [dict objectForKey:k]) {
         [mutableDictionary setObject:[self.where dictionaryWithValuesForKeys:self.where.keys] forKey:@"w"];
     }
     [mutableDictionary removeObjectForKey:k];

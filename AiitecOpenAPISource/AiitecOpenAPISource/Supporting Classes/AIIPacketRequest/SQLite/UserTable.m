@@ -103,13 +103,13 @@
 
 - (int)update:(AIIUser *)user
 {
-    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET 'name' = '%@', 'password' = '%@', 'auto_login' = '%@', 'timestamp_update' = '%@', 'timestamp' = '%@' WHERE  'id' = %d", [self tableName], user.name, user.password, @"NO", user.timestampUpdate, user.timestamp, user.identifier];
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET 'name' = '%@', 'password' = '%@', 'auto_login' = '%@', 'timestamp_update' = '%@', 'timestamp' = '%@' WHERE  'id' = %lu", [self tableName], user.name, user.password, @"NO", user.timestampUpdate, user.timestamp, user.identifier];
     return [SQLiteConnection update:sql];
 }
 
 - (int)replaceInto:(AIIUser *)user
 {
-    NSString *sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, name, password, auto_login, timestamp_update, timestamp) VALUES (%d, %@, %@, %@, %@, %@)", [self tableName], user.identifier, user.name, user.password, @"NO", user.timestampUpdate, user.timestamp];
+    NSString *sql = [NSString stringWithFormat:@"REPLACE INTO %@ (id, name, password, auto_login, timestamp_update, timestamp) VALUES (%lu, %@, %@, %@, %@, %@)", [self tableName], user.identifier, user.name, user.password, @"NO", user.timestampUpdate, user.timestamp];
     return [SQLiteConnection update:sql];
 }
 

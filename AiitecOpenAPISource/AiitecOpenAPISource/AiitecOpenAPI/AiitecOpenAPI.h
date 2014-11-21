@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "AIIPacketRequest.h"
 
+/*
+ 保留关键字
+ 1.sessionId,用于[[NSUserDefaults standardUserDefaults] setObject:value forKey:@"sessionId"];
+ 
+ */
+
 @interface AiitecOpenAPI : NSObject
 
 @end

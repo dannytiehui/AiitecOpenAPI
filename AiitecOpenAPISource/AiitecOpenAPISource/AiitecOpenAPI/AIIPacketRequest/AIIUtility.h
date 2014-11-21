@@ -115,6 +115,21 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
  */
 + (NSArray *)classPropertys:(Class)aClass;
 
+/**
+ *  @brief  反射获取类属性的类型字典.
+ *
+ *  @param  aClass Class对象的实例.
+ *  @return 属性的类型字典.
+ */
++ (NSDictionary *)classPropertysAttributes:(Class)aClass;
+
+
 #warning dictionaryWithJSONString, stringWithDictionary 是否可以考虑用对应的类别呢？
+
+#pragma mark - File
+
++ (BOOL)removeItemAtPath:(NSString *)path;
++ (unsigned long long)fileSizeAtPath:(NSString*)path;
++ (unsigned long long)folderSizeAtPath:(NSString*)path;
 
 @end

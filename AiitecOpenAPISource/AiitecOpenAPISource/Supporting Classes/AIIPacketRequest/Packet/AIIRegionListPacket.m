@@ -8,6 +8,23 @@
 
 #import "AIIRegionListPacket.h"
 
+@implementation AIIRegionListRequestQuery
+@end
+
+
+@implementation AIIRegionListResponseQuery
+
+- (id)init
+{
+    if (self = [super init]) {
+        self.modelCollection = [[AIIRegionCollection alloc] init];
+    }
+    return self;
+}
+
+@end
+
+
 @implementation AIIRegionListRequest
 
 - (NSString *)packetNickname
@@ -21,7 +38,6 @@
 }
 
 @end
-
 
 
 @implementation AIIRegionListResponse

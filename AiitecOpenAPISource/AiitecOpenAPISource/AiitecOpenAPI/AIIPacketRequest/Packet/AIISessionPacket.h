@@ -17,21 +17,29 @@ typedef NS_ENUM(NSUInteger, AIILANG){
 
 typedef NS_ENUM(NSUInteger, AIIDeviceType){
     AIIDeviceTypeUnknown       = 0,
-    AIIDeviceTypeIos           = 1 << 0,
+    AIIDeviceTypeIOS           = 1 << 0,
     AIIDeviceTypeAndroid       = 1 << 1,
     AIIDeviceTypeWindowsPhone  = 1 << 2
 };
 
 @interface AIISessionRequestQuery : AIIQuery
 
-@property (nonatomic, copy) NSString *version;          //!< 协议版本
-@property (nonatomic, assign) AIILANG lang;             //!< 语言
-@property (nonatomic, copy) NSString *model;            //!< 手机型号:如iphone4,ipad2,android.
-@property (nonatomic, copy) NSString *resolution;       //!< 手机屏幕分辨率:640*1136
-@property (nonatomic, copy) NSString *screenSize;       //!< 屏幕尺寸
-@property (nonatomic, copy) NSString *deviceToken;      //!< 设备号
-@property (nonatomic, assign) AIIDeviceType deviceType; //!< 设备类型
-@property (nonatomic, copy) NSString *info;             //!< 设备信息字符串
+/** 协议版本. */
+@property (nonatomic, copy) NSString *version;
+/** 语言. */
+@property (nonatomic, assign) AIILANG lang;
+/** 手机型号:如iPhone4,iPad2,Android. */
+@property (nonatomic, copy) NSString *model;
+/** 手机屏幕分辨率:320*640,640*1136,750*1334,1242*2208. */
+@property (nonatomic, copy) NSString *resolution;
+/** 屏幕尺寸. */
+@property (nonatomic, copy) NSString *screenSize;
+/** 设备号. */
+@property (nonatomic, copy) NSString *deviceToken;
+/** 设备类型. */
+@property (nonatomic, assign) AIIDeviceType deviceType;
+/** 设备信息字符串. */
+@property (nonatomic, copy) NSString *info;
 
 @end
 
@@ -39,7 +47,7 @@ typedef NS_ENUM(NSUInteger, AIIDeviceType){
 
 @interface AIISessionResponseQuery : AIIQuery
 
-@property (nonatomic, copy) NSDate *expire;
+@property (nonatomic, copy) NSString *expire;
 
 @end
 
