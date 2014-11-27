@@ -338,5 +338,30 @@ NSString *const DeviceTokenKey = @"deviceId";
     return size;
 }
 
++ (NSString *)arc4random:(NSUInteger)length stringType:(AIIStringType)stringType
+{
+    NSString *randomString = [[NSString alloc] init];
+    NSArray *numberArray    = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9"];
+    NSArray *uppercaseArray = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"];
+    NSArray *lowercaseArray = @[@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m",@"n",@"o",@"p",@"q",@"r",@"s",@"t",@"u",@"v",@"w",@"x",@"y",@"z"];
+    NSArray *baseArray = @[numberArray, uppercaseArray, lowercaseArray];
+    
+    NSArray *array = [[NSArray alloc] init];
+    NSUInteger count = baseArray.count;
+    for (NSUInteger i = 0; i < count; i++) {
+        NSUInteger match = stringType >> i;//!< 右移位法
+//        NSLog(@"%lu, %lu, %lu", i, (unsigned long)match, (match & 1));
+        if (match & 1) {
+            array = [array arrayByAddingObjectsFromArray:baseArray[i]];
+        }
+    }
+    
+    int len = (unsigned int)[array count];
+    for (int i = 0; i< length; i ++){
+        int index = arc4random_uniform(len);
+        randomString = [randomString stringByAppendingString:array[index]];
+    }
+    return randomString;
+}
 
 @end

@@ -36,6 +36,10 @@
         self.screenSize = screenSize;
         self.deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceTokenKey];
         self.deviceType = AIIDeviceTypeIOS;
+        if (!self.deviceToken) {
+            self.deviceToken = [AIIUtility arc4random:32 stringType:(AIIStringTypeNumber | AIIStringTypeUppercase | AIIStringTypeLowercase)];
+            self.deviceType = AIIDeviceTypeTemporary;
+        }
     }
     return self;
 }

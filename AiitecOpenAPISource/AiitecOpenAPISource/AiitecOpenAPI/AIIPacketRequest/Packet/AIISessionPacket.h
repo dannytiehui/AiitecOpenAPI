@@ -19,7 +19,10 @@ typedef NS_ENUM(NSUInteger, AIIDeviceType){
     AIIDeviceTypeUnknown       = 0,
     AIIDeviceTypeIOS           = 1 << 0,
     AIIDeviceTypeAndroid       = 1 << 1,
-    AIIDeviceTypeWindowsPhone  = 1 << 2
+    AIIDeviceTypeWindowsPhone  = 1 << 2,
+    AIIDeviceTypeWechat        = 1 << 3,
+    AIIDeviceTypeWap           = 1 << 4,
+    AIIDeviceTypeTemporary     = 1 << 5
 };
 
 @interface AIISessionRequestQuery : AIIQuery

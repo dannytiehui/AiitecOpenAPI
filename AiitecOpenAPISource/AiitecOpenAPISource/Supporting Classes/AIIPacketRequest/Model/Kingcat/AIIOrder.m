@@ -16,6 +16,8 @@
         _goods = [[AIIGoods alloc] init];
         _merchant = [[AIIMerchant alloc] init];
         _winners = [[AIIUserCollection alloc] init];
+        _winners.key = @"winners";
+        _winners.entityKey = @"winner";
     }
     return self;
 }

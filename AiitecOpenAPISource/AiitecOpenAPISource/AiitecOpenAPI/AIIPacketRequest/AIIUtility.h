@@ -22,6 +22,12 @@ typedef NS_ENUM(NSUInteger, AIIOrderType){
     AIIOrderTypeASC
 };
 
+typedef NS_ENUM(NSUInteger, AIIStringType){
+    AIIStringTypeNumber         = 1 << 0,
+    AIIStringTypeUppercase      = 1 << 1,
+    AIIStringTypeLowercase      = 1 << 2,
+};
+
 UIKIT_EXTERN NSString *const DeviceTokenKey;
 
 /// AIIUtility.
@@ -131,5 +137,14 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
 + (BOOL)removeItemAtPath:(NSString *)path;
 + (unsigned long long)fileSizeAtPath:(NSString*)path;
 + (unsigned long long)folderSizeAtPath:(NSString*)path;
+
+/**
+ *  @brief  生成随机数.
+ *
+ *  @param  length 随机数长度.
+ *  @param  stringType 随机数类型.支持:AIIStringTypeNumber, AIIStringTypeUppercase, AIIStringTypeLowercase 或 (AIIStringTypeNumber | AIIStringTypeUppercase | AIIStringTypeLowercase).
+ *  @return 属性的类型字典.
+ */
++ (NSString *)arc4random:(NSUInteger)length stringType:(AIIStringType)stringType;
 
 @end

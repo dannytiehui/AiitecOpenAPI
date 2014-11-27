@@ -22,7 +22,7 @@
 //    [[NSUserDefaults standardUserDefaults] setObject:@"py108ouc7comfaqjfst8w4fd5gze4221" forKey:@"sessionId"];
 //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sessionId"];
     
-    [[NSUserDefaults standardUserDefaults] setObject:@"20141111111111000" forKey:DeviceTokenKey];
+//    [[NSUserDefaults standardUserDefaults] setObject:@"20141111111111000" forKey:DeviceTokenKey];
     
 //    [self testModelCollection];
     
@@ -36,7 +36,7 @@
 //    [self testAdListRequest];
 //    [self testSettingRequest];
 //    [self testReferenceItemListRequest];
-    [self testUploadImageRequest];//!< Collection
+//    [self testUploadImageRequest];//!< Collection
 //    [self testDeleteActionRequest];
 //    [self testCategoryListRequest];
 
@@ -49,7 +49,7 @@
 //    [self testUserResetPasswordRequest];
     
 //    [self testSynchronousUserDetailsRequest];//!< 测试同步请求.
-//    [self testUserDetailsRequest];
+    [self testUserDetailsRequest];
 //    [self testUserUpdateRequest];
 //    [self testRankListRequest];
 //    [self testRecordListRequest];
@@ -83,6 +83,36 @@
     
 //    NSLog(@"cachesPath:%@", [AIIUtility cachesPath]);
     
+//    NSString *randomString = [[NSString alloc] init];
+//    NSArray *baseArray = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z",@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m",@"n",@"o",@"p",@"q",@"r",@"s",@"t",@"u",@"v",@"w",@"x",@"y",@"z"];
+//    int len = (unsigned int)[baseArray count];
+//    NSLog(@"len:%d", len);
+//    int length = 32;
+//    
+//    for (int i = 0; i< length; i ++){
+//        int index = arc4random_uniform(len);
+//        randomString = [randomString stringByAppendingString:baseArray[index]];
+//        NSLog(@"%d, %@, %@", index, baseArray[index], randomString);
+//    }
+//    NSLog(@"%lu, %@", randomString.length, randomString);
+
+    
+    NSString *randomString;
+    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber];
+    NSLog(@"1.%@", randomString);
+    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeUppercase];
+    NSLog(@"2.%@", randomString);
+    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeLowercase];
+    NSLog(@"3.%@", randomString);
+    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber | AIIStringTypeUppercase];
+    NSLog(@"4.%@", randomString);
+    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber | AIIStringTypeLowercase];
+    NSLog(@"5.%@", randomString);
+    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeUppercase | AIIStringTypeLowercase];
+    NSLog(@"6.%@", randomString);
+    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber | AIIStringTypeUppercase | AIIStringTypeLowercase];
+    NSLog(@"7.%@", randomString);
+
 }
 
 - (void)didReceiveMemoryWarning {
