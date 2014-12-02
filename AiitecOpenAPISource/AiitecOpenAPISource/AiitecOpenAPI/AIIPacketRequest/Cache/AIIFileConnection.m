@@ -32,7 +32,7 @@ static NSMutableArray *_fileConnectionArray;
 + (NSData *)sendSynchronousRequest:(NSString *)path
 {
     NSData *data = [AIIFileCache dataWithContentsOfFile:path];
-    if (!data && (BOOL)[AIIPacketRequest packetSetting:AIIPacketSettingViaWWAN]) {
+    if (!data && [[AIIPacketRequest packetSetting:AIIPacketSettingViaWWAN] boolValue]) {
         data = [AIIFileHttpConnection sendSynchronousRequest:path];
         [AIIFileCache createFileAtPath:path contents:data];
     }
@@ -47,7 +47,7 @@ static NSMutableArray *_fileConnectionArray;
     connection.path = path;
 
     NSData *data = [AIIFileCache dataWithContentsOfFile:path];
-    if (data || !((BOOL)[AIIPacketRequest packetSetting:AIIPacketSettingViaWWAN])) {
+    if (data || ![[AIIPacketRequest packetSetting:AIIPacketSettingViaWWAN] boolValue]) {
         connection.data = data;
         
         double delayInSeconds = 0.1;

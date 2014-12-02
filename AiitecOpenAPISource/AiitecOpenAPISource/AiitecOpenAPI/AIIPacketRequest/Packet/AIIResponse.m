@@ -31,6 +31,11 @@
             self.query.status = SESSION_Nil_STATUS;
             self.query.desc = SESSION_Nil_DESC;
         }
+        if (![ReachabilityUtility defaultManager].isReachable) {
+            NSLog(@"[ReachabilityUtility defaultManager].isReachable: %d", [ReachabilityUtility defaultManager].isReachable);
+            self.query.status = NotReachable_STATUS;
+            self.query.desc = NotReachable_DESC;
+        }
         else if (error) {
             NSLog(@"Error! initWithJSONString: %@", [error localizedDescription]);
             self.query.status = NotReachable_STATUS;

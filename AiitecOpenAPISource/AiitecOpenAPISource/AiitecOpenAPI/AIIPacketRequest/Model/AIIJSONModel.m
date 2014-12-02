@@ -61,7 +61,7 @@
     NSArray *array = (NSArray *)[[self propertysAttributes] objectForKey:key];
     
     if (array.count) {
-        isNumber = [@[@"TQ",@"TB",@"Tf",@"Td"] containsObject:array[0]];//!< 判断属性的类型是否为:NSInteger/NSUInteger,BOOL,float,double.
+        isNumber = [@[@"TQ",@"TB",@"Tc",@"Tf",@"Td"] containsObject:array[0]];//!< 判断属性的类型是否为:NSInteger/NSUInteger,BOOL,float,double.
     }
     
     if (!isNumber) {
@@ -96,7 +96,7 @@
     }
     @catch (NSException *exception) {
 #ifdef DEBUG
-//        NSLog(@"AIIJSONModel.NSException:%@", exception.description);
+        NSLog(@"AIIJSONModel.NSException:%@", exception.description);
 #endif
     }
     @finally {
