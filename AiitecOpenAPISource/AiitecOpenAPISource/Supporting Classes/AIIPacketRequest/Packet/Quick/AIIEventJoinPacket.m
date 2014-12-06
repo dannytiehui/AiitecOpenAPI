@@ -9,11 +9,8 @@
 #import "AIIEventJoinPacket.h"
 
 @implementation AIIEventJoinRequest
-
 @end
 
 
-
 @implementation AIIEventJoinResponse
-
 @end

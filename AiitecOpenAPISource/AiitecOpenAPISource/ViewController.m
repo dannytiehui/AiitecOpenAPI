@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AIIFileCache.h"
 
 @interface ViewController ()
 
@@ -49,7 +50,7 @@
 //    [self testUserResetPasswordRequest];
     
 //    [self testSynchronousUserDetailsRequest];//!< 测试同步请求.
-    [self testUserDetailsRequest];
+//    [self testUserDetailsRequest];
 //    [self testUserUpdateRequest];
 //    [self testRankListRequest];
 //    [self testRecordListRequest];
@@ -97,22 +98,66 @@
 //    NSLog(@"%lu, %@", randomString.length, randomString);
 
     
-    NSString *randomString;
-    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber];
-    NSLog(@"1.%@", randomString);
-    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeUppercase];
-    NSLog(@"2.%@", randomString);
-    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeLowercase];
-    NSLog(@"3.%@", randomString);
-    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber | AIIStringTypeUppercase];
-    NSLog(@"4.%@", randomString);
-    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber | AIIStringTypeLowercase];
-    NSLog(@"5.%@", randomString);
-    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeUppercase | AIIStringTypeLowercase];
-    NSLog(@"6.%@", randomString);
-    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber | AIIStringTypeUppercase | AIIStringTypeLowercase];
-    NSLog(@"7.%@", randomString);
+//    NSString *randomString;
+//    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber];
+//    NSLog(@"1.%@", randomString);
+//    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeUppercase];
+//    NSLog(@"2.%@", randomString);
+//    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeLowercase];
+//    NSLog(@"3.%@", randomString);
+//    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber | AIIStringTypeUppercase];
+//    NSLog(@"4.%@", randomString);
+//    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber | AIIStringTypeLowercase];
+//    NSLog(@"5.%@", randomString);
+//    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeUppercase | AIIStringTypeLowercase];
+//    NSLog(@"6.%@", randomString);
+//    randomString = [AIIUtility arc4random:32 stringType:AIIStringTypeNumber | AIIStringTypeUppercase | AIIStringTypeLowercase];
+//    NSLog(@"7.%@", randomString);
+    
+    // 十进制转二进制
+    
+//    NSBundle *bundle = [NSBundle mainBundle];
+//    NSString *path = [bundle pathForResource:@"AiitecOpenAPI" ofType:@"plist"];
+//    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+//    NSArray *list = [dict objectForKey:@"array"];
+//    for (NSUInteger i = 0, len = [list count]; i < len; i++) {
+//        NSLog(@"%@", [list objectAtIndex:i]);
+//    }
+//    ;
+//    NSError *error;
+//    NSString *path2 = [bundle pathForResource:@"AII_Namespace_Packet_h" ofType:@""];
+//    NSString *string = [NSString stringWithContentsOfFile:path2 encoding:NSUTF8StringEncoding error:&error];
+//    if (error) {
+//        NSLog(@"%@", error);
+//    }
+//    else {
+//        NSLog(@"%@", string);
+//    }
+//    
+//    NSString *nameSpace = @"UserDetails";
+//    NSString *a = [string stringByReplacingOccurrencesOfString:@"_Namespace_" withString:nameSpace];
+//    NSData *data =  [a dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    // 写入文件
+//    BOOL b = [AIIFileCache createIqPacketAtPath:nameSpace contents:data];
+//    NSLog(@"b:%d", b);
 
+//    BOOL b = [AIIFileCache createIqPacketWithNamespace:@"TaskJoinSwitch" template:AIITemplateDefault];
+//    NSArray *namespaceArray = @[@"TaskOperateSwitch",@"WeiboOperateSwitch",@"FetchExecutingOrders",@"RemindBadgeNumber",@"RemindRemove"];
+    
+    // Entity
+//    NSArray *entityArray = @[@"Evaluate", @"Weibo"];
+//    BOOL b = [AIIFileCache createIqPacketWithEntityArray:entityArray];
+    
+    // Details
+    NSArray *namespaceDetailsArray = @[@"Weibo"];
+    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceDetailsArray template:AIITemplateDetails];
+    
+//    NSArray *namespaceCollectionSubmitArray = @[@"TaskEvaluate"];
+//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceCollectionSubmitArray template:AIITemplateCollectionSubmit];
+//    NSArray *namespaceSwitchArray = @[@"TaskOperate",@"WeiboOperate"];
+//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceSwitchArray template:AIITemplateSwitch];
+    NSLog(@"b:%d", b);
 }
 
 - (void)didReceiveMemoryWarning {

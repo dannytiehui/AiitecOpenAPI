@@ -9,10 +9,8 @@
 #import "AIIPointSubmitPacket.h"
 
 @implementation AIIPointSubmitRequest
-
 @end
 
 
 @implementation AIIPointSubmitResponse
-
 @end

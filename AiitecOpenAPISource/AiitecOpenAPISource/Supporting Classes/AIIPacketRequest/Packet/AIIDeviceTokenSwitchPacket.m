@@ -15,7 +15,7 @@
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if ([key isEqualToString:@"open"]) {
-        self.status = [value isEqualToString:@"1"] ? YES : NO;
+        self.open = [value isEqualToString:@"1"] ? YES : NO;
     }
     else {
         [super setValue:value forKey:key];
@@ -36,8 +36,8 @@
     
     k = @"open";
     if ([keys containsObject:k]) {
-        NSString *status = self.status ? @"1" : @"2";
-        [mutableDictionary setObject:status forKey:k];
+        NSString *open = self.open ? @"1" : @"2";
+        [mutableDictionary setObject:open forKey:k];
     }
     
     dict = mutableDictionary;

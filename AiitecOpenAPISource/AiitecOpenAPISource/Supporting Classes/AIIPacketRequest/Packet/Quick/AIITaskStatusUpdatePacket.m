@@ -8,12 +8,22 @@
 
 #import "AIITaskStatusUpdatePacket.h"
 
-@implementation AIITaskStatusUpdateRequest
+@implementation AIITaskStatusUpdateRequestQuery
+
+- (id)init
+{
+    if (self = [super init]) {
+        self.modelCollection = [[AIIUserCollection alloc] init];
+    }
+    return self;
+}
 
 @end
 
 
+@implementation AIITaskStatusUpdateRequest
+@end
+
 
 @implementation AIITaskStatusUpdateResponse
-
 @end

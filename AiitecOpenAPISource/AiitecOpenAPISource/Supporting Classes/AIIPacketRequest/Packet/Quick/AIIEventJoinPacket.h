@@ -10,11 +10,8 @@
 #import "AIIResponse.h"
 
 @interface AIIEventJoinRequest : AIIRequest
-
 @end
 
 
-
 @interface AIIEventJoinResponse : AIIResponse
-
 @end

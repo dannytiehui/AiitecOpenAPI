@@ -17,13 +17,11 @@
 @end
 
 
-
 @interface AIIPositionUpdateRequest : AIIRequest
 
 @property (nonatomic, strong) AIIPositionUpdateRequestQuery *query;
 
 @end
-
 
 
 @interface AIIPositionUpdateResponse : AIIResponse

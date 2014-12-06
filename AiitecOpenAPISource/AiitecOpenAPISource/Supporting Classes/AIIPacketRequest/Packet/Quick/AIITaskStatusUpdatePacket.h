@@ -6,15 +6,23 @@
 //  Copyright (c) 2014年 Aiitec. All rights reserved.
 //
 
-#import "AIIRequest.h"
-#import "AIIResponse.h"
+#import "AIICollectionPacket.h"
+#import "AIIUserCollection.h"
 
-@interface AIITaskStatusUpdateRequest : AIIRequest
+@interface AIITaskStatusUpdateRequestQuery : AIIModelCollectionQuery
+
+@property (nonatomic, assign) NSUInteger userId;
+@property (nonatomic, copy) NSString *reason;
 
 @end
 
 
+@interface AIITaskStatusUpdateRequest : AIICollectionRequest
 
-@interface AIITaskStatusUpdateResponse : AIIResponse
+@property (nonatomic, strong) AIITaskStatusUpdateRequestQuery *query;
 
+@end
+
+
+@interface AIITaskStatusUpdateResponse : AIICollectionResponse
 @end

@@ -10,11 +10,8 @@
 #import "AIIResponse.h"
 
 @interface AIIPointSubmitRequest : AIIRequest
-
 @end
 
 
-
 @interface AIIPointSubmitResponse : AIIResponse
-
 @end

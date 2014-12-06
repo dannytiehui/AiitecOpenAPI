@@ -15,6 +15,7 @@
 {
     if (self = [super init]) {
         _user = [[AIIUser alloc] init];
+        _address = [[AIIAddress alloc] init];
         _order = [[AIIOrder alloc] init];
         _imageCollection = [[AIIImageCollection alloc] init];
     }

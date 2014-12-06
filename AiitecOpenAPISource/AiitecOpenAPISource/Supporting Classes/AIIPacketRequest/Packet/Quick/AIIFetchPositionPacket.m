@@ -12,19 +12,17 @@
 @end
 
 
-
 @implementation AIIFetchPositionRequest
 @end
 
 
-
 @implementation AIIFetchPositionResponse
 
-#pragma mark - super
-
-- (Class)queryClass
-{
-    return [AIIFetchPositionResponseQuery class];
-}
+//#pragma mark - super
+//
+//- (Class)queryClass
+//{
+//    return [AIIFetchPositionResponseQuery class];
+//}
 
 @end

@@ -61,23 +61,23 @@
 #import "AIIArticleDetailsPacket.h"
 
 #pragma mark - 猫王联盟
-#import "AIIMerchantListPacket.h"
-#import "AIIMerchantDetailsPacket.h"
-#import "AIIGoodsListPacket.h"
-#import "AIIGoodsDetailsPacket.h"
-#import "AIIOrderListPacket.h"
-#import "AIIOrderDetailsPacket.h"
-#import "AIIOrderTrackingListPacket.h"
-#import "AIIOrderSubmitPacket.h"
+//#import "AIIMerchantListPacket.h"
+//#import "AIIMerchantDetailsPacket.h"
+//#import "AIIGoodsListPacket.h"
+//#import "AIIGoodsDetailsPacket.h"
+//#import "AIIOrderListPacket.h"
+//#import "AIIOrderDetailsPacket.h"
+//#import "AIIOrderTrackingListPacket.h"
+//#import "AIIOrderSubmitPacket.h"
 #import "AIIOrderStatusUpdatePacket.h"
-#import "AIIOrderCommentListPacket.h"
+//#import "AIIOrderCommentListPacket.h"
 #import "AIIOrderCommentSubmitPacket.h"
-#import "AIIReportSubmitPacket.h"
+//#import "AIIReportSubmitPacket.h"
 
-#import "AIIQuestionDetailsPacket.h"
-#import "AIIExchangeSubmitPacket.h"
+//#import "AIIQuestionDetailsPacket.h"
+//#import "AIIExchangeSubmitPacket.h"
 #import "AIIEventJoinPacket.h"
-#import "AIIBusinessesSubmitPacket.h"
+//#import "AIIBusinessesSubmitPacket.h"
 
 
 @interface PacketRequest : NSObject
