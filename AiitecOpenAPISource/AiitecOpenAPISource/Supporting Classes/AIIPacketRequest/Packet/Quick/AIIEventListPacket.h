@@ -19,15 +19,12 @@
 @end
 
 
-
 @interface AIIEventListResponseQuery : AIIListResponseQuery
 @end
 
 
-
 @interface AIIEventListRequest : AIIListRequest
 @end
-
 
 
 @interface AIIEventListResponse : AIIListResponse

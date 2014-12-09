@@ -8,14 +8,16 @@
 
 #import "AIIUserDetailsPacket.h"
 
+@implementation AIIUserDetailsRequestQuery
+@end
+
+
 @implementation AIIUserDetailsResponseQuery
 
 - (id)init
 {
     if (self = [super init]) {
         self.entity = [[AIIUser alloc] init];
-        _merchant = [[AIIUser alloc] init];
-        _merchant.key = @"merchant";
     }
     return self;
 }

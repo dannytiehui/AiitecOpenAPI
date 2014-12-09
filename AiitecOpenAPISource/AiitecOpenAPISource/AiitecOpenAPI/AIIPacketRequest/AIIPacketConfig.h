@@ -20,6 +20,9 @@
 /// 开关.允许底层架构启用/禁用sessionId方案.
 #define AiitecOpenAPISetting_SessionId YES
 
+/** 是否启用通讯协议加密方案. */
+#define IqPacket_Encryption  YES
+
 @interface AIIPacketConfig : NSObject
 
 @end

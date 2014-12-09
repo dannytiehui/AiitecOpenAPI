@@ -191,6 +191,14 @@ NSString *const DeviceTokenKey = @"deviceId";
             ];
 }
 
++ (NSString *)dateStringWithAbbreviation:(NSString *)abbreviation dateFormat:(NSString *)dateFormat
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:abbreviation];
+    [dateFormatter setDateFormat:dateFormat];
+    return[dateFormatter stringFromDate:[NSDate date]];
+}
+
 + (NSDate *)dateFromString:(NSString *)dateString{
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
@@ -321,7 +329,7 @@ NSString *const DeviceTokenKey = @"deviceId";
     NSFileManager *fm = [NSFileManager defaultManager];
     if ([fm fileExistsAtPath:path]){
         size = [[fm attributesOfItemAtPath:path error:nil] fileSize];
-        //        NSLog(@"%llu, %@", size, path);
+//        NSLog(@"%llu, %@", size, path);
     }
     return size;
 }
@@ -362,6 +370,64 @@ NSString *const DeviceTokenKey = @"deviceId";
         randomString = [randomString stringByAppendingString:array[index]];
     }
     return randomString;
+}
+
+//  十进制转二进制
++ (NSString *)toBinarySystemWithDecimalSystem:(NSNumber *)decimal
+{
+    int num = [decimal intValue];
+    int remainder = 0;      //余数
+    int divisor = 0;        //除数
+    
+    NSString *prepare = @"";
+    
+    while (true) {
+        remainder = num % 2;
+        divisor = num / 2;
+        num = divisor;
+        prepare = [prepare stringByAppendingFormat:@"%d",remainder];
+        
+        if (divisor == 0) {
+            break;
+        }
+    }
+    
+    NSString *result = @"";
+    for (NSInteger i = prepare.length - 1; i >= 0; i --) {
+        result = [result stringByAppendingFormat:@"%@", [prepare substringWithRange:NSMakeRange(i , 1)]];
+    }
+    
+    return result;
+}
+
+//  二进制转十进制
++ (NSNumber *)toDecimalSystemWithBinarySystem:(NSString *)binary
+{
+    int ll = 0 ;
+    int temp = 0 ;
+    for (int i = 0; i < binary.length; i ++) {
+        temp = [[binary substringWithRange:NSMakeRange(i, 1)] intValue];
+        temp = temp * powf(2, binary.length - i - 1);
+        ll += temp;
+    }
+    return [NSNumber numberWithInt:ll];
+}
+
++ (NSString *)iqPacketEncryption
+{
+    // 1. 获取北京时间，格式:yyyyMMdd
+    NSString *dateString = [AIIUtility dateStringWithAbbreviation:@"GMT+0800" dateFormat:@"yyyyMMdd"];
+    NSUInteger dateInteger = [dateString integerValue];
+    
+    // 2. 数字混排.把日期年月日与8取模,把dateString的最后一位移到「取模」的位置,如20141209,与8取模值为1,则数字混排后的结果为:29014120
+    NSMutableString *ms = [NSMutableString stringWithFormat:@"%@", dateString];
+    NSString *lastNumber = [ms substringFromIndex:(ms.length-1)];
+    [ms insertString:lastNumber atIndex:(dateInteger % 8)];
+    
+    dateInteger = [[ms substringToIndex:ms.length -1] integerValue];
+    
+    // 3.把十进制数字转二进制
+    return [AIIUtility toBinarySystemWithDecimalSystem:[NSNumber numberWithInteger:dateInteger]];
 }
 
 @end

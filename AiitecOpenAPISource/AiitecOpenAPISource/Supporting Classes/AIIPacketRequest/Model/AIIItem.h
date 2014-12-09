@@ -16,5 +16,6 @@
 #pragma mark - Option
 @property (nonatomic, copy) NSString *imagePath;
 @property (nonatomic, copy) NSString *pinyin;
+@property (nonatomic, copy) NSString *py;
 
 @end

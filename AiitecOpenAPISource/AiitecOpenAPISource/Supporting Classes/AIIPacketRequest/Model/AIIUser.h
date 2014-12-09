@@ -7,6 +7,7 @@
 //
 
 #import "AIIAddress.h"
+#import "AIIImageCollection.h"
 #import "AIIItemCollection.h"
 
 /** 设备类型. */
@@ -53,6 +54,8 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, copy) NSString *password;
 /** 真实姓名. */
 @property (nonatomic, copy) NSString *realName;
+/** 昵称. */
+@property (nonatomic, copy) NSString *nickname;
 /** 身份证姓名. */
 @property (nonatomic, copy) NSString *idName;
 /** 身份证号码. */
@@ -85,8 +88,6 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, copy) NSString *referrer;
 /** 上一次登录时间. */
 @property (nonatomic, copy) NSString *lastTime;
-/** 描述. */
-//@property (nonatomic, copy) NSString *desc;
 
 /** 是否为管理员. */
 @property (nonatomic, assign) BOOL admin;
@@ -94,6 +95,8 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, assign) float age;
 /** 性别. */
 @property (nonatomic, assign) AIISex sex;
+/** 第三方登录唯一标识. */
+@property (nonatomic, copy) NSString *openId;
 /** 来源. */
 @property (nonatomic, assign) AIIUserPartner partner;
 /** 设备类型. */
@@ -101,10 +104,12 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 /** 用户状态. */
 @property (nonatomic, assign) AIIUserStatus status;
 
-/** 地址. */
 @property (nonatomic, strong) AIIAddress *address;
+@property (nonatomic, strong) AIIImageCollection *imageCollection;
 /** 信息项. */
 @property (nonatomic, strong) AIIItemCollection *itemCollection;
+/** 个人标签. */
+@property (nonatomic, strong) AIIItemCollection *labels;
 
 /** 测试NSObject(NSKeyValueCoding)的mutableArrayValueForKey:方法. */
 @property (nonatomic, copy) NSDictionary *json;
@@ -118,7 +123,10 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 /** 认证状态. */
 @property (nonatomic, assign) AIIUserAuthStatus authStatus;
 /** 快应人认证状态. */
-@property (nonatomic, assign) AIIUserAuthStatus authKuaiyingStatus;
+//@property (nonatomic, assign) AIIUserAuthStatus authKuaiyingStatus;
+
+#pragma mark - stat
+
 /** 金额. */
 @property (nonatomic, assign) float statMoney;
 /** 冻结金额. */
@@ -128,9 +136,16 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 /** 总任务数. */
 @property (nonatomic, assign) NSUInteger statTask;
 /** 总接订单数. */
-@property (nonatomic, assign) NSUInteger statOrder;
+//@property (nonatomic, assign) NSUInteger statOrder;
+/** 总参与任务/活动数. */
+@property (nonatomic, assign) NSUInteger statJoin;
 /** 累计推荐人数. */
 @property (nonatomic, assign) NSUInteger statReferrer;
+/** 人气度. */
+@property (nonatomic, assign) NSUInteger statPopularity;
+/** 活跃度. */
+@property (nonatomic, assign) NSUInteger statVitality;
+
 /** 用户等级. */
 @property (nonatomic, copy) NSString *level;
 /** 考试积分. */
@@ -147,10 +162,25 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, copy) NSString *accountAlipay;
 /** 银行帐号. */
 @property (nonatomic, copy) NSString *accountBankcard;
-/** 学校id. */
-@property (nonatomic, assign) NSUInteger schoolId;
 /** 区域id. */
 @property (nonatomic, assign) NSUInteger regionId;
+/** 学校id. */
+@property (nonatomic, assign) NSUInteger schoolId;
+/** 年级. */
+@property (nonatomic, copy) NSString *entrance;
+/** 学历。如：本科／硕士研究生. */
+@property (nonatomic, copy) NSString *education;
+/** 学院id. */
+@property (nonatomic, assign) NSUInteger departmentsId;
+/** 专业id. */
+@property (nonatomic, assign) NSUInteger professionalId;
+/** 目标行业id. */
+@property (nonatomic, assign) NSUInteger industryId;
+/** 班级. */
+@property (nonatomic, copy) NSString *classes;
+/** 校园社团. */
+@property (nonatomic, copy) NSString *association;
+
 
 #pragma mark - 猫王联盟
 

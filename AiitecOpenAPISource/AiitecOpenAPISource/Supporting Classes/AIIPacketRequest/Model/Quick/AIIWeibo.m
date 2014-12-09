@@ -23,11 +23,12 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    if ([key isEqualToString:@"delete"]) {
-        self.del = value;
-    }
-    else if ([key isEqualToString:self.user.key]) {
+    if ([key isEqualToString:self.user.key]) {
         [self.user setValuesForKeysWithDictionary:value];
+    }
+    else if ([key isEqualToString:@"repostWeibo"]) {
+        self.repostWeibo = [[AIIWeibo alloc] init];
+        [self.repostWeibo setValuesForKeysWithDictionary:value];
     }
     else if ([key isEqualToString:self.imageCollection.key]) {
         [self.imageCollection setObjectWithArray:value];
@@ -52,11 +53,7 @@
     NSDictionary *dict = [super dictionaryWithValuesForKeys:keys];
     
     NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithDictionary:dict];
-    NSString *k = @"del";
-    if ([keys containsObject:k]) {
-        NSString *del = self.del ? @"1" : @"2";
-        [mutableDictionary setObject:del forKey:k];
-    }
+    NSString *k;
     
     k = @"user";
     if ([keys containsObject:k]) {

@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiitecOpenAPISource/AiitecOpenAPISource/ViewController.m"
-            timestampString = "439551611.094204"
+            timestampString = "439819358.602952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "738"
-            endingLineNumber = "738"
+            startingLineNumber = "792"
+            endingLineNumber = "792"
             landmarkName = "-packetConnectionFinished:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiitecOpenAPISource/AiitecOpenAPISource/ViewController.m"
-            timestampString = "439551611.094204"
+            timestampString = "439819358.602952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "716"
-            endingLineNumber = "716"
+            startingLineNumber = "770"
+            endingLineNumber = "770"
             landmarkName = "-packetConnectionFinished:"
             landmarkType = "5">
          </BreakpointContent>
@@ -240,6 +240,38 @@
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "+sendSynchronousRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AiitecOpenAPISource/AiitecOpenAPISource/AiitecOpenAPI/AIIPacketRequest/Packet/AIIRequest.m"
+            timestampString = "439819334.831593"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-jsonStringWithObject"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AiitecOpenAPISource/AiitecOpenAPISource/AiitecOpenAPI/AIIPacketRequest/Packet/AIIRequest.m"
+            timestampString = "439819974.622532"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-jsonStringWithObject"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

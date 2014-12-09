@@ -12,7 +12,7 @@
 @interface AIIUserResetPasswordRequestQuery : AIIQuery
 
 //@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *mobile;
+@property (nonatomic, assign) NSUInteger mobile;
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, assign) NSUInteger smscodeId;
 

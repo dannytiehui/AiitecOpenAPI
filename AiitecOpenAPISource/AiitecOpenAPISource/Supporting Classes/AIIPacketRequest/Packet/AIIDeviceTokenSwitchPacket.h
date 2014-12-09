@@ -8,11 +8,13 @@
 
 #import "AIIRequest.h"
 #import "AIIResponse.h"
+#import "AIIStyle.h"
 
 @interface AIIDeviceTokenSwitchRequestQuery : AIIQuery
 
-@property (nonatomic, assign) BOOL open;            // 1开启, 0关闭
-@property (nonatomic, readonly) NSString *deviceToken;  // 设备号
+@property (nonatomic, assign) BOOL open;
+@property (nonatomic, readonly) NSString *deviceToken;
+@property (nonatomic, strong) AIIStyle *style;
 
 @end
 
@@ -22,7 +24,9 @@
 
 
 @interface AIIDeviceTokenSwitchRequest : AIIRequest
+
 @property (nonatomic, strong) AIIDeviceTokenSwitchRequestQuery *query;
+
 @end
 
 

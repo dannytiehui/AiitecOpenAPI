@@ -22,6 +22,9 @@
 
 
 @interface AII_Entity_ListRequest : AIIListRequest
+
+@property (nonatomic, strong) AII_Entity_ListRequestQuery *query;
+
 @end
 
 

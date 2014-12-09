@@ -6,32 +6,14 @@
 //  Copyright (c) 2014年 Aiitec. All rights reserved.
 //
 
-#import "AIIRequest.h"
-#import "AIIResponse.h"
+#import "AIIEntityPacket.h"
+#import "AIIReport.h"
 
-/** 任务状态. */
-typedef NS_ENUM(NSUInteger, AIITaskReportType) {
-    AIITaskReportTypeFirst = 1,       //!< 1联系电话虚假
-    AIITaskReportTypeSecond,      //!< 2虚假违法信息
-};
-
-@interface AIITaskReportSubmitRequestQuery : AIIQuery
-
-@property (nonatomic, assign) AIITaskReportType type;
-
+@interface AIITaskReportSubmitRequest : AIIEntityRequest
 @end
 
 
 
-@interface AIITaskReportSubmitRequest : AIIRequest
-
-@property (nonatomic, strong) AIITaskReportSubmitRequestQuery *query;
-
-@end
-
-
-
-@interface AIITaskReportSubmitResponse : AIIResponse
-
+@interface AIITaskReportSubmitResponse : AIIEntityResponse
 @end
 

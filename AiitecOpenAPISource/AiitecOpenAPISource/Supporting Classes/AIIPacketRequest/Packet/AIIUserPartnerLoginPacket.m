@@ -8,9 +8,8 @@
 
 #import "AIIUserPartnerLoginPacket.h"
 
-@implementation AIIUserPartnerLoginRequestQuery
-@end
-
+//@implementation AIIUserPartnerLoginRequestQuery
+//@end
 
 
 @implementation AIIUserPartnerLoginRequest

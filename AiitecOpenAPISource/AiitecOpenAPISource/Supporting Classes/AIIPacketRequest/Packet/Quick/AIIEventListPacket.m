@@ -12,7 +12,6 @@
 @end
 
 
-
 @implementation AIIEventListResponseQuery
 
 - (id)init
@@ -26,10 +25,8 @@
 @end
 
 
-
 @implementation AIIEventListRequest
 @end
-
 
 
 @implementation AIIEventListResponse

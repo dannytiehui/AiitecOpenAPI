@@ -10,15 +10,15 @@
 
 @implementation AIIUserLogoutRequest
 
-- (NSString *)nameSpace
-{
-    return @"UserLogout";
-}
+//- (NSString *)nameSpace
+//{
+//    return @"UserLogout";
+//}
 
-- (NSString *)packetNickname
-{
-    return @"登出";
-}
+//- (NSString *)packetNickname
+//{
+//    return @"登出";
+//}
 
 @end
 
@@ -26,9 +26,9 @@
 
 @implementation AIIUserLogoutResponse
 
-- (NSString *)nameSpace
-{
-    return @"UserLogout";
-}
+//- (NSString *)nameSpace
+//{
+//    return @"UserLogout";
+//}
 
 @end

@@ -9,11 +9,8 @@
 #import "AIITaskSubmitPacket.h"
 
 @implementation AIITaskSubmitRequest
-
 @end
 
 
-
 @implementation AIITaskSubmitResponse
-
 @end

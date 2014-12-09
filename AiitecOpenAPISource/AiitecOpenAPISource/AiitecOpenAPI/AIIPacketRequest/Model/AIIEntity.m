@@ -77,6 +77,9 @@
 //        [self setValue:value forKey:@"identifier"];//!< 不推荐
         self.identifier = [value integerValue];//!< 推荐
     }
+    else if([key isEqualToString:@"delete"]) {
+        self.deleted = [value boolValue];
+    }
     else if([key isEqualToString:@"description"]) {
 //        [self setValue:value forKey:@"desc"];//!< 不推荐
         self.desc = value;

@@ -72,6 +72,15 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
 + (NSString *)md5:(NSString *)str;
 
 /**
+ *  @brief  得到GMT+0800时间.
+ *
+ *  @param  abbreviation @"GMT+0800"
+ *  @param  dateFormat @"yyyy-MM-dd HH:mm:ss zzz"
+ *  @return NSDate对象的实例.
+ */
++ (NSString *)dateStringWithAbbreviation:(NSString *)abbreviation dateFormat:(NSString *)dateFormat;
+
+/**
  *  @brief  字符串转日期.
  *
  *  @param  dateString 日期字符串,如:@"2013-12-17 14:45:59".
@@ -130,7 +139,7 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
 + (NSDictionary *)classPropertysAttributes:(Class)aClass;
 
 
-#warning dictionaryWithJSONString, stringWithDictionary 是否可以考虑用对应的类别呢？
+//#warning dictionaryWithJSONString, stringWithDictionary 是否可以考虑用对应的类别呢？
 
 #pragma mark - File
 
@@ -146,5 +155,28 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
  *  @return 属性的类型字典.
  */
 + (NSString *)arc4random:(NSUInteger)length stringType:(AIIStringType)stringType;
+
+/**
+ *  @brief  十进制转二进制.
+ *
+ *  @param  decimal 十进制数字.
+ *  @return 转换后的二进制数字.
+ */
++ (NSString *)toBinarySystemWithDecimalSystem:(NSNumber *)decimal;
+
+/**
+ *  @brief  二进制转十进制.
+ *
+ *  @param  binary 二进制字符串.
+ *  @return 转换后的十进制数字.
+ */
++ (NSNumber *)toDecimalSystemWithBinarySystem:(NSString *)binary;
+
+/**
+ *  @brief  通讯协议加密方案.
+ *
+ *  @return 加密后的字符串.
+ */
++ (NSString *)iqPacketEncryption;
 
 @end

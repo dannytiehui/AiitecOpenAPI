@@ -10,11 +10,8 @@
 #import "AIITask.h"
 
 @interface AIITaskSubmitRequest : AIIEntityRequest
-
 @end
 
 
-
 @interface AIITaskSubmitResponse : AIIResponse
-
 @end

@@ -8,22 +8,8 @@
 
 #import "AIITaskReportSubmitPacket.h"
 
-@implementation AIITaskReportSubmitRequestQuery
-@end
-
-
-
 @implementation AIITaskReportSubmitRequest
-
-#pragma mark - super
-
-- (Class)queryClass
-{
-    return [AIITaskReportSubmitRequestQuery class];
-}
-
 @end
-
 
 
 @implementation AIITaskReportSubmitResponse

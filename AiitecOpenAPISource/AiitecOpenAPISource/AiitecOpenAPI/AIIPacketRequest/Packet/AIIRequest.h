@@ -37,6 +37,8 @@ typedef NS_ENUM(NSUInteger, AIICache){
 
 /// timestampLatest:上一次请求时间,第一次初始化值为0; eg. @"2014-08-27 18:59:59"
 @property (nonatomic, copy) NSString *timestampLatest;//!< timestampLatest:上一次请求时间,第一次初始化值为0; eg. @"2014-08-31 01:29:59"
+/** 私有的加密值. */
+@property (nonatomic, copy) NSString *md5;
 @property (nonatomic, assign) AIICache cache;
 @property (nonatomic, assign) AIICacheSupporting cacheSupporting;
 

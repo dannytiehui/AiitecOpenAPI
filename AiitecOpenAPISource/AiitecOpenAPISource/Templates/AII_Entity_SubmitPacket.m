@@ -8,10 +8,6 @@
 
 #import "AII_Entity_SubmitPacket.h"
 
-@implementation AII_Entity_SubmitRequestQuery
-@end
-
-
 @implementation AII_Entity_SubmitRequest
 @end
 

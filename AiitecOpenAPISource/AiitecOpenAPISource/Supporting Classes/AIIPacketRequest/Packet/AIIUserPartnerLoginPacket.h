@@ -9,22 +9,22 @@
 #import "AIIEntityPacket.h"
 #import "AIIUser.h"
 
-@interface AIIUserPartnerLoginRequestQuery : AIIQuery
+//@interface AIIUserPartnerLoginRequestQuery : AIIQuery
+//
+///** 第三方登录唯一标识. */
+//@property (nonatomic, copy) NSString *openId;
+//@property (nonatomic, copy) NSString *name;
+//@property (nonatomic, assign) AIISex sex;
+//@property (nonatomic, copy) NSString *nickname;
+//@property (nonatomic, copy) NSString *imagePath;
+//@property (nonatomic, assign) AIIUserPartner partner;
+//
+//@end
 
-/** 第三方登录唯一标识. */
-@property (nonatomic, copy) NSString *openId;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) AIISex sex;
-@property (nonatomic, copy) NSString *nickname;
-@property (nonatomic, copy) NSString *imagePath;
-@property (nonatomic, assign) AIIUserPartner partner;
 
-@end
+@interface AIIUserPartnerLoginRequest : AIIEntityRequest
 
-
-@interface AIIUserPartnerLoginRequest : AIIRequest
-
-@property (nonatomic, strong) AIIUserPartnerLoginRequestQuery *query;
+//@property (nonatomic, strong) AIIUserPartnerLoginRequestQuery *query;
 
 @end
 

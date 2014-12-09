@@ -29,8 +29,8 @@
     NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithDictionary:dict];
     NSString *k = @"open";
     if ([keys containsObject:k]) {
-        NSString *status = self.open ? @"1" : @"2";
-        [mutableDictionary setObject:status forKey:k];
+        NSString *open = self.open ? @"1" : @"2";
+        [mutableDictionary setObject:open forKey:k];
     }
     
     dict = mutableDictionary;

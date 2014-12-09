@@ -70,7 +70,6 @@
     [mutableDictionary removeObjectForKey:k];
     
     dict = mutableDictionary;
-    
     return dict;
 }
 

@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "AIIFileCache.h"
 
+#include <stdlib.h>
+#include <stdio.h>
+
 @interface ViewController ()
 
 @end
@@ -141,23 +144,74 @@
 //    // 写入文件
 //    BOOL b = [AIIFileCache createIqPacketAtPath:nameSpace contents:data];
 //    NSLog(@"b:%d", b);
-
-//    BOOL b = [AIIFileCache createIqPacketWithNamespace:@"TaskJoinSwitch" template:AIITemplateDefault];
-//    NSArray *namespaceArray = @[@"TaskOperateSwitch",@"WeiboOperateSwitch",@"FetchExecutingOrders",@"RemindBadgeNumber",@"RemindRemove"];
+    
+    
     
     // Entity
-//    NSArray *entityArray = @[@"Evaluate", @"Weibo"];
+//    NSArray *entityArray = @[@"Join", @"Operate", @"Remind"];
 //    BOOL b = [AIIFileCache createIqPacketWithEntityArray:entityArray];
+
+    // Default
+//    BOOL b = [AIIFileCache createIqPacketWithNamespace:@"TaskJoinSwitch" template:AIITemplateDefault];
+//    NSArray *namespaceArray = @[@"TaskOperateSwitch",@"WeiboOperateSwitch",@"FetchExecutingOrders",@"RemindBadgeNumber",@"RemindRemove"];
+
+    // List
+//    NSArray *namespaceListArray = @[@"TaskJoin", @"TaskEvaluate", @"TaskComment", @"TaskOperate", @"TaskReport", @"Weibo", @"WeiboOperate", @"WeiboComment", @"Remind"];
+//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceListArray template:AIITemplateList];
     
     // Details
-    NSArray *namespaceDetailsArray = @[@"Weibo"];
-    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceDetailsArray template:AIITemplateDetails];
+//    NSArray *namespaceDetailsArray = @[@"Weibo"];
+//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceDetailsArray template:AIITemplateDetails];
     
+    // Submit
+//    NSArray *namespaceSubmitArray = @[@"TaskComment", @"TaskReport", @"TaskReportReply", @"Weibo"];
+//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceSubmitArray template:AIITemplateSubmit];
+    
+    // CollectionSubmit
 //    NSArray *namespaceCollectionSubmitArray = @[@"TaskEvaluate"];
 //    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceCollectionSubmitArray template:AIITemplateCollectionSubmit];
+    
+    // Switch
 //    NSArray *namespaceSwitchArray = @[@"TaskOperate",@"WeiboOperate"];
 //    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceSwitchArray template:AIITemplateSwitch];
-    NSLog(@"b:%d", b);
+    
+//    NSLog(@"b:%d", b);
+    
+    
+
+    // 十进制转二进制
+//    NSLog(@"%@", [AIIUtility toBinarySystemWithDecimalSystem:@20141209]);
+//    NSLog(@"%@", [AIIUtility toDecimalSystemWithBinarySystem:@"1001100110101010010011001"]);
+//    
+//    NSLog(@"1.%@", [NSDate date]);
+//
+//    NSString *dateString = [AIIUtility dateStringWithAbbreviation:@"GMT+0800" dateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+//    NSLog(@"5.%@", dateString);
+//    dateString = [AIIUtility dateStringWithAbbreviation:@"GMT+0800" dateFormat:@"yyyyMMdd HH:mm:ss zzz"];
+//    NSLog(@"5.%@", dateString);
+    
+    // 加密
+//    NSLog(@"6.%@", [AIIUtility iqPacketEncryption]);
+    
+    
+    [self testUserLoginRequest];
+}
+
++ (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate
+{
+    //设置源日期时区
+    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];//或GMT
+    //设置转换后的目标日期时区
+    NSTimeZone* destinationTimeZone = [NSTimeZone localTimeZone];
+    //得到源日期与世界标准时间的偏移量
+    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:anyDate];
+    //目标日期与本地时区的偏移量
+    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:anyDate];
+    //得到时间偏移量的差值
+    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+    //转为现在时间
+    NSDate* destinationDateNow = [[NSDate alloc] initWithTimeInterval:interval sinceDate:anyDate];
+    return destinationDateNow;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -317,7 +371,7 @@
 
 - (void)testUserRegisterRequest
 {
-    AIIUserRegisterRequest *request = [[AIIUserRegisterRequest alloc] init];
+    AIIUserRegisterSubmitRequest *request = [[AIIUserRegisterSubmitRequest alloc] init];
     
     AIIUser *user = [[AIIUser alloc] init];
     user.name = @"IOS测试用户2";
@@ -339,7 +393,7 @@
 {
     AIIUserBindMobileRequest *request = [[AIIUserBindMobileRequest alloc] init];
     
-    request.query.mobile = @"13527261004";
+    request.query.mobile = 13527261004;
     request.query.smscodeId = 34;
     
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
@@ -378,7 +432,7 @@
 - (void)testUserResetPasswordRequest
 {
     AIIUserResetPasswordRequest *request = [[AIIUserResetPasswordRequest alloc] init];
-    request.query.mobile = @"13527261000";
+    request.query.mobile = 13527261000;
     request.query.password = @"123456";
     request.query.smscodeId = 34;
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
@@ -577,23 +631,23 @@
 
 - (void)testOrderStatusUpdateRequest
 {
-    AIIOrderStatusUpdateRequest *request = [[AIIOrderStatusUpdateRequest alloc] init];
-    request.query.action = AIIQueryActionThird;
-    request.query.identifier = 1;
+//    AIIOrderStatusUpdateRequest *request = [[AIIOrderStatusUpdateRequest alloc] init];
+//    request.query.action = AIIQueryActionThird;
+//    request.query.identifier = 1;
 //    request.query.code = @"1234";
 //    request.query.cancelType = AIIOrderCancelTypeFirst;
 //    request.query.reason = @"1已友善协商，不需要服务了;";
     
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
 - (void)testOrderCommentSubmitRequest
 {
-    AIIOrderCommentSubmitRequest *request = [[AIIOrderCommentSubmitRequest alloc] init];
-    request.query.identifier = 1;
+//    AIIOrderCommentSubmitRequest *request = [[AIIOrderCommentSubmitRequest alloc] init];
+//    request.query.identifier = 1;
 //    request.query.content = @"订单1的评价。";
     
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
 //- (void)testOrderComplaintSubmitRequest

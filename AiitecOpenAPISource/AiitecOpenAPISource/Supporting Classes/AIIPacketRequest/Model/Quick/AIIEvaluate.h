@@ -7,11 +7,17 @@
 //
 
 #import "AIIEntity.h"
+#import "AIIUser.h"
 
 @interface AIIEvaluate : AIIEntity
 
 @property (nonatomic, assign) NSUInteger stars;
-@property (nonatomic, assign) NSUInteger userIdTo;
 @property (nonatomic, copy) NSString *content;
+
+@property (nonatomic, strong) AIIUser *user;
+@property (nonatomic, strong) AIIUser *userTo;
+
+#pragma mark - Option
+@property (nonatomic, assign) NSUInteger userIdTo;
 
 @end

@@ -25,10 +25,13 @@
 @property (nonatomic, assign) BOOL praiseStatus;
 /** 0未踩;1已踩. */
 @property (nonatomic, assign) BOOL devalueStatua;
-/** 0正常;1已删除. */
-@property (nonatomic, assign) BOOL del;
 
+@property (nonatomic, strong) AIIWeibo *repostWeibo;
 @property (nonatomic, strong) AIIUser *user;
 @property (nonatomic, strong) AIIImageCollection *imageCollection;
+
+#pragma mark - option
+/** 回复目标id，不传就只是评论任务. */
+@property (nonatomic, assign) NSUInteger userIdTo;
 
 @end

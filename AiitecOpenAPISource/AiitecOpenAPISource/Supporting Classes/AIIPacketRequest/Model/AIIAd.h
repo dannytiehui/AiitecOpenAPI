@@ -11,6 +11,8 @@
 
 @interface AIIAd : AIIEntity
 
+@property (nonatomic, assign) NSUInteger width;
+@property (nonatomic, assign) NSUInteger height;
 /** 广告链接. */
 @property (nonatomic, copy) NSString *link;
 /** 开始时间 "0000-00-00 00:00:00"表示立即生效. */

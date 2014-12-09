@@ -11,8 +11,9 @@
 
 @interface AIITaskListWhere : AIIWhere
 
-@property (nonatomic, assign) AIITaskStatus orderStatus;
-@property (nonatomic, assign) NSUInteger labelId;//!< 标签id
+@property (nonatomic, assign) AIITaskStatus status;
+/** 标签id. */
+@property (nonatomic, assign) NSUInteger labelId;
 @property (nonatomic, assign) double latitude;
 @property (nonatomic, assign) double longitude;
 

@@ -13,10 +13,8 @@
 @end
 
 
-
 @interface AIIRecordListRequest : AIIListRequest
 @end
-
 
 
 @interface AIIRecordListResponse : AIIListResponse

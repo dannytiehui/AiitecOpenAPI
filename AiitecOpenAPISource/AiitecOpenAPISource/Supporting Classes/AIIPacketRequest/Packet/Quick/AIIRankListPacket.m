@@ -8,6 +8,10 @@
 
 #import "AIIRankListPacket.h"
 
+@implementation AIIRankListRequestQuery
+@end
+
+
 @implementation AIIRankListResponseQuery
 
 - (id)init

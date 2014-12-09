@@ -9,14 +9,22 @@
 #import "AIIListPacket.h"
 #import "AIIUserCollection.h"
 
+@interface AIIRankListRequestQuery : AIIListRequestQuery
+
+@property (nonatomic, assign) NSUInteger schoolId;
+
+@end
+
+
 @interface AIIRankListResponseQuery : AIIListResponseQuery
 @end
 
 
-
 @interface AIIRankListRequest : AIIListRequest
-@end
 
+@property(nonatomic, strong) AIIRankListRequestQuery *query;
+
+@end
 
 
 @interface AIIRankListResponse : AIIListResponse

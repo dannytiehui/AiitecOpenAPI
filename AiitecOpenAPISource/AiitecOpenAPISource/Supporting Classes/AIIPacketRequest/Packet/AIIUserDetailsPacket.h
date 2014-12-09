@@ -9,17 +9,23 @@
 #import "AIIDetailsPacket.h"
 #import "AIIUser.h"
 
-@interface AIIUserDetailsResponseQuery : AIIEntityQuery
+@interface AIIUserDetailsRequestQuery : AIIQuery
 
-@property (nonatomic, strong) AIIEntity *merchant;
+@property (nonatomic, copy) NSString *name;
 
 @end
 
 
+@interface AIIUserDetailsResponseQuery : AIIEntityQuery
+@end
+
+
 @interface AIIUserDetailsRequest : AIIDetailsRequest
+
+@property (nonatomic, strong) AIIUserDetailsRequestQuery *query;
+
 @end
 
 
 @interface AIIUserDetailsResponse : AIIDetailsResponse
 @end
-

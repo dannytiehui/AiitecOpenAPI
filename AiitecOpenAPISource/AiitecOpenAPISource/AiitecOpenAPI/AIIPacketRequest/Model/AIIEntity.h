@@ -21,6 +21,7 @@
 @property (nonatomic, assign) NSUInteger identifier;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *desc;
+@property (nonatomic, assign) BOOL deleted;
 @property (nonatomic, copy) NSString *timestampUpdate;
 @property (nonatomic, copy) NSString *timestamp;
 

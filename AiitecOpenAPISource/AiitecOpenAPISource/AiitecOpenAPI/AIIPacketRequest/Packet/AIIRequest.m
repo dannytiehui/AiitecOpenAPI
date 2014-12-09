@@ -76,6 +76,9 @@
     }
     [mutableDictionary removeObjectForKey:k];
     
+    /** 默认移除md5属性. */
+    [mutableDictionary removeObjectForKey:@"md5"];
+    
     dict = mutableDictionary;
     return dict;
 }
@@ -84,7 +87,24 @@
 
 - (NSString *)jsonStringWithObject
 {
-    return [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
+    if (IqPacket_Encryption) {
+        NSString *jsonString = [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
+//        NSLog(@"jsonString:%@", jsonString);
+        _md5 = [AIIUtility md5:jsonString];
+//        NSLog(@"1._md5:%@", _md5);
+        _md5 = [_md5 stringByAppendingString:[AIIUtility iqPacketEncryption]];
+//        NSLog(@"2._md5:%@", _md5);
+        _md5 = [AIIUtility md5:_md5];
+//        NSLog(@"3._md5:%@", _md5);
+        
+        NSDictionary *dict = [AIIUtility dictionaryWithJSONString:jsonString];
+        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:dict];
+        [mutableDictionary setValue:_md5 forKey:@"m"];
+        return [AIIUtility stringWithDictionary:mutableDictionary];
+    }
+    else {
+        return [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
+    }
 }
 
 #pragma mark - self

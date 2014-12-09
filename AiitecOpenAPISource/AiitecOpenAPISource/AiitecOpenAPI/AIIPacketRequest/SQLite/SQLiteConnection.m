@@ -43,7 +43,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        dbName = @"db";
+        dbName = @"AiitecOpenAPIDB";
     }
     return self;
 }

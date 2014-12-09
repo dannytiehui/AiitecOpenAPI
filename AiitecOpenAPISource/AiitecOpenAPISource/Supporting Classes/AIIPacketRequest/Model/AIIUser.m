@@ -21,7 +21,11 @@
         }
         
         _address = [[AIIAddress alloc] init];
+        _imageCollection = [[AIIImageCollection alloc] init];
         _itemCollection = [[AIIItemCollection alloc] init];
+        _labels = [[AIIItemCollection alloc] init];
+        _labels.key = @"labels";
+        _labels.entityKey = @"label";
     }
     return self;
 }
@@ -30,7 +34,10 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    if ([key isEqualToString:self.address.key]) {
+    if ([key isEqualToString:@"class"]) {
+        self.classes = [value stringValue];
+    }
+    else if ([key isEqualToString:self.address.key]) {
         [self.address setValuesForKeysWithDictionary:value];
     }
     else if ([key isEqualToString:self.itemCollection.key]) {
@@ -60,6 +67,12 @@
     if ([keys containsObject:k]) {
         [mutableDictionary setObject:[AIIUtility md5:self.password] forKey:k];
     }
+    
+    k = @"classes";
+    if ([keys containsObject:k]) {
+        [mutableDictionary setObject:self.classes forKey:@"class"];
+    }
+    [mutableDictionary removeObjectForKey:k];
 
     k = @"address";
     if ([keys containsObject:k]) {
