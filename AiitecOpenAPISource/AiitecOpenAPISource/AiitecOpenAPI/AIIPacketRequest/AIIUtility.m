@@ -419,11 +419,11 @@ NSString *const DeviceTokenKey = @"deviceId";
     NSString *dateString = [AIIUtility dateStringWithAbbreviation:@"GMT+0800" dateFormat:@"yyyyMMdd"];
     NSUInteger dateInteger = [dateString integerValue];
     
-    // 2. 数字混排.把日期年月日与8取模,把dateString的最后一位移到「取模」的位置,如20141209,与8取模值为1,则数字混排后的结果为:29014120
+    // 2. 数字混排.把日期年月日与8取模,把dateString的最后一位移到「取模」的位置,如20141209,与8取模值为1,则数字混排后的结果为:29014120;特例:若时间为20150120,与8取模值为0,则数字混排后的结果为:02015012.十进制数字则为2015012.
     NSMutableString *ms = [NSMutableString stringWithFormat:@"%@", dateString];
     NSString *lastNumber = [ms substringFromIndex:(ms.length-1)];
     [ms insertString:lastNumber atIndex:(dateInteger % 8)];
-    
+
     dateInteger = [[ms substringToIndex:ms.length -1] integerValue];
     
     // 3.把十进制数字转二进制
