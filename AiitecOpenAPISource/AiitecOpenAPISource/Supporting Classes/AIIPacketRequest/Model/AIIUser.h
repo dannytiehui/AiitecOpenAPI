@@ -66,6 +66,8 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, copy) NSString *idImagePath;
 /** 生日. */
 @property (nonatomic, copy) NSString *birthday;
+/** 星座. */
+@property (nonatomic, copy) NSString *starSign;
 /** 图像路径. */
 @property (nonatomic, copy) NSString *imagePath;
 /** 电话. */

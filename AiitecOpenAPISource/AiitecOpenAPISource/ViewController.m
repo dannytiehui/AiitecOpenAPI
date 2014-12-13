@@ -41,12 +41,13 @@
 //    [self testSettingRequest];
 //    [self testReferenceItemListRequest];
 //    [self testUploadImageRequest];//!< Collection
+//    [self testUploadFilesRequest];//!< Collection
 //    [self testDeleteActionRequest];
 //    [self testCategoryListRequest];
 
 //    [self testUserLoginRequest];
 //    [self testUserLogoutRequest];
-//    [self testUserRegisterRequest];//!< Entity
+//    [self testUserRegisterSubmitRequest];//!< Entity
 //    [self testUserBindMobileRequest];
 //    [self testUserUploadImageRequest];
 //    [self testUserUpdatePasswordRequest];
@@ -65,10 +66,11 @@
 
 //    [self testEventListRequest];
 //    [self testEventJoinRequest];
-//
-//    [self testTaskListRequest];//!< List
+
+    [self testTaskListRequest];//!< List
 //    [self testTaskDetailsRequest];//!< Details
 //    [self testTaskSubmitRequest];
+//    [self testTaskEvaluateCollectionSubmitRequest];
 //    [self testTaskStatusUpdateRequest];
 //    [self testTaskReportSubmitRequest];
 //    [self testFetchRankRequest];
@@ -193,8 +195,15 @@
     // 加密
 //    NSLog(@"6.%@", [AIIUtility iqPacketEncryption]);
     
-    
-    [self testUserLoginRequest];
+    // 人性化可读时间.
+//    NSLog(@"1- %@", [AIIUtility dateStringToHuman:@"2014-12-13 15:58:00"]);
+//    NSLog(@"2- %@", [AIIUtility dateStringToHuman:@"2014-12-13 15:50:00"]);
+//    NSLog(@"3- %@", [AIIUtility dateStringToHuman:@"2014-12-13 14:52:00"]);
+//    NSLog(@"4- %@", [AIIUtility dateStringToHuman:@"2014-12-12 15:52:00"]);
+//    NSLog(@"5- %@", [AIIUtility dateStringToHuman:@"2014-11-13 15:52:00"]);
+//    NSLog(@"6- %@", [AIIUtility dateStringToHuman:@"2013-12-13 15:52:00"]);
+//    NSLog(@"7- %@", [AIIUtility dateStringToHuman:@"2012-12-13 15:52:00"]);
+ 
 }
 
 + (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate
@@ -281,10 +290,10 @@
 {
     AIISMSCodeRequest *request = [[AIISMSCodeRequest alloc] init];
     request.query.action = AIIQueryActionFirst;
-    request.query.type = AIISMSCodeTypeRegister;
-    request.query.mobile = @"13527262005";
-    request.query.where.code = @"1234";
-    
+    request.query.type = AIISMSCodeTypeBindResetPassword;
+    request.query.mobile = @"17092087507";
+    request.query.where.code = @"8350";
+
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
@@ -306,8 +315,47 @@
 - (void)testReferenceItemListRequest
 {
     AIIReferenceItemListRequest *request = [[AIIReferenceItemListRequest alloc] init];
-    request.query.action = AIIQueryActionSecond;
-    request.query.properties = @[@"action"];
+    request.query.action = AIIQueryActionSeventh;
+    
+    AIIReferenceItemListWhere *where = [[AIIReferenceItemListWhere alloc] init];
+//    where.regionId = 110100;
+//    where.searchKey = @"qh";
+//    where.searchKey = @"zx";
+//    where.schoolId = 2;
+    where.identifier = 1;// 用户标签分组id
+    where.properties = @[@"regionId", @"searchKey", @"school_id"];
+    
+    AIITable *table = [[AIITable alloc] init];
+    table.where = where;
+    
+    request.query.table = table;
+    
+    request.cacheSupporting = AIICacheSupportingFull;
+    
+//    request.query.properties = @[@"action"];
+//    AIIReferenceItemListResponse *response = [AIIPacketConnection sendAsyn:request delegate:self context:self];
+    [AIIPacketConnection sendAsynchronous:request delegate:self context:nil];
+}
+
+- (void)testUploadFilesRequest
+{
+    AIIUploadFilesRequest *request = [[AIIUploadFilesRequest alloc] init];
+    
+    AIIFileCollection *fileCollection = [[AIIFileCollection alloc] init];
+    UIImage *image = [UIImage imageNamed:@"UploadImage"];
+    AIIFile *file = [[AIIFile alloc] initWithData:UIImageJPEGRepresentation(image, 0.5) filename:@"UploadImage.png" contentType:@"image/png"];
+    [fileCollection addObject:file];
+    UIImage *image1 = [UIImage imageNamed:@"yjsk.jpeg"];
+    AIIFile *file1 = [[AIIFile alloc] initWithData:UIImageJPEGRepresentation(image1, 1) filename:@"yjsk.jpeg" contentType:@"image/jpg"];
+    [fileCollection addObject:file1];
+    
+    request.query.fileCollection = fileCollection;
+    
+    fileCollection.entityProperties = @[@"filename", @"contentType"];
+    
+    NSLog(@"%@", [fileCollection arrayWithObject]);
+    NSLog(@"jsonString:%@", [request jsonStringWithObject]);
+    
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
@@ -355,12 +403,12 @@
 {
     AIIUserLoginRequest *request = [[AIIUserLoginRequest alloc] init];
     request.query.action = AIIQueryActionFirst;
-    request.query.name = @"13527262005";
-    request.query.password = @"000000";
+    request.query.name = @"17092087507";
+    request.query.password = @"123456";
 //    NSString *jsonString = [request jsonStringWithObject];
 //    NSLog(@"jsonString:%@", jsonString);
     
-    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+    [AIIPacketConnection sendAsynchronous:request delegate:self context:self];
 }
 
 - (void)testUserLogoutRequest
@@ -369,31 +417,38 @@
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
-- (void)testUserRegisterRequest
+- (void)testUserRegisterSubmitRequest
 {
     AIIUserRegisterSubmitRequest *request = [[AIIUserRegisterSubmitRequest alloc] init];
     
     AIIUser *user = [[AIIUser alloc] init];
-    user.name = @"IOS测试用户2";
+    user.name = @"IOS_17092087507";
     user.password = @"123456";
-    user.mobile = @"13527261002";
+    user.mobile = @"17092087507";
     user.referrer = @"13527262005";
     
-    user.properties = @[@"name",@"password",@"mobile",@"referrer"];
+    AIIAddress *address = [[AIIAddress alloc] init];
+    address.longitude = 113.215485;
+    address.latitude = 23.134046;
+    address.properties = @[@"longitude", @"latitude"];
+    user.address = address;
+    
+    
+    user.properties = @[@"name",@"password",@"mobile",@"referrer",@"address"];
     
     request.query.entity = user;
-    request.query.smscodeId = 34;
+    request.query.smscodeId = 467;
     
-    NSLog(@"%@", [request jsonStringWithObject]);
+//    NSLog(@"%@", [request jsonStringWithObject]);
     
-//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+    [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
 - (void)testUserBindMobileRequest
 {
     AIIUserBindMobileRequest *request = [[AIIUserBindMobileRequest alloc] init];
     
-    request.query.mobile = 13527261004;
+    request.query.mobile = @"13527261004";
     request.query.smscodeId = 34;
     
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
@@ -432,9 +487,9 @@
 - (void)testUserResetPasswordRequest
 {
     AIIUserResetPasswordRequest *request = [[AIIUserResetPasswordRequest alloc] init];
-    request.query.mobile = 13527261000;
+    request.query.mobile = @"17092087507";
     request.query.password = @"123456";
-    request.query.smscodeId = 34;
+    request.query.smscodeId = 474;
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
@@ -533,80 +588,108 @@
 
 #pragma mark - 任务
 
-//- (void)testTaskListRequest
-//{
-//    AIITaskListRequest *request = [[AIITaskListRequest alloc] init];
-//    request.query.action = AIIQueryActionThird;
-//    
-//    AIITable *table = [[AIITable alloc] init];
-//    table.page = 1;
-//    table.limit = 5;
-//    table.orderBy = AIIOrderByFirst;
-//    
-//    AIITaskListWhere *where = [[AIITaskListWhere alloc] init];
-//    where.orderStatus = AIITaskStatusSecond;
-//    where.labelId = 1;
-//    where.latitude = 23.132921;
-//    where.longitude = 113.252281;
-////    table.where = where;
-//    
-////    request.query.table = table;
-//    
-//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-//}
+- (void)testTaskListRequest
+{
+    AIITaskListRequest *request = [[AIITaskListRequest alloc] init];
+    request.query.action = AIIQueryActionSecond;
+    request.query.type = AIITaskTypeFirst;
+    
+    AIITable *table = [[AIITable alloc] init];
+    table.page = 1;
+    table.limit = 5;
+    table.orderBy = AIIOrderByFirst;
+    
+    AIITaskListWhere *where = [[AIITaskListWhere alloc] init];
+    where.status = AIITaskStatusSecond;
+    where.labelId = 1;
+    where.latitude = 23.132921;
+    where.longitude = 113.252281;
+//    table.where = where;
+    
+//    request.query.table = table;
+    
+    [AIIPacketConnection sendAsynchronous:request delegate:self context:self];
+}
 
-//- (void)testTaskDetailsRequest
-//{
-//    AIITaskDetailsRequest *request = [[AIITaskDetailsRequest alloc] init];
-//    request.query.identifier = 176;//!< 1350935;
+- (void)testTaskDetailsRequest
+{
+    AIITaskDetailsRequest *request = [[AIITaskDetailsRequest alloc] init];
+    request.query.identifier = 41;//!< 1350935;
 //    request.query.latitude = 23.132921;
 //    request.query.longitude = 113.252281;
-//    
-//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-//}
+    
+    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+}
 
-//- (void)testTaskSubmitRequest
-//{
-//    AIITaskSubmitRequest *request = [[AIITaskSubmitRequest alloc] init];
-//    
-//    AIITask *task = [[AIITask alloc] init];
-//    //    task.identifier = 1351013;
-//    task.reward = 1.25;
-//    task.rewardPlus = 0.0;
-//    
-//    AIIImage *image = [[AIIImage alloc] init];
-//    image.identifier = 1;
-//    image.properties = @[@"identifier"];//!<
-//    AIIImage *image2 = [[AIIImage alloc] init];
-//    image2.identifier = 2;
-//    image2.properties = @[@"identifier"];//!<
-//    AIIImageCollection *imageCollection = [[AIIImageCollection alloc] init];
-//    [imageCollection addObject:image];
-//    [imageCollection addObject:image2];
-//    
-//    task.imageCollection = imageCollection;
-//    task.deadline = @"2014-09-20 12:59:59";
-//    task.labelId = 3;
-//    task.desc = @"发布任务的描述IOS";
-//    task.latitude = 23.132921;
-//    task.longitude = 113.252281;
-//    task.regionId = 440430;
-//    task.street = @"周门北路38号";
-//    
-//    task.properties = @[@"identifier",@"reward", @"rewardPlus", @"imageCollection", @"deadline", @"labelId", @"desc", @"latitude", @"longitude", @"regionId", @"street"];
-//    request.query.entity = task;
-//    
-//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-//}
+- (void)testTaskSubmitRequest
+{
+    AIITaskSubmitRequest *request = [[AIITaskSubmitRequest alloc] init];
+    
+    AIITask *task = [[AIITask alloc] init];
+    //    task.identifier = 1351013;
+    task.reward = 1.25;
+    task.rewardPlus = 0.0;
+    
+    AIIImage *image = [[AIIImage alloc] init];
+    image.identifier = 1;
+    image.properties = @[@"identifier"];//!<
+    AIIImage *image2 = [[AIIImage alloc] init];
+    image2.identifier = 2;
+    image2.properties = @[@"identifier"];//!<
+    AIIImageCollection *imageCollection = [[AIIImageCollection alloc] init];
+    [imageCollection addObject:image];
+    [imageCollection addObject:image2];
+    
+    task.imageCollection = imageCollection;
+    task.deadline = @"2014-09-20 12:59:59";
+    task.labelId = 3;
+    task.desc = @"发布任务的描述IOS";
+    task.latitude = 23.132921;
+    task.longitude = 113.252281;
+    task.regionId = 440430;
+    task.street = @"周门北路38号";
+    
+    task.properties = @[@"identifier",@"reward", @"rewardPlus", @"imageCollection", @"deadline", @"labelId", @"desc", @"latitude", @"longitude", @"regionId", @"street"];
+    request.query.entity = task;
+    
+    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+}
 
-//- (void)testTaskStatusUpdateRequest
-//{
-//    AIITaskStatusUpdateRequest *request = [[AIITaskStatusUpdateRequest alloc] init];
-//    request.query.action = AIIQueryActionSecond;
-//    request.query.identifier = 1351013;
-//    
-//    [AIIPacketConnection sendAsyn:request delegate:self context:self];
-//}
+- (void)testTaskEvaluateCollectionSubmitRequest
+{
+    AIITaskEvaluateCollectionSubmitRequest *request = [[AIITaskEvaluateCollectionSubmitRequest alloc] init];
+    request.query.action = AIIQueryActionFirst;
+    request.query.identifier = 1;
+
+    AIIEvaluateCollection *evaluateCollection = [[AIIEvaluateCollection alloc] init];
+    evaluateCollection.entityProperties = @[@"stars", @"content", @"userIdTo"];
+    
+    AIIEvaluate *evaluate = [[AIIEvaluate alloc] init];
+    evaluate.stars = 5;
+    evaluate.content = @"内容一";
+    evaluate.userIdTo = 1;
+    
+    AIIEvaluate *evaluate2 = [[AIIEvaluate alloc] init];
+    evaluate2.stars = 4;
+    evaluate2.content = @"内容二";
+    evaluate2.userIdTo = 2;
+    
+    [evaluateCollection addObject:evaluate];
+    [evaluateCollection addObject:evaluate2];
+    
+    request.query.modelCollection = evaluateCollection;
+    
+    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+}
+
+- (void)testTaskStatusUpdateRequest
+{
+    AIITaskStatusUpdateRequest *request = [[AIITaskStatusUpdateRequest alloc] init];
+    request.query.action = AIIQueryActionSecond;
+    request.query.identifier = 1351013;
+    
+    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+}
 
 //- (void)testTaskReportSubmitRequest
 //{
@@ -730,7 +813,19 @@
 
 - (void)packetConnectionFinished:(AIIPacketConnection *)connection
 {
-    if([connection.response isKindOfClass:[AIIUserLoginResponse class]]){
+    if ([connection.response isKindOfClass:[AIIReferenceItemListResponse class]]) {
+        if (!connection.response.query.status) {
+            // 成功
+            AIIReferenceItemListResponseQuery *responseQuery = (AIIReferenceItemListResponseQuery *)connection.response.query;
+            AIIItemCollection *itemCollection = (AIIItemCollection *)responseQuery.modelCollection;
+            NSLog(@"itemCollection:%@", itemCollection);
+        }
+        else {
+            // 失败
+            ;
+        }
+    }
+    else if([connection.response isKindOfClass:[AIIUserLoginResponse class]]){
         if (0 == connection.response.query.status) {
             // 成功
             ;
@@ -789,6 +884,30 @@
             AIIRegionCollection *regionCollection3 = [regionCollection sortedCollectionUsingPinyin];
             NSLog(@"regionCollection3:%lu", regionCollection3.count);
             
+        }
+        else {
+            // 失败
+            ;
+        }
+    }
+    else if ([connection.response isKindOfClass:[AIITaskListResponse class]]) {
+        if (!connection.response.query.status) {
+            // 成功
+            AIITaskListResponseQuery *responseQuery = (AIITaskListResponseQuery*)connection.response.query;
+            AIITaskCollection *taskCollection = (AIITaskCollection *)responseQuery.modelCollection;
+            NSLog(@"taskCollection:%@", taskCollection);
+        }
+        else {
+            // 失败
+            ;
+        }
+    }
+    else if ([connection.response isKindOfClass:[AIITaskDetailsResponse class]]) {
+        if (!connection.response.query.status) {
+            // 成功
+            AIITaskDetailsResponseQuery *responseQuery = (AIITaskDetailsResponseQuery *)connection.response.query;
+            AIITask *task = (AIITask *)responseQuery.entity;
+            NSLog(@"task:%@", task);
         }
         else {
             // 失败

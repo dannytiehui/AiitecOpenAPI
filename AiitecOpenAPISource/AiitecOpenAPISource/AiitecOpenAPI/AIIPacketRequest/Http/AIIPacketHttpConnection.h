@@ -11,7 +11,7 @@
 
 #import "AIIRequest.h"
 #import "AIIResponse.h"
-#import "AIIUploadFilePacket.h"
+#import "AIIUploadFilesPacket.h"
 
 #import "AIIFile.h"
 #import "AIIFileCollection.h"

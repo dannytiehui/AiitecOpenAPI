@@ -111,8 +111,9 @@
     }
     [mutableDictionary removeObjectForKey:k];
     
-    dict = mutableDictionary;
+    [mutableDictionary removeObjectForKey:@"deleted"];
     
+    dict = mutableDictionary;
     return dict;
 }
 

@@ -1,14 +1,22 @@
 //
-//  AIIUploadFilePacket.m
+//  AIIUploadFilesPacket.m
 //  AAClient
 //
 //  Created by iMac on 13-6-28.
 //  Copyright (c) 2013年 Aiitec. All rights reserved.
 //
 
-#import "AIIUploadFilePacket.h"
+#import "AIIUploadFilesPacket.h"
 
-@implementation AIIUploadFileRequestQuery
+@implementation AIIUploadFilesRequestQuery
+
+- (id)init
+{
+    if (self = [super init]) {
+        self.fileCollection = [[AIIFileCollection alloc] init];
+    }
+    return self;
+}
 
 #pragma mark - NSObject(NSKeyValueCoding)
 
@@ -40,31 +48,31 @@
 @end
 
 
-@implementation AIIUploadFileResponseQuery
+@implementation AIIUploadFilesResponseQuery
 @end
 
 
-@implementation AIIUploadFileRequest
+@implementation AIIUploadFilesRequest
 
 #pragma mark - super
 
 - (Class)queryClass
 {
     /// 子类实现
-    return [AIIUploadFileRequestQuery class];
+    return [AIIUploadFilesRequestQuery class];
 }
 
 @end
 
 
-@implementation AIIUploadFileResponse
+@implementation AIIUploadFilesResponse
 
 #pragma mark - super
 
 - (Class)queryClass
 {
     /// 子类实现
-    return [AIIUploadFileResponseQuery class];
+    return [AIIUploadFilesResponseQuery class];
 }
 
 @end

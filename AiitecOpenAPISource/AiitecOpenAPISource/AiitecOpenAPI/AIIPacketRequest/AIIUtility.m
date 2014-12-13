@@ -196,16 +196,46 @@ NSString *const DeviceTokenKey = @"deviceId";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:abbreviation];
     [dateFormatter setDateFormat:dateFormat];
-    return[dateFormatter stringFromDate:[NSDate date]];
+    return [dateFormatter stringFromDate:[NSDate date]];
 }
 
-+ (NSDate *)dateFromString:(NSString *)dateString{
++ (NSString *)dateStringToHuman:(NSString *)dateString
+{
+    NSString *string = @"";
+    
+    NSDate *date = [NSDate date];
+    NSTimeInterval timeInterval = [date timeIntervalSinceDate:[AIIUtility dateFromString:dateString]];
+    
+    if (timeInterval < 60) {
+        string = @"刚刚";
+    }
+    else if (timeInterval < 60 * 60) {
+        string = [NSString stringWithFormat:@"%.f分钟前", timeInterval / 60];
+    }
+    else if (timeInterval < 60 * 60 * 24) {
+        string = [NSString stringWithFormat:@"%.f小时前", timeInterval / 3600];
+    }
+    else if (timeInterval < 60 * 60 * 24 * 30) {
+        string = [NSString stringWithFormat:@"%.f天前", timeInterval / 86400];
+    }
+    else if (timeInterval < 60 * 60 * 24 * 365) {
+        string = [NSString stringWithFormat:@"%.f个月前", timeInterval / 2592000];
+    }
+    else {
+        string = [NSString stringWithFormat:@"%.f年前", timeInterval / 31536000];
+    }
+    return string;
+}
+
++ (NSDate *)dateFromString:(NSString *)dateString
+{
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
     return [df dateFromString:dateString];
 }
 
-+ (NSString *)stringFromDate:(NSDate *)date{
++ (NSString *)stringFromDate:(NSDate *)date
+{
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
     return [df stringFromDate:date];
@@ -238,6 +268,22 @@ NSString *const DeviceTokenKey = @"deviceId";
     return dict;
 }
 
++ (NSDictionary *)dictionarySorted:(NSDictionary *)dict
+{
+    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] init];
+    
+    NSArray *keys = [dict allKeys];
+    NSArray *sortedArray = [keys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];
+    
+    for (NSString *key in sortedArray) {
+        [mutableDictionary setValue:[dict objectForKey:key] forKey:key];
+    }
+    
+    return mutableDictionary;
+}
+
 + (NSString *)stringWithDictionary:(NSDictionary *)dict
 {
     NSError *error;
@@ -252,6 +298,46 @@ NSString *const DeviceTokenKey = @"deviceId";
 {
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:error];
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
++ (NSString *)stringWithDictionaryClearFormat:(NSDictionary *)dictionary
+{
+    return [NSString stringWithFormat:@"{%@", [AIIUtility stringWithDictionaryRecursive:dictionary string:@""]];
+}
+
++ (NSString *)stringWithDictionaryRecursive:(NSDictionary *)dict string:(NSString *)string
+{
+    NSEnumerator *enumerator = [dict keyEnumerator];
+    id key;
+    
+    while ((key = [enumerator nextObject])) {
+        if ([[dict objectForKey:key] class] == [[[NSMutableDictionary alloc] init] class]) {
+            string = [string stringByAppendingFormat:@"\"%@\":{", key];
+            string = [AIIUtility stringWithDictionaryRecursive:[dict objectForKey:key] string:string];
+            //            string = [string stringByAppendingString:@"}"];
+        }
+        else if ([[dict objectForKey:key] class] == [[[NSMutableArray alloc] init] class]) {
+            string = [string stringByAppendingFormat:@"\"%@\":[", key];
+            
+            NSArray *array = (NSArray *)[dict objectForKey:key];
+            NSUInteger count = [array count];
+            for (NSUInteger i = 0; i < count; i ++) {
+                string = [string stringByAppendingString:@"{"];
+                string = [AIIUtility stringWithDictionaryRecursive:[array objectAtIndex:i] string:string];
+                string = [string stringByAppendingString:@","];
+            }
+            string = [string substringToIndex:string.length - 1];
+            string = [string stringByAppendingString:@"]"];
+        }
+        else {
+            string = [string stringByAppendingFormat:@"\"%@\":\"%@\",", key, [dict objectForKey:key]];
+        }
+    }
+    
+    if ([@"," isEqualToString:[string substringFromIndex:string.length - 1]]) {
+        string = [string substringToIndex:string.length - 1];
+    }
+    return [string stringByAppendingString:@"}"];
 }
 
 + (NSArray *)arrayWithJSONString:(NSString *)jsonString

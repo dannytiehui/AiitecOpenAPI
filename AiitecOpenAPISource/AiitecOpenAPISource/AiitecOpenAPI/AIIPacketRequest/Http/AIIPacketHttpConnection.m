@@ -238,11 +238,11 @@ static NSMutableArray *_packetHttpConnectionQueue;
         
         [body appendData:[param dataUsingEncoding:NSUTF8StringEncoding]];
         
-        AIIUploadFileRequest *uploadFileRequest = (AIIUploadFileRequest *)request;
+        AIIUploadFilesRequest *uploadFilesRequest = (AIIUploadFilesRequest *)request;
         AIIFile *file;
-        NSUInteger count = uploadFileRequest.query.fileCollection.count;
+        NSUInteger count = uploadFilesRequest.query.fileCollection.count;
         for (NSUInteger i = 0; i < count; i++) {
-            file = [uploadFileRequest.query.fileCollection objectAtIndex:i];
+            file = [uploadFilesRequest.query.fileCollection objectAtIndex:i];
             
             NSMutableString *temp = [NSMutableString string];
             [temp appendFormat:@"--%@\r\n", BOUNDARY];
@@ -277,9 +277,9 @@ static NSMutableArray *_packetHttpConnectionQueue;
 - (void)connectionDidFinish
 {
     _responseString = [[NSString alloc] initWithData:_receiveData encoding:NSUTF8StringEncoding];
-    //#ifdef DEBUG
+#ifdef DEBUG
     NSLog(@"%@(responseString) = %@", self.request.nameSpace, _responseString);
-    //#endif
+#endif
     NSString *className = [self responseClassName];
     self.response = [[NSClassFromString(className) alloc] initWithJSONString:_responseString];
     

@@ -6,12 +6,12 @@
 //  Copyright (c) 2013年 Aiitec. All rights reserved.
 //
 
-#import "AIIUploadFilePacket.h"
+#import "AIIUploadFilesPacket.h"
 
-@interface AIIUploadImageRequest : AIIUploadFileRequest
+@interface AIIUploadImageRequest : AIIUploadFilesRequest
 @end
 
 
 
-@interface AIIUploadImageResponse : AIIUploadFileResponse
+@interface AIIUploadImageResponse : AIIUploadFilesResponse
 @end

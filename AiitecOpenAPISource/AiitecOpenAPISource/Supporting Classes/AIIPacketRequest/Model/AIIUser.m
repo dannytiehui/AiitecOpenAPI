@@ -35,7 +35,7 @@
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if ([key isEqualToString:@"class"]) {
-        self.classes = [value stringValue];
+        self.classes = value;
     }
     else if ([key isEqualToString:self.address.key]) {
         [self.address setValuesForKeysWithDictionary:value];

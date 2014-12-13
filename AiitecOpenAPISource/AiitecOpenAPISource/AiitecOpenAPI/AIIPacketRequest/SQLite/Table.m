@@ -81,6 +81,12 @@
 
 #pragma mark - public
 
+- (AIIEntity *)FMResultSetToObject:(FMResultSet *)rs
+{
+    // 子类实现
+    return nil;
+}
+
 - (void)FMResultSetToObject:(FMResultSet *)rs entity:(AIIEntity *)item
 {
 //    Entity *item = [[Entity alloc] init];
@@ -200,6 +206,18 @@
 {
     // 子类实现
     return nil;
+}
+
+- (AIIModelCollection *)queryWithTable:(AIITable *)tableCondition
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ ", [self tableName]];
+    
+    AIIModelCollection *collection = [[AIIModelCollection alloc] init];
+    FMResultSet *rs = [SQLiteConnection query:sql];
+    while ([rs next]) {
+        [collection addObject:[self FMResultSetToObject:rs]];
+    }
+    return collection;
 }
 
 - (AIIEntity *)query:(NSUInteger)identifier

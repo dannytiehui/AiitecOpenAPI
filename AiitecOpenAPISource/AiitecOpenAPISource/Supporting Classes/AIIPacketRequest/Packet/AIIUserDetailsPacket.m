@@ -9,6 +9,21 @@
 #import "AIIUserDetailsPacket.h"
 
 @implementation AIIUserDetailsRequestQuery
+
+- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys
+{
+    NSDictionary *dict = [super dictionaryWithValuesForKeys:keys];
+    
+    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithDictionary:dict];
+    NSString *k = @"name";
+    if (![dict objectForKey:k] || [[dict objectForKey:k] isKindOfClass:[NSNull class]]) {
+        [mutableDictionary removeObjectForKey:k];
+    }
+    
+    dict = mutableDictionary;
+    return dict;
+}
+
 @end
 
 

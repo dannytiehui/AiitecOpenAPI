@@ -73,7 +73,7 @@
 		886C1BBD19D5212A00FC76FC /* AIIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8519D5212A00FC76FC /* AIIRequest.m */; };
 		886C1BBE19D5212A00FC76FC /* AIIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8719D5212A00FC76FC /* AIIResponse.m */; };
 		886C1BBF19D5212A00FC76FC /* AIISessionPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8919D5212A00FC76FC /* AIISessionPacket.m */; };
-		886C1BC019D5212A00FC76FC /* AIIUploadFilePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8B19D5212A00FC76FC /* AIIUploadFilePacket.m */; };
+		886C1BC019D5212A00FC76FC /* AIIUploadFilesPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8B19D5212A00FC76FC /* AIIUploadFilesPacket.m */; };
 		886C1BC119D5212A00FC76FC /* AIIEntityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8E19D5212A00FC76FC /* AIIEntityQuery.m */; };
 		886C1BC219D5212A00FC76FC /* AIIModelCollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A9019D5212A00FC76FC /* AIIModelCollectionQuery.m */; };
 		886C1BC319D5212A00FC76FC /* AIIQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A9219D5212A00FC76FC /* AIIQuery.m */; };
@@ -114,6 +114,7 @@
 		887D0F831A33010200B1CAEF /* AII_Entity_m in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F821A33010200B1CAEF /* AII_Entity_m */; };
 		887D0F851A33011E00B1CAEF /* AII_Entity_Collection_h in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F841A33011E00B1CAEF /* AII_Entity_Collection_h */; };
 		887D0F871A33012C00B1CAEF /* AII_Entity_Collection_m in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F861A33012C00B1CAEF /* AII_Entity_Collection_m */; };
+		8885CDA41A3BF77400398204 /* ItemTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8885CDA31A3BF77400398204 /* ItemTable.m */; };
 		889BF4F91A10AB43004F86F9 /* HttpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BF4F81A10AB43004F86F9 /* HttpViewController.m */; };
 		88C19BDB1A36DF6100DB0AC8 /* AIIAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AD41A36DF6000DB0AC8 /* AIIAd.m */; };
 		88C19BDC1A36DF6100DB0AC8 /* AIIAdCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AD61A36DF6000DB0AC8 /* AIIAdCollection.m */; };
@@ -246,6 +247,13 @@
 		88C19C5B1A36DF6100DB0AC8 /* RegionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19BD81A36DF6100DB0AC8 /* RegionTable.m */; };
 		88C19C5C1A36DF6100DB0AC8 /* UserTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19BDA1A36DF6100DB0AC8 /* UserTable.m */; };
 		88C19C5F1A3721D400DB0AC8 /* AIITaskLabelListPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19C5E1A3721D400DB0AC8 /* AIITaskLabelListPacket.m */; };
+		88CCAB1D1A3A9C08009F14B8 /* SchoolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB1C1A3A9C08009F14B8 /* SchoolTable.m */; };
+		88CCAB231A3A9C33009F14B8 /* SchoolAliasesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB221A3A9C33009F14B8 /* SchoolAliasesTable.m */; };
+		88CCAB261A3A9C43009F14B8 /* DepartmentsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB251A3A9C43009F14B8 /* DepartmentsTable.m */; };
+		88CCAB291A3A9C54009F14B8 /* ProfessionalTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB281A3A9C54009F14B8 /* ProfessionalTable.m */; };
+		88CCAB2C1A3A9C6A009F14B8 /* IndustryTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB2B1A3A9C6A009F14B8 /* IndustryTable.m */; };
+		88CCAB2F1A3A9C94009F14B8 /* LabelUserGroupTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB2E1A3A9C94009F14B8 /* LabelUserGroupTable.m */; };
+		88CCAB321A3A9CA8009F14B8 /* LabelUserTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB311A3A9CA8009F14B8 /* LabelUserTable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,8 +369,8 @@
 		886C1A8719D5212A00FC76FC /* AIIResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIResponse.m; sourceTree = "<group>"; };
 		886C1A8819D5212A00FC76FC /* AIISessionPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIISessionPacket.h; sourceTree = "<group>"; };
 		886C1A8919D5212A00FC76FC /* AIISessionPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIISessionPacket.m; sourceTree = "<group>"; };
-		886C1A8A19D5212A00FC76FC /* AIIUploadFilePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIUploadFilePacket.h; sourceTree = "<group>"; };
-		886C1A8B19D5212A00FC76FC /* AIIUploadFilePacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUploadFilePacket.m; sourceTree = "<group>"; };
+		886C1A8A19D5212A00FC76FC /* AIIUploadFilesPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIUploadFilesPacket.h; sourceTree = "<group>"; };
+		886C1A8B19D5212A00FC76FC /* AIIUploadFilesPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUploadFilesPacket.m; sourceTree = "<group>"; };
 		886C1A8D19D5212A00FC76FC /* AIIEntityQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIEntityQuery.h; sourceTree = "<group>"; };
 		886C1A8E19D5212A00FC76FC /* AIIEntityQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIEntityQuery.m; sourceTree = "<group>"; };
 		886C1A8F19D5212A00FC76FC /* AIIModelCollectionQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIModelCollectionQuery.h; sourceTree = "<group>"; };
@@ -424,6 +432,8 @@
 		887D0F821A33010200B1CAEF /* AII_Entity_m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_m; sourceTree = "<group>"; };
 		887D0F841A33011E00B1CAEF /* AII_Entity_Collection_h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_Collection_h; sourceTree = "<group>"; };
 		887D0F861A33012C00B1CAEF /* AII_Entity_Collection_m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_Collection_m; sourceTree = "<group>"; };
+		8885CDA21A3BF77400398204 /* ItemTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTable.h; sourceTree = "<group>"; };
+		8885CDA31A3BF77400398204 /* ItemTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTable.m; sourceTree = "<group>"; };
 		889BF4F71A10AB43004F86F9 /* HttpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpViewController.h; sourceTree = "<group>"; };
 		889BF4F81A10AB43004F86F9 /* HttpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpViewController.m; sourceTree = "<group>"; };
 		88C19AD31A36DF6000DB0AC8 /* AIIAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIAd.h; sourceTree = "<group>"; };
@@ -690,6 +700,20 @@
 		88C19C5E1A3721D400DB0AC8 /* AIITaskLabelListPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIITaskLabelListPacket.m; sourceTree = "<group>"; };
 		88C2F7151A1DA3F00039A7C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		88C2F7171A1DA3F50039A7C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		88CCAB1B1A3A9C08009F14B8 /* SchoolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolTable.h; sourceTree = "<group>"; };
+		88CCAB1C1A3A9C08009F14B8 /* SchoolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolTable.m; sourceTree = "<group>"; };
+		88CCAB211A3A9C33009F14B8 /* SchoolAliasesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolAliasesTable.h; sourceTree = "<group>"; };
+		88CCAB221A3A9C33009F14B8 /* SchoolAliasesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolAliasesTable.m; sourceTree = "<group>"; };
+		88CCAB241A3A9C43009F14B8 /* DepartmentsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentsTable.h; sourceTree = "<group>"; };
+		88CCAB251A3A9C43009F14B8 /* DepartmentsTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentsTable.m; sourceTree = "<group>"; };
+		88CCAB271A3A9C54009F14B8 /* ProfessionalTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalTable.h; sourceTree = "<group>"; };
+		88CCAB281A3A9C54009F14B8 /* ProfessionalTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalTable.m; sourceTree = "<group>"; };
+		88CCAB2A1A3A9C6A009F14B8 /* IndustryTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndustryTable.h; sourceTree = "<group>"; };
+		88CCAB2B1A3A9C6A009F14B8 /* IndustryTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndustryTable.m; sourceTree = "<group>"; };
+		88CCAB2D1A3A9C94009F14B8 /* LabelUserGroupTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelUserGroupTable.h; sourceTree = "<group>"; };
+		88CCAB2E1A3A9C94009F14B8 /* LabelUserGroupTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelUserGroupTable.m; sourceTree = "<group>"; };
+		88CCAB301A3A9CA8009F14B8 /* LabelUserTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelUserTable.h; sourceTree = "<group>"; };
+		88CCAB311A3A9CA8009F14B8 /* LabelUserTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelUserTable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -981,8 +1005,8 @@
 				886C1A8719D5212A00FC76FC /* AIIResponse.m */,
 				886C1A8819D5212A00FC76FC /* AIISessionPacket.h */,
 				886C1A8919D5212A00FC76FC /* AIISessionPacket.m */,
-				886C1A8A19D5212A00FC76FC /* AIIUploadFilePacket.h */,
-				886C1A8B19D5212A00FC76FC /* AIIUploadFilePacket.m */,
+				886C1A8A19D5212A00FC76FC /* AIIUploadFilesPacket.h */,
+				886C1A8B19D5212A00FC76FC /* AIIUploadFilesPacket.m */,
 				886C1A8C19D5212A00FC76FC /* Query */,
 			);
 			path = Packet;
@@ -1441,6 +1465,22 @@
 				88C19BD81A36DF6100DB0AC8 /* RegionTable.m */,
 				88C19BD91A36DF6100DB0AC8 /* UserTable.h */,
 				88C19BDA1A36DF6100DB0AC8 /* UserTable.m */,
+				8885CDA21A3BF77400398204 /* ItemTable.h */,
+				8885CDA31A3BF77400398204 /* ItemTable.m */,
+				88CCAB1B1A3A9C08009F14B8 /* SchoolTable.h */,
+				88CCAB1C1A3A9C08009F14B8 /* SchoolTable.m */,
+				88CCAB211A3A9C33009F14B8 /* SchoolAliasesTable.h */,
+				88CCAB221A3A9C33009F14B8 /* SchoolAliasesTable.m */,
+				88CCAB241A3A9C43009F14B8 /* DepartmentsTable.h */,
+				88CCAB251A3A9C43009F14B8 /* DepartmentsTable.m */,
+				88CCAB271A3A9C54009F14B8 /* ProfessionalTable.h */,
+				88CCAB281A3A9C54009F14B8 /* ProfessionalTable.m */,
+				88CCAB2A1A3A9C6A009F14B8 /* IndustryTable.h */,
+				88CCAB2B1A3A9C6A009F14B8 /* IndustryTable.m */,
+				88CCAB2D1A3A9C94009F14B8 /* LabelUserGroupTable.h */,
+				88CCAB2E1A3A9C94009F14B8 /* LabelUserGroupTable.m */,
+				88CCAB301A3A9CA8009F14B8 /* LabelUserTable.h */,
+				88CCAB311A3A9CA8009F14B8 /* LabelUserTable.m */,
 			);
 			path = SQLite;
 			sourceTree = "<group>";
@@ -1611,6 +1651,7 @@
 				88C19C341A36DF6100DB0AC8 /* AIIOrderComplaintSubmitPacket.m in Sources */,
 				886C1BBF19D5212A00FC76FC /* AIISessionPacket.m in Sources */,
 				88C19C4B1A36DF6100DB0AC8 /* AIITaskReportListPacket.m in Sources */,
+				88CCAB231A3A9C33009F14B8 /* SchoolAliasesTable.m in Sources */,
 				88C19C301A36DF6100DB0AC8 /* AIIFetchExecutingOrdersPacket.m in Sources */,
 				881890741A120D720081088D /* HttpRequest.m in Sources */,
 				88C19C2E1A36DF6100DB0AC8 /* AIIEventJoinPacket.m in Sources */,
@@ -1651,7 +1692,7 @@
 				88C19BF81A36DF6100DB0AC8 /* AIIEvent.m in Sources */,
 				886C1C2D19D5212A00FC76FC /* AAUIImageClipView.m in Sources */,
 				88C19C031A36DF6100DB0AC8 /* AIIReport.m in Sources */,
-				886C1BC019D5212A00FC76FC /* AIIUploadFilePacket.m in Sources */,
+				886C1BC019D5212A00FC76FC /* AIIUploadFilesPacket.m in Sources */,
 				88C19BE11A36DF6100DB0AC8 /* AIIArticle.m in Sources */,
 				88C19C441A36DF6100DB0AC8 /* AIITaskEvaluateCollectionSubmitPacket.m in Sources */,
 				88C19C2B1A36DF6100DB0AC8 /* ExceptionResponse.m in Sources */,
@@ -1665,15 +1706,18 @@
 				88C19C5A1A36DF6100DB0AC8 /* FileTable.m in Sources */,
 				88C19C0B1A36DF6100DB0AC8 /* AIIAdListPacket.m in Sources */,
 				88C19BE71A36DF6100DB0AC8 /* AIIFavorites.m in Sources */,
+				88CCAB1D1A3A9C08009F14B8 /* SchoolTable.m in Sources */,
 				88C19C481A36DF6100DB0AC8 /* AIITaskListPacket.m in Sources */,
 				88C19C2F1A36DF6100DB0AC8 /* AIIEventListPacket.m in Sources */,
 				88C19BDC1A36DF6100DB0AC8 /* AIIAdCollection.m in Sources */,
 				886C1BB419D5212A00FC76FC /* AIIDataTable.m in Sources */,
 				88C19BDB1A36DF6100DB0AC8 /* AIIAd.m in Sources */,
 				88C19C281A36DF6100DB0AC8 /* AIIUserUpdatePacket.m in Sources */,
+				88CCAB291A3A9C54009F14B8 /* ProfessionalTable.m in Sources */,
 				886C1BC919D5212A00FC76FC /* ReachabilityUtility.m in Sources */,
 				88C19C311A36DF6100DB0AC8 /* AIIFetchPositionPacket.m in Sources */,
 				88C19C1D1A36DF6100DB0AC8 /* AIIUserBadgeNumberPacket.m in Sources */,
+				8885CDA41A3BF77400398204 /* ItemTable.m in Sources */,
 				88C19C531A36DF6100DB0AC8 /* AIIWeiboOperateListPacket.m in Sources */,
 				88C19BDE1A36DF6100DB0AC8 /* AIIAddressbook.m in Sources */,
 				88C19BFA1A36DF6100DB0AC8 /* AIIJoin.m in Sources */,
@@ -1698,6 +1742,7 @@
 				88C19C061A36DF6100DB0AC8 /* AIIWeibo.m in Sources */,
 				88C19C361A36DF6100DB0AC8 /* AIIPayPacket.m in Sources */,
 				88C19BF01A36DF6100DB0AC8 /* AIIRegionCollection.m in Sources */,
+				88CCAB321A3A9CA8009F14B8 /* LabelUserTable.m in Sources */,
 				886C1BC219D5212A00FC76FC /* AIIModelCollectionQuery.m in Sources */,
 				88C19C291A36DF6100DB0AC8 /* AIIUserUpdatePasswordPacket.m in Sources */,
 				88C19C4D1A36DF6100DB0AC8 /* AIITaskReportSubmitPacket.m in Sources */,
@@ -1707,6 +1752,7 @@
 				88C19BEE1A36DF6100DB0AC8 /* AIIMessageCollection.m in Sources */,
 				886C1BAD19D5212A00FC76FC /* AIIJSONCollection.m in Sources */,
 				88C19C3A1A36DF6100DB0AC8 /* AIIPositionUpdatePacket.m in Sources */,
+				88CCAB2C1A3A9C6A009F14B8 /* IndustryTable.m in Sources */,
 				88C19C1F1A36DF6100DB0AC8 /* AIIUserCheckNamePacket.m in Sources */,
 				88C19BF21A36DF6100DB0AC8 /* AIIUser.m in Sources */,
 				886C19CA19D515E300FC76FC /* main.m in Sources */,
@@ -1726,6 +1772,7 @@
 				88C19BDD1A36DF6100DB0AC8 /* AIIAddress.m in Sources */,
 				88C19C5C1A36DF6100DB0AC8 /* UserTable.m in Sources */,
 				88C19BFC1A36DF6100DB0AC8 /* AIIOperate.m in Sources */,
+				88CCAB2F1A3A9C94009F14B8 /* LabelUserGroupTable.m in Sources */,
 				889BF4F91A10AB43004F86F9 /* HttpViewController.m in Sources */,
 				884E125819ED020F005CBDAD /* NSArray+AiitecOpenAPI.m in Sources */,
 				88C19BE81A36DF6100DB0AC8 /* AIIFavoritesCollection.m in Sources */,
@@ -1769,6 +1816,7 @@
 				886C1BB619D5212A00FC76FC /* AIITable.m in Sources */,
 				886C1BBC19D5212A00FC76FC /* AIIListPacket.m in Sources */,
 				88C19BDF1A36DF6100DB0AC8 /* AIIAddressbookCollection.m in Sources */,
+				88CCAB261A3A9C43009F14B8 /* DepartmentsTable.m in Sources */,
 				88C19C2D1A36DF6100DB0AC8 /* ImageListPacket.m in Sources */,
 				88C19C081A36DF6100DB0AC8 /* AddressbookListPacket.m in Sources */,
 				88C19C231A36DF6100DB0AC8 /* AIIUserLoginPacket.m in Sources */,

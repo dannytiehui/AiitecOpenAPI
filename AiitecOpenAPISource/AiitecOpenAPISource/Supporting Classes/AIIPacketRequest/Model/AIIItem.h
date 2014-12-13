@@ -17,5 +17,6 @@
 @property (nonatomic, copy) NSString *imagePath;
 @property (nonatomic, copy) NSString *pinyin;
 @property (nonatomic, copy) NSString *py;
+@property (nonatomic, assign) NSUInteger parentId;
 
 @end

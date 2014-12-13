@@ -79,6 +79,7 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
  *  @return NSDate对象的实例.
  */
 + (NSString *)dateStringWithAbbreviation:(NSString *)abbreviation dateFormat:(NSString *)dateFormat;
++ (NSString *)dateStringToHuman:(NSString *)dateString;
 
 /**
  *  @brief  字符串转日期.
@@ -103,6 +104,7 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
  */
 + (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString;
 + (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString error:(NSError **)error;
++ (NSDictionary *)dictionarySorted:(NSDictionary *)dict;
 
 /**
  *  @brief  NSDictionary 转 JSON格式的NSString.
@@ -112,6 +114,8 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
  */
 + (NSString *)stringWithDictionary:(NSDictionary *)dictionary;
 + (NSString *)stringWithDictionary:(NSDictionary *)dictionary error:(NSError **)error;
++ (NSString *)stringWithDictionaryClearFormat:(NSDictionary *)dictionary;
++ (NSString *)stringWithDictionaryRecursive:(NSDictionary *)dict string:(NSString *)string;
 
 /**
  *  @brief  JSON格式的数组 转 NSArray.

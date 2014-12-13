@@ -12,6 +12,8 @@
 
 @property (nonatomic, copy) NSString *filename;
 @property (nonatomic, copy) NSString *path;
+@property (nonatomic, assign) NSUInteger width;
+@property (nonatomic, assign) NSUInteger height;
 @property (nonatomic, assign) NSUInteger favorites;// 收藏次数
 @property (nonatomic, assign) NSUInteger size;// 单位字节(B)
 @property (nonatomic, copy) NSString *mime;

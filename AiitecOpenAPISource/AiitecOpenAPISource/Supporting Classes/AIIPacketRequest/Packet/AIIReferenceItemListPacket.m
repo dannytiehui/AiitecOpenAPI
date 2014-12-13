@@ -8,6 +8,10 @@
 
 #import "AIIReferenceItemListPacket.h"
 
+@implementation AIIReferenceItemListWhere
+@end
+
+
 @implementation AIIReferenceItemListResponseQuery
 
 - (id)init

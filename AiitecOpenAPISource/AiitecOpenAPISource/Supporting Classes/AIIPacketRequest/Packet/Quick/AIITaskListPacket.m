@@ -22,6 +22,10 @@
 
 
 
+@implementation AIITaskListRequestQuery
+@end
+
+
 @implementation AIITaskListResponseQuery
 
 - (id)init

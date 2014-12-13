@@ -9,6 +9,14 @@
 #import "AIIListPacket.h"
 #import "AIIItemCollection.h"
 
+@interface AIIReferenceItemListWhere: AIIWhere
+
+@property (nonatomic, assign) NSUInteger regionId;
+@property (nonatomic, assign) NSUInteger schoolId;
+
+@end
+
+
 @interface AIIReferenceItemListResponseQuery : AIIListResponseQuery
 @end
 

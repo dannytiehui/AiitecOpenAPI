@@ -11,11 +11,19 @@
 #ifdef DEBUG
 
 #define DOMAIN_PATH             @"http://192.168.1.12/"
-#define API_PATH                @"maowang/public/api/index"
-#define FILE_PATH               @"http://192.168.1.12/maowang/public/uploadfiles/"
-#define TASKDETAIL_PATH         @"http://192.168.1.12/maowang/public/"
+#define API_PATH                @"Quick2.0/public/api/index"
+#define FILE_PATH               @"http://192.168.1.12/Quick2.0/public/uploadfiles/"
+#define TASKDETAIL_PATH         @"http://192.168.1.12/Quick2.0/public/"
 #define REACHABILITY_HOSTNAME   @"192.168.1.12" //!< 用于 Reachability 网络检测
-#define SERVER_CHECKVERSION_PATH    @"http://192.168.1.12/maowang/public/version.php"
+#define SERVER_CHECKVERSION_PATH    @"http://192.168.1.12/Quick2.0/public/version.php"
+
+
+//#define DOMAIN_PATH             @"http://192.168.1.29/"
+//#define API_PATH                @"Quick2.0/public/api/index"
+//#define FILE_PATH               @"http://192.168.1.29/Quick2.0/public/uploadfiles/"
+//#define TASKDETAIL_PATH         @"http://192.168.1.29/Quick2.0/public/"
+//#define REACHABILITY_HOSTNAME   @"192.168.1.29" //!< 用于 Reachability 网络检测
+//#define SERVER_CHECKVERSION_PATH    @"http://192.168.1.29/Quick2.0/public/version.php"
 
 #else
 

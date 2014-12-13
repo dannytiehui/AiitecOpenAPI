@@ -8,6 +8,7 @@
 
 #import "SQLiteConnection.h"
 #import "AIIEntity.h"
+#import "AIITable.h"
 #import "AIIModelCollection.h"
 
 @interface Table : NSObject
@@ -25,7 +26,7 @@
 
 #pragma mark - public
 
-//- (Entity *)FMResultSetToObject:(FMResultSet *)rs;
+- (AIIEntity *)FMResultSetToObject:(FMResultSet *)rs;
 - (void)FMResultSetToObject:(FMResultSet *)rs entity:(AIIEntity *)item;
 
 - (NSString *)tableName;
@@ -55,6 +56,7 @@
  */
 - (AIIModelCollection *)query:(int)page limit:(int)numberOfPage orderBy:(NSString *)orderBy type:(NSString *)type key:(NSString *)searchKey;
 - (AIIModelCollection *)query;
+- (AIIModelCollection *)queryWithTable:(AIITable *)tableCondition;
 - (AIIEntity *)query:(NSUInteger)identifier;
 - (AIIEntity *)query:(NSUInteger)identifier timestampUpdate:(NSString *)timestamp;
 - (AIIEntity *)latest;

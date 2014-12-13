@@ -21,12 +21,23 @@
 
 
 
+@interface AIITaskListRequestQuery : AIIListRequestQuery
+
+@property (nonatomic, assign) AIITaskType type;
+@property (nonatomic, assign) NSUInteger identifier;
+
+@end
+
+
 @interface AIITaskListResponseQuery : AIIListResponseQuery
 @end
 
 
 
 @interface AIITaskListRequest : AIIListRequest
+
+@property (nonatomic, strong) AIITaskListRequestQuery *query;
+
 @end
 
 

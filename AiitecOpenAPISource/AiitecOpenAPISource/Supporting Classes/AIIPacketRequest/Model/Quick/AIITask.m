@@ -33,6 +33,9 @@
 //        self.user = [[AIIUser alloc] init];
         [self.user setValuesForKeysWithDictionary:value];
     }
+    else if ([key isEqualToString:self.address.key]) {
+        [self.address setValuesForKeysWithDictionary:value];
+    }
     else if ([key isEqualToString:self.order.key]) {
 //        self.order = [[AIIOrder alloc] init];
         [self.order setValuesForKeysWithDictionary:value];
@@ -63,6 +66,11 @@
     NSString *k = self.user.key;
     if ([keys containsObject:k]) {
         [mutableDictionary setObject:[self.user dictionaryWithValuesForKeys:self.user.keys] forKey:self.user.key];
+    }
+    
+    k = self.address.key;
+    if ([keys containsObject:k]) {
+        [mutableDictionary setObject:[self.address dictionaryWithValuesForKeys:self.address.keys] forKey:self.address.key];
     }
     
     k = self.order.key;

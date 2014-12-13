@@ -11,10 +11,9 @@
 
 @interface AIIUserBindMobileRequestQuery : AIIQuery
 
-@property (nonatomic, assign) NSUInteger mobile;
+@property (nonatomic, copy) NSString *mobile;
 @property (nonatomic, assign) NSUInteger smscodeId;
-/** 身份证号码. */
-@property (nonatomic, copy) NSString *idNumber;
+@property (nonatomic, copy) NSString *password;
 
 @end
 

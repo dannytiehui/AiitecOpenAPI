@@ -19,6 +19,15 @@
 #import "AddressbookTable.h"
 #import "AddressbookListPacket.h"
 
+#import "AIIReferenceItemListPacket.h"
+#import "SchoolTable.h"
+#import "SchoolAliasesTable.h"
+#import "DepartmentsTable.h"
+#import "ProfessionalTable.h"
+#import "IndustryTable.h"
+#import "LabelUserGroupTable.h"
+#import "LabelUserTable.h"
+
 
 //#import "LoginViewController.h"
 
@@ -469,7 +478,10 @@ static NSMutableArray *_packetConnectionArray;
     className = [className stringByReplacingOccurrencesOfString:suffix withString:@"Table"];
     Table *table = [[NSClassFromString(className) alloc] init];
     
-    if ([request.nameSpace isEqualToString:@"RegionList"]) {
+    if ([request.nameSpace isEqualToString:@"ReferenceItemList"]) {
+        response = [AIIPacketConnection queryCacheSchoolList:(AIIReferenceItemListRequest *)request table:(SchoolTable *)table];
+    }
+    else if ([request.nameSpace isEqualToString:@"RegionList"]) {
         response = [AIIPacketConnection queryCacheRegionList:(AIIRegionListRequest *)request table:(RegionTable *)table];
     }
     else if ([request.nameSpace isEqualToString:@"AddressbookList"]) {
@@ -536,6 +548,62 @@ static NSMutableArray *_packetConnectionArray;
 {
     AddressbookListResponse *response = [[AddressbookListResponse alloc] init];
 //    response.modelCollection = (AIIModelCollection *)[table query:request.page limit:request.numberOfPage orderBy:request.orderBy type:@"DESC" key:request.searchKey groupId:request.addressbookGroupId];
+    return response;
+}
+
++ (AIIResponse *)queryCacheSchoolList:(AIIReferenceItemListRequest *)request table:(SchoolTable *)table
+{
+    AIIReferenceItemListResponse *response = [[AIIReferenceItemListResponse alloc] init];
+    
+    switch (request.query.action) {
+        case AIIQueryActionFirst:
+        {
+            SchoolTable *t = [[SchoolTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            
+            break;
+        case AIIQueryActionSecond:
+        {
+            SchoolAliasesTable *t = [[SchoolAliasesTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionThird:
+        {
+            DepartmentsTable *t = [[DepartmentsTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionFourth:
+        {
+            ProfessionalTable *t = [[ProfessionalTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionFifth:
+        {
+            IndustryTable *t = [[IndustryTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionSixth:
+        {
+            LabelUserGroupTable *t = [[LabelUserGroupTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionSeventh:
+        {
+            LabelUserTable *t = [[LabelUserTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    response.query.total = response.query.modelCollection.count;
     return response;
 }
 

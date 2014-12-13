@@ -76,6 +76,8 @@
     }
     [mutableDictionary removeObjectForKey:k];
     
+    [mutableDictionary removeObjectForKey:@"cacheSupporting"];
+    
     /** 默认移除md5属性. */
     [mutableDictionary removeObjectForKey:@"md5"];
     
@@ -88,8 +90,31 @@
 - (NSString *)jsonStringWithObject
 {
     if (IqPacket_Encryption) {
-        NSString *jsonString = [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
-//        NSLog(@"jsonString:%@", jsonString);
+        NSString *k = @"m";
+        
+//        NSString *jsonString = [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
+        
+        NSDictionary *dictionary = [self dictionaryWithValuesForKeys:self.keys];
+        NSMutableDictionary *md = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+        [md setObject:@"" forKey:k];
+        [md removeObjectForKey:k];
+        
+        NSString *jsonString = [AIIUtility stringWithDictionary:md];
+//        jsonString = [AIIUtility stringWithDictionaryClearFormat:md];
+//        NSLog(@"jsonString 1:%@", jsonString);
+
+        /** jsonString 去除格式化. */
+//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"{\n  " withString:@"{"];
+//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"}\n" withString:@"}"];
+//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n}" withString:@"}"];
+//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@",\n" withString:@","];
+//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@",  " withString:@","];
+//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\"\n  " withString:@"\""];
+//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n  " withString:@""];
+//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@" : " withString:@":"];
+//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"  \"" withString:@"\""];
+
+//        NSLog(@"jsonString 2:%@", jsonString);
         _md5 = [AIIUtility md5:jsonString];
 //        NSLog(@"1._md5:%@", _md5);
         _md5 = [_md5 stringByAppendingString:[AIIUtility iqPacketEncryption]];
@@ -100,6 +125,8 @@
         NSDictionary *dict = [AIIUtility dictionaryWithJSONString:jsonString];
         NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:dict];
         [mutableDictionary setValue:_md5 forKey:@"m"];
+//        NSLog(@"4.%@", [AIIUtility stringWithDictionary:mutableDictionary]);
+        
         return [AIIUtility stringWithDictionary:mutableDictionary];
     }
     else {
