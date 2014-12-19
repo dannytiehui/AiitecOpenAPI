@@ -65,6 +65,6 @@
 - (int)replaceIntoCollection:(AIIModelCollection *)collection;
 
 // @return ids: 1,2,3
-- (NSString *)diff:(AIIModelCollection *)collection;
+- (NSArray *)diff:(AIIModelCollection *)collection;
 
 @end

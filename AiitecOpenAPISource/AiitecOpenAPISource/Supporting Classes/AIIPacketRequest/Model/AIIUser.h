@@ -32,10 +32,13 @@ typedef NS_ENUM(NSUInteger, AIIUserStatus) {
 
 /** 用户来源. */
 typedef NS_ENUM(NSUInteger, AIIUserPartner) {
-    AIIUserPartnerDefault = 1,     //!< 自己
-    AIIUserPartnerTencent,         //!< 腾讯
-    AIIUserPartnerSina,            //!< 新浪
-    AIIUserPartnerAlipay           //!< 支付宝
+    AIIUserPartnerDefault,          //!< 自己
+    AIIUserPartnerTencent,          //!< 腾讯QQ
+    AIIUserPartnerQzone,            //!< QQ空间
+    AIIUserPartnerWechat,           //!< 微信
+    AIIUserPartnerSina,             //!< 新浪
+    AIIUserPartnerRenren,           //!< 人人网
+    AIIUserPartnerAlipay            //!< 支付宝
 };
 
 /** 认证状态. */
@@ -118,12 +121,16 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, copy) NSArray *array;
 
 /// option
+/** 背景图片id. */
+@property (nonatomic, assign) NSUInteger backgroundImage;
 /** 学生证图片id. */
 @property (nonatomic, assign) NSUInteger studentIdImage;
 /** 学生证图片. */
 @property (nonatomic, copy) NSString *studentIdImagePath;
 /** 认证状态. */
 @property (nonatomic, assign) AIIUserAuthStatus authStatus;
+/** 财务信息审核状态. */
+@property (nonatomic, assign) AIIUserAuthStatus auditStatus;
 /** 快应人认证状态. */
 //@property (nonatomic, assign) AIIUserAuthStatus authKuaiyingStatus;
 
@@ -146,7 +153,7 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 /** 人气度. */
 @property (nonatomic, assign) NSUInteger statPopularity;
 /** 活跃度. */
-@property (nonatomic, assign) NSUInteger statVitality;
+@property (nonatomic, assign) NSUInteger statActivity;
 
 /** 用户等级. */
 @property (nonatomic, copy) NSString *level;

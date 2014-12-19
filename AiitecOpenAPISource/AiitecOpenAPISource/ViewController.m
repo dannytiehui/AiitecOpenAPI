@@ -51,6 +51,7 @@
 //    [self testUserBindMobileRequest];
 //    [self testUserUploadImageRequest];
 //    [self testUserUpdatePasswordRequest];
+//    [self testUserOperateListRequest];
 //    [self testUserResetPasswordRequest];
     
 //    [self testSynchronousUserDetailsRequest];//!< 测试同步请求.
@@ -67,9 +68,9 @@
 //    [self testEventListRequest];
 //    [self testEventJoinRequest];
 
-    [self testTaskListRequest];//!< List
+//    [self testTaskListRequest];//!< List
 //    [self testTaskDetailsRequest];//!< Details
-//    [self testTaskSubmitRequest];
+    [self testTaskSubmitRequest];
 //    [self testTaskEvaluateCollectionSubmitRequest];
 //    [self testTaskStatusUpdateRequest];
 //    [self testTaskReportSubmitRequest];
@@ -231,8 +232,9 @@
 - (void)testRegionListRequest
 {
     AIIRegionListRequest *request = [[AIIRegionListRequest alloc] init];
-    request.cacheSupporting = AIICacheSupportingNone;
     request.query.action = AIIQueryActionSecond;
+    request.query.parentId = 0;
+    request.cacheSupporting = AIICacheSupportingFull;
     [AIIPacketConnection sendAsynchronous:request delegate:self context:nil];
 }
 
@@ -315,7 +317,7 @@
 - (void)testReferenceItemListRequest
 {
     AIIReferenceItemListRequest *request = [[AIIReferenceItemListRequest alloc] init];
-    request.query.action = AIIQueryActionSeventh;
+    request.query.action = AIIQueryActionFirst;
     
     AIIReferenceItemListWhere *where = [[AIIReferenceItemListWhere alloc] init];
 //    where.regionId = 110100;
@@ -328,7 +330,7 @@
     AIITable *table = [[AIITable alloc] init];
     table.where = where;
     
-    request.query.table = table;
+//    request.query.table = table;
     
     request.cacheSupporting = AIICacheSupportingFull;
     
@@ -520,6 +522,13 @@
 //    [AIIPacketConnection sendAsyn:request delegate:self context:self];
 //}
 
+- (void)testUserOperateListRequest
+{
+    AIIUserOperateListRequest *request = [[AIIUserOperateListRequest alloc] init];
+    request.query.action = AIIQueryActionSecond;
+    [AIIPacketConnection sendAsyn:request delegate:self context:self];
+}
+
 - (void)testRecordListRequest
 {
     AIIRecordListRequest *request = [[AIIRecordListRequest alloc] init];
@@ -604,9 +613,9 @@
     where.labelId = 1;
     where.latitude = 23.132921;
     where.longitude = 113.252281;
-//    table.where = where;
+    table.where = where;
     
-//    request.query.table = table;
+    request.query.table = table;
     
     [AIIPacketConnection sendAsynchronous:request delegate:self context:self];
 }
@@ -626,19 +635,20 @@
     AIITaskSubmitRequest *request = [[AIITaskSubmitRequest alloc] init];
     
     AIITask *task = [[AIITask alloc] init];
-    //    task.identifier = 1351013;
-    task.reward = 1.25;
+//    task.identifier = 1351013;
+    task.reward = 0.00;
     task.rewardPlus = 0.0;
+    task.limit = 9;
+    task.type = AIITaskTypeSecond;
     
     AIIImage *image = [[AIIImage alloc] init];
     image.identifier = 1;
-    image.properties = @[@"identifier"];//!<
     AIIImage *image2 = [[AIIImage alloc] init];
     image2.identifier = 2;
-    image2.properties = @[@"identifier"];//!<
     AIIImageCollection *imageCollection = [[AIIImageCollection alloc] init];
     [imageCollection addObject:image];
     [imageCollection addObject:image2];
+    imageCollection.entityProperties = @[@"identifier"];
     
     task.imageCollection = imageCollection;
     task.deadline = @"2014-09-20 12:59:59";
@@ -649,7 +659,7 @@
     task.regionId = 440430;
     task.street = @"周门北路38号";
     
-    task.properties = @[@"identifier",@"reward", @"rewardPlus", @"imageCollection", @"deadline", @"labelId", @"desc", @"latitude", @"longitude", @"regionId", @"street"];
+    task.properties = @[@"identifier",@"reward", @"rewardPlus", @"limit", @"type", @"imageCollection", @"deadline", @"labelId", @"desc", @"latitude", @"longitude", @"regionId", @"street"];
     request.query.entity = task;
     
     [AIIPacketConnection sendAsyn:request delegate:self context:self];

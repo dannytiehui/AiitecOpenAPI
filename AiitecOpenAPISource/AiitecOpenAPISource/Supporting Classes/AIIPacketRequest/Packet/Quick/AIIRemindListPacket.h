@@ -16,7 +16,7 @@
 
 @interface AIIRemindListRequestQuery : AIIListRequestQuery
 
-@property (nonatomic, assign) AIITaskType *type;
+@property (nonatomic, assign) AIITaskType type;
 
 @end
 

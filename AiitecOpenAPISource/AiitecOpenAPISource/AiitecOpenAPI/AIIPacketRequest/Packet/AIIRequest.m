@@ -9,6 +9,14 @@
 #import "AIIRequest.h"
 #import "AIIPacketManager.h"
 
+@interface AIIRequest ()
+{
+    NSString *_jsonStringWithObjectString;
+}
+
+@end
+
+
 @implementation AIIRequest
 
 - (id)init
@@ -89,32 +97,25 @@
 
 - (NSString *)jsonStringWithObject
 {
+    if (_jsonStringWithObjectString.length) {
+        return _jsonStringWithObjectString;
+    }
+    
     if (IqPacket_Encryption) {
         NSString *k = @"m";
         
 //        NSString *jsonString = [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
-        
         NSDictionary *dictionary = [self dictionaryWithValuesForKeys:self.keys];
         NSMutableDictionary *md = [NSMutableDictionary dictionaryWithDictionary:dictionary];
         [md setObject:@"" forKey:k];
         [md removeObjectForKey:k];
         
         NSString *jsonString = [AIIUtility stringWithDictionary:md];
-//        jsonString = [AIIUtility stringWithDictionaryClearFormat:md];
 //        NSLog(@"jsonString 1:%@", jsonString);
-
+        
         /** jsonString 去除格式化. */
-//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"{\n  " withString:@"{"];
-//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"}\n" withString:@"}"];
-//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n}" withString:@"}"];
-//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@",\n" withString:@","];
-//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@",  " withString:@","];
-//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\"\n  " withString:@"\""];
-//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n  " withString:@""];
-//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@" : " withString:@":"];
-//        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"  \"" withString:@"\""];
-
-//        NSLog(@"jsonString 2:%@", jsonString);
+        jsonString = [AIIUtility stringWithDictionaryClearFormat:md];
+        NSLog(@"jsonString 2:%@", jsonString);
         _md5 = [AIIUtility md5:jsonString];
 //        NSLog(@"1._md5:%@", _md5);
         _md5 = [_md5 stringByAppendingString:[AIIUtility iqPacketEncryption]];
@@ -122,16 +123,16 @@
         _md5 = [AIIUtility md5:_md5];
 //        NSLog(@"3._md5:%@", _md5);
         
-        NSDictionary *dict = [AIIUtility dictionaryWithJSONString:jsonString];
-        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:dict];
-        [mutableDictionary setValue:_md5 forKey:@"m"];
+        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:md];
+        [mutableDictionary setValue:_md5 forKey:k];
 //        NSLog(@"4.%@", [AIIUtility stringWithDictionary:mutableDictionary]);
         
-        return [AIIUtility stringWithDictionary:mutableDictionary];
+        _jsonStringWithObjectString = [AIIUtility stringWithDictionary:mutableDictionary];
     }
     else {
-        return [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
+        _jsonStringWithObjectString = [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
     }
+    return _jsonStringWithObjectString;
 }
 
 #pragma mark - self

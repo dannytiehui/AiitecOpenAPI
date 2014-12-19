@@ -116,6 +116,7 @@
 		887D0F871A33012C00B1CAEF /* AII_Entity_Collection_m in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F861A33012C00B1CAEF /* AII_Entity_Collection_m */; };
 		8885CDA41A3BF77400398204 /* ItemTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8885CDA31A3BF77400398204 /* ItemTable.m */; };
 		889BF4F91A10AB43004F86F9 /* HttpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BF4F81A10AB43004F86F9 /* HttpViewController.m */; };
+		889CEAA21A3ED200006120D6 /* AIIUserOperateListPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CEAA11A3ED200006120D6 /* AIIUserOperateListPacket.m */; };
 		88C19BDB1A36DF6100DB0AC8 /* AIIAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AD41A36DF6000DB0AC8 /* AIIAd.m */; };
 		88C19BDC1A36DF6100DB0AC8 /* AIIAdCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AD61A36DF6000DB0AC8 /* AIIAdCollection.m */; };
 		88C19BDD1A36DF6100DB0AC8 /* AIIAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AD81A36DF6000DB0AC8 /* AIIAddress.m */; };
@@ -436,6 +437,8 @@
 		8885CDA31A3BF77400398204 /* ItemTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTable.m; sourceTree = "<group>"; };
 		889BF4F71A10AB43004F86F9 /* HttpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpViewController.h; sourceTree = "<group>"; };
 		889BF4F81A10AB43004F86F9 /* HttpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpViewController.m; sourceTree = "<group>"; };
+		889CEAA01A3ED200006120D6 /* AIIUserOperateListPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIUserOperateListPacket.h; sourceTree = "<group>"; };
+		889CEAA11A3ED200006120D6 /* AIIUserOperateListPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUserOperateListPacket.m; sourceTree = "<group>"; };
 		88C19AD31A36DF6000DB0AC8 /* AIIAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIAd.h; sourceTree = "<group>"; };
 		88C19AD41A36DF6000DB0AC8 /* AIIAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIAd.m; sourceTree = "<group>"; };
 		88C19AD51A36DF6000DB0AC8 /* AIIAdCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIAdCollection.h; sourceTree = "<group>"; };
@@ -1338,6 +1341,8 @@
 				88C19B661A36DF6100DB0AC8 /* AIIUserLoginPacket.m */,
 				88C19B671A36DF6100DB0AC8 /* AIIUserLogoutPacket.h */,
 				88C19B681A36DF6100DB0AC8 /* AIIUserLogoutPacket.m */,
+				889CEAA01A3ED200006120D6 /* AIIUserOperateListPacket.h */,
+				889CEAA11A3ED200006120D6 /* AIIUserOperateListPacket.m */,
 				88C19B691A36DF6100DB0AC8 /* AIIUserPartnerLoginPacket.h */,
 				88C19B6A1A36DF6100DB0AC8 /* AIIUserPartnerLoginPacket.m */,
 				88C19B6B1A36DF6100DB0AC8 /* AIIUserRegisterSubmitPacket.h */,
@@ -1644,6 +1649,7 @@
 				88C19BF71A36DF6100DB0AC8 /* AIIEvaluateCollection.m in Sources */,
 				886C19D019D515E300FC76FC /* ViewController.m in Sources */,
 				88C19C391A36DF6100DB0AC8 /* AIIPointSubmitPacket.m in Sources */,
+				889CEAA21A3ED200006120D6 /* AIIUserOperateListPacket.m in Sources */,
 				88C19C331A36DF6100DB0AC8 /* AIIOrderCommentSubmitPacket.m in Sources */,
 				88C19BE91A36DF6100DB0AC8 /* AIIImage.m in Sources */,
 				886C1BBD19D5212A00FC76FC /* AIIRequest.m in Sources */,

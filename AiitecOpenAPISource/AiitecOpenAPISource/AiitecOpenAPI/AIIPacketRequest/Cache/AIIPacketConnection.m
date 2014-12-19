@@ -330,7 +330,7 @@ static NSMutableArray *_packetConnectionArray;
     if (self.request.cache == AIICacheNormalFirst && [suffix isEqualToString:@"List"]) {
         AIIListResponse *listResponse = (AIIListResponse *)self.response;
         AIIListResponseQuery *listResponseQuery = (AIIListResponseQuery *)listResponse.query;
-        NSString *ids = [table diff:listResponseQuery.modelCollection];
+        NSArray *ids = [table diff:listResponseQuery.modelCollection];
         NSLog(@"ids = %@", ids);
         AIIListRequest *listRequest = (AIIListRequest *)self.request;
         AIIListRequestQuery *listRequestQuery = (AIIListRequestQuery *)listRequest.query;
@@ -345,7 +345,7 @@ static NSMutableArray *_packetConnectionArray;
             [table deleteRangeOfIdsExcept:listResponseQuery.modelCollection key:listRequestQuery.table.where.searchKey];
         }
         
-        if (ids.length > 0) {
+        if ([ids count] > 0) {
             b = YES;
             listRequest.cache = AIICacheNormalSecond;
             listRequestQuery.ids = ids;

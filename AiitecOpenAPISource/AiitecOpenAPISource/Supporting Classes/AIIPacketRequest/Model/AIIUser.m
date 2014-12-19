@@ -40,6 +40,9 @@
     else if ([key isEqualToString:self.address.key]) {
         [self.address setValuesForKeysWithDictionary:value];
     }
+    else if ([key isEqualToString:self.imageCollection.key]) {
+        [self.imageCollection setObjectWithArray:value];
+    }
     else if ([key isEqualToString:self.itemCollection.key]) {
         [self.itemCollection setObjectWithArray:value];
     }
@@ -78,6 +81,12 @@
     if ([keys containsObject:k]) {
         [mutableDictionary setObject:[self.address dictionaryWithValuesForKeys:self.address.keys] forKey:self.address.key];
     }
+    
+    k = @"imageCollection";
+    if ([dict objectForKey:k]) {
+        [mutableDictionary setObject:[self.imageCollection arrayWithObject] forKey:self.imageCollection.key];
+    }
+    [mutableDictionary removeObjectForKey:k];
     
     k = @"itemCollection";
     if ([dict objectForKey:k]) {

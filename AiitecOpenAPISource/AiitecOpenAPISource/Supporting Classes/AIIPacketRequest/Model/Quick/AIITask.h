@@ -52,16 +52,16 @@ typedef NS_ENUM(NSUInteger, AIITaskStatus) {
 @property (nonatomic, assign) NSUInteger statComment;
 /** 赞统计.*/
 @property (nonatomic, assign) NSUInteger statPraise;
-/** 我的参加状态：0未参加；1已参加；.*/
+/** 报名状态:1开启;0关闭.*/
 @property (nonatomic, assign) BOOL joinStatus;
 /** 我的赞状态：0未赞；1已赞；.*/
 @property (nonatomic, assign) BOOL praiseStatus;
 /** 距离.*/
 @property (nonatomic, assign) float distance;
-
-
+@property (nonatomic, copy) NSString *imagePath;
+@property (nonatomic, strong) NSArray *images;
 /** .*/
-@property (nonatomic, assign) NSUInteger image;//!< 第一张图片
+@property (nonatomic, assign) NSUInteger image;//!< 第一张图片id
 /** .*/
 @property (nonatomic, assign) BOOL unfreeze;//!< 悬赏金解冻状态：0冻结（默认）;1解冻;
 /** .*/

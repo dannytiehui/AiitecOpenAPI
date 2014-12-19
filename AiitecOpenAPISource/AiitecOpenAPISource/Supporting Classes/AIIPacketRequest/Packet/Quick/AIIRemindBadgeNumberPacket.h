@@ -14,6 +14,18 @@
 
 
 @interface AIIRemindBadgeNumberResponseQuery : AIIQuery
+
+/** 新评论. */
+@property (nonatomic, assign) NSUInteger statNewComment;
+/** 新赞. */
+@property (nonatomic, assign) NSUInteger statNewPraise;
+/** 新任务提醒. */
+@property (nonatomic, assign) NSUInteger statTaskRemind;
+/** 新活动提醒. */
+@property (nonatomic, assign) NSUInteger statEventRemind;
+/** 新通知. */
+@property (nonatomic, assign) NSUInteger statNewNotice;
+
 @end
 
 

@@ -11,6 +11,7 @@
 
 @interface AIIRemind : AIIEntity
 
+@property (nonatomic, copy) NSString *content;
 @property (nonatomic, strong) AIIUser *user;
 @property (nonatomic, strong) AIITask *task;
 

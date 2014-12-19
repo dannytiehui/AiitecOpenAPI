@@ -22,6 +22,21 @@
     }
 }
 
+- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys
+{
+    NSDictionary *dict = [super dictionaryWithValuesForKeys:keys];
+    
+    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithDictionary:dict];
+    NSString *k = @"open";
+    if ([keys containsObject:k]) {
+        NSUInteger open = [[dict objectForKey:k] boolValue] ? 1 : 2;
+        [mutableDictionary setObject:[NSNumber numberWithInteger:open] forKey:k];
+    }
+    
+    dict = mutableDictionary;
+    return dict;
+}
+
 @end
 
 

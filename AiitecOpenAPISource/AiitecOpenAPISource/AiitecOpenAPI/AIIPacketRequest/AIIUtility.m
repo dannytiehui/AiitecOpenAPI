@@ -302,7 +302,7 @@ NSString *const DeviceTokenKey = @"deviceId";
 
 + (NSString *)stringWithDictionaryClearFormat:(NSDictionary *)dictionary
 {
-    return [NSString stringWithFormat:@"{%@", [AIIUtility stringWithDictionaryRecursive:dictionary string:@""]];
+    return [AIIUtility stringWithDictionaryRecursive:dictionary string:@"{"];
 }
 
 + (NSString *)stringWithDictionaryRecursive:(NSDictionary *)dict string:(NSString *)string
@@ -314,7 +314,7 @@ NSString *const DeviceTokenKey = @"deviceId";
         if ([[dict objectForKey:key] class] == [[[NSMutableDictionary alloc] init] class]) {
             string = [string stringByAppendingFormat:@"\"%@\":{", key];
             string = [AIIUtility stringWithDictionaryRecursive:[dict objectForKey:key] string:string];
-            //            string = [string stringByAppendingString:@"}"];
+//            string = [string stringByAppendingString:@"}"];
         }
         else if ([[dict objectForKey:key] class] == [[[NSMutableArray alloc] init] class]) {
             string = [string stringByAppendingFormat:@"\"%@\":[", key];
@@ -326,11 +326,35 @@ NSString *const DeviceTokenKey = @"deviceId";
                 string = [AIIUtility stringWithDictionaryRecursive:[array objectAtIndex:i] string:string];
                 string = [string stringByAppendingString:@","];
             }
-            string = [string substringToIndex:string.length - 1];
-            string = [string stringByAppendingString:@"]"];
+
+            /** 考虑数组为空的情况. */
+            if ([@"," isEqualToString:[string substringFromIndex:string.length - 1]]) {
+                string = [string substringToIndex:string.length - 1];
+            }
+            
+            string = [string stringByAppendingString:@"],"];
         }
         else {
-            string = [string stringByAppendingFormat:@"\"%@\":\"%@\",", key, [dict objectForKey:key]];
+            
+//            NSLog(@"%@, %@,%@", key, [[dict objectForKey:key] superclass] , [NSMutableString class]);
+            
+            /** 考虑对象后面需要加逗号的情况. */
+            if ([@"}" isEqualToString:[string substringFromIndex:string.length - 1]]) {
+                string = [string stringByAppendingString:@","];
+            }
+            
+            if ([[dict objectForKey:key] superclass] == [NSNumber class]) {
+                string = [string stringByAppendingFormat:@"\"%@\":%@,", key, [dict objectForKey:key]];
+            }
+            else if ([[dict objectForKey:key] superclass] == [NSObject class]) {
+                string = [string stringByAppendingFormat:@"\"%@\":null,", key];
+            }
+            else {
+                NSString *formatNewlineString = [[dict objectForKey:key] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"];
+                formatNewlineString = [formatNewlineString stringByReplacingOccurrencesOfString:@"/" withString:@"\\/"];
+                string = [string stringByAppendingFormat:@"\"%@\":\"%@\",", key, formatNewlineString];
+            }
+            
         }
     }
     

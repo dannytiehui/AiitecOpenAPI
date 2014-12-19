@@ -36,6 +36,7 @@
 #import "AIIUserUpdatePacket.h"
 #import "AIIUserPartnerLoginPacket.h"
 #import "AIIUserBadgeNumberPacket.h"
+#import "AIIUserOperateListPacket.h"
 #import "AIIAddressListPacket.h"
 #import "AIIAddressSubmitPacket.h"
 #import "AIIRankListPacket.h"

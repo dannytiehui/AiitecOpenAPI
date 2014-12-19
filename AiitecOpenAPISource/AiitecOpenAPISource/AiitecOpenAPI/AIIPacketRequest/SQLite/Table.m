@@ -255,7 +255,7 @@
     return 0;
 }
 
-- (NSString *)diff:(AIIModelCollection *)collection
+- (NSArray *)diff:(AIIModelCollection *)collection
 {
     NSMutableArray *mArray = [[NSMutableArray alloc] init];
     AIIEntity *item;
@@ -268,8 +268,8 @@
             [mArray addObject:[NSString stringWithFormat:@"%lu", item.identifier]];
         }
     }
-    NSString *ids = [mArray componentsJoinedByString:@","];
-    return ids;
+//    NSString *ids = [mArray componentsJoinedByString:@","];
+    return mArray;
 }
 
 @end

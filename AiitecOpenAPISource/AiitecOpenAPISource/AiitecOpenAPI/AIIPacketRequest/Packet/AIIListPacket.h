@@ -13,7 +13,7 @@
 
 @interface AIIListRequestQuery : AIIQuery
 
-@property (nonatomic, copy) NSString *ids;
+@property (nonatomic, strong) NSArray *ids;
 @property (nonatomic, strong) AIITable *table;
 
 @end
@@ -22,6 +22,7 @@
 
 @interface AIIListResponseQuery : AIIModelCollectionQuery
 
+@property (nonatomic, strong) NSArray *ids;
 @property (nonatomic, assign) NSUInteger total;
 
 @end
