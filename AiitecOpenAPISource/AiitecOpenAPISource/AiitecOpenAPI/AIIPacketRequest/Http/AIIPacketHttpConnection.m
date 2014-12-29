@@ -287,10 +287,10 @@ static NSMutableArray *_packetHttpConnectionQueue;
     if (bSessionResponse) {
         NSString *sessionId = ((AIISessionResponse *)self.response).sessionId;
         [AIIPacketManager defaultManager].sessionRequesting = NO;
-        //        [AIIPacketManager defaultManager].sessionId = ((AIISessionResponse *)self.response).sessionId;
+//        [AIIPacketManager defaultManager].sessionId = ((AIISessionResponse *)self.response).sessionId;
         [[NSUserDefaults standardUserDefaults] setObject:sessionId forKey:@"sessionId"];
         [AIIPacketManager defaultManager].expire = ((AIISessionResponse *)self.response).query.expire;
-        //        [AIIPacketManager defaultManager].sessionResponseNotNil = [AIIPacketManager defaultManager].sessionId.length ? YES : NO;
+//        [AIIPacketManager defaultManager].sessionResponseNotNil = [AIIPacketManager defaultManager].sessionId.length ? YES : NO;
         [AIIPacketManager defaultManager].sessionResponseNotNil = sessionId.length ? YES : NO;
     }
     /// 情况二: sessionId失效（或服务器删除了session表里面对应的数据）,需要重新获取.
@@ -308,6 +308,7 @@ static NSMutableArray *_packetHttpConnectionQueue;
     
     if (_packetHttpConnectionQueue.count) {
         AIIPacketHttpConnection *connection = [_packetHttpConnectionQueue firstObject];
+        [connection.request jsonStringWithObjectStringSetNull];
         [AIIPacketHttpConnection sendAsynchronous:connection request:connection.request];
         [_packetHttpConnectionQueue removeObject:connection];
     }

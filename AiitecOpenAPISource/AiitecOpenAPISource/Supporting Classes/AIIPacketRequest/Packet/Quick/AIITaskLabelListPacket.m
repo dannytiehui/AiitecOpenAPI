@@ -8,6 +8,10 @@
 
 #import "AIITaskLabelListPacket.h"
 
+@implementation AIITaskLabelListWhere
+@end
+
+
 @implementation AIITaskLabelListResponseQuery
 
 - (id)init

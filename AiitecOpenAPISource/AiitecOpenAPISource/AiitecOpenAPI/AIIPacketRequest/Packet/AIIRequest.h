@@ -46,4 +46,13 @@ typedef NS_ENUM(NSUInteger, AIICache){
 - (AIICacheWay)cacheWay;
 - (NSString *)packetNickname;
 
+
+#pragma mark - Private
+
+/**  把私有属性_jsonStringWithObjectString重置为空.
+ *
+ *  当发起协议请求时,请求队列中有一个或多个AIIRequest对象,当第一个AIIRequest协议请求返回状态为1002时,则需要重新获取SessionId,成功获取SessionId后队列中的全部AIIRequest对象需要重新加密、组包,所以需要将私有属性_jsonStringWithObjectString重置为空.
+ */
+- (void)jsonStringWithObjectStringSetNull;
+
 @end

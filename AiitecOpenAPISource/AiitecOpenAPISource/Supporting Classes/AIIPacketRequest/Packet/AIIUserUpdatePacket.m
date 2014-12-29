@@ -8,6 +8,10 @@
 
 #import "AIIUserUpdatePacket.h"
 
+@implementation AIIUserUpdateRequestQuery
+@end
+
+
 @implementation AIIUserUpdateRequest
 
 //- (NSString *)packetNickname

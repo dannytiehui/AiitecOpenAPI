@@ -88,6 +88,11 @@
     }
     [mutableDictionary removeObjectForKey:k];
     
+    k = @"labels";
+    if ([dict objectForKey:k]) {
+        [mutableDictionary setObject:[self.labels arrayWithObject] forKey:self.labels.key];
+    }
+    
     k = @"itemCollection";
     if ([dict objectForKey:k]) {
         [mutableDictionary setObject:[self.itemCollection arrayWithObject] forKey:self.itemCollection.key];

@@ -10,6 +10,13 @@
 
 @implementation LabelUserTable
 
+- (AIIItem *)FMResultSetToObject:(FMResultSet *)rs
+{
+    AIIItem *item = (AIIItem *)[super FMResultSetToObject:rs];
+    item.parentId = [[rs stringForColumn:@"label_user_group_id"] integerValue];
+    return item;
+}
+
 - (NSString *)tableName
 {
     return @"ky_label_user";

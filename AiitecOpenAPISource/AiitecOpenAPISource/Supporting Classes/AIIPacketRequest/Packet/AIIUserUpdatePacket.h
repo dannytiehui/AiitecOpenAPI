@@ -8,7 +8,17 @@
 
 #import "AIIEntityPacket.h"
 
+@interface AIIUserUpdateRequestQuery : AIIEntityQuery
+
+@property (nonatomic, assign) NSUInteger smscodeId;
+
+@end
+
+
 @interface AIIUserUpdateRequest : AIIEntityRequest
+
+@property (nonatomic, strong) AIIUserUpdateRequestQuery *query;
+
 @end
 
 

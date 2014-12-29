@@ -52,10 +52,16 @@ typedef NS_ENUM(NSUInteger, AIITaskStatus) {
 @property (nonatomic, assign) NSUInteger statComment;
 /** 赞统计.*/
 @property (nonatomic, assign) NSUInteger statPraise;
+/** 已选择人数. */
+@property (nonatomic, assign) NSUInteger statSelected;
 /** 报名状态:1开启;0关闭.*/
 @property (nonatomic, assign) BOOL joinStatus;
-/** 我的赞状态：0未赞；1已赞；.*/
+/** 我的赞状态:0未赞;1已赞.*/
 @property (nonatomic, assign) BOOL praiseStatus;
+/** 我的评价状态:1已评价;0未评价.*/
+@property (nonatomic, assign) BOOL evaluateStatus;
+/** 选择人员状态:0未选择;1已选择.*/
+@property (nonatomic, assign) BOOL selectedStatus;
 /** 距离.*/
 @property (nonatomic, assign) float distance;
 @property (nonatomic, copy) NSString *imagePath;
@@ -76,6 +82,7 @@ typedef NS_ENUM(NSUInteger, AIITaskStatus) {
 //@property (nonatomic, assign) CLLocationCoordinate2D coordinate;//!< 坐标结构体，纬度、经度.
 /** .*/
 @property (nonatomic, copy) NSString *street;//!< 位置描述
+@property (nonatomic, copy) NSString *reason;//!< 关闭原因
 
 
 @property (nonatomic, strong) AIIUser *user;

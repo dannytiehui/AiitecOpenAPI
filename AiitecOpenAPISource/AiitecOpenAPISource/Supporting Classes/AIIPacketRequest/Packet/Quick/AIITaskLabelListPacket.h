@@ -9,6 +9,10 @@
 #import "AIIListPacket.h"
 #import "AIIItemCollection.h"
 
+@interface AIITaskLabelListWhere: AIIWhere
+@end
+
+
 @interface AIITaskLabelListResponseQuery : AIIListResponseQuery
 @end
 

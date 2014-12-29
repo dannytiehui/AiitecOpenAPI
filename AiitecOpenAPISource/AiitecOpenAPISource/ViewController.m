@@ -56,7 +56,7 @@
     
 //    [self testSynchronousUserDetailsRequest];//!< 测试同步请求.
 //    [self testUserDetailsRequest];
-//    [self testUserUpdateRequest];
+    [self testUserUpdateRequest];
 //    [self testRankListRequest];
 //    [self testRecordListRequest];
 
@@ -70,7 +70,7 @@
 
 //    [self testTaskListRequest];//!< List
 //    [self testTaskDetailsRequest];//!< Details
-    [self testTaskSubmitRequest];
+//    [self testTaskSubmitRequest];
 //    [self testTaskEvaluateCollectionSubmitRequest];
 //    [self testTaskStatusUpdateRequest];
 //    [self testTaskReportSubmitRequest];
@@ -510,6 +510,7 @@
     
     user.properties = @[@"idName", @"sex", @"schoolId", @"idNumber", @"studentIdImage", @"idImage", @"referrer"];
     
+    request.query.action = AIIQueryActionFirst;
     request.query.entity = user;
     
     [AIIPacketConnection sendAsyn:request delegate:self context:self];

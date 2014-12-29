@@ -70,7 +70,7 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 /** 生日. */
 @property (nonatomic, copy) NSString *birthday;
 /** 星座. */
-@property (nonatomic, copy) NSString *starSign;
+@property (nonatomic, assign) NSUInteger starSign;
 /** 图像路径. */
 @property (nonatomic, copy) NSString *imagePath;
 /** 电话. */

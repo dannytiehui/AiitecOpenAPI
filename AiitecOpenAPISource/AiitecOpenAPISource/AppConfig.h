@@ -11,7 +11,7 @@
 #ifdef DEBUG
 
 #define DOMAIN_PATH             @"http://192.168.1.12/"
-#define API_PATH                @"Quick2.0/public/api/index"
+#define API_PATH                @"Quick2.0/public/api/v2"
 #define FILE_PATH               @"http://192.168.1.12/Quick2.0/public/uploadfiles/"
 #define TASKDETAIL_PATH         @"http://192.168.1.12/Quick2.0/public/"
 #define REACHABILITY_HOSTNAME   @"192.168.1.12" //!< 用于 Reachability 网络检测
@@ -27,11 +27,19 @@
 
 #else
 
-#define DOMAIN_PATH             @"http://www.ky.me/"
-#define API_PATH                @"api/"
-#define FILE_PATH               @"http://www.ky.me/"
-#define REACHABILITY_HOSTNAME   @"www.ky.me" //!< 用于 Reachability 网络检测
-#define SERVER_CHECKVERSION_PATH    @"http://www.ky.me/version.php"
+#define DOMAIN_PATH             @"http://api.lihanguang.com/v2"
+#define API_PATH                @""
+#define FILE_PATH               @"http://picture.lihanguang.com/uploadfiles/"
+#define FILE_PATH_SMALL         @"http://picture.lihanguang.com/uploadfiles/180X180X1/"
+//#define TASKDETAIL_PATH         @"http://api.lihanguang.com/v2"
+#define REACHABILITY_HOSTNAME   @"api.lihanguang.com" //!< 用于 Reachability 网络检测
+#define SERVER_CHECKVERSION_PATH    @"http://api.lihanguang.com/v2/version.php"
+
+//#define DOMAIN_PATH             @"http://www.ky.me/"
+//#define API_PATH                @"api/"
+//#define FILE_PATH               @"http://www.ky.me/"
+//#define REACHABILITY_HOSTNAME   @"www.ky.me" //!< 用于 Reachability 网络检测
+//#define SERVER_CHECKVERSION_PATH    @"http://www.ky.me/version.php"
 
 #endif
 

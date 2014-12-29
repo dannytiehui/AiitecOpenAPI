@@ -9,9 +9,18 @@
 #import "AIIListPacket.h"
 #import "AIITaskCollection.h"
 
+/** 筛选类型. */
+typedef NS_ENUM(NSUInteger, AIITaskConditionType) {
+    AIITaskConditionTypeDefault,    //!< 0全部
+    AIITaskConditionTypeFirst,      //!< 1我发布的
+    AIITaskConditionTypeSecond,     //!< 2我报名的
+};
+
+
 @interface AIITaskListWhere : AIIWhere
 
 @property (nonatomic, assign) AIITaskStatus status;
+@property (nonatomic, assign) AIITaskConditionType myStatus;
 /** 标签id. */
 @property (nonatomic, assign) NSUInteger labelId;
 @property (nonatomic, assign) double latitude;

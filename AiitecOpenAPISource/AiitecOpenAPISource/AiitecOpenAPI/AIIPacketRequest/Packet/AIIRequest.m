@@ -115,7 +115,7 @@
         
         /** jsonString 去除格式化. */
         jsonString = [AIIUtility stringWithDictionaryClearFormat:md];
-        NSLog(@"jsonString 2:%@", jsonString);
+//        NSLog(@"jsonString 2:%@", jsonString);
         _md5 = [AIIUtility md5:jsonString];
 //        NSLog(@"1._md5:%@", _md5);
         _md5 = [_md5 stringByAppendingString:[AIIUtility iqPacketEncryption]];
@@ -134,6 +134,14 @@
     }
     return _jsonStringWithObjectString;
 }
+
+#pragma mark - Private
+
+- (void)jsonStringWithObjectStringSetNull
+{
+    _jsonStringWithObjectString = @"";
+}
+
 
 #pragma mark - self
 
