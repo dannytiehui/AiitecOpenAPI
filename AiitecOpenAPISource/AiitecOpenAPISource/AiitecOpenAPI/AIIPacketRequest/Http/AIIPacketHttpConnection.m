@@ -258,11 +258,23 @@ static NSMutableArray *_packetHttpConnectionQueue;
         [body appendData:[endString dataUsingEncoding:NSUTF8StringEncoding]];
         [req setHTTPBody:body];
     }
-    else {
-        NSString *param = [NSString stringWithFormat:@"json=%@", [request jsonStringWithObject]];
-//        param = [param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];//!< 转码.
-        req.HTTPBody = [param dataUsingEncoding:NSUTF8StringEncoding];
+    else { /** 网络请求,通过HTTP POST发送特殊符号到服务器,如:&. */
+        [req setValue:[@"multipart/form-data; boundary=" stringByAppendingString:BOUNDARY] forHTTPHeaderField:@"Content-Type"];
+        
+        NSMutableData *body = [NSMutableData data];
+        NSMutableString *param = [NSMutableString string];
+        [param appendFormat:@"--%@\r\n", BOUNDARY];
+        [param appendFormat:@"Content-Disposition: form-data; name=\"json\"\r\n\r\n%@\r\n", [request jsonStringWithObject]];
+        
+        [body appendData:[param dataUsingEncoding:NSUTF8StringEncoding]];
+        req.HTTPBody = body;
     }
+//    else {
+//        NSString *param = [NSString stringWithFormat:@"json=%@", [request jsonStringWithObject]];
+//        //        param = [param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];//!< 转码.
+//        req.HTTPBody = [param dataUsingEncoding:NSUTF8StringEncoding];
+//    }
+
     
     return req;
 }
@@ -277,9 +289,9 @@ static NSMutableArray *_packetHttpConnectionQueue;
 - (void)connectionDidFinish
 {
     _responseString = [[NSString alloc] initWithData:_receiveData encoding:NSUTF8StringEncoding];
-#ifdef DEBUG
+//#ifdef DEBUG
     NSLog(@"%@(responseString) = %@", self.request.nameSpace, _responseString);
-#endif
+//#endif
     NSString *className = [self responseClassName];
     self.response = [[NSClassFromString(className) alloc] initWithJSONString:_responseString];
     

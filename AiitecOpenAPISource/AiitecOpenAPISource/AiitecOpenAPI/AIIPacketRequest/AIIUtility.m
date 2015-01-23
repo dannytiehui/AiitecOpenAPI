@@ -311,6 +311,12 @@ NSString *const DeviceTokenKey = @"deviceId";
     id key;
     
     while ((key = [enumerator nextObject])) {
+        
+        /** 考虑对象后面需要加逗号的情况. */
+        if ([@"}" isEqualToString:[string substringFromIndex:string.length - 1]]) {
+            string = [string stringByAppendingString:@","];
+        }
+        
         if ([[dict objectForKey:key] class] == [[[NSMutableDictionary alloc] init] class]) {
             string = [string stringByAppendingFormat:@"\"%@\":{", key];
             string = [AIIUtility stringWithDictionaryRecursive:[dict objectForKey:key] string:string];
@@ -335,14 +341,7 @@ NSString *const DeviceTokenKey = @"deviceId";
             string = [string stringByAppendingString:@"],"];
         }
         else {
-            
 //            NSLog(@"%@, %@,%@", key, [[dict objectForKey:key] superclass] , [NSMutableString class]);
-            
-            /** 考虑对象后面需要加逗号的情况. */
-            if ([@"}" isEqualToString:[string substringFromIndex:string.length - 1]]) {
-                string = [string stringByAppendingString:@","];
-            }
-            
             if ([[dict objectForKey:key] superclass] == [NSNumber class]) {
                 string = [string stringByAppendingFormat:@"\"%@\":%@,", key, [dict objectForKey:key]];
             }

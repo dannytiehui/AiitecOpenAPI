@@ -55,8 +55,8 @@
 //    [self testUserResetPasswordRequest];
     
 //    [self testSynchronousUserDetailsRequest];//!< 测试同步请求.
-//    [self testUserDetailsRequest];
-    [self testUserUpdateRequest];
+    [self testUserDetailsRequest];
+//    [self testUserUpdateRequest];
 //    [self testRankListRequest];
 //    [self testRecordListRequest];
 
@@ -468,6 +468,10 @@
 - (void)testUserDetailsRequest
 {
     AIIUserDetailsRequest *request = [[AIIUserDetailsRequest alloc] init];
+    
+    request.query.identifier = 1412300032;
+    request.query.name = @"Lin&";
+    
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
