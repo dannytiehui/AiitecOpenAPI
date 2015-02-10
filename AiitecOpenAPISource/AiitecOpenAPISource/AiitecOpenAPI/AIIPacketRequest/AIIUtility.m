@@ -345,6 +345,24 @@ NSString *const DeviceTokenKey = @"deviceId";
             if ([[dict objectForKey:key] superclass] == [NSNumber class]) {
                 string = [string stringByAppendingFormat:@"\"%@\":%@,", key, [dict objectForKey:key]];
             }
+            else if ([[dict objectForKey:key] superclass] == [NSArray class]) {
+                NSArray *array = [dict objectForKey:key];
+                NSString *temp = @"";
+                for (id value in array) {
+                    if ([value superclass] == [NSNumber class]) {
+                        temp = [temp stringByAppendingFormat:@"%@,", value];
+                    }
+                    else {
+                        temp = [temp stringByAppendingFormat:@"\"%@\",", value];
+                    }
+                }
+                
+                if (array.count) {
+                    temp = [temp substringToIndex:temp.length - 1];
+                }
+                
+                string = [string stringByAppendingFormat:@"\"%@\":[%@],", key, temp];
+            }
             else if ([[dict objectForKey:key] superclass] == [NSObject class]) {
                 string = [string stringByAppendingFormat:@"\"%@\":null,", key];
             }

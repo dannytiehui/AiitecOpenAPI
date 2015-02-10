@@ -50,7 +50,12 @@ typedef NS_ENUM(NSUInteger, HttpMethod){
 
 static NSMutableArray *_packetHttpConnectionArray;
 static NSMutableArray *_packetHttpConnectionQueue;
-
+/**
+ *  @brief  拦截delegate开关.适用于ViewController需要根据代理自动跳转到登录页面,同时防止多次触发.
+ *
+ *  例如:当用户同时发起1,2,3个请求,其中1,3需要用户登录,2不需要,底层自动拦截掉3的请求代理.
+ */
+static bool delegateIntercept;
 
 #pragma mark - NSURLConnectionDelegate
 
@@ -317,6 +322,21 @@ static NSMutableArray *_packetHttpConnectionQueue;
         [AIIPacketHttpConnection sessionIdRequest:self];
         return;
     }
+    /// 情况三: 用户未登录 或 用户在别处登录.
+    else if (self.response.query.status == 1100 || self.response.query.status == 1107) {
+        
+        if (delegateIntercept) {
+            [_packetHttpConnectionArray removeObject:self];
+            // 初始化delegateIntercept
+            if (!_packetHttpConnectionArray.count) {
+                delegateIntercept = NO;
+            }
+            return;
+        }
+        else {
+            delegateIntercept = YES;
+        }
+    }
     
     if (_packetHttpConnectionQueue.count) {
         AIIPacketHttpConnection *connection = [_packetHttpConnectionQueue firstObject];
@@ -345,6 +365,11 @@ static NSMutableArray *_packetHttpConnectionQueue;
     }
     
     [_packetHttpConnectionArray removeObject:self];
+    
+    // 初始化delegateIntercept
+    if (!_packetHttpConnectionArray.count) {
+        delegateIntercept = NO;
+    }
 }
 
 #pragma mark - Public Method
