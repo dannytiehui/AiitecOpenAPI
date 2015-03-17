@@ -68,7 +68,8 @@ NSString *const DeviceTokenKey = @"deviceId";
     NSString *s2 = [s1 stringByReplacingOccurrencesOfString:@"\""withString:@"\\\""];
     NSString *s3 = [[@"\""stringByAppendingString:s2]stringByAppendingString:@"\""];
     NSData *data = [s3 dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *str = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:NULL];
+//    NSString *str = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:NULL];
+    NSString *str = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:nil error:nil];
     return [str stringByReplacingOccurrencesOfString:@"\\r\\n"withString:@"\n"];
 }
 

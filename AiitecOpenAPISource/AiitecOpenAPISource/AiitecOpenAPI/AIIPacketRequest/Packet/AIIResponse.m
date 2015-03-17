@@ -13,6 +13,7 @@
 
 @property (nonatomic, copy) NSString *JSONString;
 @property (nonatomic, copy) NSString *JSONFormatString;
+@property (nonatomic, readonly) NSString *cachesPacketFilePath;
 
 @end
 
@@ -50,6 +51,39 @@
     }
     
     return self;
+}
+
+- (id)initWithCachesPacketFile
+{
+    if (self = [super init]) {
+        NSFileManager *fm = [NSFileManager defaultManager];
+        BOOL isDir;
+        BOOL fileExists = [fm fileExistsAtPath:self.cachesPacketFilePath isDirectory:&isDir];
+        BOOL isCachesPacketFileExists = !isDir && fileExists;
+
+        if (isCachesPacketFileExists) {
+            NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:self.cachesPacketFilePath];
+            [self setValuesForKeysWithDictionary:dict];
+        }
+        else {
+            NSLog(@"initWithCachesPacketFile (协议缓存文件不存在). %@", self.cachesPacketFilePath);
+        }
+        
+        self.query.status = Cache_Packet_STATUS;
+        self.query.desc = Cache_Packet_DESC;
+    }
+    return self;
+}
+
+- (NSString *)cachesPacketFilePath
+{
+    return [NSString stringWithFormat:@"%@/%@.plist", [AIIUtility cachesPacketPath], self.nameSpace];
+}
+
+- (BOOL)writeToFile
+{
+    NSDictionary *dict = [AIIUtility dictionaryWithJSONString:self.JSONString];
+    return [dict writeToFile:self.cachesPacketFilePath atomically:YES];
 }
 
 @end

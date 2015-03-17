@@ -22,6 +22,35 @@
 	return self;
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return [[self class] allocWithZone:zone];
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    return [[self class] mutableCopy];
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    /// 子类实现
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    /// 子类实现
+    return self;
+}
+
+#pragma mark - Public Method
+
 - (NSUInteger)count
 {
     return _mutableArray.count;

@@ -56,8 +56,8 @@
 
 
 #pragma mark - 收藏
-#import "AIIFavoritesListPacket.h"
-#import "AIIFavoritesSwitchPacket.h"
+#import "AIIFavoriteListPacket.h"
+#import "AIIFavoriteSwitchPacket.h"
 
 #pragma mark - 文章
 #import "AIIArticleListPacket.h"

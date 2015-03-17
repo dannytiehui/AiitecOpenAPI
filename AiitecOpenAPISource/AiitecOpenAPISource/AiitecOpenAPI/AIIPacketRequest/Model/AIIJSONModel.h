@@ -13,7 +13,12 @@
  *
  *  对象模型基类.
  */
-@interface AIIJSONModel : NSObject <NSCopying, NSCoding>
+@interface AIIJSONModel : NSObject <NSCopying, NSMutableCopying, NSCoding>
+
+//@property (nonatomic, strong) NSString *sString;
+//@property (nonatomic, copy)   NSString *cString;
+///** 可变字符串. */
+//@property (nonatomic, strong) NSMutableString *mutableString;
 
 /**
  *  @brief  获取对象的key键值.
@@ -56,5 +61,7 @@
  *  @return JSON中键（key）对象的缩写集合.
  */
 @property (nonatomic, readonly) NSDictionary *abbreviationKeys;
+
+//- (void)print;
 
 @end

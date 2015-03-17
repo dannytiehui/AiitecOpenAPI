@@ -1,5 +1,5 @@
 //
-//  AIIFavorites.h
+//  AIIFavorite.h
 //  AAClient
 //
 //  Created by iMac on 13-8-8.
@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, FavoritesType){
     FavoritesTypeHotel              // 住宿
 };
 
-@interface AIIFavorites : AIIEntity
+@interface AIIFavorite : AIIEntity
 
 @property (nonatomic, copy) NSString *imagePath;
 @property (nonatomic, assign) BOOL status;

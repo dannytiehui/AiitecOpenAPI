@@ -16,6 +16,9 @@
 #define NotReachable_STATUS         100
 #define NotReachable_DESC           @"哎呀！网络数据不对啦。"
 
+#define Cache_Packet_STATUS         99
+#define Cache_Packet_DESC           @"来自缓存的协议文件"
+
 //#warning 设置开关，允许底层架构启用/禁用sessionId方案.
 /// 开关.允许底层架构启用/禁用sessionId方案.
 #define AiitecOpenAPISetting_SessionId YES

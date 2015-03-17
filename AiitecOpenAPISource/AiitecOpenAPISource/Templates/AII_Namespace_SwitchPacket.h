@@ -2,7 +2,7 @@
 //  AII_Namespace_SwitchPacket.h
 //  AiitecOpenAPISource
 //
-//  Created by iMac on 14/12/6.
+//  Created by iMac on 15/03/04.
 //  Copyright (c) 2014年 Aiitec. All rights reserved.
 //
 

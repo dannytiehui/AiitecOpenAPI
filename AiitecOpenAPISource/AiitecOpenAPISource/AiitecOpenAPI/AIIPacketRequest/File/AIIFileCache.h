@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, AIITemplate) {
     AIITemplateDetails,
     AIITemplateSubmit,
     AIITemplateCollectionSubmit,
+    AIITemplateUpdate,
     AIITemplateSwitch,
 };
 

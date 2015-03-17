@@ -1,14 +1,14 @@
 //
-//  AIIFavoritesSwitchRequest.m
+//  AIIFavoriteSwitchRequest.m
 //  AAClient
 //
 //  Created by iMac on 13-5-21.
 //  Copyright (c) 2013年 Aiitec. All rights reserved.
 //
 
-#import "AIIFavoritesSwitchPacket.h"
+#import "AIIFavoriteSwitchPacket.h"
 
-@implementation AIIFavoritesSwitchRequestQuery
+@implementation AIIFavoriteSwitchRequestQuery
 
 #pragma mark - NSObject(NSKeyValueCoding)
 
@@ -40,7 +40,7 @@
 @end
 
 
-@implementation AIIFavoritesSwitchRequest
+@implementation AIIFavoriteSwitchRequest
 
 - (NSString *)packetNickname
 {
@@ -50,5 +50,5 @@
 @end
 
 
-@implementation AIIFavoritesSwitchResponse
+@implementation AIIFavoriteSwitchResponse
 @end

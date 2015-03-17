@@ -17,6 +17,10 @@
 /// 组包 -- 从JSONModel、IqPacket对象中,读取元素值到JSON格式的字符串中,并返回.
 - (NSString *)jsonStringWithObject;
 
+@optional
+/// 组包 -- 从JSONModel、IqPacket对象中,读取元素值到NSDictionary中,并返回.
+- (NSDictionary *)dictionaryWithObject;
+
 @end
 
 

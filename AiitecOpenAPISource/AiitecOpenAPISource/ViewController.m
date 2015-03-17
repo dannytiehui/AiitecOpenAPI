@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "AIIFileCache.h"
+#import "AIIUtility.h"
+
+#import "Fraction.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -38,7 +41,7 @@
 //    [self testMessageListRequest];
 //    [self testSMSCodeRequest];
 //    [self testAdListRequest];
-//    [self testSettingRequest];
+    [self testSettingRequest];
 //    [self testReferenceItemListRequest];
 //    [self testUploadImageRequest];//!< Collection
 //    [self testUploadFilesRequest];//!< Collection
@@ -55,7 +58,7 @@
 //    [self testUserResetPasswordRequest];
     
 //    [self testSynchronousUserDetailsRequest];//!< 测试同步请求.
-    [self testUserDetailsRequest];
+//    [self testUserDetailsRequest];
 //    [self testUserUpdateRequest];
 //    [self testRankListRequest];
 //    [self testRecordListRequest];
@@ -149,33 +152,38 @@
 //    NSLog(@"b:%d", b);
     
     
-    
+//    BOOL b;
     // Entity
-//    NSArray *entityArray = @[@"Join", @"Operate", @"Remind"];
-//    BOOL b = [AIIFileCache createIqPacketWithEntityArray:entityArray];
+//    NSArray *entityArray = @[@"AttrCategory"];
+//    b = [AIIFileCache createIqPacketWithEntityArray:entityArray];
 
     // Default
-//    BOOL b = [AIIFileCache createIqPacketWithNamespace:@"TaskJoinSwitch" template:AIITemplateDefault];
-//    NSArray *namespaceArray = @[@"TaskOperateSwitch",@"WeiboOperateSwitch",@"FetchExecutingOrders",@"RemindBadgeNumber",@"RemindRemove"];
-
+//    b = [AIIFileCache createIqPacketWithNamespace:@"ExpressSearch" template:AIITemplateDefault];
+//    NSArray *namespaceArray = @[@"Operate",@"SignIn",@"OrderRemindDelivery",@"OrderReturnApply",@"ResumeSend",@"pay"];
+//    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceArray template:AIITemplateDefault];
+    
     // List
-//    NSArray *namespaceListArray = @[@"TaskJoin", @"TaskEvaluate", @"TaskComment", @"TaskOperate", @"TaskReport", @"Weibo", @"WeiboOperate", @"WeiboComment", @"Remind"];
-//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceListArray template:AIITemplateList];
+//    NSArray *namespaceListArray = @[@"Record", @"Bonus", @"SignInRecord", @"ShopCartGoods", @"Order", @"Info", @"ForumPost", @"ForumComment", @"Goods", @"Comment", @"Report", @"Activity"];
+//    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceListArray template:AIITemplateList];
     
     // Details
-//    NSArray *namespaceDetailsArray = @[@"Weibo"];
-//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceDetailsArray template:AIITemplateDetails];
+//    NSArray *namespaceDetailsArray = @[@"Company", @"Bonus", @"Order", @"Info", @"ForumPost", @"Goods", @"Seller", @"Report"];
+//    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceDetailsArray template:AIITemplateDetails];
     
     // Submit
-//    NSArray *namespaceSubmitArray = @[@"TaskComment", @"TaskReport", @"TaskReportReply", @"Weibo"];
-//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceSubmitArray template:AIITemplateSubmit];
-    
+//    NSArray *namespaceSubmitArray = @[@"Order", @"Comment", @"Info", @"ForumPost", @"ForumComment", @"Report"];
+//    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceSubmitArray template:AIITemplateSubmit];
+
     // CollectionSubmit
 //    NSArray *namespaceCollectionSubmitArray = @[@"TaskEvaluate"];
-//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceCollectionSubmitArray template:AIITemplateCollectionSubmit];
+//    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceCollectionSubmitArray template:AIITemplateCollectionSubmit];
+    
+    // Update
+//    NSArray *namespaceUpdateArray = @[@"Company", @"ShopCartGoods"];
+//    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceUpdateArray template:AIITemplateUpdate];
     
     // Switch
-//    NSArray *namespaceSwitchArray = @[@"TaskOperate",@"WeiboOperate"];
+//    NSArray *namespaceSwitchArray = @[@"Praise"];
 //    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceSwitchArray template:AIITemplateSwitch];
     
 //    NSLog(@"b:%d", b);
@@ -205,6 +213,101 @@
 //    NSLog(@"6- %@", [AIIUtility dateStringToHuman:@"2013-12-13 15:52:00"]);
 //    NSLog(@"7- %@", [AIIUtility dateStringToHuman:@"2012-12-13 15:52:00"]);
  
+    
+    
+    
+    
+    
+    // 2015-03-13 复制对象
+//    Fraction *f1 = [[Fraction alloc] init];
+//    Fraction *f2;
+//    
+//    [f1 setTo:2 over:5];
+////    f2 = f1;
+//    f2 = [f1 copy];
+//    [f2 setTo:1 over:3];
+//    [f1 print];
+//    [f2 print];
+    
+//    NSString *str = @"a";
+//    NSString *str2;
+//    
+//    NSLog(@"str:%@", str);
+//    
+//    str2 = str;
+////    str2 = [str copy];
+////    str2 = [str mutableCopy];
+//    
+//    NSLog(@"str:%@", str);
+//    NSLog(@"str2:%@", str2);
+
+//    AIIJSONModel *user = [[AIIUser alloc] init];
+//    AIIJSONModel *user2;
+//    NSMutableString *mString;
+    
+//    NSMutableString *mString = [NSMutableString stringWithFormat:@"%@",@"abc"];
+//    user.sString = mString;
+//    user.cString = mString;
+//    NSLog(@" mString:%@, %p, %p",  mString, mString, &mString);
+//    [user print];
+//    
+//    [mString appendString:@"de"];
+//    
+//    NSLog(@" mString:%@, %p, %p",  mString, mString, &mString);
+//    [user print];
+    
+//    user.identifier = 1;
+//    user.name = @"用户一";
+//    user.mutableString = [NSMutableString stringWithFormat:@"%@",@"100"];
+//    [user.mutableString appendString:@"9"];
+//    NSLog(@"%@", user.mutableString);
+//    
+////    user2 = user;
+////    user2 = [user copy];
+////    user2 = [user mutableCopy];
+//    mString = user.mutableString;
+//    [mString appendString: @"ONE"];
+//    
+////    user2.identifier = 2;
+////    user2.name = @"用户二";
+//    user2.mutableString = [NSMutableString stringWithString:@"200"];
+//    
+//    NSLog(@"%@", user.mutableString);
+//    NSLog(@"%@", user2.mutableString);
+//    NSLog(@"---\r\n");
+    
+    
+    
+//    NSLog(@"%lu,%@,%@", user.identifier, user.name, user.mutableString);
+//    NSLog(@"%lu,%@,%@", user2.identifier, user2.name, user2.mutableString);
+//    NSLog(@"---\r\n");
+//
+//    AIIUserCollection *userCollection = [[AIIUserCollection alloc] init];
+//    [userCollection addObject:user];
+//    [userCollection addObject:user2];
+//    
+//    AIIUserCollection *userCollection2;
+    
+//    userCollection2 = userCollection;
+//    userCollection2 = [userCollection copy];
+//    userCollection2 = [userCollection mutableCopy];
+//    
+//    AIIUser *user3 = [[AIIUser alloc] init];
+//    user3.identifier = 3;
+//    user3.name = @"用户三";
+//    [userCollection2 addObject:user3];
+//    
+//    for (AIIUser *item in userCollection) {
+//        NSLog(@"%lu,%@", item.identifier, item.name);
+//    }
+//    
+//    NSLog(@"\r\n");
+//    
+//    for (AIIUser *item2 in userCollection2) {
+//        NSLog(@"%lu,%@", item2.identifier, item2.name);
+//    }
+    
+    
 }
 
 + (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate
@@ -834,6 +937,30 @@
             AIIReferenceItemListResponseQuery *responseQuery = (AIIReferenceItemListResponseQuery *)connection.response.query;
             AIIItemCollection *itemCollection = (AIIItemCollection *)responseQuery.modelCollection;
             NSLog(@"itemCollection:%@", itemCollection);
+        }
+        else {
+            // 失败
+            ;
+        }
+    }
+    else if ([connection.response isKindOfClass:[AIISettingResponse class]]) {
+        if (!connection.response.query.status) {
+            // 成功
+            AIISettingResponseQuery *responseQuery = (AIISettingResponseQuery *)connection.response.query;
+            AIIItemCollection *itemCollection = (AIIItemCollection *)responseQuery.itemCollection;
+            NSLog(@"itemCollection:%@", itemCollection);
+            
+            for (AIIItem *item in itemCollection) {
+                NSLog(@"%lu, %@, %@", item.identifier, item.name, item.value);
+            }
+            
+            // 1.写入协议文件缓存.
+            [connection.response writeToFile];
+            
+            // 2.读取协议文件缓存
+            AIISettingResponse *response2 = [[AIISettingResponse alloc] initWithCachesPacketFile];
+            NSLog(@"%@", response2);
+
         }
         else {
             // 失败

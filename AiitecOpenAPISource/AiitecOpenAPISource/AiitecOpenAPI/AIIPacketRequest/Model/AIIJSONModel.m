@@ -39,6 +39,13 @@
     return [[self class] allocWithZone:zone];
 }
 
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    return [[self class] mutableCopy];
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
@@ -56,7 +63,10 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-//    NSLog(@"%@, %@, %@", [self class], key, [[self propertysAttributes] objectForKey:key]);
+#if AiitecOpenAPI_DEBUG
+    NSLog(@"%@, %@, %@", [self class], key, [[self propertysAttributes] objectForKey:key]);
+#endif
+    
     BOOL isNumber;
     NSArray *array = (NSArray *)[[self propertysAttributes] objectForKey:key];
     
@@ -171,5 +181,11 @@
     NSDictionary *dict = @{@"n": @"nameSpace", @"s": @"sessionId", @"t": @"timestampLatest", @"c": @"cache", @"q": @"query", @"a": @"action", @"ta": @"table", @"pa": @"page", @"li": @"limit", @"ob": @"orderBy", @"ot": @"orderType", @"w": @"where", @"sk": @"searchKey", @"s": @"status", @"description": @"desc", @"t": @"timestamp", @"id": @"identifier"};
     return dict;
 }
+
+//- (void)print
+//{
+//    NSLog(@"_sString:%@, %p, %p", _sString, _sString, &_sString);
+//    NSLog(@"_cString:%@, %p, %p", _cString, _cString, &_cString);
+//}
 
 @end

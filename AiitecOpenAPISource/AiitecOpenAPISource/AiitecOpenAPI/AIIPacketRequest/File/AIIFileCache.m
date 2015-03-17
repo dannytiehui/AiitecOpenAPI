@@ -241,6 +241,11 @@
             templateHPath = [bundle pathForResource:@"AII_Entity_CollectionSubmitPacket_h" ofType:@""];
             templateMPath = [bundle pathForResource:@"AII_Entity_CollectionSubmitPacket_m" ofType:@""];
             break;
+        case AIITemplateUpdate:
+            fileSuffix = @"Update";
+            templateHPath = [bundle pathForResource:@"AII_Entity_UpdatePacket_h" ofType:@""];
+            templateMPath = [bundle pathForResource:@"AII_Entity_UpdatePacket_m" ofType:@""];
+            break;
         case AIITemplateSwitch:
             fileSuffix = @"Switch";
             replaceString = @"_Namespace_";
@@ -279,6 +284,7 @@
     NSString *fileName = [listItems lastObject];
     NSString *pathDirectories = [hPath stringByReplacingOccurrencesOfString:fileName withString:@""];
     BOOL isDir;
+    NSLog(@"%@", pathDirectories);
     if (!([fm fileExistsAtPath:pathDirectories isDirectory:&isDir] && isDir)) {
         [fm createDirectoryAtPath:pathDirectories withIntermediateDirectories:YES attributes:nil error:nil];
     }

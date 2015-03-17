@@ -1,5 +1,5 @@
 //
-//  AIIFavoritesCollection.h
+//  AIIFavoriteCollection.h
 //  AAClient
 //
 //  Created by iMac on 13-8-8.
@@ -7,8 +7,8 @@
 //
 
 #import "AIIModelCollection.h"
-#import "AIIFavorites.h"
+#import "AIIFavorite.h"
 
-@interface AIIFavoritesCollection : AIIModelCollection
+@interface AIIFavoriteCollection : AIIModelCollection
 
 @end

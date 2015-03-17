@@ -12,7 +12,7 @@
  *
  *  集合对象模型基类.
  */
-@interface AIIJSONCollection : NSObject <NSFastEnumeration>
+@interface AIIJSONCollection : NSObject <NSFastEnumeration, NSCopying, NSMutableCopying, NSCoding>
 {
     @private
     NSMutableArray *_mutableArray;

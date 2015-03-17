@@ -35,6 +35,7 @@
 		884E125219ED00A5005CBDAD /* NSString+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884E125119ED00A5005CBDAD /* NSString+AiitecOpenAPI.m */; };
 		884E125519ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884E125419ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m */; };
 		884E125819ED020F005CBDAD /* NSArray+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884E125719ED020F005CBDAD /* NSArray+AiitecOpenAPI.m */; };
+		884F57B51AB81AF200BE95CF /* AiitecOpenAPIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 884F57B41AB81AF200BE95CF /* AiitecOpenAPIConfig.m */; };
 		886C19CA19D515E300FC76FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19C919D515E300FC76FC /* main.m */; };
 		886C19CD19D515E300FC76FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CC19D515E300FC76FC /* AppDelegate.m */; };
 		886C19D019D515E300FC76FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CF19D515E300FC76FC /* ViewController.m */; };
@@ -115,6 +116,8 @@
 		887D0F851A33011E00B1CAEF /* AII_Entity_Collection_h in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F841A33011E00B1CAEF /* AII_Entity_Collection_h */; };
 		887D0F871A33012C00B1CAEF /* AII_Entity_Collection_m in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F861A33012C00B1CAEF /* AII_Entity_Collection_m */; };
 		8885CDA41A3BF77400398204 /* ItemTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8885CDA31A3BF77400398204 /* ItemTable.m */; };
+		889BA8EF1AB2C6EE00BE8129 /* XYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BA8EE1AB2C6EE00BE8129 /* XYPoint.m */; };
+		889BA8F51AB2CBE700BE8129 /* Fraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BA8F41AB2CBE700BE8129 /* Fraction.m */; };
 		889BF4F91A10AB43004F86F9 /* HttpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BF4F81A10AB43004F86F9 /* HttpViewController.m */; };
 		889CEAA21A3ED200006120D6 /* AIIUserOperateListPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 889CEAA11A3ED200006120D6 /* AIIUserOperateListPacket.m */; };
 		88C19BDB1A36DF6100DB0AC8 /* AIIAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AD41A36DF6000DB0AC8 /* AIIAd.m */; };
@@ -129,8 +132,8 @@
 		88C19BE41A36DF6100DB0AC8 /* AIIAttrCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AE61A36DF6100DB0AC8 /* AIIAttrCollection.m */; };
 		88C19BE51A36DF6100DB0AC8 /* AIICategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AE81A36DF6100DB0AC8 /* AIICategory.m */; };
 		88C19BE61A36DF6100DB0AC8 /* AIICategoryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AEA1A36DF6100DB0AC8 /* AIICategoryCollection.m */; };
-		88C19BE71A36DF6100DB0AC8 /* AIIFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AEC1A36DF6100DB0AC8 /* AIIFavorites.m */; };
-		88C19BE81A36DF6100DB0AC8 /* AIIFavoritesCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AEE1A36DF6100DB0AC8 /* AIIFavoritesCollection.m */; };
+		88C19BE71A36DF6100DB0AC8 /* AIIFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AEC1A36DF6100DB0AC8 /* AIIFavorite.m */; };
+		88C19BE81A36DF6100DB0AC8 /* AIIFavoriteCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AEE1A36DF6100DB0AC8 /* AIIFavoriteCollection.m */; };
 		88C19BE91A36DF6100DB0AC8 /* AIIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AF01A36DF6100DB0AC8 /* AIIImage.m */; };
 		88C19BEA1A36DF6100DB0AC8 /* AIIImageCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AF21A36DF6100DB0AC8 /* AIIImageCollection.m */; };
 		88C19BEB1A36DF6100DB0AC8 /* AIIItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19AF41A36DF6100DB0AC8 /* AIIItem.m */; };
@@ -172,8 +175,8 @@
 		88C19C0F1A36DF6100DB0AC8 /* AIICoordinateCollectionSubmitPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B3E1A36DF6100DB0AC8 /* AIICoordinateCollectionSubmitPacket.m */; };
 		88C19C101A36DF6100DB0AC8 /* AIIDeleteActionPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B401A36DF6100DB0AC8 /* AIIDeleteActionPacket.m */; };
 		88C19C111A36DF6100DB0AC8 /* AIIDeviceTokenSwitchPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B421A36DF6100DB0AC8 /* AIIDeviceTokenSwitchPacket.m */; };
-		88C19C121A36DF6100DB0AC8 /* AIIFavoritesListPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B441A36DF6100DB0AC8 /* AIIFavoritesListPacket.m */; };
-		88C19C131A36DF6100DB0AC8 /* AIIFavoritesSwitchPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B461A36DF6100DB0AC8 /* AIIFavoritesSwitchPacket.m */; };
+		88C19C121A36DF6100DB0AC8 /* AIIFavoriteListPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B441A36DF6100DB0AC8 /* AIIFavoriteListPacket.m */; };
+		88C19C131A36DF6100DB0AC8 /* AIIFavoriteSwitchPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B461A36DF6100DB0AC8 /* AIIFavoriteSwitchPacket.m */; };
 		88C19C141A36DF6100DB0AC8 /* AIIHTMLPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B481A36DF6100DB0AC8 /* AIIHTMLPacket.m */; };
 		88C19C151A36DF6100DB0AC8 /* AIILeaveMessagePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B4A1A36DF6100DB0AC8 /* AIILeaveMessagePacket.m */; };
 		88C19C161A36DF6100DB0AC8 /* AIIMessageListPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19B4C1A36DF6100DB0AC8 /* AIIMessageListPacket.m */; };
@@ -248,6 +251,12 @@
 		88C19C5B1A36DF6100DB0AC8 /* RegionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19BD81A36DF6100DB0AC8 /* RegionTable.m */; };
 		88C19C5C1A36DF6100DB0AC8 /* UserTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19BDA1A36DF6100DB0AC8 /* UserTable.m */; };
 		88C19C5F1A3721D400DB0AC8 /* AIITaskLabelListPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C19C5E1A3721D400DB0AC8 /* AIITaskLabelListPacket.m */; };
+		88C7749F1AA80DC8007A2BE1 /* AII_Entity_UpdatePacket.h in Resources */ = {isa = PBXBuildFile; fileRef = 88C7749E1AA80DC8007A2BE1 /* AII_Entity_UpdatePacket.h */; };
+		88C774A11AA80E04007A2BE1 /* AII_Entity_UpdatePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C774A01AA80E04007A2BE1 /* AII_Entity_UpdatePacket.m */; };
+		88C774A41AA810FD007A2BE1 /* AII_Entity_UpdatePacket_h in Resources */ = {isa = PBXBuildFile; fileRef = 88C774A21AA810FD007A2BE1 /* AII_Entity_UpdatePacket_h */; };
+		88C774A51AA810FD007A2BE1 /* AII_Entity_UpdatePacket_m in Resources */ = {isa = PBXBuildFile; fileRef = 88C774A31AA810FD007A2BE1 /* AII_Entity_UpdatePacket_m */; };
+		88C775241AA83E39007A2BE1 /* AIIOperatePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C775231AA83E39007A2BE1 /* AIIOperatePacket.m */; };
+		88C775271AA83E73007A2BE1 /* AIIBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C775261AA83E73007A2BE1 /* AIIBase.m */; };
 		88CCAB1D1A3A9C08009F14B8 /* SchoolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB1C1A3A9C08009F14B8 /* SchoolTable.m */; };
 		88CCAB231A3A9C33009F14B8 /* SchoolAliasesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB221A3A9C33009F14B8 /* SchoolAliasesTable.m */; };
 		88CCAB261A3A9C43009F14B8 /* DepartmentsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CCAB251A3A9C43009F14B8 /* DepartmentsTable.m */; };
@@ -294,6 +303,8 @@
 		884E125419ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AiitecOpenAPI.m"; sourceTree = "<group>"; };
 		884E125619ED020F005CBDAD /* NSArray+AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AiitecOpenAPI.h"; sourceTree = "<group>"; };
 		884E125719ED020F005CBDAD /* NSArray+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AiitecOpenAPI.m"; sourceTree = "<group>"; };
+		884F57B31AB81AF200BE95CF /* AiitecOpenAPIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiitecOpenAPIConfig.h; sourceTree = "<group>"; };
+		884F57B41AB81AF200BE95CF /* AiitecOpenAPIConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiitecOpenAPIConfig.m; sourceTree = "<group>"; };
 		886C19C419D515E300FC76FC /* AiitecOpenAPISource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiitecOpenAPISource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		886C19C819D515E300FC76FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		886C19C919D515E300FC76FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -435,6 +446,10 @@
 		887D0F861A33012C00B1CAEF /* AII_Entity_Collection_m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_Collection_m; sourceTree = "<group>"; };
 		8885CDA21A3BF77400398204 /* ItemTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTable.h; sourceTree = "<group>"; };
 		8885CDA31A3BF77400398204 /* ItemTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTable.m; sourceTree = "<group>"; };
+		889BA8ED1AB2C6EE00BE8129 /* XYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPoint.h; sourceTree = "<group>"; };
+		889BA8EE1AB2C6EE00BE8129 /* XYPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPoint.m; sourceTree = "<group>"; };
+		889BA8F31AB2CBE700BE8129 /* Fraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fraction.h; sourceTree = "<group>"; };
+		889BA8F41AB2CBE700BE8129 /* Fraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fraction.m; sourceTree = "<group>"; };
 		889BF4F71A10AB43004F86F9 /* HttpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpViewController.h; sourceTree = "<group>"; };
 		889BF4F81A10AB43004F86F9 /* HttpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpViewController.m; sourceTree = "<group>"; };
 		889CEAA01A3ED200006120D6 /* AIIUserOperateListPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIUserOperateListPacket.h; sourceTree = "<group>"; };
@@ -463,10 +478,10 @@
 		88C19AE81A36DF6100DB0AC8 /* AIICategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIICategory.m; sourceTree = "<group>"; };
 		88C19AE91A36DF6100DB0AC8 /* AIICategoryCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIICategoryCollection.h; sourceTree = "<group>"; };
 		88C19AEA1A36DF6100DB0AC8 /* AIICategoryCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIICategoryCollection.m; sourceTree = "<group>"; };
-		88C19AEB1A36DF6100DB0AC8 /* AIIFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFavorites.h; sourceTree = "<group>"; };
-		88C19AEC1A36DF6100DB0AC8 /* AIIFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFavorites.m; sourceTree = "<group>"; };
-		88C19AED1A36DF6100DB0AC8 /* AIIFavoritesCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFavoritesCollection.h; sourceTree = "<group>"; };
-		88C19AEE1A36DF6100DB0AC8 /* AIIFavoritesCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFavoritesCollection.m; sourceTree = "<group>"; };
+		88C19AEB1A36DF6100DB0AC8 /* AIIFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFavorite.h; sourceTree = "<group>"; };
+		88C19AEC1A36DF6100DB0AC8 /* AIIFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFavorite.m; sourceTree = "<group>"; };
+		88C19AED1A36DF6100DB0AC8 /* AIIFavoriteCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFavoriteCollection.h; sourceTree = "<group>"; };
+		88C19AEE1A36DF6100DB0AC8 /* AIIFavoriteCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFavoriteCollection.m; sourceTree = "<group>"; };
 		88C19AEF1A36DF6100DB0AC8 /* AIIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIImage.h; sourceTree = "<group>"; };
 		88C19AF01A36DF6100DB0AC8 /* AIIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIImage.m; sourceTree = "<group>"; };
 		88C19AF11A36DF6100DB0AC8 /* AIIImageCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIImageCollection.h; sourceTree = "<group>"; };
@@ -549,10 +564,10 @@
 		88C19B401A36DF6100DB0AC8 /* AIIDeleteActionPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDeleteActionPacket.m; sourceTree = "<group>"; };
 		88C19B411A36DF6100DB0AC8 /* AIIDeviceTokenSwitchPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDeviceTokenSwitchPacket.h; sourceTree = "<group>"; };
 		88C19B421A36DF6100DB0AC8 /* AIIDeviceTokenSwitchPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDeviceTokenSwitchPacket.m; sourceTree = "<group>"; };
-		88C19B431A36DF6100DB0AC8 /* AIIFavoritesListPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFavoritesListPacket.h; sourceTree = "<group>"; };
-		88C19B441A36DF6100DB0AC8 /* AIIFavoritesListPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFavoritesListPacket.m; sourceTree = "<group>"; };
-		88C19B451A36DF6100DB0AC8 /* AIIFavoritesSwitchPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFavoritesSwitchPacket.h; sourceTree = "<group>"; };
-		88C19B461A36DF6100DB0AC8 /* AIIFavoritesSwitchPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFavoritesSwitchPacket.m; sourceTree = "<group>"; };
+		88C19B431A36DF6100DB0AC8 /* AIIFavoriteListPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFavoriteListPacket.h; sourceTree = "<group>"; };
+		88C19B441A36DF6100DB0AC8 /* AIIFavoriteListPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFavoriteListPacket.m; sourceTree = "<group>"; };
+		88C19B451A36DF6100DB0AC8 /* AIIFavoriteSwitchPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFavoriteSwitchPacket.h; sourceTree = "<group>"; };
+		88C19B461A36DF6100DB0AC8 /* AIIFavoriteSwitchPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFavoriteSwitchPacket.m; sourceTree = "<group>"; };
 		88C19B471A36DF6100DB0AC8 /* AIIHTMLPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIHTMLPacket.h; sourceTree = "<group>"; };
 		88C19B481A36DF6100DB0AC8 /* AIIHTMLPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIHTMLPacket.m; sourceTree = "<group>"; };
 		88C19B491A36DF6100DB0AC8 /* AIILeaveMessagePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIILeaveMessagePacket.h; sourceTree = "<group>"; };
@@ -703,6 +718,14 @@
 		88C19C5E1A3721D400DB0AC8 /* AIITaskLabelListPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIITaskLabelListPacket.m; sourceTree = "<group>"; };
 		88C2F7151A1DA3F00039A7C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		88C2F7171A1DA3F50039A7C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		88C7749E1AA80DC8007A2BE1 /* AII_Entity_UpdatePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AII_Entity_UpdatePacket.h; sourceTree = "<group>"; };
+		88C774A01AA80E04007A2BE1 /* AII_Entity_UpdatePacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AII_Entity_UpdatePacket.m; sourceTree = "<group>"; };
+		88C774A21AA810FD007A2BE1 /* AII_Entity_UpdatePacket_h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_UpdatePacket_h; sourceTree = "<group>"; };
+		88C774A31AA810FD007A2BE1 /* AII_Entity_UpdatePacket_m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_UpdatePacket_m; sourceTree = "<group>"; };
+		88C775221AA83E39007A2BE1 /* AIIOperatePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIOperatePacket.h; sourceTree = "<group>"; };
+		88C775231AA83E39007A2BE1 /* AIIOperatePacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIOperatePacket.m; sourceTree = "<group>"; };
+		88C775251AA83E73007A2BE1 /* AIIBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIBase.h; sourceTree = "<group>"; };
+		88C775261AA83E73007A2BE1 /* AIIBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIBase.m; sourceTree = "<group>"; };
 		88CCAB1B1A3A9C08009F14B8 /* SchoolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolTable.h; sourceTree = "<group>"; };
 		88CCAB1C1A3A9C08009F14B8 /* SchoolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolTable.m; sourceTree = "<group>"; };
 		88CCAB211A3A9C33009F14B8 /* SchoolAliasesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolAliasesTable.h; sourceTree = "<group>"; };
@@ -768,6 +791,8 @@
 				882602231A31C57500C6C843 /* AII_Entity_SubmitPacket.m */,
 				887D0F741A32FEBD00B1CAEF /* AII_Entity_CollectionSubmitPacket.h */,
 				887D0F751A32FEBD00B1CAEF /* AII_Entity_CollectionSubmitPacket.m */,
+				88C7749E1AA80DC8007A2BE1 /* AII_Entity_UpdatePacket.h */,
+				88C774A01AA80E04007A2BE1 /* AII_Entity_UpdatePacket.m */,
 				882602251A31C69A00C6C843 /* AII_Namespace_Packet.h */,
 				882602261A31C69A00C6C843 /* AII_Namespace_Packet.m */,
 				887D0F671A32F3AE00B1CAEF /* AII_Namespace_SwitchPacket.h */,
@@ -784,6 +809,8 @@
 				887D0F4E1A32E76B00B1CAEF /* AII_Entity_SubmitPacket_m */,
 				887D0F501A32E83900B1CAEF /* AII_Entity_CollectionSubmitPacket_h */,
 				887D0F521A32E84700B1CAEF /* AII_Entity_CollectionSubmitPacket_m */,
+				88C774A21AA810FD007A2BE1 /* AII_Entity_UpdatePacket_h */,
+				88C774A31AA810FD007A2BE1 /* AII_Entity_UpdatePacket_m */,
 				887D0F401A32E3A700B1CAEF /* AII_Namespace_Packet_h */,
 				887D0F421A32E3D100B1CAEF /* AII_Namespace_Packet_m */,
 				887D0F6A1A32F4D700B1CAEF /* AII_Namespace_SwitchPacket_h */,
@@ -826,6 +853,7 @@
 				886C1AA419D5212A00FC76FC /* Images */,
 				886C1B9F19D5212A00FC76FC /* View */,
 				886C1BA019D5212A00FC76FC /* ViewController */,
+				889BA8EC1AB2C6CB00BE8129 /* Examples */,
 				882601FE1A31A52000C6C843 /* Templates */,
 				886C19C719D515E300FC76FC /* Supporting Files */,
 				886C1AAB19D5212A00FC76FC /* Supporting Classes */,
@@ -1163,6 +1191,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		889BA8EC1AB2C6CB00BE8129 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				889BA8F31AB2CBE700BE8129 /* Fraction.h */,
+				889BA8F41AB2CBE700BE8129 /* Fraction.m */,
+				889BA8ED1AB2C6EE00BE8129 /* XYPoint.h */,
+				889BA8EE1AB2C6EE00BE8129 /* XYPoint.m */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
 		88C19AD11A36DF6000DB0AC8 /* AIIPacketRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -1170,6 +1209,8 @@
 				88C19B2E1A36DF6100DB0AC8 /* Packet */,
 				88C19BCE1A36DF6100DB0AC8 /* PacketRequest.h */,
 				88C19BCF1A36DF6100DB0AC8 /* PacketRequest.m */,
+				884F57B31AB81AF200BE95CF /* AiitecOpenAPIConfig.h */,
+				884F57B41AB81AF200BE95CF /* AiitecOpenAPIConfig.m */,
 				88C19BD01A36DF6100DB0AC8 /* SQLite */,
 			);
 			path = AIIPacketRequest;
@@ -1202,10 +1243,10 @@
 				88C19AE81A36DF6100DB0AC8 /* AIICategory.m */,
 				88C19AE91A36DF6100DB0AC8 /* AIICategoryCollection.h */,
 				88C19AEA1A36DF6100DB0AC8 /* AIICategoryCollection.m */,
-				88C19AEB1A36DF6100DB0AC8 /* AIIFavorites.h */,
-				88C19AEC1A36DF6100DB0AC8 /* AIIFavorites.m */,
-				88C19AED1A36DF6100DB0AC8 /* AIIFavoritesCollection.h */,
-				88C19AEE1A36DF6100DB0AC8 /* AIIFavoritesCollection.m */,
+				88C19AEB1A36DF6100DB0AC8 /* AIIFavorite.h */,
+				88C19AEC1A36DF6100DB0AC8 /* AIIFavorite.m */,
+				88C19AED1A36DF6100DB0AC8 /* AIIFavoriteCollection.h */,
+				88C19AEE1A36DF6100DB0AC8 /* AIIFavoriteCollection.m */,
 				88C19AEF1A36DF6100DB0AC8 /* AIIImage.h */,
 				88C19AF01A36DF6100DB0AC8 /* AIIImage.m */,
 				88C19AF11A36DF6100DB0AC8 /* AIIImageCollection.h */,
@@ -1236,6 +1277,8 @@
 		88C19B051A36DF6100DB0AC8 /* Quick */ = {
 			isa = PBXGroup;
 			children = (
+				88C775251AA83E73007A2BE1 /* AIIBase.h */,
+				88C775261AA83E73007A2BE1 /* AIIBase.m */,
 				88C19B061A36DF6100DB0AC8 /* AIIComment.h */,
 				88C19B071A36DF6100DB0AC8 /* AIIComment.m */,
 				88C19B081A36DF6100DB0AC8 /* AIICommentCollection.h */,
@@ -1303,10 +1346,10 @@
 				88C19B401A36DF6100DB0AC8 /* AIIDeleteActionPacket.m */,
 				88C19B411A36DF6100DB0AC8 /* AIIDeviceTokenSwitchPacket.h */,
 				88C19B421A36DF6100DB0AC8 /* AIIDeviceTokenSwitchPacket.m */,
-				88C19B431A36DF6100DB0AC8 /* AIIFavoritesListPacket.h */,
-				88C19B441A36DF6100DB0AC8 /* AIIFavoritesListPacket.m */,
-				88C19B451A36DF6100DB0AC8 /* AIIFavoritesSwitchPacket.h */,
-				88C19B461A36DF6100DB0AC8 /* AIIFavoritesSwitchPacket.m */,
+				88C19B431A36DF6100DB0AC8 /* AIIFavoriteListPacket.h */,
+				88C19B441A36DF6100DB0AC8 /* AIIFavoriteListPacket.m */,
+				88C19B451A36DF6100DB0AC8 /* AIIFavoriteSwitchPacket.h */,
+				88C19B461A36DF6100DB0AC8 /* AIIFavoriteSwitchPacket.m */,
 				88C19B471A36DF6100DB0AC8 /* AIIHTMLPacket.h */,
 				88C19B481A36DF6100DB0AC8 /* AIIHTMLPacket.m */,
 				88C19B491A36DF6100DB0AC8 /* AIILeaveMessagePacket.h */,
@@ -1315,6 +1358,8 @@
 				88C19B4C1A36DF6100DB0AC8 /* AIIMessageListPacket.m */,
 				88C19B4D1A36DF6100DB0AC8 /* AIIMessageSubmitPacket.h */,
 				88C19B4E1A36DF6100DB0AC8 /* AIIMessageSubmitPacket.m */,
+				88C775221AA83E39007A2BE1 /* AIIOperatePacket.h */,
+				88C775231AA83E39007A2BE1 /* AIIOperatePacket.m */,
 				88C19B4F1A36DF6100DB0AC8 /* AIIReferenceItemListPacket.h */,
 				88C19B501A36DF6100DB0AC8 /* AIIReferenceItemListPacket.m */,
 				88C19B511A36DF6100DB0AC8 /* AIIRegionListPacket.h */,
@@ -1589,15 +1634,18 @@
 				887D0F491A32E74A00B1CAEF /* AII_Entity_DetailsPacket_h in Resources */,
 				886C1BCC19D5212A00FC76FC /* UploadImage.png in Resources */,
 				887D0F4D1A32E76000B1CAEF /* AII_Entity_SubmitPacket_h in Resources */,
+				88C774A51AA810FD007A2BE1 /* AII_Entity_UpdatePacket_m in Resources */,
 				887D0F511A32E83900B1CAEF /* AII_Entity_CollectionSubmitPacket_h in Resources */,
 				886C19D819D515E300FC76FC /* LaunchScreen.xib in Resources */,
 				887D0F6D1A32F4E000B1CAEF /* AII_Namespace_SwitchPacket_m in Resources */,
 				887D0F811A3300F400B1CAEF /* AII_Entity_h in Resources */,
+				88C7749F1AA80DC8007A2BE1 /* AII_Entity_UpdatePacket.h in Resources */,
 				887D0F831A33010200B1CAEF /* AII_Entity_m in Resources */,
 				886C19D519D515E300FC76FC /* Images.xcassets in Resources */,
 				886C1BCB19D5212A00FC76FC /* AiitecOpenAPIDB.sqlite in Resources */,
 				887D0F471A32E73A00B1CAEF /* AII_Entity_ListPacket_m in Resources */,
 				887D0F6B1A32F4D700B1CAEF /* AII_Namespace_SwitchPacket_h in Resources */,
+				88C774A41AA810FD007A2BE1 /* AII_Entity_UpdatePacket_h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1711,8 +1759,9 @@
 				886C1BAE19D5212A00FC76FC /* AIIJSONModel.m in Sources */,
 				88C19C5A1A36DF6100DB0AC8 /* FileTable.m in Sources */,
 				88C19C0B1A36DF6100DB0AC8 /* AIIAdListPacket.m in Sources */,
-				88C19BE71A36DF6100DB0AC8 /* AIIFavorites.m in Sources */,
+				88C19BE71A36DF6100DB0AC8 /* AIIFavorite.m in Sources */,
 				88CCAB1D1A3A9C08009F14B8 /* SchoolTable.m in Sources */,
+				889BA8F51AB2CBE700BE8129 /* Fraction.m in Sources */,
 				88C19C481A36DF6100DB0AC8 /* AIITaskListPacket.m in Sources */,
 				88C19C2F1A36DF6100DB0AC8 /* AIIEventListPacket.m in Sources */,
 				88C19BDC1A36DF6100DB0AC8 /* AIIAdCollection.m in Sources */,
@@ -1734,9 +1783,11 @@
 				88C19C0E1A36DF6100DB0AC8 /* AIICategoryListPacket.m in Sources */,
 				886C1BBA19D5212A00FC76FC /* AIIEntityPacket.m in Sources */,
 				886C1BC519D5212A00FC76FC /* Table.m in Sources */,
+				889BA8EF1AB2C6EE00BE8129 /* XYPoint.m in Sources */,
 				88C19C3D1A36DF6100DB0AC8 /* AIIRecordListPacket.m in Sources */,
 				88C19BF11A36DF6100DB0AC8 /* AIIStyle.m in Sources */,
 				88C19C371A36DF6100DB0AC8 /* AIIPointDetailsPacket.m in Sources */,
+				88C775241AA83E39007A2BE1 /* AIIOperatePacket.m in Sources */,
 				884E125519ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m in Sources */,
 				882602211A31C4B000C6C843 /* AII_Entity_DetailsPacket.m in Sources */,
 				88C19C501A36DF6100DB0AC8 /* AIIWeiboCommentListPacket.m in Sources */,
@@ -1781,9 +1832,10 @@
 				88CCAB2F1A3A9C94009F14B8 /* LabelUserGroupTable.m in Sources */,
 				889BF4F91A10AB43004F86F9 /* HttpViewController.m in Sources */,
 				884E125819ED020F005CBDAD /* NSArray+AiitecOpenAPI.m in Sources */,
-				88C19BE81A36DF6100DB0AC8 /* AIIFavoritesCollection.m in Sources */,
+				88C19BE81A36DF6100DB0AC8 /* AIIFavoriteCollection.m in Sources */,
 				886C1BB919D5212A00FC76FC /* AIIDetailsPacket.m in Sources */,
 				88C19C161A36DF6100DB0AC8 /* AIIMessageListPacket.m in Sources */,
+				88C775271AA83E73007A2BE1 /* AIIBase.m in Sources */,
 				88C19C4C1A36DF6100DB0AC8 /* AIITaskReportReplySubmitPacket.m in Sources */,
 				88C19BE31A36DF6100DB0AC8 /* AIIAttr.m in Sources */,
 				88C19BED1A36DF6100DB0AC8 /* AIIMessage.m in Sources */,
@@ -1798,13 +1850,14 @@
 				88C19C001A36DF6100DB0AC8 /* AIIRecordCollection.m in Sources */,
 				88C19C541A36DF6100DB0AC8 /* AIIWeiboOperateSwitchPacket.m in Sources */,
 				88C19C051A36DF6100DB0AC8 /* AIITaskCollection.m in Sources */,
+				88C774A11AA80E04007A2BE1 /* AII_Entity_UpdatePacket.m in Sources */,
 				88C19BF91A36DF6100DB0AC8 /* AIIEventCollection.m in Sources */,
 				887D0F691A32F3AE00B1CAEF /* AII_Namespace_SwitchPacket.m in Sources */,
 				88C19BEB1A36DF6100DB0AC8 /* AIIItem.m in Sources */,
 				88C19C191A36DF6100DB0AC8 /* AIIRegionListPacket.m in Sources */,
 				886C1C3B19D5212A00FC76FC /* FMDatabaseAdditions.m in Sources */,
 				88C19BFB1A36DF6100DB0AC8 /* AIIJoinCollection.m in Sources */,
-				88C19C121A36DF6100DB0AC8 /* AIIFavoritesListPacket.m in Sources */,
+				88C19C121A36DF6100DB0AC8 /* AIIFavoriteListPacket.m in Sources */,
 				886C1BBB19D5212A00FC76FC /* AIIIqPacket.m in Sources */,
 				886C1BAC19D5212A00FC76FC /* AIIEntity.m in Sources */,
 				88C19C471A36DF6100DB0AC8 /* AIITaskJoinSwitchPacket.m in Sources */,
@@ -1815,6 +1868,7 @@
 				88C19C431A36DF6100DB0AC8 /* AIITaskDetailsPacket.m in Sources */,
 				886C1BB019D5212A00FC76FC /* AIIDataField.m in Sources */,
 				88C19C4A1A36DF6100DB0AC8 /* AIITaskOperateSwitchPacket.m in Sources */,
+				884F57B51AB81AF200BE95CF /* AiitecOpenAPIConfig.m in Sources */,
 				886C1C3019D5212A00FC76FC /* AIICheckVersion.m in Sources */,
 				88C19C571A36DF6100DB0AC8 /* PacketRequest.m in Sources */,
 				88C19C0A1A36DF6100DB0AC8 /* AIIAddressSubmitPacket.m in Sources */,
@@ -1828,7 +1882,7 @@
 				88C19C231A36DF6100DB0AC8 /* AIIUserLoginPacket.m in Sources */,
 				88C19C1E1A36DF6100DB0AC8 /* AIIUserBindMobilePacket.m in Sources */,
 				88C19BF31A36DF6100DB0AC8 /* AIIUserCollection.m in Sources */,
-				88C19C131A36DF6100DB0AC8 /* AIIFavoritesSwitchPacket.m in Sources */,
+				88C19C131A36DF6100DB0AC8 /* AIIFavoriteSwitchPacket.m in Sources */,
 				88C19C101A36DF6100DB0AC8 /* AIIDeleteActionPacket.m in Sources */,
 				88C19C401A36DF6100DB0AC8 /* AIIRemindRemovePacket.m in Sources */,
 				886C1BAA19D5212A00FC76FC /* AIIPacketHttpConnection.m in Sources */,
@@ -1976,7 +2030,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AiitecOpenAPISource/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1989,7 +2043,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AiitecOpenAPISource/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

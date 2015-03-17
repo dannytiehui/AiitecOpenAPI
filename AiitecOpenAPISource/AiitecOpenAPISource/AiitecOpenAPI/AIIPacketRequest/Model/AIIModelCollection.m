@@ -20,7 +20,7 @@
         else {
             NSString *className = NSStringFromClass(self.entityClass);
             className = [className stringByReplacingOccurrencesOfString:@"AII" withString:@""];
-            _key = [className hasSuffix:@"s"] ? className.lowercaseString : [className stringByAppendingString:@"s"].lowercaseString;
+            _key = [className hasSuffix:@"s"] ? [className stringByAppendingString:@"es"].lowercaseString.lowercaseString : [className stringByAppendingString:@"s"].lowercaseString;
         }
     }
     return self;

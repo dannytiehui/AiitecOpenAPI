@@ -15,7 +15,9 @@
  *  集合对象模型基类.
  *  内置规则(仅对继承ModelCollection的子类):
  *    1.关于属性key的值:
- *      a)属性key的值为entityClass的key加"s"。如:AIIUserCollection类,则其key属性值默认为users.
+ *      a)属性key的值为entityClass的key加"s"或"es".
+ *           以非s结尾,则+"s". 如:AIIUserCollection类,则其key属性值默认为users.
+ *           以s结尾,则+"es".  如:AIIGoodsCollection类,则其key属性值默认为goodses.
  *      b)如果用户明确设置:userCollection.key = @"userskey";则以用户设置为准.
  */
 @interface AIIModelCollection : AIIJSONCollection <ValueToArray, ValueFromArray>
