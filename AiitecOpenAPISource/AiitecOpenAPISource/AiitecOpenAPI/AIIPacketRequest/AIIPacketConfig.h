@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+/** AppConfig.h定义配置文件，供底层使用. */
+//#ifdef AiitecOpenAPI_Config
+
+#import "AppConfig.h"
+
+//#else
+
+//#define DOMAIN_PATH             @"http://www.baidu.com/"
+//#define API_PATH                @""
+//#define REACHABILITY_HOSTNAME   @"www.baidu.com" //!< 用于 Reachability 网络检测 (或192.168.1.1)
+//#define AiitecOpenAPI_DEBUG 0
+//
+//#endif
+
 #define OPEN_SESSION_VALIDATE YES   //!< 开启/关闭会话验证
 
 #define SESSION_Nil_STATUS         1000

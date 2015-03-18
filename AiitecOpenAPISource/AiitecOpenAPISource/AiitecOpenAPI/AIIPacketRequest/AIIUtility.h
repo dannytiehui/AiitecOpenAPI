@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <objc/runtime.h>
-#import "AiitecOpenAPIConfig.h"
+#import "AIIPacketConfig.h"
 
 typedef NS_ENUM(NSUInteger, AIISex){
     AIISexDefault,

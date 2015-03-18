@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppConfig.h"
 #import "Reachability.h"
+#import "AIIPacketConfig.h"
 
 #define NotReachableAlertMessage @"无网络，网络请求已取消。请检查网络设置..."
 

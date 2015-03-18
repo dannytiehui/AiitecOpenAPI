@@ -35,7 +35,6 @@
 		884E125219ED00A5005CBDAD /* NSString+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884E125119ED00A5005CBDAD /* NSString+AiitecOpenAPI.m */; };
 		884E125519ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884E125419ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m */; };
 		884E125819ED020F005CBDAD /* NSArray+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884E125719ED020F005CBDAD /* NSArray+AiitecOpenAPI.m */; };
-		884F57B51AB81AF200BE95CF /* AiitecOpenAPIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 884F57B41AB81AF200BE95CF /* AiitecOpenAPIConfig.m */; };
 		886C19CA19D515E300FC76FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19C919D515E300FC76FC /* main.m */; };
 		886C19CD19D515E300FC76FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CC19D515E300FC76FC /* AppDelegate.m */; };
 		886C19D019D515E300FC76FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CF19D515E300FC76FC /* ViewController.m */; };
@@ -303,8 +302,6 @@
 		884E125419ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AiitecOpenAPI.m"; sourceTree = "<group>"; };
 		884E125619ED020F005CBDAD /* NSArray+AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AiitecOpenAPI.h"; sourceTree = "<group>"; };
 		884E125719ED020F005CBDAD /* NSArray+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AiitecOpenAPI.m"; sourceTree = "<group>"; };
-		884F57B31AB81AF200BE95CF /* AiitecOpenAPIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiitecOpenAPIConfig.h; sourceTree = "<group>"; };
-		884F57B41AB81AF200BE95CF /* AiitecOpenAPIConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiitecOpenAPIConfig.m; sourceTree = "<group>"; };
 		886C19C419D515E300FC76FC /* AiitecOpenAPISource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiitecOpenAPISource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		886C19C819D515E300FC76FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		886C19C919D515E300FC76FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1209,8 +1206,6 @@
 				88C19B2E1A36DF6100DB0AC8 /* Packet */,
 				88C19BCE1A36DF6100DB0AC8 /* PacketRequest.h */,
 				88C19BCF1A36DF6100DB0AC8 /* PacketRequest.m */,
-				884F57B31AB81AF200BE95CF /* AiitecOpenAPIConfig.h */,
-				884F57B41AB81AF200BE95CF /* AiitecOpenAPIConfig.m */,
 				88C19BD01A36DF6100DB0AC8 /* SQLite */,
 			);
 			path = AIIPacketRequest;
@@ -1868,7 +1863,6 @@
 				88C19C431A36DF6100DB0AC8 /* AIITaskDetailsPacket.m in Sources */,
 				886C1BB019D5212A00FC76FC /* AIIDataField.m in Sources */,
 				88C19C4A1A36DF6100DB0AC8 /* AIITaskOperateSwitchPacket.m in Sources */,
-				884F57B51AB81AF200BE95CF /* AiitecOpenAPIConfig.m in Sources */,
 				886C1C3019D5212A00FC76FC /* AIICheckVersion.m in Sources */,
 				88C19C571A36DF6100DB0AC8 /* PacketRequest.m in Sources */,
 				88C19C0A1A36DF6100DB0AC8 /* AIIAddressSubmitPacket.m in Sources */,

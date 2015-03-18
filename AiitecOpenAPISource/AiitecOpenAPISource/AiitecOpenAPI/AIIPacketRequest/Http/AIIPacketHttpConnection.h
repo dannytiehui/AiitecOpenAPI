@@ -6,7 +6,6 @@
 //  Copyright (c) 2013年 Aiitec. All rights reserved.
 //
 
-#import "AppConfig.h"
 #import "AIIPacketConfig.h"
 
 #import "AIIRequest.h"
