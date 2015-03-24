@@ -59,11 +59,17 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     /// 子类实现
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.query forKey:@"AIIIqPacketQuery"];
+    [aCoder encodeObject:self.nameSpace forKey:@"AIIIqPacketNameSpace"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     /// 子类实现
+    self = [super initWithCoder:aDecoder];
+    self.query = [aDecoder decodeObjectForKey:@"AIIIqPacketQuery"];
+    self.nameSpace = [aDecoder decodeObjectForKey:@"AIIIqPacketNameSpace"];
     return self;
 }
 

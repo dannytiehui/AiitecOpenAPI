@@ -141,4 +141,167 @@
     return [df stringFromDate:modificationDate];
 }
 
++ (BOOL)createIqPacketWithEntity:(NSString *)entity
+{
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *templateEntityHPath = [bundle pathForResource:@"AII_Entity_h" ofType:@""];;
+    NSString *templateEntityMPath = [bundle pathForResource:@"AII_Entity_m" ofType:@""];;
+    NSString *templateEntityCollectionHPath = [bundle pathForResource:@"AII_Entity_Collection_h" ofType:@""];;
+    NSString *templateEntityCollectionMPath = [bundle pathForResource:@"AII_Entity_Collection_m" ofType:@""];;
+    NSString *replaceString = @"_Entity_";
+   
+    NSString *entityHPath = [AIIFileCache iqPacketCachePath:[NSString stringWithFormat:@"AII%@.h", entity]];
+    NSString *entityMPath = [AIIFileCache iqPacketCachePath:[NSString stringWithFormat:@"AII%@.m", entity]];
+    NSString *entityCollectionHPath = [AIIFileCache iqPacketCachePath:[NSString stringWithFormat:@"AII%@Collection.h", entity]];
+    NSString *entityCollectionMPath = [AIIFileCache iqPacketCachePath:[NSString stringWithFormat:@"AII%@Collection.m", entity]];
+    
+    NSError *entityHError;
+    NSError *entityMError;
+    NSError *entityCollectionHError;
+    NSError *entityCollectionMError;
+    NSString *entityHString = [NSString stringWithContentsOfFile:templateEntityHPath encoding:NSUTF8StringEncoding error:&entityHError];
+    NSString *entityMString = [NSString stringWithContentsOfFile:templateEntityMPath encoding:NSUTF8StringEncoding error:&entityMError];
+    NSString *entityCollectionHString = [NSString stringWithContentsOfFile:templateEntityCollectionHPath encoding:NSUTF8StringEncoding error:&entityCollectionHError];
+    NSString *entityCollectionMString = [NSString stringWithContentsOfFile:templateEntityCollectionMPath encoding:NSUTF8StringEncoding error:&entityCollectionMError];
+    
+    if (entityHError || entityMError || entityCollectionHError || entityCollectionMError) {
+        NSLog(@"entityHError:%@", entityHError);
+        NSLog(@"entityMError:%@", entityMError);
+        NSLog(@"entityCollectionHError:%@", entityCollectionHError);
+        NSLog(@"entityCollectionMError:%@", entityCollectionMError);
+        return NO;
+    }
+    
+    entityHString = [entityHString stringByReplacingOccurrencesOfString:replaceString withString:entity];
+    entityMString = [entityMString stringByReplacingOccurrencesOfString:replaceString withString:entity];
+    entityCollectionHString = [entityCollectionHString stringByReplacingOccurrencesOfString:replaceString withString:entity];
+    entityCollectionMString = [entityCollectionMString stringByReplacingOccurrencesOfString:replaceString withString:entity];
+    NSData *entityHData =  [entityHString dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *entityMData =  [entityMString dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *entityCollectionHData =  [entityCollectionHString dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *entityCollectionMData =  [entityCollectionMString dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    NSArray *listItems = [entityHPath componentsSeparatedByString:@"/"];
+    NSString *fileName = [listItems lastObject];
+    NSString *pathDirectories = [entityHPath stringByReplacingOccurrencesOfString:fileName withString:@""];
+    BOOL isDir;
+    if (!([fm fileExistsAtPath:pathDirectories isDirectory:&isDir] && isDir)) {
+        [fm createDirectoryAtPath:pathDirectories withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    return [fm createFileAtPath:entityHPath contents:entityHData attributes:nil] && [fm createFileAtPath:entityMPath contents:entityMData attributes:nil] && [fm createFileAtPath:entityCollectionHPath contents:entityCollectionHData attributes:nil] && [fm createFileAtPath:entityCollectionMPath contents:entityCollectionMData attributes:nil];
+}
+
++ (BOOL)createIqPacketWithEntityArray:(NSArray *)entityArray
+{
+    BOOL b = NO;
+    for (NSString *entity in entityArray) {
+        b = [AIIFileCache createIqPacketWithEntity:entity];
+        if (!b) {
+            break;
+        }
+    }
+    return b;
+}
+
+
++ (BOOL)createIqPacketWithNamespace:(NSString *)nameSpace template:(AIITemplate)aTemplate
+{
+    NSString *fileSuffix = @"";
+    NSString *templateHPath;
+    NSString *templateMPath;
+    NSString *replaceString = @"_Entity_";
+    NSBundle *bundle = [NSBundle mainBundle];
+    
+    switch (aTemplate) {
+        case AIITemplateDefault:
+            replaceString = @"_Namespace_";
+            templateHPath = [bundle pathForResource:@"AII_Namespace_Packet_h" ofType:@""];
+            templateMPath = [bundle pathForResource:@"AII_Namespace_Packet_m" ofType:@""];
+            break;
+        case AIITemplateList:
+            fileSuffix = @"List";
+            templateHPath = [bundle pathForResource:@"AII_Entity_ListPacket_h" ofType:@""];
+            templateMPath = [bundle pathForResource:@"AII_Entity_ListPacket_m" ofType:@""];
+            break;
+        case AIITemplateDetails:
+            fileSuffix = @"Details";
+            templateHPath = [bundle pathForResource:@"AII_Entity_DetailsPacket_h" ofType:@""];
+            templateMPath = [bundle pathForResource:@"AII_Entity_DetailsPacket_m" ofType:@""];
+            break;
+        case AIITemplateSubmit:
+            fileSuffix = @"Submit";
+            templateHPath = [bundle pathForResource:@"AII_Entity_SubmitPacket_h" ofType:@""];
+            templateMPath = [bundle pathForResource:@"AII_Entity_SubmitPacket_m" ofType:@""];
+            break;
+        case AIITemplateCollectionSubmit:
+            fileSuffix = @"CollectionSubmit";
+            templateHPath = [bundle pathForResource:@"AII_Entity_CollectionSubmitPacket_h" ofType:@""];
+            templateMPath = [bundle pathForResource:@"AII_Entity_CollectionSubmitPacket_m" ofType:@""];
+            break;
+        case AIITemplateUpdate:
+            fileSuffix = @"Update";
+            templateHPath = [bundle pathForResource:@"AII_Entity_UpdatePacket_h" ofType:@""];
+            templateMPath = [bundle pathForResource:@"AII_Entity_UpdatePacket_m" ofType:@""];
+            break;
+        case AIITemplateSwitch:
+            fileSuffix = @"Switch";
+            replaceString = @"_Namespace_";
+            templateHPath = [bundle pathForResource:@"AII_Namespace_SwitchPacket_h" ofType:@""];
+            templateMPath = [bundle pathForResource:@"AII_Namespace_SwitchPacket_m" ofType:@""];
+            break;
+        default:
+            replaceString = @"_Namespace_";
+            templateHPath = [bundle pathForResource:@"AII_Namespace_Packet_h" ofType:@""];
+            templateMPath = [bundle pathForResource:@"AII_Namespace_Packet_m" ofType:@""];
+            break;
+    }
+    
+    NSString *hPath = [AIIFileCache iqPacketCachePath:[NSString stringWithFormat:@"AII%@%@Packet.h", nameSpace, fileSuffix]];
+    NSString *mPath = [AIIFileCache iqPacketCachePath:[NSString stringWithFormat:@"AII%@%@Packet.m", nameSpace, fileSuffix]];
+    
+    NSError *hError;
+    NSError *mError;
+    NSString *hString = [NSString stringWithContentsOfFile:templateHPath encoding:NSUTF8StringEncoding error:&hError];
+    NSString *mString = [NSString stringWithContentsOfFile:templateMPath encoding:NSUTF8StringEncoding error:&mError];
+    
+    if (hError || mError) {
+        NSLog(@"hError:%@", hError);
+        NSLog(@"mError:%@", mError);
+        return NO;
+    }
+    
+    NSString *h = [hString stringByReplacingOccurrencesOfString:replaceString withString:nameSpace];
+    NSString *m = [mString stringByReplacingOccurrencesOfString:replaceString withString:nameSpace];
+    NSData *hData =  [h dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *mData =  [m dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    NSArray *listItems = [hPath componentsSeparatedByString:@"/"];
+    NSString *fileName = [listItems lastObject];
+    NSString *pathDirectories = [hPath stringByReplacingOccurrencesOfString:fileName withString:@""];
+    BOOL isDir;
+    NSLog(@"%@", pathDirectories);
+    if (!([fm fileExistsAtPath:pathDirectories isDirectory:&isDir] && isDir)) {
+        [fm createDirectoryAtPath:pathDirectories withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    return [fm createFileAtPath:hPath contents:hData attributes:nil] && [fm createFileAtPath:mPath contents:mData attributes:nil];
+}
+
++ (BOOL)createIqPacketWithNamespaceArray:(NSArray *)namespaceArray template:(AIITemplate)aTemplate
+{
+    BOOL b = NO;
+    for (NSString *nameSpace in namespaceArray) {
+        b = [AIIFileCache createIqPacketWithNamespace:nameSpace template:aTemplate];
+        if (!b) {
+            break;
+        }
+    }
+    return b;
+}
+
 @end

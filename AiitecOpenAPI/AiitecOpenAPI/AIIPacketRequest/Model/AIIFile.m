@@ -13,9 +13,9 @@
 - (id)initWithData:(NSData *)data filename:(NSString *)filename contentType:(NSString *)contentType
 {
     if (self = [super init]) {
-        self.data = data;
-        self.filename = filename;
-        self.contentType = contentType;
+        _data = data;
+        _filename = filename;
+        _contentType = contentType;
     }
     return self;
 }
@@ -32,7 +32,7 @@
 ////    [mutableDictionary removeObjectForKey:k];
 //    
 //    dict = mutableDictionary;
-//    -fno-objc-arc
+//    
 //    return dict;
 //}
 

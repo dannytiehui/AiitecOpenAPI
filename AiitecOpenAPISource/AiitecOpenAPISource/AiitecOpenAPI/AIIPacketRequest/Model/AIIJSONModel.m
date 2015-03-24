@@ -105,7 +105,7 @@
         }
     }
     @catch (NSException *exception) {
-#ifdef DEBUG
+#ifdef AiitecOpenAPI_DEBUG
         NSLog(@"AIIJSONModel.NSException:%@", exception.description);
 #endif
     }

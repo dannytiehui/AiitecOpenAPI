@@ -56,14 +56,14 @@
 
 - (FMResultSet *)queryResultSet:(NSUInteger)identifier
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = %d ", [self tableName], identifier];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = %lu ", [self tableName], (unsigned long)identifier];
     return [SQLiteConnection query:sql];
 
 }
 
 - (FMResultSet *)queryResultSet:(NSUInteger)identifier timestampUpdate:(NSString *)timestamp
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = %d AND timestamp_update = '%@' ", [self tableName], identifier, timestamp];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = %lu AND timestamp_update = '%@' ", [self tableName], (unsigned long)identifier, timestamp];
     return [SQLiteConnection query:sql];
 }
 
@@ -80,6 +80,12 @@
 }
 
 #pragma mark - public
+
+- (AIIEntity *)FMResultSetToObject:(FMResultSet *)rs
+{
+    // 子类实现
+    return nil;
+}
 
 - (void)FMResultSetToObject:(FMResultSet *)rs entity:(AIIEntity *)item
 {
@@ -111,13 +117,13 @@
 
 - (int)delete:(NSUInteger)identifier
 {
-    NSString * sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE id = %d", [self tableName], identifier];
+    NSString * sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE id = %lu", [self tableName], (unsigned long)identifier];
     return [SQLiteConnection update:sql];
 }
 
 - (int)deleteInclude:(AIIModelCollection *)collection
 {
-    int count = [collection count];
+    NSUInteger count = [collection count];
     if (count == 0) {
         return 0;
     }
@@ -126,7 +132,7 @@
     AIIEntity *item = [[AIIEntity alloc] init];
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
-        [deleteArray addObject:[NSString stringWithFormat:@"%d", item.identifier]];
+        [deleteArray addObject:[NSString stringWithFormat:@"%lu", (unsigned long)item.identifier]];
     }
     NSString *idsDelete = [deleteArray componentsJoinedByString:@","];
     
@@ -137,7 +143,7 @@
 
 - (int)deleteExcept:(AIIModelCollection *)collection
 {
-    int count = [collection count];
+    NSUInteger count = [collection count];
     if (count == 0) {
         return 0;
     }
@@ -146,7 +152,7 @@
     AIIEntity *item = [[AIIEntity alloc] init];
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
-        [deleteArray addObject:[NSString stringWithFormat:@"%d", item.identifier]];
+        [deleteArray addObject:[NSString stringWithFormat:@"%lu", (unsigned long)item.identifier]];
     }
     NSString *idsDelete = [deleteArray componentsJoinedByString:@","];
     
@@ -156,7 +162,7 @@
 
 - (int)deleteRangeOfIdsExcept:(AIIModelCollection *)collection key:(NSString *)searchKey
 {
-    int count = [collection count];
+    NSUInteger count = [collection count];
     if (count == 0) {
         return 0;
     }
@@ -165,7 +171,7 @@
     AIIEntity *item = [[AIIEntity alloc] init];
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
-        [deleteArray addObject:[NSString stringWithFormat:@"%d", item.identifier]];
+        [deleteArray addObject:[NSString stringWithFormat:@"%lu", (unsigned long)item.identifier]];
     }
     NSString *idsDelete = [deleteArray componentsJoinedByString:@","];
     
@@ -179,7 +185,7 @@
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ ", [self tableName]];
     NSString *where;
     if (idMin != 0 && idMax !=0) {
-        where = [NSString stringWithFormat:@"WHERE id > %d AND id < %d AND id NOT IN (%@) ", idMin, idMax, idsDelete];
+        where = [NSString stringWithFormat:@"WHERE id > %lu AND id < %lu AND id NOT IN (%@) ", (unsigned long)idMin, (unsigned long)idMax, idsDelete];
         sql = [sql stringByAppendingString:where];
     }
     if (searchKey.length) {
@@ -200,6 +206,18 @@
 {
     // 子类实现
     return nil;
+}
+
+- (AIIModelCollection *)queryWithTable:(AIITable *)tableCondition
+{
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ ", [self tableName]];
+    
+    AIIModelCollection *collection = [[AIIModelCollection alloc] init];
+    FMResultSet *rs = [SQLiteConnection query:sql];
+    while ([rs next]) {
+        [collection addObject:[self FMResultSetToObject:rs]];
+    }
+    return collection;
 }
 
 - (AIIEntity *)query:(NSUInteger)identifier
@@ -237,21 +255,21 @@
     return 0;
 }
 
-- (NSString *)diff:(AIIModelCollection *)collection
+- (NSArray *)diff:(AIIModelCollection *)collection
 {
     NSMutableArray *mArray = [[NSMutableArray alloc] init];
     AIIEntity *item;
-    int count = [collection count];
+    NSUInteger count = [collection count];
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
-        NSString *WHEREString = [NSString stringWithFormat:@"WHERE id = %d AND timestamp_update = '%@'", item.identifier, item.timestampUpdate];
+        NSString *WHEREString = [NSString stringWithFormat:@"WHERE id = %lu AND timestamp_update = '%@'", (unsigned long)item.identifier, item.timestampUpdate];
         int n = [SQLiteConnection countWithTableName:[self tableName] where:WHEREString];
         if (n == 0) {
-            [mArray addObject:[NSString stringWithFormat:@"%d", item.identifier]];
+            [mArray addObject:[NSString stringWithFormat:@"%lu", (unsigned long)item.identifier]];
         }
     }
-    NSString *ids = [mArray componentsJoinedByString:@","];
-    return ids;
+//    NSString *ids = [mArray componentsJoinedByString:@","];
+    return mArray;
 }
 
 @end

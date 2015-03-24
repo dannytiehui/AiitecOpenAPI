@@ -940,7 +940,7 @@
         }
         else {
             // 失败
-            ;
+            [PacketRequest packetConnectionFinishedWarningHandle:connection];
         }
     }
     else if ([connection.response isKindOfClass:[AIISettingResponse class]]) {
@@ -951,7 +951,7 @@
             NSLog(@"itemCollection:%@", itemCollection);
             
             for (AIIItem *item in itemCollection) {
-                NSLog(@"%lu, %@, %@", item.identifier, item.name, item.value);
+                NSLog(@"%lu, %@, %@", (unsigned long)item.identifier, item.name, item.value);
             }
             
             // 1.写入协议文件缓存.
@@ -964,7 +964,7 @@
         }
         else {
             // 失败
-            ;
+            [PacketRequest packetConnectionFinishedWarningHandle:connection];
         }
     }
     else if([connection.response isKindOfClass:[AIIUserLoginResponse class]]){
@@ -1007,9 +1007,9 @@
             // 成功
             AIIRegionListResponseQuery *responseQuery = (AIIRegionListResponseQuery *)connection.response.query;
             AIIRegionCollection *regionCollection = (AIIRegionCollection *)responseQuery.modelCollection;
-            NSLog(@"regionCollection:%lu", regionCollection.count);
+            NSLog(@"regionCollection:%lu", (unsigned long)regionCollection.count);
             AIIRegionCollection *regionCollection2 = [regionCollection recursive];
-            NSLog(@"regionCollection2:%lu", regionCollection2.count);
+            NSLog(@"regionCollection2:%lu", (unsigned long)regionCollection2.count);
             
 //            AIIRegion *region = (AIIRegion *)[regionCollection2 objectAtIndex:10];
 //            AIIRegionCollection *childrenCollection = region.children;
@@ -1024,7 +1024,7 @@
 //            }
             
             AIIRegionCollection *regionCollection3 = [regionCollection sortedCollectionUsingPinyin];
-            NSLog(@"regionCollection3:%lu", regionCollection3.count);
+            NSLog(@"regionCollection3:%lu", (unsigned long)regionCollection3.count);
             
         }
         else {

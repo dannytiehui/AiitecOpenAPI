@@ -40,6 +40,8 @@
     [super encodeWithCoder:aCoder];
     [aCoder encodeInteger:self.identifier forKey:@"EntityIdentifier"];
     [aCoder encodeObject:self.name forKey:@"EntityName"];
+    [aCoder encodeObject:self.desc forKey:@"EntityDesc"];
+    [aCoder encodeBool:self.deleted forKey:@"EntityDeleted"];
     [aCoder encodeObject:self.timestampUpdate forKey:@"EntityTimestampUpdate"];
     [aCoder encodeObject:self.timestamp forKey:@"EntityTimestamp"];
 }
@@ -47,9 +49,10 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    
-    self.identifier = (NSUInteger)[aDecoder decodeObjectForKey:@"EntityIdentifier"];
+    self.identifier = [aDecoder decodeIntegerForKey:@"EntityIdentifier"];
     self.name = [aDecoder decodeObjectForKey:@"EntityName"];
+    self.desc = [aDecoder decodeObjectForKey:@"EntityDesc"];
+    self.deleted = [aDecoder decodeBoolForKey:@"EntityDeleted"];
     self.timestampUpdate = [aDecoder decodeObjectForKey:@"EntityTimestampUpdate"];
     self.timestamp = [aDecoder decodeObjectForKey:@"EntityTimestamp"];
     return self;
@@ -76,6 +79,9 @@
     if([key isEqualToString:@"id"]) {
 //        [self setValue:value forKey:@"identifier"];//!< 不推荐
         self.identifier = [value integerValue];//!< 推荐
+    }
+    else if([key isEqualToString:@"delete"]) {
+        self.deleted = [value boolValue];
     }
     else if([key isEqualToString:@"description"]) {
 //        [self setValue:value forKey:@"desc"];//!< 不推荐
@@ -108,8 +114,9 @@
     }
     [mutableDictionary removeObjectForKey:k];
     
-    dict = mutableDictionary;
+    [mutableDictionary removeObjectForKey:@"deleted"];
     
+    dict = mutableDictionary;
     return dict;
 }
 

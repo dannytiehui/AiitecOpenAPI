@@ -14,13 +14,26 @@
 #import "AIIDetailsPacket.h"
 #import "Table.h"
 
-//#import "RegionTable.h"
-//#import "AIIRegionListPacket.h"
-//#import "AddressbookTable.h"
-//#import "AddressbookListPacket.h"
+#ifdef AiitecOpenAPI_Config
 
+#import "RegionTable.h"
+#import "AIIRegionListPacket.h"
+#import "AddressbookTable.h"
+#import "AddressbookListPacket.h"
+
+#import "AIIReferenceItemListPacket.h"
+#import "SchoolTable.h"
+#import "SchoolAliasesTable.h"
+#import "DepartmentsTable.h"
+#import "ProfessionalTable.h"
+#import "IndustryTable.h"
+#import "LabelUserGroupTable.h"
+#import "LabelUserTable.h"
 
 //#import "LoginViewController.h"
+
+#endif
+
 
 #define QUERY_CACHE request.cacheSupporting == AIICacheSupportingFull && request.cache == AIICacheNone
 
@@ -42,8 +55,11 @@
 - (void)judgeCacheHandleFinished;
 
 + (AIIResponse *)queryCache:(AIIRequest *)request;
-//+ (AIIResponse *)queryCacheRegionList:(AIIRegionListRequest *)request table:(RegionTable *)table;
-//+ (AIIResponse *)queryCacheAddressbookList:(AddressbookListRequest *)request table:(AddressbookTable *)table;
+
+#ifdef AiitecOpenAPI_Config
++ (AIIResponse *)queryCacheRegionList:(AIIRegionListRequest *)request table:(RegionTable *)table;
++ (AIIResponse *)queryCacheAddressbookList:(AddressbookListRequest *)request table:(AddressbookTable *)table;
+#endif
 
 @end
 
@@ -321,7 +337,7 @@ static NSMutableArray *_packetConnectionArray;
     if (self.request.cache == AIICacheNormalFirst && [suffix isEqualToString:@"List"]) {
         AIIListResponse *listResponse = (AIIListResponse *)self.response;
         AIIListResponseQuery *listResponseQuery = (AIIListResponseQuery *)listResponse.query;
-        NSString *ids = [table diff:listResponseQuery.modelCollection];
+        NSArray *ids = [table diff:listResponseQuery.modelCollection];
         NSLog(@"ids = %@", ids);
         AIIListRequest *listRequest = (AIIListRequest *)self.request;
         AIIListRequestQuery *listRequestQuery = (AIIListRequestQuery *)listRequest.query;
@@ -336,7 +352,7 @@ static NSMutableArray *_packetConnectionArray;
             [table deleteRangeOfIdsExcept:listResponseQuery.modelCollection key:listRequestQuery.table.where.searchKey];
         }
         
-        if (ids.length > 0) {
+        if ([ids count] > 0) {
             b = YES;
             listRequest.cache = AIICacheNormalSecond;
             listRequestQuery.ids = ids;
@@ -469,16 +485,24 @@ static NSMutableArray *_packetConnectionArray;
     className = [className stringByReplacingOccurrencesOfString:suffix withString:@"Table"];
     Table *table = [[NSClassFromString(className) alloc] init];
     
-    if ([request.nameSpace isEqualToString:@"RegionList"]) {
+    #ifdef AiitecOpenAPI_Config
+    
+    if ([request.nameSpace isEqualToString:@"ReferenceItemList"]) {
+        response = [AIIPacketConnection queryCacheSchoolList:(AIIReferenceItemListRequest *)request table:(SchoolTable *)table];
+    }
+    else if ([request.nameSpace isEqualToString:@"RegionList"]) {
         response = [AIIPacketConnection queryCacheRegionList:(AIIRegionListRequest *)request table:(RegionTable *)table];
     }
     else if ([request.nameSpace isEqualToString:@"AddressbookList"]) {
-//        response = [AIIPacketConnection queryCacheAddressbookList:(AddressbookListRequest *)request table:(AddressbookTable *)table];
+        response = [AIIPacketConnection queryCacheAddressbookList:(AddressbookListRequest *)request table:(AddressbookTable *)table];
     }
-//    else if ([request.nameSpace isEqualToString:@"SchoolList"] && [((SchoolListRequest *)request).city length]) {
-//        response = [AIIPacketConnection queryCacheSchoolList:(SchoolListRequest *)request table:(SchoolTable *)table];
-//    }
-    else if ([suffix isEqualToString:@"List"]) {
+    else if ([request.nameSpace isEqualToString:@"SchoolList"] && [((SchoolListRequest *)request).city length]) {
+        response = [AIIPacketConnection queryCacheSchoolList:(SchoolListRequest *)request table:(SchoolTable *)table];
+    }
+    else
+        
+#endif
+        if ([suffix isEqualToString:@"List"]) {
 //        AIIListRequest *listRequest = (AIIListRequest *)request;
         NSString *listResponseClassName = [AIIPacketConnection responseClassName:NSStringFromClass(request.class)];
         AIIListResponse *listResponse = [[NSClassFromString(listResponseClassName) alloc] init];
@@ -511,28 +535,92 @@ static NSMutableArray *_packetConnectionArray;
     return response;
 }
 
-//+ (AIIResponse *)queryCacheRegionList:(AIIRegionListRequest *)request table:(RegionTable *)table
-//{
-//    AIIRegionListResponse *response = [[AIIRegionListResponse alloc] init];
-//    
-////    if (request.parentId != 0) {
-////        response.modelCollection = [table queryWithParentId:request.parentId];
-////    }
-////    else if (request.identifier != 0) {
-////        response.modelCollection = [table queryWithIdentifier:request.identifier];
-////    }
-////    else if (![request.name isEqualToString:@""]) {
-////        response.modelCollection = [table queryWithName:request.name];
-////    }
-////    response.total = response.modelCollection.count;
-//    return response;
-//}
+#ifdef AiitecOpenAPI_Config
 
-//+ (AIIResponse *)queryCacheAddressbookList:(AddressbookListRequest *)request table:(AddressbookTable *)table
-//{
-//    AddressbookListResponse *response = [[AddressbookListResponse alloc] init];
-////    response.modelCollection = (AIIModelCollection *)[table query:request.page limit:request.numberOfPage orderBy:request.orderBy type:@"DESC" key:request.searchKey groupId:request.addressbookGroupId];
-//    return response;
-//}
++ (AIIResponse *)queryCacheRegionList:(AIIRegionListRequest *)request table:(RegionTable *)table
+{
+    AIIRegionListResponse *response = [[AIIRegionListResponse alloc] init];
+    
+    if (request.query.parentId != 0) {
+        response.query.modelCollection = [table queryWithParentId:request.query.parentId];
+    }
+    else if (request.query.identifier != 0) {
+        response.query.modelCollection = [table queryWithIdentifier:request.query.identifier];
+    }
+    else if (request.query.name.length) {
+        response.query.modelCollection = [table queryWithName:request.query.name];
+    }
+    else {
+        response.query.modelCollection = [table query];
+    }
+    
+    response.query.total = response.query.modelCollection.count;
+    return response;
+}
+
++ (AIIResponse *)queryCacheAddressbookList:(AddressbookListRequest *)request table:(AddressbookTable *)table
+{
+    AddressbookListResponse *response = [[AddressbookListResponse alloc] init];
+//    response.modelCollection = (AIIModelCollection *)[table query:request.page limit:request.numberOfPage orderBy:request.orderBy type:@"DESC" key:request.searchKey groupId:request.addressbookGroupId];
+    return response;
+}
+
++ (AIIResponse *)queryCacheSchoolList:(AIIReferenceItemListRequest *)request table:(SchoolTable *)table
+{
+    AIIReferenceItemListResponse *response = [[AIIReferenceItemListResponse alloc] init];
+    
+    switch (request.query.action) {
+        case AIIQueryActionFirst:
+        {
+            SchoolTable *t = [[SchoolTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            
+            break;
+        case AIIQueryActionSecond:
+        {
+            SchoolAliasesTable *t = [[SchoolAliasesTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionThird:
+        {
+            DepartmentsTable *t = [[DepartmentsTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionFourth:
+        {
+            ProfessionalTable *t = [[ProfessionalTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionFifth:
+        {
+            IndustryTable *t = [[IndustryTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionSixth:
+        {
+            LabelUserGroupTable *t = [[LabelUserGroupTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        case AIIQueryActionSeventh:
+        {
+            LabelUserTable *t = [[LabelUserTable alloc] init];
+            response.query.modelCollection = [t queryWithTable:request.query.table];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    response.query.total = response.query.modelCollection.count;
+    return response;
+}
+
+#endif
 
 @end

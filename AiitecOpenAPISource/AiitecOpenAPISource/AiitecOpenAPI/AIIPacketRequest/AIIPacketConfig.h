@@ -22,6 +22,25 @@
 //
 //#endif
 
+#ifndef AiitecOpenAPI_DEBUG
+/** 是否显示调试信息。使用AiitecOpenAPI库文件,必须包含. */
+#define AiitecOpenAPI_DEBUG 0 //!<
+#endif
+
+#ifndef DOMAIN_PATH
+#define DOMAIN_PATH             @"http://www.baidu.com/"
+#endif
+
+#ifndef API_PATH
+#define API_PATH                @""
+#endif
+
+#ifndef REACHABILITY_HOSTNAME
+#define REACHABILITY_HOSTNAME   @"www.baidu.com" //!< 用于 Reachability 网络检测 (或192.168.1.1)
+#endif
+
+
+
 #define OPEN_SESSION_VALIDATE YES   //!< 开启/关闭会话验证
 
 #define SESSION_Nil_STATUS         1000

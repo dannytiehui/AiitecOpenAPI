@@ -59,7 +59,7 @@ NSString *const DeviceTokenKey = @"deviceId";
 + (void)setInteger:(NSUInteger)integer forKey:(id <NSCopying>)aKey toDictionary:(NSMutableDictionary *)dict allowZero:(BOOL)allow
 {
     if (allow || integer) {
-        dict[aKey] = [NSString stringWithFormat:@"%lu", integer];
+        dict[aKey] = [NSString stringWithFormat:@"%lu", (unsigned long)integer];
     }
 }
 

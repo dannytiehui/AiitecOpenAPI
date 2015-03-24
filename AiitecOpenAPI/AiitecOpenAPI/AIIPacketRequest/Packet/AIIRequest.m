@@ -9,6 +9,14 @@
 #import "AIIRequest.h"
 #import "AIIPacketManager.h"
 
+@interface AIIRequest ()
+{
+    NSString *_jsonStringWithObjectString;
+}
+
+@end
+
+
 @implementation AIIRequest
 
 - (id)init
@@ -76,6 +84,11 @@
     }
     [mutableDictionary removeObjectForKey:k];
     
+    [mutableDictionary removeObjectForKey:@"cacheSupporting"];
+    
+    /** 默认移除md5属性. */
+    [mutableDictionary removeObjectForKey:@"md5"];
+    
     dict = mutableDictionary;
     return dict;
 }
@@ -84,15 +97,58 @@
 
 - (NSString *)jsonStringWithObject
 {
-    return [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
+    if (_jsonStringWithObjectString.length) {
+        return _jsonStringWithObjectString;
+    }
+    
+    if (IqPacket_Encryption) {
+        NSString *k = @"m";
+        
+//        NSString *jsonString = [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
+        NSDictionary *dictionary = [self dictionaryWithValuesForKeys:self.keys];
+        NSMutableDictionary *md = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+        [md setObject:@"" forKey:k];
+        [md removeObjectForKey:k];
+        
+        NSString *jsonString = [AIIUtility stringWithDictionary:md];
+//        NSLog(@"jsonString 1:%@", jsonString);
+        
+        /** jsonString 去除格式化. */
+        jsonString = [AIIUtility stringWithDictionaryClearFormat:md];
+//        NSLog(@"jsonString 2:%@", jsonString);
+        _md5 = [AIIUtility md5:jsonString];
+//        NSLog(@"1._md5:%@", _md5);
+        _md5 = [_md5 stringByAppendingString:[AIIUtility iqPacketEncryption]];
+//        NSLog(@"2._md5:%@", _md5);
+        _md5 = [AIIUtility md5:_md5];
+//        NSLog(@"3._md5:%@", _md5);
+        
+        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:md];
+        [mutableDictionary setValue:_md5 forKey:k];
+//        NSLog(@"4.%@", [AIIUtility stringWithDictionary:mutableDictionary]);
+        
+        _jsonStringWithObjectString = [AIIUtility stringWithDictionary:mutableDictionary];
+    }
+    else {
+        _jsonStringWithObjectString = [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
+    }
+    return _jsonStringWithObjectString;
 }
+
+#pragma mark - Private
+
+- (void)jsonStringWithObjectStringSetNull
+{
+    _jsonStringWithObjectString = @"";
+}
+
 
 #pragma mark - self
 
-- (AIICacheSupporting)cacheSupporting
-{
-    return AIICacheSupportingNone;
-}
+//- (AIICacheSupporting)cacheSupporting
+//{
+//    return AIICacheSupportingNone;
+//}
 
 - (AIICacheWay)cacheWay
 {

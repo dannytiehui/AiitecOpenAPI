@@ -1,0 +1,6 @@
+framework module AiitecOpenAPI {
+  umbrella header "AiitecOpenAPI.h"
+
+  export *
+  module * { export * }
+}

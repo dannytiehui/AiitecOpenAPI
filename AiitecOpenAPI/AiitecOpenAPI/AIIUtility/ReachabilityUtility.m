@@ -13,8 +13,7 @@
 - (void)reachabilityChanged:(NSNotification*)note;
 
 @end
-
-
+ 
 
 @implementation ReachabilityUtility
 
@@ -24,22 +23,14 @@
         /*
          Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.
          */
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(reachabilityChanged:)
-                                                     name:kReachabilityChangedNotification
-                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
 
-        Reachability *reach = [Reachability reachabilityWithHostName:REACHABILITY_HOSTNAME];
-        [reach startNotifier];
-        
-        /** 以下代码必须出现两次，不然启动APP时第一次赋值无效？不知道原因，待解决. */
-        self.isReachable = reach.isReachable;
-        self.isReachable = reach.isReachable;
-        
-        NSLog(@"self.isReachable = %d", self.isReachable);
-        NSLog(@"reach.isReachable = %d", reach.isReachable);
+        _reachiability = [Reachability reachabilityWithHostName:REACHABILITY_HOSTNAME];
+        [_reachiability startNotifier];
+
+        _isReachable = ([_reachiability currentReachabilityStatus] != NotReachable) ? YES : NO;
     }
-    return  self;
+    return self;
 }
 
 + (ReachabilityUtility *)defaultManager
@@ -57,15 +48,8 @@
  */
 - (void)reachabilityChanged:(NSNotification *)note
 {
-    Reachability *reach = [note object];
-    self.isReachable = [reach isReachable];
-//    NSLog(@"reachabilityChanged = %d", self.isReachable);
-//    if([reach isReachable]) {
-//        NSLog(@"Notification Says Reachable");
-//    }
-//    else {
-//        NSLog(@"Notification Says Unreachable");
-//    }
+    _reachiability = [note object];
+    _isReachable = ([_reachiability currentReachabilityStatus] != NotReachable) ? YES : NO;
 }
 
 - (void)dealloc

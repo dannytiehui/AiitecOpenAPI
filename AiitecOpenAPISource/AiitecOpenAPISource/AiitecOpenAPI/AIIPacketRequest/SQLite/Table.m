@@ -56,14 +56,14 @@
 
 - (FMResultSet *)queryResultSet:(NSUInteger)identifier
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = %lu ", [self tableName], identifier];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = %lu ", [self tableName], (unsigned long)identifier];
     return [SQLiteConnection query:sql];
 
 }
 
 - (FMResultSet *)queryResultSet:(NSUInteger)identifier timestampUpdate:(NSString *)timestamp
 {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = %lu AND timestamp_update = '%@' ", [self tableName], identifier, timestamp];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE id = %lu AND timestamp_update = '%@' ", [self tableName], (unsigned long)identifier, timestamp];
     return [SQLiteConnection query:sql];
 }
 
@@ -117,7 +117,7 @@
 
 - (int)delete:(NSUInteger)identifier
 {
-    NSString * sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE id = %lu", [self tableName], identifier];
+    NSString * sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE id = %lu", [self tableName], (unsigned long)identifier];
     return [SQLiteConnection update:sql];
 }
 
@@ -132,7 +132,7 @@
     AIIEntity *item = [[AIIEntity alloc] init];
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
-        [deleteArray addObject:[NSString stringWithFormat:@"%lu", item.identifier]];
+        [deleteArray addObject:[NSString stringWithFormat:@"%lu", (unsigned long)item.identifier]];
     }
     NSString *idsDelete = [deleteArray componentsJoinedByString:@","];
     
@@ -152,7 +152,7 @@
     AIIEntity *item = [[AIIEntity alloc] init];
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
-        [deleteArray addObject:[NSString stringWithFormat:@"%lu", item.identifier]];
+        [deleteArray addObject:[NSString stringWithFormat:@"%lu", (unsigned long)item.identifier]];
     }
     NSString *idsDelete = [deleteArray componentsJoinedByString:@","];
     
@@ -171,7 +171,7 @@
     AIIEntity *item = [[AIIEntity alloc] init];
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
-        [deleteArray addObject:[NSString stringWithFormat:@"%lu", item.identifier]];
+        [deleteArray addObject:[NSString stringWithFormat:@"%lu", (unsigned long)item.identifier]];
     }
     NSString *idsDelete = [deleteArray componentsJoinedByString:@","];
     
@@ -185,7 +185,7 @@
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ ", [self tableName]];
     NSString *where;
     if (idMin != 0 && idMax !=0) {
-        where = [NSString stringWithFormat:@"WHERE id > %lu AND id < %lu AND id NOT IN (%@) ", idMin, idMax, idsDelete];
+        where = [NSString stringWithFormat:@"WHERE id > %lu AND id < %lu AND id NOT IN (%@) ", (unsigned long)idMin, (unsigned long)idMax, idsDelete];
         sql = [sql stringByAppendingString:where];
     }
     if (searchKey.length) {
@@ -262,10 +262,10 @@
     NSUInteger count = [collection count];
     for (NSUInteger i = 0; i < count; i++) {
         item = [collection objectAtIndex:i];
-        NSString *WHEREString = [NSString stringWithFormat:@"WHERE id = %lu AND timestamp_update = '%@'", item.identifier, item.timestampUpdate];
+        NSString *WHEREString = [NSString stringWithFormat:@"WHERE id = %lu AND timestamp_update = '%@'", (unsigned long)item.identifier, item.timestampUpdate];
         int n = [SQLiteConnection countWithTableName:[self tableName] where:WHEREString];
         if (n == 0) {
-            [mArray addObject:[NSString stringWithFormat:@"%lu", item.identifier]];
+            [mArray addObject:[NSString stringWithFormat:@"%lu", (unsigned long)item.identifier]];
         }
     }
 //    NSString *ids = [mArray componentsJoinedByString:@","];

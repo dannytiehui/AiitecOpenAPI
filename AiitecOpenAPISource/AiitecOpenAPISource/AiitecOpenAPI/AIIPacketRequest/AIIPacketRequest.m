@@ -58,13 +58,13 @@
             [AIIPacketRequest packetSetting:AIIPacketSettingViaWWAN value:[NSNumber numberWithBool:YES]];
         }
     });
-    return packetRequest.settingDictionary[[NSString stringWithFormat:@"%lu", key]];
+    return packetRequest.settingDictionary[[NSString stringWithFormat:@"%lu", (unsigned long)key]];
 }
 
 + (void)packetSetting:(AIIPacketSetting)key value:(id)value;
 {
     AIIPacketRequest *packetRequest = [AIIPacketRequest sharedAIIPacketRequest];
-    packetRequest.settingDictionary[[NSString stringWithFormat:@"%lu", key]] = value;
+    packetRequest.settingDictionary[[NSString stringWithFormat:@"%lu", (unsigned long)key]] = value;
     [packetRequest.settingDictionary writeToFile:[AIIPacketRequest settingPlistPath] atomically:YES];
 }
 

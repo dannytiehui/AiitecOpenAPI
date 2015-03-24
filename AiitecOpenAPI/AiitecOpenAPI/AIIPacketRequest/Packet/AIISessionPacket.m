@@ -35,7 +35,11 @@
         self.resolution = [NSString stringWithFormat:@"%.0f*%.0f", resolution.width, resolution.height]; //!> @"640*1136";
         self.screenSize = screenSize;
         self.deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceTokenKey];
-        self.deviceType = AIIDeviceTypeIos;
+        self.deviceType = AIIDeviceTypeIOS;
+        if (!self.deviceToken) {
+            self.deviceToken = [AIIUtility arc4random:32 stringType:(AIIStringTypeNumber | AIIStringTypeUppercase | AIIStringTypeLowercase)];
+            self.deviceType = AIIDeviceTypeTemporary;
+        }
     }
     return self;
 }

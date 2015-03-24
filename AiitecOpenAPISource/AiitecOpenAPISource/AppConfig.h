@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-/** 是否显示调试信息。使用AiitecOpenAPI库文件,必须包含. */
+/** 是否显示调试信息。使用AiitecOpenAPI库文件,须包含. */
 #define AiitecOpenAPI_DEBUG 0
 
 #ifdef DEBUG
@@ -21,15 +21,14 @@
 //#define TASKDETAIL_PATH         @"http://192.168.1.12/Quick2.0/public/"
 #define SERVER_CHECKVERSION_PATH    @"http://192.168.1.12/quanshitong/public/version.php"
 
-//#define DOMAIN_PATH             @"http://192.168.1.29/"
-//#define API_PATH                @"Quick2.0/public/api/index"
-//#define FILE_PATH               @"http://192.168.1.29/Quick2.0/public/uploadfiles/"
-//#define TASKDETAIL_PATH         @"http://192.168.1.29/Quick2.0/public/"
-//#define REACHABILITY_HOSTNAME   @"192.168.1.29" //!< 用于 Reachability 网络检测
-//#define SERVER_CHECKVERSION_PATH    @"http://192.168.1.29/Quick2.0/public/version.php"
-
 #else
 
+#define DOMAIN_PATH             @"http://192.168.1.29/"
+#define API_PATH                @"Quick2.0/public/api/index"
+#define FILE_PATH               @"http://192.168.1.29/Quick2.0/public/uploadfiles/"
+#define TASKDETAIL_PATH         @"http://192.168.1.29/Quick2.0/public/"
+#define REACHABILITY_HOSTNAME   @"192.168.1.29" //!< 用于 Reachability 网络检测
+#define SERVER_CHECKVERSION_PATH    @"http://192.168.1.29/Quick2.0/public/version.php"
 
 #endif
 

@@ -292,7 +292,7 @@
 
         NSMutableString *param = [NSMutableString string];
         [param appendFormat:@"--%@\r\n", BOUNDARY];
-        [param appendFormat:@"Content-Disposition: form-data; name=\"file[]\"; filename=\"%ld%@\"\r\n", i, @"_1_upload.png"];
+        [param appendFormat:@"Content-Disposition: form-data; name=\"file[]\"; filename=\"%ld%@\"\r\n", (unsigned long)i, @"_1_upload.png"];
         [param appendFormat:@"Content-Type: application/octet-stream\r\n\r\n"];
         
         [body appendData:[param dataUsingEncoding:NSUTF8StringEncoding]];
@@ -337,7 +337,7 @@
 //    NSString *path = @"http://photocdn.sohu.com/20120607/Img344962018.jpg";
     NSString *path = @"http://soso.com/soso/images/logo_index.png";
     NSData *data = [AIIFileConnection sendSynchronousRequest:path];
-    NSLog(@"data:%lu", data.length);
+    NSLog(@"data:%lu", (unsigned long)data.length);
     UIImage *image = [UIImage imageWithData:data];
     _imageView.image = image;
 }
@@ -394,7 +394,7 @@
     
     //6>指定Content-Length
     NSInteger length = [bodyData length];
-    [request setValue:[NSString stringWithFormat:@"%ld", length] forKey:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%ld", (long)length] forKey:@"Content-Length"];
 
     //3使用NSURLConnection的同步方法上传文件，因为需要用户确认文件是否上传成功。
     //在使用http上传文件时，通常是有大小限制的。一般不会超过2M.
