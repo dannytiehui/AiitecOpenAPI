@@ -117,6 +117,7 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
 + (NSString *)stringWithDictionary:(NSDictionary *)dictionary error:(NSError **)error;
 + (NSString *)stringWithDictionaryClearFormat:(NSDictionary *)dictionary;
 + (NSString *)stringWithDictionaryRecursive:(NSDictionary *)dict string:(NSString *)string;
++ (NSString *)stringWithArray:(NSArray *)array;
 
 /**
  *  @brief  JSON格式的数组 转 NSArray.

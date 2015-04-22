@@ -89,14 +89,24 @@
     [_mutableArray removeAllObjects];
 }
 
+- (void)removeObject:(id)anObject
+{
+    [_mutableArray removeObject:anObject];
+}
+
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
     [_mutableArray removeObjectAtIndex:index];
 }
 
-- (void)removeObject:(id)anObject
+- (void)removeObjectsAtIndexes:(NSIndexSet *)indexes
 {
-    [_mutableArray removeObject:anObject];
+    [_mutableArray removeObjectsAtIndexes:indexes];
+}
+
+- (BOOL)containsObject:(id)anObject
+{
+    return [_mutableArray containsObject:anObject];
 }
 
 - (NSArray *)filteredArrayUsingPredicate:(NSPredicate *)predicate

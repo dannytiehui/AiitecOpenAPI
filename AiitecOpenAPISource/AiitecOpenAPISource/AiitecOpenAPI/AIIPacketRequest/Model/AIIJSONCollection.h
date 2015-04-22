@@ -27,8 +27,11 @@
 - (void)addObjectsFromCollection:(AIIJSONCollection *)otherCollection;
 - (void)insertObject:(id)anObject atIndex:(NSUInteger)index;
 - (void)removeAllObjects;
-- (void)removeObjectAtIndex:(NSUInteger)index;
 - (void)removeObject:(id)anObject;
+- (void)removeObjectAtIndex:(NSUInteger)index;
+- (void)removeObjectsAtIndexes:(NSIndexSet *)indexes;
+
+- (BOOL)containsObject:(id)anObject;
 
 - (NSArray *)filteredArrayUsingPredicate:(NSPredicate *)predicate;
 

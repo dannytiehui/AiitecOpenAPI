@@ -17,6 +17,10 @@
 #define API_PATH                @"quanshitong/public/api"           //<! AiitecOpenAPI
 #define REACHABILITY_HOSTNAME   @"192.168.1.12" //!< 用于 Reachability 网络检测   //<! AiitecOpenAPI
 
+//#define DOMAIN_PATH             @"http://192.168.1.29/"             //<! AiitecOpenAPI
+//#define API_PATH                @"emoji/index.php"           //<! AiitecOpenAPI
+//#define REACHABILITY_HOSTNAME   @"192.168.1.12" //!< 用于 Reachability 网络检测   //<! AiitecOpenAPI
+
 #define FILE_PATH               @"http://192.168.1.12/php/quanshitong/public/uploadfiles/"
 //#define TASKDETAIL_PATH         @"http://192.168.1.12/Quick2.0/public/"
 #define SERVER_CHECKVERSION_PATH    @"http://192.168.1.12/quanshitong/public/version.php"

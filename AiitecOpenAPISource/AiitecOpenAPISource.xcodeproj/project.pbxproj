@@ -30,11 +30,6 @@
 		882602211A31C4B000C6C843 /* AII_Entity_DetailsPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 882602201A31C4B000C6C843 /* AII_Entity_DetailsPacket.m */; };
 		882602241A31C57500C6C843 /* AII_Entity_SubmitPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 882602231A31C57500C6C843 /* AII_Entity_SubmitPacket.m */; };
 		882602271A31C69A00C6C843 /* AII_Namespace_Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 882602261A31C69A00C6C843 /* AII_Namespace_Packet.m */; };
-		8829278C1A08B9DB007F0A30 /* AIIFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 882927891A08B9DB007F0A30 /* AIIFile.m */; };
-		8829278D1A08B9DB007F0A30 /* AIIFileCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8829278B1A08B9DB007F0A30 /* AIIFileCollection.m */; };
-		884E125219ED00A5005CBDAD /* NSString+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884E125119ED00A5005CBDAD /* NSString+AiitecOpenAPI.m */; };
-		884E125519ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884E125419ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m */; };
-		884E125819ED020F005CBDAD /* NSArray+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884E125719ED020F005CBDAD /* NSArray+AiitecOpenAPI.m */; };
 		886C19CA19D515E300FC76FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19C919D515E300FC76FC /* main.m */; };
 		886C19CD19D515E300FC76FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CC19D515E300FC76FC /* AppDelegate.m */; };
 		886C19D019D515E300FC76FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19CF19D515E300FC76FC /* ViewController.m */; };
@@ -42,50 +37,60 @@
 		886C19D519D515E300FC76FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 886C19D419D515E300FC76FC /* Images.xcassets */; };
 		886C19D819D515E300FC76FC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 886C19D619D515E300FC76FC /* LaunchScreen.xib */; };
 		886C19E419D515E300FC76FC /* AiitecOpenAPISourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C19E319D515E300FC76FC /* AiitecOpenAPISourceTests.m */; };
-		886C1BA119D5212A00FC76FC /* AIIPacketConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A4619D5212900FC76FC /* AIIPacketConfig.m */; };
-		886C1BA219D5212A00FC76FC /* AIIPacketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A4819D5212900FC76FC /* AIIPacketManager.m */; };
-		886C1BA319D5212A00FC76FC /* AIIPacketRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A4A19D5212900FC76FC /* AIIPacketRequest.m */; };
-		886C1BA419D5212A00FC76FC /* AIIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A4C19D5212900FC76FC /* AIIUtility.m */; };
-		886C1BA519D5212A00FC76FC /* AIICacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A4F19D5212900FC76FC /* AIICacheManager.m */; };
-		886C1BA619D5212A00FC76FC /* AIIFileConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A5119D5212900FC76FC /* AIIFileConnection.m */; };
-		886C1BA719D5212A00FC76FC /* AIIPacketConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A5319D5212900FC76FC /* AIIPacketConnection.m */; };
-		886C1BA819D5212A00FC76FC /* AIIFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A5619D5212900FC76FC /* AIIFileCache.m */; };
-		886C1BA919D5212A00FC76FC /* AIIFileHttpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A5919D5212A00FC76FC /* AIIFileHttpConnection.m */; };
-		886C1BAA19D5212A00FC76FC /* AIIPacketHttpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A5B19D5212A00FC76FC /* AIIPacketHttpConnection.m */; };
-		886C1BAB19D5212A00FC76FC /* AIIDataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A5E19D5212A00FC76FC /* AIIDataCollection.m */; };
-		886C1BAC19D5212A00FC76FC /* AIIEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A6019D5212A00FC76FC /* AIIEntity.m */; };
-		886C1BAD19D5212A00FC76FC /* AIIJSONCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A6219D5212A00FC76FC /* AIIJSONCollection.m */; };
-		886C1BAE19D5212A00FC76FC /* AIIJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A6419D5212A00FC76FC /* AIIJSONModel.m */; };
-		886C1BAF19D5212A00FC76FC /* AIIModelCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A6619D5212A00FC76FC /* AIIModelCollection.m */; };
-		886C1BB019D5212A00FC76FC /* AIIDataField.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A6919D5212A00FC76FC /* AIIDataField.m */; };
-		886C1BB119D5212A00FC76FC /* AIIDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A6B19D5212A00FC76FC /* AIIDataItem.m */; };
-		886C1BB219D5212A00FC76FC /* AIIDataRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A6D19D5212A00FC76FC /* AIIDataRow.m */; };
-		886C1BB319D5212A00FC76FC /* AIIDataRowCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A6F19D5212A00FC76FC /* AIIDataRowCollection.m */; };
-		886C1BB419D5212A00FC76FC /* AIIDataTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A7119D5212A00FC76FC /* AIIDataTable.m */; };
-		886C1BB519D5212A00FC76FC /* AIITableSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A7319D5212A00FC76FC /* AIITableSchema.m */; };
-		886C1BB619D5212A00FC76FC /* AIITable.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A7619D5212A00FC76FC /* AIITable.m */; };
-		886C1BB719D5212A00FC76FC /* AIIWhere.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A7819D5212A00FC76FC /* AIIWhere.m */; };
-		886C1BB819D5212A00FC76FC /* AIICollectionPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A7B19D5212A00FC76FC /* AIICollectionPacket.m */; };
-		886C1BB919D5212A00FC76FC /* AIIDetailsPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A7D19D5212A00FC76FC /* AIIDetailsPacket.m */; };
-		886C1BBA19D5212A00FC76FC /* AIIEntityPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A7F19D5212A00FC76FC /* AIIEntityPacket.m */; };
-		886C1BBB19D5212A00FC76FC /* AIIIqPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8119D5212A00FC76FC /* AIIIqPacket.m */; };
-		886C1BBC19D5212A00FC76FC /* AIIListPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8319D5212A00FC76FC /* AIIListPacket.m */; };
-		886C1BBD19D5212A00FC76FC /* AIIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8519D5212A00FC76FC /* AIIRequest.m */; };
-		886C1BBE19D5212A00FC76FC /* AIIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8719D5212A00FC76FC /* AIIResponse.m */; };
-		886C1BBF19D5212A00FC76FC /* AIISessionPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8919D5212A00FC76FC /* AIISessionPacket.m */; };
-		886C1BC019D5212A00FC76FC /* AIIUploadFilesPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8B19D5212A00FC76FC /* AIIUploadFilesPacket.m */; };
-		886C1BC119D5212A00FC76FC /* AIIEntityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A8E19D5212A00FC76FC /* AIIEntityQuery.m */; };
-		886C1BC219D5212A00FC76FC /* AIIModelCollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A9019D5212A00FC76FC /* AIIModelCollectionQuery.m */; };
-		886C1BC319D5212A00FC76FC /* AIIQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A9219D5212A00FC76FC /* AIIQuery.m */; };
-		886C1BC419D5212A00FC76FC /* SQLiteConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A9519D5212A00FC76FC /* SQLiteConnection.m */; };
-		886C1BC519D5212A00FC76FC /* Table.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A9719D5212A00FC76FC /* Table.m */; };
-		886C1BC619D5212A00FC76FC /* AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1A9919D5212A00FC76FC /* AiitecOpenAPI.m */; };
-		886C1BC919D5212A00FC76FC /* ReachabilityUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1AA019D5212A00FC76FC /* ReachabilityUtility.m */; };
 		886C1BCA19D5212A00FC76FC /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 886C1AA219D5212A00FC76FC /* AppConfig.m */; };
 		886C1BCB19D5212A00FC76FC /* AiitecOpenAPIDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 886C1AA319D5212A00FC76FC /* AiitecOpenAPIDB.sqlite */; };
 		886C1BCC19D5212A00FC76FC /* UploadImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 886C1AA519D5212A00FC76FC /* UploadImage.png */; };
 		886C1C4119D5253800FC76FC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 886C1C4019D5253800FC76FC /* libsqlite3.dylib */; };
-		886C1C6319D541D900FC76FC /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 886C1C6219D541D900FC76FC /* libz.1.2.5.dylib */; };
+		88748D151ACA86D300364642 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D081ACA86D300364642 /* FMDatabase.m */; };
+		88748D161ACA86D300364642 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D0A1ACA86D300364642 /* FMDatabaseAdditions.m */; };
+		88748D171ACA86D300364642 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D0C1ACA86D300364642 /* FMDatabasePool.m */; };
+		88748D181ACA86D300364642 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D0E1ACA86D300364642 /* FMDatabaseQueue.m */; };
+		88748D191ACA86D300364642 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D111ACA86D300364642 /* FMResultSet.m */; };
+		88748D1A1ACA86D300364642 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D141ACA86D300364642 /* Reachability.m */; };
+		88748D801ACA86E500364642 /* AIIPacketConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D1F1ACA86E400364642 /* AIIPacketConfig.m */; };
+		88748D811ACA86E500364642 /* AIIPacketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D211ACA86E400364642 /* AIIPacketManager.m */; };
+		88748D821ACA86E500364642 /* AIIPacketRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D231ACA86E400364642 /* AIIPacketRequest.m */; };
+		88748D831ACA86E500364642 /* AIIUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D251ACA86E400364642 /* AIIUtility.m */; };
+		88748D841ACA86E500364642 /* AIICacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D281ACA86E400364642 /* AIICacheManager.m */; };
+		88748D851ACA86E500364642 /* AIIFileConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D2A1ACA86E400364642 /* AIIFileConnection.m */; };
+		88748D861ACA86E500364642 /* AIIPacketConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D2C1ACA86E400364642 /* AIIPacketConnection.m */; };
+		88748D871ACA86E500364642 /* AIIFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D2F1ACA86E400364642 /* AIIFileCache.m */; };
+		88748D881ACA86E500364642 /* AIIFileHttpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D321ACA86E400364642 /* AIIFileHttpConnection.m */; };
+		88748D891ACA86E500364642 /* AIIPacketHttpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D341ACA86E400364642 /* AIIPacketHttpConnection.m */; };
+		88748D8A1ACA86E500364642 /* AIIDataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D371ACA86E400364642 /* AIIDataCollection.m */; };
+		88748D8B1ACA86E500364642 /* AIIEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D391ACA86E400364642 /* AIIEntity.m */; };
+		88748D8C1ACA86E500364642 /* AIIFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D3B1ACA86E400364642 /* AIIFile.m */; };
+		88748D8D1ACA86E500364642 /* AIIFileCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D3D1ACA86E400364642 /* AIIFileCollection.m */; };
+		88748D8E1ACA86E500364642 /* AIIJSONCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D3F1ACA86E400364642 /* AIIJSONCollection.m */; };
+		88748D8F1ACA86E500364642 /* AIIJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D411ACA86E500364642 /* AIIJSONModel.m */; };
+		88748D901ACA86E500364642 /* AIIModelCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D431ACA86E500364642 /* AIIModelCollection.m */; };
+		88748D911ACA86E500364642 /* AIIDataField.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D461ACA86E500364642 /* AIIDataField.m */; };
+		88748D921ACA86E500364642 /* AIIDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D481ACA86E500364642 /* AIIDataItem.m */; };
+		88748D931ACA86E500364642 /* AIIDataRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D4A1ACA86E500364642 /* AIIDataRow.m */; };
+		88748D941ACA86E500364642 /* AIIDataRowCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D4C1ACA86E500364642 /* AIIDataRowCollection.m */; };
+		88748D951ACA86E500364642 /* AIIDataTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D4E1ACA86E500364642 /* AIIDataTable.m */; };
+		88748D961ACA86E500364642 /* AIITableSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D501ACA86E500364642 /* AIITableSchema.m */; };
+		88748D971ACA86E500364642 /* AIITable.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D531ACA86E500364642 /* AIITable.m */; };
+		88748D981ACA86E500364642 /* AIIWhere.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D551ACA86E500364642 /* AIIWhere.m */; };
+		88748D991ACA86E500364642 /* NSArray+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D571ACA86E500364642 /* NSArray+AiitecOpenAPI.m */; };
+		88748D9A1ACA86E500364642 /* NSDictionary+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D591ACA86E500364642 /* NSDictionary+AiitecOpenAPI.m */; };
+		88748D9B1ACA86E500364642 /* NSString+AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D5B1ACA86E500364642 /* NSString+AiitecOpenAPI.m */; };
+		88748D9C1ACA86E500364642 /* AIICollectionPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D5E1ACA86E500364642 /* AIICollectionPacket.m */; };
+		88748D9D1ACA86E500364642 /* AIIDetailsPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D601ACA86E500364642 /* AIIDetailsPacket.m */; };
+		88748D9E1ACA86E500364642 /* AIIEntityPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D621ACA86E500364642 /* AIIEntityPacket.m */; };
+		88748D9F1ACA86E500364642 /* AIIIqPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D641ACA86E500364642 /* AIIIqPacket.m */; };
+		88748DA01ACA86E500364642 /* AIIListPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D661ACA86E500364642 /* AIIListPacket.m */; };
+		88748DA11ACA86E500364642 /* AIIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D681ACA86E500364642 /* AIIRequest.m */; };
+		88748DA21ACA86E500364642 /* AIIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D6A1ACA86E500364642 /* AIIResponse.m */; };
+		88748DA31ACA86E500364642 /* AIISessionPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D6C1ACA86E500364642 /* AIISessionPacket.m */; };
+		88748DA41ACA86E500364642 /* AIIUploadFilesPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D6E1ACA86E500364642 /* AIIUploadFilesPacket.m */; };
+		88748DA51ACA86E500364642 /* AIIEntityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D711ACA86E500364642 /* AIIEntityQuery.m */; };
+		88748DA61ACA86E500364642 /* AIIModelCollectionQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D731ACA86E500364642 /* AIIModelCollectionQuery.m */; };
+		88748DA71ACA86E500364642 /* AIIQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D751ACA86E500364642 /* AIIQuery.m */; };
+		88748DA81ACA86E500364642 /* SQLiteConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D781ACA86E500364642 /* SQLiteConnection.m */; };
+		88748DA91ACA86E500364642 /* Table.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D7A1ACA86E500364642 /* Table.m */; };
+		88748DAA1ACA86E500364642 /* AiitecOpenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D7C1ACA86E500364642 /* AiitecOpenAPI.m */; };
+		88748DAB1ACA86E500364642 /* ReachabilityUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 88748D7F1ACA86E500364642 /* ReachabilityUtility.m */; };
 		887D0F411A32E3A700B1CAEF /* AII_Namespace_Packet_h in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F401A32E3A700B1CAEF /* AII_Namespace_Packet_h */; };
 		887D0F431A32E3D100B1CAEF /* AII_Namespace_Packet_m in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F421A32E3D100B1CAEF /* AII_Namespace_Packet_m */; };
 		887D0F451A32E73200B1CAEF /* AII_Entity_ListPacket_h in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F441A32E73200B1CAEF /* AII_Entity_ListPacket_h */; };
@@ -104,6 +109,7 @@
 		887D0F831A33010200B1CAEF /* AII_Entity_m in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F821A33010200B1CAEF /* AII_Entity_m */; };
 		887D0F851A33011E00B1CAEF /* AII_Entity_Collection_h in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F841A33011E00B1CAEF /* AII_Entity_Collection_h */; };
 		887D0F871A33012C00B1CAEF /* AII_Entity_Collection_m in Resources */ = {isa = PBXBuildFile; fileRef = 887D0F861A33012C00B1CAEF /* AII_Entity_Collection_m */; };
+		8884D6FA1AC2CCA400E6DC3E /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 886C1C6219D541D900FC76FC /* libz.1.2.5.dylib */; };
 		888B075D1ABFFDDA00294D58 /* AIIAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B06241ABFFDD900294D58 /* AIIAd.m */; };
 		888B075E1ABFFDDA00294D58 /* AIIAdCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B06261ABFFDD900294D58 /* AIIAdCollection.m */; };
 		888B075F1ABFFDDA00294D58 /* AIIAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B06281ABFFDD900294D58 /* AIIAddress.m */; };
@@ -250,12 +256,6 @@
 		888B07EC1ABFFDDA00294D58 /* transparencyPattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 888B07471ABFFDDA00294D58 /* transparencyPattern.png */; };
 		888B07ED1ABFFDDA00294D58 /* AAUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B07491ABFFDDA00294D58 /* AAUIScrollView.m */; };
 		888B07EE1ABFFDDA00294D58 /* AIICheckVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B074C1ABFFDDA00294D58 /* AIICheckVersion.m */; };
-		888B07EF1ABFFDDA00294D58 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B07501ABFFDDA00294D58 /* FMDatabase.m */; };
-		888B07F01ABFFDDA00294D58 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B07521ABFFDDA00294D58 /* FMDatabaseAdditions.m */; };
-		888B07F11ABFFDDA00294D58 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B07541ABFFDDA00294D58 /* FMDatabasePool.m */; };
-		888B07F21ABFFDDA00294D58 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B07561ABFFDDA00294D58 /* FMDatabaseQueue.m */; };
-		888B07F31ABFFDDA00294D58 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B07591ABFFDDA00294D58 /* FMResultSet.m */; };
-		888B07F41ABFFDDA00294D58 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 888B075C1ABFFDDA00294D58 /* Reachability.m */; };
 		888B07F61AC0069600294D58 /* IqPacketStatusIdentification.plist in Resources */ = {isa = PBXBuildFile; fileRef = 888B07F51AC0069600294D58 /* IqPacketStatusIdentification.plist */; };
 		889BA8EF1AB2C6EE00BE8129 /* XYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BA8EE1AB2C6EE00BE8129 /* XYPoint.m */; };
 		889BA8F51AB2CBE700BE8129 /* Fraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BA8F41AB2CBE700BE8129 /* Fraction.m */; };
@@ -293,16 +293,6 @@
 		882602231A31C57500C6C843 /* AII_Entity_SubmitPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AII_Entity_SubmitPacket.m; sourceTree = "<group>"; };
 		882602251A31C69A00C6C843 /* AII_Namespace_Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AII_Namespace_Packet.h; sourceTree = "<group>"; };
 		882602261A31C69A00C6C843 /* AII_Namespace_Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AII_Namespace_Packet.m; sourceTree = "<group>"; };
-		882927881A08B9DB007F0A30 /* AIIFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFile.h; sourceTree = "<group>"; };
-		882927891A08B9DB007F0A30 /* AIIFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFile.m; sourceTree = "<group>"; };
-		8829278A1A08B9DB007F0A30 /* AIIFileCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFileCollection.h; sourceTree = "<group>"; };
-		8829278B1A08B9DB007F0A30 /* AIIFileCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFileCollection.m; sourceTree = "<group>"; };
-		884E125019ED00A5005CBDAD /* NSString+AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AiitecOpenAPI.h"; sourceTree = "<group>"; };
-		884E125119ED00A5005CBDAD /* NSString+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AiitecOpenAPI.m"; sourceTree = "<group>"; };
-		884E125319ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AiitecOpenAPI.h"; sourceTree = "<group>"; };
-		884E125419ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AiitecOpenAPI.m"; sourceTree = "<group>"; };
-		884E125619ED020F005CBDAD /* NSArray+AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AiitecOpenAPI.h"; sourceTree = "<group>"; };
-		884E125719ED020F005CBDAD /* NSArray+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AiitecOpenAPI.m"; sourceTree = "<group>"; };
 		886C19C419D515E300FC76FC /* AiitecOpenAPISource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiitecOpenAPISource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		886C19C819D515E300FC76FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		886C19C919D515E300FC76FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -316,85 +306,6 @@
 		886C19DD19D515E300FC76FC /* AiitecOpenAPISourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AiitecOpenAPISourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		886C19E219D515E300FC76FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		886C19E319D515E300FC76FC /* AiitecOpenAPISourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AiitecOpenAPISourceTests.m; sourceTree = "<group>"; };
-		886C1A4419D5212900FC76FC /* AIIJSONValueConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIJSONValueConvert.h; sourceTree = "<group>"; };
-		886C1A4519D5212900FC76FC /* AIIPacketConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketConfig.h; sourceTree = "<group>"; };
-		886C1A4619D5212900FC76FC /* AIIPacketConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketConfig.m; sourceTree = "<group>"; };
-		886C1A4719D5212900FC76FC /* AIIPacketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketManager.h; sourceTree = "<group>"; };
-		886C1A4819D5212900FC76FC /* AIIPacketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketManager.m; sourceTree = "<group>"; };
-		886C1A4919D5212900FC76FC /* AIIPacketRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketRequest.h; sourceTree = "<group>"; };
-		886C1A4A19D5212900FC76FC /* AIIPacketRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketRequest.m; sourceTree = "<group>"; };
-		886C1A4B19D5212900FC76FC /* AIIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIUtility.h; sourceTree = "<group>"; };
-		886C1A4C19D5212900FC76FC /* AIIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUtility.m; sourceTree = "<group>"; };
-		886C1A4E19D5212900FC76FC /* AIICacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIICacheManager.h; sourceTree = "<group>"; };
-		886C1A4F19D5212900FC76FC /* AIICacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIICacheManager.m; sourceTree = "<group>"; };
-		886C1A5019D5212900FC76FC /* AIIFileConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFileConnection.h; sourceTree = "<group>"; };
-		886C1A5119D5212900FC76FC /* AIIFileConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFileConnection.m; sourceTree = "<group>"; };
-		886C1A5219D5212900FC76FC /* AIIPacketConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketConnection.h; sourceTree = "<group>"; };
-		886C1A5319D5212900FC76FC /* AIIPacketConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketConnection.m; sourceTree = "<group>"; };
-		886C1A5519D5212900FC76FC /* AIIFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFileCache.h; sourceTree = "<group>"; };
-		886C1A5619D5212900FC76FC /* AIIFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFileCache.m; sourceTree = "<group>"; };
-		886C1A5819D5212A00FC76FC /* AIIFileHttpConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFileHttpConnection.h; sourceTree = "<group>"; };
-		886C1A5919D5212A00FC76FC /* AIIFileHttpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFileHttpConnection.m; sourceTree = "<group>"; };
-		886C1A5A19D5212A00FC76FC /* AIIPacketHttpConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketHttpConnection.h; sourceTree = "<group>"; };
-		886C1A5B19D5212A00FC76FC /* AIIPacketHttpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketHttpConnection.m; sourceTree = "<group>"; };
-		886C1A5D19D5212A00FC76FC /* AIIDataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataCollection.h; sourceTree = "<group>"; };
-		886C1A5E19D5212A00FC76FC /* AIIDataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataCollection.m; sourceTree = "<group>"; };
-		886C1A5F19D5212A00FC76FC /* AIIEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIEntity.h; sourceTree = "<group>"; };
-		886C1A6019D5212A00FC76FC /* AIIEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIEntity.m; sourceTree = "<group>"; };
-		886C1A6119D5212A00FC76FC /* AIIJSONCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIJSONCollection.h; sourceTree = "<group>"; };
-		886C1A6219D5212A00FC76FC /* AIIJSONCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIJSONCollection.m; sourceTree = "<group>"; };
-		886C1A6319D5212A00FC76FC /* AIIJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIJSONModel.h; sourceTree = "<group>"; };
-		886C1A6419D5212A00FC76FC /* AIIJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIJSONModel.m; sourceTree = "<group>"; };
-		886C1A6519D5212A00FC76FC /* AIIModelCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIModelCollection.h; sourceTree = "<group>"; };
-		886C1A6619D5212A00FC76FC /* AIIModelCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIModelCollection.m; sourceTree = "<group>"; };
-		886C1A6819D5212A00FC76FC /* AIIDataField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataField.h; sourceTree = "<group>"; };
-		886C1A6919D5212A00FC76FC /* AIIDataField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataField.m; sourceTree = "<group>"; };
-		886C1A6A19D5212A00FC76FC /* AIIDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataItem.h; sourceTree = "<group>"; };
-		886C1A6B19D5212A00FC76FC /* AIIDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataItem.m; sourceTree = "<group>"; };
-		886C1A6C19D5212A00FC76FC /* AIIDataRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataRow.h; sourceTree = "<group>"; };
-		886C1A6D19D5212A00FC76FC /* AIIDataRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataRow.m; sourceTree = "<group>"; };
-		886C1A6E19D5212A00FC76FC /* AIIDataRowCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataRowCollection.h; sourceTree = "<group>"; };
-		886C1A6F19D5212A00FC76FC /* AIIDataRowCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataRowCollection.m; sourceTree = "<group>"; };
-		886C1A7019D5212A00FC76FC /* AIIDataTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataTable.h; sourceTree = "<group>"; };
-		886C1A7119D5212A00FC76FC /* AIIDataTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataTable.m; sourceTree = "<group>"; };
-		886C1A7219D5212A00FC76FC /* AIITableSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIITableSchema.h; sourceTree = "<group>"; };
-		886C1A7319D5212A00FC76FC /* AIITableSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIITableSchema.m; sourceTree = "<group>"; };
-		886C1A7519D5212A00FC76FC /* AIITable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIITable.h; sourceTree = "<group>"; };
-		886C1A7619D5212A00FC76FC /* AIITable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIITable.m; sourceTree = "<group>"; };
-		886C1A7719D5212A00FC76FC /* AIIWhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIWhere.h; sourceTree = "<group>"; };
-		886C1A7819D5212A00FC76FC /* AIIWhere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIWhere.m; sourceTree = "<group>"; };
-		886C1A7A19D5212A00FC76FC /* AIICollectionPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIICollectionPacket.h; sourceTree = "<group>"; };
-		886C1A7B19D5212A00FC76FC /* AIICollectionPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIICollectionPacket.m; sourceTree = "<group>"; };
-		886C1A7C19D5212A00FC76FC /* AIIDetailsPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDetailsPacket.h; sourceTree = "<group>"; };
-		886C1A7D19D5212A00FC76FC /* AIIDetailsPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDetailsPacket.m; sourceTree = "<group>"; };
-		886C1A7E19D5212A00FC76FC /* AIIEntityPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIEntityPacket.h; sourceTree = "<group>"; };
-		886C1A7F19D5212A00FC76FC /* AIIEntityPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIEntityPacket.m; sourceTree = "<group>"; };
-		886C1A8019D5212A00FC76FC /* AIIIqPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIIqPacket.h; sourceTree = "<group>"; };
-		886C1A8119D5212A00FC76FC /* AIIIqPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIIqPacket.m; sourceTree = "<group>"; };
-		886C1A8219D5212A00FC76FC /* AIIListPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIListPacket.h; sourceTree = "<group>"; };
-		886C1A8319D5212A00FC76FC /* AIIListPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIListPacket.m; sourceTree = "<group>"; };
-		886C1A8419D5212A00FC76FC /* AIIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIRequest.h; sourceTree = "<group>"; };
-		886C1A8519D5212A00FC76FC /* AIIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIRequest.m; sourceTree = "<group>"; };
-		886C1A8619D5212A00FC76FC /* AIIResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIResponse.h; sourceTree = "<group>"; };
-		886C1A8719D5212A00FC76FC /* AIIResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIResponse.m; sourceTree = "<group>"; };
-		886C1A8819D5212A00FC76FC /* AIISessionPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIISessionPacket.h; sourceTree = "<group>"; };
-		886C1A8919D5212A00FC76FC /* AIISessionPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIISessionPacket.m; sourceTree = "<group>"; };
-		886C1A8A19D5212A00FC76FC /* AIIUploadFilesPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIUploadFilesPacket.h; sourceTree = "<group>"; };
-		886C1A8B19D5212A00FC76FC /* AIIUploadFilesPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUploadFilesPacket.m; sourceTree = "<group>"; };
-		886C1A8D19D5212A00FC76FC /* AIIEntityQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIEntityQuery.h; sourceTree = "<group>"; };
-		886C1A8E19D5212A00FC76FC /* AIIEntityQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIEntityQuery.m; sourceTree = "<group>"; };
-		886C1A8F19D5212A00FC76FC /* AIIModelCollectionQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIModelCollectionQuery.h; sourceTree = "<group>"; };
-		886C1A9019D5212A00FC76FC /* AIIModelCollectionQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIModelCollectionQuery.m; sourceTree = "<group>"; };
-		886C1A9119D5212A00FC76FC /* AIIQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIQuery.h; sourceTree = "<group>"; };
-		886C1A9219D5212A00FC76FC /* AIIQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIQuery.m; sourceTree = "<group>"; };
-		886C1A9419D5212A00FC76FC /* SQLiteConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteConnection.h; sourceTree = "<group>"; };
-		886C1A9519D5212A00FC76FC /* SQLiteConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteConnection.m; sourceTree = "<group>"; };
-		886C1A9619D5212A00FC76FC /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
-		886C1A9719D5212A00FC76FC /* Table.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table.m; sourceTree = "<group>"; };
-		886C1A9819D5212A00FC76FC /* AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiitecOpenAPI.h; sourceTree = "<group>"; };
-		886C1A9919D5212A00FC76FC /* AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiitecOpenAPI.m; sourceTree = "<group>"; };
-		886C1A9F19D5212A00FC76FC /* ReachabilityUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityUtility.h; sourceTree = "<group>"; };
-		886C1AA019D5212A00FC76FC /* ReachabilityUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityUtility.m; sourceTree = "<group>"; };
 		886C1AA119D5212A00FC76FC /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		886C1AA219D5212A00FC76FC /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
 		886C1AA319D5212A00FC76FC /* AiitecOpenAPIDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = AiitecOpenAPIDB.sqlite; sourceTree = "<group>"; };
@@ -402,6 +313,108 @@
 		886C1C4019D5253800FC76FC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		886C1C4319D525E100FC76FC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		886C1C6219D541D900FC76FC /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		88748D071ACA86D300364642 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		88748D081ACA86D300364642 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		88748D091ACA86D300364642 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		88748D0A1ACA86D300364642 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		88748D0B1ACA86D300364642 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		88748D0C1ACA86D300364642 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		88748D0D1ACA86D300364642 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		88748D0E1ACA86D300364642 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		88748D0F1ACA86D300364642 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		88748D101ACA86D300364642 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		88748D111ACA86D300364642 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		88748D131ACA86D300364642 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		88748D141ACA86D300364642 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		88748D1D1ACA86E400364642 /* AIIJSONValueConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIJSONValueConvert.h; sourceTree = "<group>"; };
+		88748D1E1ACA86E400364642 /* AIIPacketConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketConfig.h; sourceTree = "<group>"; };
+		88748D1F1ACA86E400364642 /* AIIPacketConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketConfig.m; sourceTree = "<group>"; };
+		88748D201ACA86E400364642 /* AIIPacketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketManager.h; sourceTree = "<group>"; };
+		88748D211ACA86E400364642 /* AIIPacketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketManager.m; sourceTree = "<group>"; };
+		88748D221ACA86E400364642 /* AIIPacketRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketRequest.h; sourceTree = "<group>"; };
+		88748D231ACA86E400364642 /* AIIPacketRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketRequest.m; sourceTree = "<group>"; };
+		88748D241ACA86E400364642 /* AIIUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIUtility.h; sourceTree = "<group>"; };
+		88748D251ACA86E400364642 /* AIIUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUtility.m; sourceTree = "<group>"; };
+		88748D271ACA86E400364642 /* AIICacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIICacheManager.h; sourceTree = "<group>"; };
+		88748D281ACA86E400364642 /* AIICacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIICacheManager.m; sourceTree = "<group>"; };
+		88748D291ACA86E400364642 /* AIIFileConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFileConnection.h; sourceTree = "<group>"; };
+		88748D2A1ACA86E400364642 /* AIIFileConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFileConnection.m; sourceTree = "<group>"; };
+		88748D2B1ACA86E400364642 /* AIIPacketConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketConnection.h; sourceTree = "<group>"; };
+		88748D2C1ACA86E400364642 /* AIIPacketConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketConnection.m; sourceTree = "<group>"; };
+		88748D2E1ACA86E400364642 /* AIIFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFileCache.h; sourceTree = "<group>"; };
+		88748D2F1ACA86E400364642 /* AIIFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFileCache.m; sourceTree = "<group>"; };
+		88748D311ACA86E400364642 /* AIIFileHttpConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFileHttpConnection.h; sourceTree = "<group>"; };
+		88748D321ACA86E400364642 /* AIIFileHttpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFileHttpConnection.m; sourceTree = "<group>"; };
+		88748D331ACA86E400364642 /* AIIPacketHttpConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketHttpConnection.h; sourceTree = "<group>"; };
+		88748D341ACA86E400364642 /* AIIPacketHttpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketHttpConnection.m; sourceTree = "<group>"; };
+		88748D361ACA86E400364642 /* AIIDataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataCollection.h; sourceTree = "<group>"; };
+		88748D371ACA86E400364642 /* AIIDataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataCollection.m; sourceTree = "<group>"; };
+		88748D381ACA86E400364642 /* AIIEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIEntity.h; sourceTree = "<group>"; };
+		88748D391ACA86E400364642 /* AIIEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIEntity.m; sourceTree = "<group>"; };
+		88748D3A1ACA86E400364642 /* AIIFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFile.h; sourceTree = "<group>"; };
+		88748D3B1ACA86E400364642 /* AIIFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFile.m; sourceTree = "<group>"; };
+		88748D3C1ACA86E400364642 /* AIIFileCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIFileCollection.h; sourceTree = "<group>"; };
+		88748D3D1ACA86E400364642 /* AIIFileCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIFileCollection.m; sourceTree = "<group>"; };
+		88748D3E1ACA86E400364642 /* AIIJSONCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIJSONCollection.h; sourceTree = "<group>"; };
+		88748D3F1ACA86E400364642 /* AIIJSONCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIJSONCollection.m; sourceTree = "<group>"; };
+		88748D401ACA86E400364642 /* AIIJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIJSONModel.h; sourceTree = "<group>"; };
+		88748D411ACA86E500364642 /* AIIJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIJSONModel.m; sourceTree = "<group>"; };
+		88748D421ACA86E500364642 /* AIIModelCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIModelCollection.h; sourceTree = "<group>"; };
+		88748D431ACA86E500364642 /* AIIModelCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIModelCollection.m; sourceTree = "<group>"; };
+		88748D451ACA86E500364642 /* AIIDataField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataField.h; sourceTree = "<group>"; };
+		88748D461ACA86E500364642 /* AIIDataField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataField.m; sourceTree = "<group>"; };
+		88748D471ACA86E500364642 /* AIIDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataItem.h; sourceTree = "<group>"; };
+		88748D481ACA86E500364642 /* AIIDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataItem.m; sourceTree = "<group>"; };
+		88748D491ACA86E500364642 /* AIIDataRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataRow.h; sourceTree = "<group>"; };
+		88748D4A1ACA86E500364642 /* AIIDataRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataRow.m; sourceTree = "<group>"; };
+		88748D4B1ACA86E500364642 /* AIIDataRowCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataRowCollection.h; sourceTree = "<group>"; };
+		88748D4C1ACA86E500364642 /* AIIDataRowCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataRowCollection.m; sourceTree = "<group>"; };
+		88748D4D1ACA86E500364642 /* AIIDataTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDataTable.h; sourceTree = "<group>"; };
+		88748D4E1ACA86E500364642 /* AIIDataTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDataTable.m; sourceTree = "<group>"; };
+		88748D4F1ACA86E500364642 /* AIITableSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIITableSchema.h; sourceTree = "<group>"; };
+		88748D501ACA86E500364642 /* AIITableSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIITableSchema.m; sourceTree = "<group>"; };
+		88748D521ACA86E500364642 /* AIITable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIITable.h; sourceTree = "<group>"; };
+		88748D531ACA86E500364642 /* AIITable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIITable.m; sourceTree = "<group>"; };
+		88748D541ACA86E500364642 /* AIIWhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIWhere.h; sourceTree = "<group>"; };
+		88748D551ACA86E500364642 /* AIIWhere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIWhere.m; sourceTree = "<group>"; };
+		88748D561ACA86E500364642 /* NSArray+AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AiitecOpenAPI.h"; sourceTree = "<group>"; };
+		88748D571ACA86E500364642 /* NSArray+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AiitecOpenAPI.m"; sourceTree = "<group>"; };
+		88748D581ACA86E500364642 /* NSDictionary+AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AiitecOpenAPI.h"; sourceTree = "<group>"; };
+		88748D591ACA86E500364642 /* NSDictionary+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AiitecOpenAPI.m"; sourceTree = "<group>"; };
+		88748D5A1ACA86E500364642 /* NSString+AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AiitecOpenAPI.h"; sourceTree = "<group>"; };
+		88748D5B1ACA86E500364642 /* NSString+AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AiitecOpenAPI.m"; sourceTree = "<group>"; };
+		88748D5D1ACA86E500364642 /* AIICollectionPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIICollectionPacket.h; sourceTree = "<group>"; };
+		88748D5E1ACA86E500364642 /* AIICollectionPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIICollectionPacket.m; sourceTree = "<group>"; };
+		88748D5F1ACA86E500364642 /* AIIDetailsPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIDetailsPacket.h; sourceTree = "<group>"; };
+		88748D601ACA86E500364642 /* AIIDetailsPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIDetailsPacket.m; sourceTree = "<group>"; };
+		88748D611ACA86E500364642 /* AIIEntityPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIEntityPacket.h; sourceTree = "<group>"; };
+		88748D621ACA86E500364642 /* AIIEntityPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIEntityPacket.m; sourceTree = "<group>"; };
+		88748D631ACA86E500364642 /* AIIIqPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIIqPacket.h; sourceTree = "<group>"; };
+		88748D641ACA86E500364642 /* AIIIqPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIIqPacket.m; sourceTree = "<group>"; };
+		88748D651ACA86E500364642 /* AIIListPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIListPacket.h; sourceTree = "<group>"; };
+		88748D661ACA86E500364642 /* AIIListPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIListPacket.m; sourceTree = "<group>"; };
+		88748D671ACA86E500364642 /* AIIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIRequest.h; sourceTree = "<group>"; };
+		88748D681ACA86E500364642 /* AIIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIRequest.m; sourceTree = "<group>"; };
+		88748D691ACA86E500364642 /* AIIResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIResponse.h; sourceTree = "<group>"; };
+		88748D6A1ACA86E500364642 /* AIIResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIResponse.m; sourceTree = "<group>"; };
+		88748D6B1ACA86E500364642 /* AIISessionPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIISessionPacket.h; sourceTree = "<group>"; };
+		88748D6C1ACA86E500364642 /* AIISessionPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIISessionPacket.m; sourceTree = "<group>"; };
+		88748D6D1ACA86E500364642 /* AIIUploadFilesPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIUploadFilesPacket.h; sourceTree = "<group>"; };
+		88748D6E1ACA86E500364642 /* AIIUploadFilesPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIUploadFilesPacket.m; sourceTree = "<group>"; };
+		88748D701ACA86E500364642 /* AIIEntityQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIEntityQuery.h; sourceTree = "<group>"; };
+		88748D711ACA86E500364642 /* AIIEntityQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIEntityQuery.m; sourceTree = "<group>"; };
+		88748D721ACA86E500364642 /* AIIModelCollectionQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIModelCollectionQuery.h; sourceTree = "<group>"; };
+		88748D731ACA86E500364642 /* AIIModelCollectionQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIModelCollectionQuery.m; sourceTree = "<group>"; };
+		88748D741ACA86E500364642 /* AIIQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIQuery.h; sourceTree = "<group>"; };
+		88748D751ACA86E500364642 /* AIIQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIQuery.m; sourceTree = "<group>"; };
+		88748D771ACA86E500364642 /* SQLiteConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteConnection.h; sourceTree = "<group>"; };
+		88748D781ACA86E500364642 /* SQLiteConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteConnection.m; sourceTree = "<group>"; };
+		88748D791ACA86E500364642 /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
+		88748D7A1ACA86E500364642 /* Table.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table.m; sourceTree = "<group>"; };
+		88748D7B1ACA86E500364642 /* AiitecOpenAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiitecOpenAPI.h; sourceTree = "<group>"; };
+		88748D7C1ACA86E500364642 /* AiitecOpenAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiitecOpenAPI.m; sourceTree = "<group>"; };
+		88748D7E1ACA86E500364642 /* ReachabilityUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityUtility.h; sourceTree = "<group>"; };
+		88748D7F1ACA86E500364642 /* ReachabilityUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityUtility.m; sourceTree = "<group>"; };
 		887D0F401A32E3A700B1CAEF /* AII_Namespace_Packet_h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Namespace_Packet_h; sourceTree = "<group>"; };
 		887D0F421A32E3D100B1CAEF /* AII_Namespace_Packet_m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Namespace_Packet_m; sourceTree = "<group>"; };
 		887D0F441A32E73200B1CAEF /* AII_Entity_ListPacket_h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_ListPacket_h; sourceTree = "<group>"; };
@@ -422,6 +435,7 @@
 		887D0F821A33010200B1CAEF /* AII_Entity_m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_m; sourceTree = "<group>"; };
 		887D0F841A33011E00B1CAEF /* AII_Entity_Collection_h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_Collection_h; sourceTree = "<group>"; };
 		887D0F861A33012C00B1CAEF /* AII_Entity_Collection_m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AII_Entity_Collection_m; sourceTree = "<group>"; };
+		8884D6F51AC2CBDF00E6DC3E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		888B06231ABFFDD900294D58 /* AIIAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIAd.h; sourceTree = "<group>"; };
 		888B06241ABFFDD900294D58 /* AIIAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIAd.m; sourceTree = "<group>"; };
 		888B06251ABFFDD900294D58 /* AIIAdCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIAdCollection.h; sourceTree = "<group>"; };
@@ -713,19 +727,6 @@
 		888B07491ABFFDDA00294D58 /* AAUIScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAUIScrollView.m; sourceTree = "<group>"; };
 		888B074B1ABFFDDA00294D58 /* AIICheckVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIICheckVersion.h; sourceTree = "<group>"; };
 		888B074C1ABFFDDA00294D58 /* AIICheckVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIICheckVersion.m; sourceTree = "<group>"; };
-		888B074F1ABFFDDA00294D58 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		888B07501ABFFDDA00294D58 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		888B07511ABFFDDA00294D58 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		888B07521ABFFDDA00294D58 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		888B07531ABFFDDA00294D58 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		888B07541ABFFDDA00294D58 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
-		888B07551ABFFDDA00294D58 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
-		888B07561ABFFDDA00294D58 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
-		888B07571ABFFDDA00294D58 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
-		888B07581ABFFDDA00294D58 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		888B07591ABFFDDA00294D58 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		888B075B1ABFFDDA00294D58 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		888B075C1ABFFDDA00294D58 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		888B07F51AC0069600294D58 /* IqPacketStatusIdentification.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IqPacketStatusIdentification.plist; sourceTree = "<group>"; };
 		889BA8ED1AB2C6EE00BE8129 /* XYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPoint.h; sourceTree = "<group>"; };
 		889BA8EE1AB2C6EE00BE8129 /* XYPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPoint.m; sourceTree = "<group>"; };
@@ -746,7 +747,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				886C1C6319D541D900FC76FC /* libz.1.2.5.dylib in Frameworks */,
+				8884D6FA1AC2CCA400E6DC3E /* libz.1.2.5.dylib in Frameworks */,
 				886C1C4119D5253800FC76FC /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -856,7 +857,7 @@
 				882601FE1A31A52000C6C843 /* Templates */,
 				886C19C719D515E300FC76FC /* Supporting Files */,
 				888B06201ABFFDD900294D58 /* SupportingClasses */,
-				886C1A4219D5212900FC76FC /* AiitecOpenAPI */,
+				88748D1B1ACA86E400364642 /* AiitecOpenAPI */,
 			);
 			path = AiitecOpenAPISource;
 			sourceTree = "<group>";
@@ -892,190 +893,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		886C1A4219D5212900FC76FC /* AiitecOpenAPI */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A4319D5212900FC76FC /* AIIPacketRequest */,
-				886C1A9819D5212A00FC76FC /* AiitecOpenAPI.h */,
-				886C1A9919D5212A00FC76FC /* AiitecOpenAPI.m */,
-				886C1A9A19D5212A00FC76FC /* AIIUtility */,
-			);
-			path = AiitecOpenAPI;
-			sourceTree = "<group>";
-		};
-		886C1A4319D5212900FC76FC /* AIIPacketRequest */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A4419D5212900FC76FC /* AIIJSONValueConvert.h */,
-				886C1A4519D5212900FC76FC /* AIIPacketConfig.h */,
-				886C1A4619D5212900FC76FC /* AIIPacketConfig.m */,
-				886C1A4719D5212900FC76FC /* AIIPacketManager.h */,
-				886C1A4819D5212900FC76FC /* AIIPacketManager.m */,
-				886C1A4919D5212900FC76FC /* AIIPacketRequest.h */,
-				886C1A4A19D5212900FC76FC /* AIIPacketRequest.m */,
-				886C1A4B19D5212900FC76FC /* AIIUtility.h */,
-				886C1A4C19D5212900FC76FC /* AIIUtility.m */,
-				884E125019ED00A5005CBDAD /* NSString+AiitecOpenAPI.h */,
-				884E125119ED00A5005CBDAD /* NSString+AiitecOpenAPI.m */,
-				884E125619ED020F005CBDAD /* NSArray+AiitecOpenAPI.h */,
-				884E125719ED020F005CBDAD /* NSArray+AiitecOpenAPI.m */,
-				884E125319ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.h */,
-				884E125419ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m */,
-				886C1A4D19D5212900FC76FC /* Cache */,
-				886C1A5419D5212900FC76FC /* File */,
-				886C1A5719D5212A00FC76FC /* Http */,
-				886C1A5C19D5212A00FC76FC /* Model */,
-				886C1A7919D5212A00FC76FC /* Packet */,
-				886C1A9319D5212A00FC76FC /* SQLite */,
-			);
-			path = AIIPacketRequest;
-			sourceTree = "<group>";
-		};
-		886C1A4D19D5212900FC76FC /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A4E19D5212900FC76FC /* AIICacheManager.h */,
-				886C1A4F19D5212900FC76FC /* AIICacheManager.m */,
-				886C1A5019D5212900FC76FC /* AIIFileConnection.h */,
-				886C1A5119D5212900FC76FC /* AIIFileConnection.m */,
-				886C1A5219D5212900FC76FC /* AIIPacketConnection.h */,
-				886C1A5319D5212900FC76FC /* AIIPacketConnection.m */,
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
-		886C1A5419D5212900FC76FC /* File */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A5519D5212900FC76FC /* AIIFileCache.h */,
-				886C1A5619D5212900FC76FC /* AIIFileCache.m */,
-			);
-			path = File;
-			sourceTree = "<group>";
-		};
-		886C1A5719D5212A00FC76FC /* Http */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A5819D5212A00FC76FC /* AIIFileHttpConnection.h */,
-				886C1A5919D5212A00FC76FC /* AIIFileHttpConnection.m */,
-				886C1A5A19D5212A00FC76FC /* AIIPacketHttpConnection.h */,
-				886C1A5B19D5212A00FC76FC /* AIIPacketHttpConnection.m */,
-			);
-			path = Http;
-			sourceTree = "<group>";
-		};
-		886C1A5C19D5212A00FC76FC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A5D19D5212A00FC76FC /* AIIDataCollection.h */,
-				886C1A5E19D5212A00FC76FC /* AIIDataCollection.m */,
-				886C1A5F19D5212A00FC76FC /* AIIEntity.h */,
-				886C1A6019D5212A00FC76FC /* AIIEntity.m */,
-				886C1A6119D5212A00FC76FC /* AIIJSONCollection.h */,
-				886C1A6219D5212A00FC76FC /* AIIJSONCollection.m */,
-				886C1A6319D5212A00FC76FC /* AIIJSONModel.h */,
-				886C1A6419D5212A00FC76FC /* AIIJSONModel.m */,
-				886C1A6519D5212A00FC76FC /* AIIModelCollection.h */,
-				886C1A6619D5212A00FC76FC /* AIIModelCollection.m */,
-				882927881A08B9DB007F0A30 /* AIIFile.h */,
-				882927891A08B9DB007F0A30 /* AIIFile.m */,
-				8829278A1A08B9DB007F0A30 /* AIIFileCollection.h */,
-				8829278B1A08B9DB007F0A30 /* AIIFileCollection.m */,
-				886C1A6719D5212A00FC76FC /* DataForm */,
-				886C1A7419D5212A00FC76FC /* Table */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		886C1A6719D5212A00FC76FC /* DataForm */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A6819D5212A00FC76FC /* AIIDataField.h */,
-				886C1A6919D5212A00FC76FC /* AIIDataField.m */,
-				886C1A6A19D5212A00FC76FC /* AIIDataItem.h */,
-				886C1A6B19D5212A00FC76FC /* AIIDataItem.m */,
-				886C1A6C19D5212A00FC76FC /* AIIDataRow.h */,
-				886C1A6D19D5212A00FC76FC /* AIIDataRow.m */,
-				886C1A6E19D5212A00FC76FC /* AIIDataRowCollection.h */,
-				886C1A6F19D5212A00FC76FC /* AIIDataRowCollection.m */,
-				886C1A7019D5212A00FC76FC /* AIIDataTable.h */,
-				886C1A7119D5212A00FC76FC /* AIIDataTable.m */,
-				886C1A7219D5212A00FC76FC /* AIITableSchema.h */,
-				886C1A7319D5212A00FC76FC /* AIITableSchema.m */,
-			);
-			path = DataForm;
-			sourceTree = "<group>";
-		};
-		886C1A7419D5212A00FC76FC /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A7519D5212A00FC76FC /* AIITable.h */,
-				886C1A7619D5212A00FC76FC /* AIITable.m */,
-				886C1A7719D5212A00FC76FC /* AIIWhere.h */,
-				886C1A7819D5212A00FC76FC /* AIIWhere.m */,
-			);
-			path = Table;
-			sourceTree = "<group>";
-		};
-		886C1A7919D5212A00FC76FC /* Packet */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A7A19D5212A00FC76FC /* AIICollectionPacket.h */,
-				886C1A7B19D5212A00FC76FC /* AIICollectionPacket.m */,
-				886C1A7C19D5212A00FC76FC /* AIIDetailsPacket.h */,
-				886C1A7D19D5212A00FC76FC /* AIIDetailsPacket.m */,
-				886C1A7E19D5212A00FC76FC /* AIIEntityPacket.h */,
-				886C1A7F19D5212A00FC76FC /* AIIEntityPacket.m */,
-				886C1A8019D5212A00FC76FC /* AIIIqPacket.h */,
-				886C1A8119D5212A00FC76FC /* AIIIqPacket.m */,
-				886C1A8219D5212A00FC76FC /* AIIListPacket.h */,
-				886C1A8319D5212A00FC76FC /* AIIListPacket.m */,
-				886C1A8419D5212A00FC76FC /* AIIRequest.h */,
-				886C1A8519D5212A00FC76FC /* AIIRequest.m */,
-				886C1A8619D5212A00FC76FC /* AIIResponse.h */,
-				886C1A8719D5212A00FC76FC /* AIIResponse.m */,
-				886C1A8819D5212A00FC76FC /* AIISessionPacket.h */,
-				886C1A8919D5212A00FC76FC /* AIISessionPacket.m */,
-				886C1A8A19D5212A00FC76FC /* AIIUploadFilesPacket.h */,
-				886C1A8B19D5212A00FC76FC /* AIIUploadFilesPacket.m */,
-				886C1A8C19D5212A00FC76FC /* Query */,
-			);
-			path = Packet;
-			sourceTree = "<group>";
-		};
-		886C1A8C19D5212A00FC76FC /* Query */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A8D19D5212A00FC76FC /* AIIEntityQuery.h */,
-				886C1A8E19D5212A00FC76FC /* AIIEntityQuery.m */,
-				886C1A8F19D5212A00FC76FC /* AIIModelCollectionQuery.h */,
-				886C1A9019D5212A00FC76FC /* AIIModelCollectionQuery.m */,
-				886C1A9119D5212A00FC76FC /* AIIQuery.h */,
-				886C1A9219D5212A00FC76FC /* AIIQuery.m */,
-			);
-			path = Query;
-			sourceTree = "<group>";
-		};
-		886C1A9319D5212A00FC76FC /* SQLite */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A9419D5212A00FC76FC /* SQLiteConnection.h */,
-				886C1A9519D5212A00FC76FC /* SQLiteConnection.m */,
-				886C1A9619D5212A00FC76FC /* Table.h */,
-				886C1A9719D5212A00FC76FC /* Table.m */,
-			);
-			path = SQLite;
-			sourceTree = "<group>";
-		};
-		886C1A9A19D5212A00FC76FC /* AIIUtility */ = {
-			isa = PBXGroup;
-			children = (
-				886C1A9F19D5212A00FC76FC /* ReachabilityUtility.h */,
-				886C1AA019D5212A00FC76FC /* ReachabilityUtility.m */,
-			);
-			path = AIIUtility;
-			sourceTree = "<group>";
-		};
 		886C1AA419D5212A00FC76FC /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1106,6 +923,7 @@
 		886C1C4219D5255100FC76FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8884D6F51AC2CBDF00E6DC3E /* libz.dylib */,
 				88C2F7171A1DA3F50039A7C0 /* UIKit.framework */,
 				88C2F7151A1DA3F00039A7C0 /* Foundation.framework */,
 				886C1C6219D541D900FC76FC /* libz.1.2.5.dylib */,
@@ -1115,13 +933,233 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		88748D051ACA86D300364642 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				88748D061ACA86D300364642 /* FMDB */,
+				88748D121ACA86D300364642 /* Reachability */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		88748D061ACA86D300364642 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				88748D071ACA86D300364642 /* FMDatabase.h */,
+				88748D081ACA86D300364642 /* FMDatabase.m */,
+				88748D091ACA86D300364642 /* FMDatabaseAdditions.h */,
+				88748D0A1ACA86D300364642 /* FMDatabaseAdditions.m */,
+				88748D0B1ACA86D300364642 /* FMDatabasePool.h */,
+				88748D0C1ACA86D300364642 /* FMDatabasePool.m */,
+				88748D0D1ACA86D300364642 /* FMDatabaseQueue.h */,
+				88748D0E1ACA86D300364642 /* FMDatabaseQueue.m */,
+				88748D0F1ACA86D300364642 /* FMDB.h */,
+				88748D101ACA86D300364642 /* FMResultSet.h */,
+				88748D111ACA86D300364642 /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		88748D121ACA86D300364642 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				88748D131ACA86D300364642 /* Reachability.h */,
+				88748D141ACA86D300364642 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		88748D1B1ACA86E400364642 /* AiitecOpenAPI */ = {
+			isa = PBXGroup;
+			children = (
+				88748D1C1ACA86E400364642 /* AIIPacketRequest */,
+				88748D7B1ACA86E500364642 /* AiitecOpenAPI.h */,
+				88748D7C1ACA86E500364642 /* AiitecOpenAPI.m */,
+				88748D7D1ACA86E500364642 /* AIIUtility */,
+			);
+			path = AiitecOpenAPI;
+			sourceTree = "<group>";
+		};
+		88748D1C1ACA86E400364642 /* AIIPacketRequest */ = {
+			isa = PBXGroup;
+			children = (
+				88748D1D1ACA86E400364642 /* AIIJSONValueConvert.h */,
+				88748D1E1ACA86E400364642 /* AIIPacketConfig.h */,
+				88748D1F1ACA86E400364642 /* AIIPacketConfig.m */,
+				88748D201ACA86E400364642 /* AIIPacketManager.h */,
+				88748D211ACA86E400364642 /* AIIPacketManager.m */,
+				88748D221ACA86E400364642 /* AIIPacketRequest.h */,
+				88748D231ACA86E400364642 /* AIIPacketRequest.m */,
+				88748D241ACA86E400364642 /* AIIUtility.h */,
+				88748D251ACA86E400364642 /* AIIUtility.m */,
+				88748D261ACA86E400364642 /* Cache */,
+				88748D2D1ACA86E400364642 /* File */,
+				88748D301ACA86E400364642 /* Http */,
+				88748D351ACA86E400364642 /* Model */,
+				88748D561ACA86E500364642 /* NSArray+AiitecOpenAPI.h */,
+				88748D571ACA86E500364642 /* NSArray+AiitecOpenAPI.m */,
+				88748D581ACA86E500364642 /* NSDictionary+AiitecOpenAPI.h */,
+				88748D591ACA86E500364642 /* NSDictionary+AiitecOpenAPI.m */,
+				88748D5A1ACA86E500364642 /* NSString+AiitecOpenAPI.h */,
+				88748D5B1ACA86E500364642 /* NSString+AiitecOpenAPI.m */,
+				88748D5C1ACA86E500364642 /* Packet */,
+				88748D761ACA86E500364642 /* SQLite */,
+			);
+			path = AIIPacketRequest;
+			sourceTree = "<group>";
+		};
+		88748D261ACA86E400364642 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				88748D271ACA86E400364642 /* AIICacheManager.h */,
+				88748D281ACA86E400364642 /* AIICacheManager.m */,
+				88748D291ACA86E400364642 /* AIIFileConnection.h */,
+				88748D2A1ACA86E400364642 /* AIIFileConnection.m */,
+				88748D2B1ACA86E400364642 /* AIIPacketConnection.h */,
+				88748D2C1ACA86E400364642 /* AIIPacketConnection.m */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		88748D2D1ACA86E400364642 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				88748D2E1ACA86E400364642 /* AIIFileCache.h */,
+				88748D2F1ACA86E400364642 /* AIIFileCache.m */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
+		88748D301ACA86E400364642 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				88748D311ACA86E400364642 /* AIIFileHttpConnection.h */,
+				88748D321ACA86E400364642 /* AIIFileHttpConnection.m */,
+				88748D331ACA86E400364642 /* AIIPacketHttpConnection.h */,
+				88748D341ACA86E400364642 /* AIIPacketHttpConnection.m */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		88748D351ACA86E400364642 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				88748D361ACA86E400364642 /* AIIDataCollection.h */,
+				88748D371ACA86E400364642 /* AIIDataCollection.m */,
+				88748D381ACA86E400364642 /* AIIEntity.h */,
+				88748D391ACA86E400364642 /* AIIEntity.m */,
+				88748D3A1ACA86E400364642 /* AIIFile.h */,
+				88748D3B1ACA86E400364642 /* AIIFile.m */,
+				88748D3C1ACA86E400364642 /* AIIFileCollection.h */,
+				88748D3D1ACA86E400364642 /* AIIFileCollection.m */,
+				88748D3E1ACA86E400364642 /* AIIJSONCollection.h */,
+				88748D3F1ACA86E400364642 /* AIIJSONCollection.m */,
+				88748D401ACA86E400364642 /* AIIJSONModel.h */,
+				88748D411ACA86E500364642 /* AIIJSONModel.m */,
+				88748D421ACA86E500364642 /* AIIModelCollection.h */,
+				88748D431ACA86E500364642 /* AIIModelCollection.m */,
+				88748D441ACA86E500364642 /* DataForm */,
+				88748D511ACA86E500364642 /* Table */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		88748D441ACA86E500364642 /* DataForm */ = {
+			isa = PBXGroup;
+			children = (
+				88748D451ACA86E500364642 /* AIIDataField.h */,
+				88748D461ACA86E500364642 /* AIIDataField.m */,
+				88748D471ACA86E500364642 /* AIIDataItem.h */,
+				88748D481ACA86E500364642 /* AIIDataItem.m */,
+				88748D491ACA86E500364642 /* AIIDataRow.h */,
+				88748D4A1ACA86E500364642 /* AIIDataRow.m */,
+				88748D4B1ACA86E500364642 /* AIIDataRowCollection.h */,
+				88748D4C1ACA86E500364642 /* AIIDataRowCollection.m */,
+				88748D4D1ACA86E500364642 /* AIIDataTable.h */,
+				88748D4E1ACA86E500364642 /* AIIDataTable.m */,
+				88748D4F1ACA86E500364642 /* AIITableSchema.h */,
+				88748D501ACA86E500364642 /* AIITableSchema.m */,
+			);
+			path = DataForm;
+			sourceTree = "<group>";
+		};
+		88748D511ACA86E500364642 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				88748D521ACA86E500364642 /* AIITable.h */,
+				88748D531ACA86E500364642 /* AIITable.m */,
+				88748D541ACA86E500364642 /* AIIWhere.h */,
+				88748D551ACA86E500364642 /* AIIWhere.m */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		88748D5C1ACA86E500364642 /* Packet */ = {
+			isa = PBXGroup;
+			children = (
+				88748D5D1ACA86E500364642 /* AIICollectionPacket.h */,
+				88748D5E1ACA86E500364642 /* AIICollectionPacket.m */,
+				88748D5F1ACA86E500364642 /* AIIDetailsPacket.h */,
+				88748D601ACA86E500364642 /* AIIDetailsPacket.m */,
+				88748D611ACA86E500364642 /* AIIEntityPacket.h */,
+				88748D621ACA86E500364642 /* AIIEntityPacket.m */,
+				88748D631ACA86E500364642 /* AIIIqPacket.h */,
+				88748D641ACA86E500364642 /* AIIIqPacket.m */,
+				88748D651ACA86E500364642 /* AIIListPacket.h */,
+				88748D661ACA86E500364642 /* AIIListPacket.m */,
+				88748D671ACA86E500364642 /* AIIRequest.h */,
+				88748D681ACA86E500364642 /* AIIRequest.m */,
+				88748D691ACA86E500364642 /* AIIResponse.h */,
+				88748D6A1ACA86E500364642 /* AIIResponse.m */,
+				88748D6B1ACA86E500364642 /* AIISessionPacket.h */,
+				88748D6C1ACA86E500364642 /* AIISessionPacket.m */,
+				88748D6D1ACA86E500364642 /* AIIUploadFilesPacket.h */,
+				88748D6E1ACA86E500364642 /* AIIUploadFilesPacket.m */,
+				88748D6F1ACA86E500364642 /* Query */,
+			);
+			path = Packet;
+			sourceTree = "<group>";
+		};
+		88748D6F1ACA86E500364642 /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				88748D701ACA86E500364642 /* AIIEntityQuery.h */,
+				88748D711ACA86E500364642 /* AIIEntityQuery.m */,
+				88748D721ACA86E500364642 /* AIIModelCollectionQuery.h */,
+				88748D731ACA86E500364642 /* AIIModelCollectionQuery.m */,
+				88748D741ACA86E500364642 /* AIIQuery.h */,
+				88748D751ACA86E500364642 /* AIIQuery.m */,
+			);
+			path = Query;
+			sourceTree = "<group>";
+		};
+		88748D761ACA86E500364642 /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				88748D771ACA86E500364642 /* SQLiteConnection.h */,
+				88748D781ACA86E500364642 /* SQLiteConnection.m */,
+				88748D791ACA86E500364642 /* Table.h */,
+				88748D7A1ACA86E500364642 /* Table.m */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
+		88748D7D1ACA86E500364642 /* AIIUtility */ = {
+			isa = PBXGroup;
+			children = (
+				88748D7E1ACA86E500364642 /* ReachabilityUtility.h */,
+				88748D7F1ACA86E500364642 /* ReachabilityUtility.m */,
+			);
+			path = AIIUtility;
+			sourceTree = "<group>";
+		};
 		888B06201ABFFDD900294D58 /* SupportingClasses */ = {
 			isa = PBXGroup;
 			children = (
 				888B06211ABFFDD900294D58 /* AIIPacketRequest */,
 				888B07431ABFFDDA00294D58 /* AIIUIKit */,
 				888B074A1ABFFDDA00294D58 /* AIIUtility */,
-				888B074D1ABFFDDA00294D58 /* Utility */,
+				88748D051ACA86D300364642 /* Utility */,
 			);
 			path = SupportingClasses;
 			sourceTree = "<group>";
@@ -1486,42 +1524,6 @@
 			path = AIIUtility;
 			sourceTree = "<group>";
 		};
-		888B074D1ABFFDDA00294D58 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				888B074E1ABFFDDA00294D58 /* FMDB */,
-				888B075A1ABFFDDA00294D58 /* Reachability */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
-		888B074E1ABFFDDA00294D58 /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-				888B074F1ABFFDDA00294D58 /* FMDatabase.h */,
-				888B07501ABFFDDA00294D58 /* FMDatabase.m */,
-				888B07511ABFFDDA00294D58 /* FMDatabaseAdditions.h */,
-				888B07521ABFFDDA00294D58 /* FMDatabaseAdditions.m */,
-				888B07531ABFFDDA00294D58 /* FMDatabasePool.h */,
-				888B07541ABFFDDA00294D58 /* FMDatabasePool.m */,
-				888B07551ABFFDDA00294D58 /* FMDatabaseQueue.h */,
-				888B07561ABFFDDA00294D58 /* FMDatabaseQueue.m */,
-				888B07571ABFFDDA00294D58 /* FMDB.h */,
-				888B07581ABFFDDA00294D58 /* FMResultSet.h */,
-				888B07591ABFFDDA00294D58 /* FMResultSet.m */,
-			);
-			path = FMDB;
-			sourceTree = "<group>";
-		};
-		888B075A1ABFFDDA00294D58 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				888B075B1ABFFDDA00294D58 /* Reachability.h */,
-				888B075C1ABFFDDA00294D58 /* Reachability.m */,
-			);
-			path = Reachability;
-			sourceTree = "<group>";
-		};
 		889BA8EC1AB2C6CB00BE8129 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -1678,24 +1680,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88748D871ACA86E500364642 /* AIIFileCache.m in Sources */,
 				888B07B71ABFFDDA00294D58 /* AIIFetchRankPacket.m in Sources */,
 				888B07A31ABFFDDA00294D58 /* AIIUserCheckNamePacket.m in Sources */,
 				888B079A1ABFFDDA00294D58 /* AIIMessageSubmitPacket.m in Sources */,
+				88748DA31ACA86E500364642 /* AIISessionPacket.m in Sources */,
 				888B07E41ABFFDDA00294D58 /* LabelUserGroupTable.m in Sources */,
 				888B077E1ABFFDDA00294D58 /* AIIJoinCollection.m in Sources */,
+				88748D9A1ACA86E500364642 /* NSDictionary+AiitecOpenAPI.m in Sources */,
 				888B07C41ABFFDDA00294D58 /* AIIRemindListPacket.m in Sources */,
 				888B07961ABFFDDA00294D58 /* AIIFavoriteSwitchPacket.m in Sources */,
 				888B07601ABFFDDA00294D58 /* AIIAddressbook.m in Sources */,
 				888B07BB1ABFFDDA00294D58 /* AIIPayPacket.m in Sources */,
 				888B075F1ABFFDDA00294D58 /* AIIAddress.m in Sources */,
-				884E125219ED00A5005CBDAD /* NSString+AiitecOpenAPI.m in Sources */,
+				88748D1A1ACA86D300364642 /* Reachability.m in Sources */,
 				888B07AB1ABFFDDA00294D58 /* AIIUserRegisterSubmitPacket.m in Sources */,
 				888B07E71ABFFDDA00294D58 /* RegionTable.m in Sources */,
 				888B078D1ABFFDDA00294D58 /* AIIAddressSubmitPacket.m in Sources */,
-				8829278C1A08B9DB007F0A30 /* AIIFile.m in Sources */,
 				888B07931ABFFDDA00294D58 /* AIIDeleteActionPacket.m in Sources */,
-				886C1BB819D5212A00FC76FC /* AIICollectionPacket.m in Sources */,
-				886C1BA819D5212A00FC76FC /* AIIFileCache.m in Sources */,
 				882602121A31BF3E00C6C843 /* AII_Entity_.m in Sources */,
 				886C19D019D515E300FC76FC /* ViewController.m in Sources */,
 				888B07EB1ABFFDDA00294D58 /* AAUIImageClipView.m in Sources */,
@@ -1704,60 +1706,66 @@
 				888B07B41ABFFDDA00294D58 /* AIIEventListPacket.m in Sources */,
 				888B07B91ABFFDDA00294D58 /* AIIOrderComplaintSubmitPacket.m in Sources */,
 				888B07A21ABFFDDA00294D58 /* AIIUserBindMobilePacket.m in Sources */,
+				88748D951ACA86E500364642 /* AIIDataTable.m in Sources */,
+				88748D9D1ACA86E500364642 /* AIIDetailsPacket.m in Sources */,
 				888B07B21ABFFDDA00294D58 /* ImageListPacket.m in Sources */,
 				888B07BF1ABFFDDA00294D58 /* AIIPositionUpdatePacket.m in Sources */,
 				888B077F1ABFFDDA00294D58 /* AIIOperate.m in Sources */,
 				888B07981ABFFDDA00294D58 /* AIILeaveMessagePacket.m in Sources */,
-				886C1BBD19D5212A00FC76FC /* AIIRequest.m in Sources */,
 				888B07C81ABFFDDA00294D58 /* AIITaskDetailsPacket.m in Sources */,
 				888B07DD1ABFFDDA00294D58 /* PacketRequest.m in Sources */,
+				88748D911ACA86E500364642 /* AIIDataField.m in Sources */,
+				88748D971ACA86E500364642 /* AIITable.m in Sources */,
 				888B07EE1ABFFDDA00294D58 /* AIICheckVersion.m in Sources */,
 				888B07C71ABFFDDA00294D58 /* AIITaskCommentSubmitPacket.m in Sources */,
 				8826021B1A31C04A00C6C843 /* AII_Entity_ListPacket.m in Sources */,
-				886C1BBF19D5212A00FC76FC /* AIISessionPacket.m in Sources */,
+				88748DA21ACA86E500364642 /* AIIResponse.m in Sources */,
 				888B07C21ABFFDDA00294D58 /* AIIRecordListPacket.m in Sources */,
 				881890741A120D720081088D /* HttpRequest.m in Sources */,
+				88748D9C1ACA86E500364642 /* AIICollectionPacket.m in Sources */,
 				888B07D81ABFFDDA00294D58 /* AIIWeiboListPacket.m in Sources */,
 				888B07B31ABFFDDA00294D58 /* AIIEventJoinPacket.m in Sources */,
+				88748D991ACA86E500364642 /* NSArray+AiitecOpenAPI.m in Sources */,
 				888B07771ABFFDDA00294D58 /* AIIComment.m in Sources */,
+				88748D8E1ACA86E500364642 /* AIIJSONCollection.m in Sources */,
+				88748DA91ACA86E500364642 /* Table.m in Sources */,
 				888B07E21ABFFDDA00294D58 /* IndustryTable.m in Sources */,
+				88748D8D1ACA86E500364642 /* AIIFileCollection.m in Sources */,
 				888B077B1ABFFDDA00294D58 /* AIIEvent.m in Sources */,
 				888B07D21ABFFDDA00294D58 /* AIITaskReportReplySubmitPacket.m in Sources */,
-				886C1BA319D5212A00FC76FC /* AIIPacketRequest.m in Sources */,
-				886C1BB719D5212A00FC76FC /* AIIWhere.m in Sources */,
-				886C1BAF19D5212A00FC76FC /* AIIModelCollection.m in Sources */,
-				888B07F31ABFFDDA00294D58 /* FMResultSet.m in Sources */,
 				888B07651ABFFDDA00294D58 /* AIIAttr.m in Sources */,
 				886C1BCA19D5212A00FC76FC /* AppConfig.m in Sources */,
+				88748DAA1ACA86E500364642 /* AiitecOpenAPI.m in Sources */,
 				888B07741ABFFDDA00294D58 /* AIIUser.m in Sources */,
 				888B07881ABFFDDA00294D58 /* AIITaskCollection.m in Sources */,
 				888B07A01ABFFDDA00294D58 /* AIIUploadImagePacket.m in Sources */,
 				888B07C01ABFFDDA00294D58 /* AIIRankDetailsPacket.m in Sources */,
 				888B07EA1ABFFDDA00294D58 /* UserTable.m in Sources */,
-				886C1BB319D5212A00FC76FC /* AIIDataRowCollection.m in Sources */,
 				888B07E81ABFFDDA00294D58 /* SchoolAliasesTable.m in Sources */,
+				88748D981ACA86E500364642 /* AIIWhere.m in Sources */,
+				88748D901ACA86E500364642 /* AIIModelCollection.m in Sources */,
 				888B07B81ABFFDDA00294D58 /* AIIOrderCommentSubmitPacket.m in Sources */,
 				887D0F761A32FEBD00B1CAEF /* AII_Entity_CollectionSubmitPacket.m in Sources */,
 				888B079E1ABFFDDA00294D58 /* AIISettingPacket.m in Sources */,
 				888B076E1ABFFDDA00294D58 /* AIIItemCollection.m in Sources */,
-				886C1BA119D5212A00FC76FC /* AIIPacketConfig.m in Sources */,
-				886C1BC619D5212A00FC76FC /* AiitecOpenAPI.m in Sources */,
+				88748D8F1ACA86E500364642 /* AIIJSONModel.m in Sources */,
 				888B07701ABFFDDA00294D58 /* AIIMessageCollection.m in Sources */,
 				886C19CD19D515E300FC76FC /* AppDelegate.m in Sources */,
 				888B07611ABFFDDA00294D58 /* AIIAddressbookCollection.m in Sources */,
 				888B078A1ABFFDDA00294D58 /* AIIWeiboCollection.m in Sources */,
-				886C1BB519D5212A00FC76FC /* AIITableSchema.m in Sources */,
+				88748D151ACA86D300364642 /* FMDatabase.m in Sources */,
 				888B07761ABFFDDA00294D58 /* AIIBase.m in Sources */,
 				888B07E61ABFFDDA00294D58 /* ProfessionalTable.m in Sources */,
-				886C1BC019D5212A00FC76FC /* AIIUploadFilesPacket.m in Sources */,
 				888B07D01ABFFDDA00294D58 /* AIITaskOperateSwitchPacket.m in Sources */,
 				888B07801ABFFDDA00294D58 /* AIIOperateCollection.m in Sources */,
+				88748D881ACA86E500364642 /* AIIFileHttpConnection.m in Sources */,
 				888B07AA1ABFFDDA00294D58 /* AIIUserPartnerLoginPacket.m in Sources */,
-				886C1BA919D5212A00FC76FC /* AIIFileHttpConnection.m in Sources */,
 				888B07621ABFFDDA00294D58 /* AIIAddressCollection.m in Sources */,
 				888B07D61ABFFDDA00294D58 /* AIIWeiboCommentListPacket.m in Sources */,
 				888B07901ABFFDDA00294D58 /* AIIArticleListPacket.m in Sources */,
 				888B07B51ABFFDDA00294D58 /* AIIFetchExecutingOrdersPacket.m in Sources */,
+				88748DA61ACA86E500364642 /* AIIModelCollectionQuery.m in Sources */,
+				88748D8A1ACA86E500364642 /* AIIDataCollection.m in Sources */,
 				888B07DB1ABFFDDA00294D58 /* AIIWeiboSubmitPacket.m in Sources */,
 				888B07AD1ABFFDDA00294D58 /* AIIUserUpdatePacket.m in Sources */,
 				888B076D1ABFFDDA00294D58 /* AIIItem.m in Sources */,
@@ -1765,130 +1773,124 @@
 				888B07C91ABFFDDA00294D58 /* AIITaskEvaluateCollectionSubmitPacket.m in Sources */,
 				882602181A31BF9E00C6C843 /* AII_Entity_Collection.m in Sources */,
 				888B076F1ABFFDDA00294D58 /* AIIMessage.m in Sources */,
-				886C1BAE19D5212A00FC76FC /* AIIJSONModel.m in Sources */,
 				888B07AE1ABFFDDA00294D58 /* AIIUserUpdatePasswordPacket.m in Sources */,
 				888B07951ABFFDDA00294D58 /* AIIFavoriteListPacket.m in Sources */,
 				888B078C1ABFFDDA00294D58 /* AIIAddressListPacket.m in Sources */,
+				88748DA51ACA86E500364642 /* AIIEntityQuery.m in Sources */,
 				889BA8F51AB2CBE700BE8129 /* Fraction.m in Sources */,
 				888B07A81ABFFDDA00294D58 /* AIIUserLogoutPacket.m in Sources */,
 				888B07E31ABFFDDA00294D58 /* ItemTable.m in Sources */,
-				886C1BB419D5212A00FC76FC /* AIIDataTable.m in Sources */,
+				88748D811ACA86E500364642 /* AIIPacketManager.m in Sources */,
 				888B07DF1ABFFDDA00294D58 /* ArticleTable.m in Sources */,
 				888B07911ABFFDDA00294D58 /* AIICategoryListPacket.m in Sources */,
-				886C1BC919D5212A00FC76FC /* ReachabilityUtility.m in Sources */,
 				888B07841ABFFDDA00294D58 /* AIIRemind.m in Sources */,
 				888B079D1ABFFDDA00294D58 /* AIIRegionListPacket.m in Sources */,
+				88748D931ACA86E500364642 /* AIIDataRow.m in Sources */,
+				88748D171ACA86D300364642 /* FMDatabasePool.m in Sources */,
 				888B07D41ABFFDDA00294D58 /* AIITaskStatusUpdatePacket.m in Sources */,
-				886C1BB219D5212A00FC76FC /* AIIDataRow.m in Sources */,
-				888B07F41ABFFDDA00294D58 /* Reachability.m in Sources */,
-				886C1BBA19D5212A00FC76FC /* AIIEntityPacket.m in Sources */,
-				886C1BC519D5212A00FC76FC /* Table.m in Sources */,
 				889BA8EF1AB2C6EE00BE8129 /* XYPoint.m in Sources */,
-				884E125519ED01F3005CBDAD /* NSDictionary+AiitecOpenAPI.m in Sources */,
+				88748D9B1ACA86E500364642 /* NSString+AiitecOpenAPI.m in Sources */,
 				882602211A31C4B000C6C843 /* AII_Entity_DetailsPacket.m in Sources */,
-				886C1BB119D5212A00FC76FC /* AIIDataItem.m in Sources */,
 				888B07CA1ABFFDDA00294D58 /* AIITaskEvaluateListPacket.m in Sources */,
 				888B07DE1ABFFDDA00294D58 /* AddressbookTable.m in Sources */,
+				88748D961ACA86E500364642 /* AIITableSchema.m in Sources */,
 				888B078F1ABFFDDA00294D58 /* AIIArticleDetailsPacket.m in Sources */,
 				888B078B1ABFFDDA00294D58 /* AddressbookListPacket.m in Sources */,
 				882602271A31C69A00C6C843 /* AII_Namespace_Packet.m in Sources */,
-				886C1BC219D5212A00FC76FC /* AIIModelCollectionQuery.m in Sources */,
 				888B07CC1ABFFDDA00294D58 /* AIITaskJoinSwitchPacket.m in Sources */,
+				88748D161ACA86D300364642 /* FMDatabaseAdditions.m in Sources */,
 				888B07ED1ABFFDDA00294D58 /* AAUIScrollView.m in Sources */,
 				888B079F1ABFFDDA00294D58 /* AIISMSCodePacket.m in Sources */,
 				888B07831ABFFDDA00294D58 /* AIIRecordCollection.m in Sources */,
-				886C1BA419D5212A00FC76FC /* AIIUtility.m in Sources */,
 				888B07D51ABFFDDA00294D58 /* AIITaskSubmitPacket.m in Sources */,
-				886C1BBE19D5212A00FC76FC /* AIIResponse.m in Sources */,
 				888B07871ABFFDDA00294D58 /* AIITask.m in Sources */,
 				888B075E1ABFFDDA00294D58 /* AIIAdCollection.m in Sources */,
 				888B07661ABFFDDA00294D58 /* AIIAttrCollection.m in Sources */,
-				886C1BC319D5212A00FC76FC /* AIIQuery.m in Sources */,
 				888B07751ABFFDDA00294D58 /* AIIUserCollection.m in Sources */,
+				88748D801ACA86E500364642 /* AIIPacketConfig.m in Sources */,
+				88748DA71ACA86E500364642 /* AIIQuery.m in Sources */,
 				888B079B1ABFFDDA00294D58 /* AIIOperatePacket.m in Sources */,
-				886C1BAD19D5212A00FC76FC /* AIIJSONCollection.m in Sources */,
 				888B075D1ABFFDDA00294D58 /* AIIAd.m in Sources */,
 				888B07D71ABFFDDA00294D58 /* AIIWeiboDetailsPacket.m in Sources */,
 				886C19CA19D515E300FC76FC /* main.m in Sources */,
 				888B07A91ABFFDDA00294D58 /* AIIUserOperateListPacket.m in Sources */,
-				886C1BA619D5212A00FC76FC /* AIIFileConnection.m in Sources */,
+				88748DA41ACA86E500364642 /* AIIUploadFilesPacket.m in Sources */,
+				88748DA11ACA86E500364642 /* AIIRequest.m in Sources */,
 				888B07811ABFFDDA00294D58 /* AIIOrder.m in Sources */,
+				88748D191ACA86D300364642 /* FMResultSet.m in Sources */,
 				888B07AC1ABFFDDA00294D58 /* AIIUserResetPasswordPacket.m in Sources */,
 				888B07B61ABFFDDA00294D58 /* AIIFetchPositionPacket.m in Sources */,
-				886C1BA719D5212A00FC76FC /* AIIPacketConnection.m in Sources */,
-				886C1BA519D5212A00FC76FC /* AIICacheManager.m in Sources */,
 				882602241A31C57500C6C843 /* AII_Entity_SubmitPacket.m in Sources */,
 				888B07CD1ABFFDDA00294D58 /* AIITaskLabelListPacket.m in Sources */,
 				888B07721ABFFDDA00294D58 /* AIIRegionCollection.m in Sources */,
-				886C1BC419D5212A00FC76FC /* SQLiteConnection.m in Sources */,
 				888B076B1ABFFDDA00294D58 /* AIIImage.m in Sources */,
 				888B07C11ABFFDDA00294D58 /* AIIRankListPacket.m in Sources */,
+				88748D821ACA86E500364642 /* AIIPacketRequest.m in Sources */,
 				888B07D31ABFFDDA00294D58 /* AIITaskReportSubmitPacket.m in Sources */,
 				888B07731ABFFDDA00294D58 /* AIIStyle.m in Sources */,
-				886C1BAB19D5212A00FC76FC /* AIIDataCollection.m in Sources */,
 				889BF4F91A10AB43004F86F9 /* HttpViewController.m in Sources */,
 				888B07671ABFFDDA00294D58 /* AIICategory.m in Sources */,
 				888B07CE1ABFFDDA00294D58 /* AIITaskListPacket.m in Sources */,
 				888B07D11ABFFDDA00294D58 /* AIITaskReportListPacket.m in Sources */,
 				888B07A71ABFFDDA00294D58 /* AIIUserLoginPacket.m in Sources */,
-				888B07F01ABFFDDA00294D58 /* FMDatabaseAdditions.m in Sources */,
 				888B07E51ABFFDDA00294D58 /* LabelUserTable.m in Sources */,
 				888B07861ABFFDDA00294D58 /* AIIReport.m in Sources */,
 				888B07711ABFFDDA00294D58 /* AIIRegion.m in Sources */,
 				888B07631ABFFDDA00294D58 /* AIIArticle.m in Sources */,
 				888B07A61ABFFDDA00294D58 /* AIIUserListPacket.m in Sources */,
 				888B077A1ABFFDDA00294D58 /* AIIEvaluateCollection.m in Sources */,
-				884E125819ED020F005CBDAD /* NSArray+AiitecOpenAPI.m in Sources */,
-				886C1BB919D5212A00FC76FC /* AIIDetailsPacket.m in Sources */,
 				888B07BD1ABFFDDA00294D58 /* AIIPointExchangePacket.m in Sources */,
-				8829278D1A08B9DB007F0A30 /* AIIFileCollection.m in Sources */,
 				888B07BA1ABFFDDA00294D58 /* AIIOrderStatusUpdatePacket.m in Sources */,
+				88748DA01ACA86E500364642 /* AIIListPacket.m in Sources */,
+				88748D9E1ACA86E500364642 /* AIIEntityPacket.m in Sources */,
 				888B07941ABFFDDA00294D58 /* AIIDeviceTokenSwitchPacket.m in Sources */,
+				88748D851ACA86E500364642 /* AIIFileConnection.m in Sources */,
+				88748DAB1ACA86E500364642 /* ReachabilityUtility.m in Sources */,
 				888B07E11ABFFDDA00294D58 /* FileTable.m in Sources */,
-				886C1BA219D5212A00FC76FC /* AIIPacketManager.m in Sources */,
+				88748D941ACA86E500364642 /* AIIDataRowCollection.m in Sources */,
+				88748D861ACA86E500364642 /* AIIPacketConnection.m in Sources */,
 				888B07971ABFFDDA00294D58 /* AIIHTMLPacket.m in Sources */,
 				888B07691ABFFDDA00294D58 /* AIIFavorite.m in Sources */,
+				88748D831ACA86E500364642 /* AIIUtility.m in Sources */,
 				888B07DC1ABFFDDA00294D58 /* AIIWishSubmitPacket.m in Sources */,
-				886C1BC119D5212A00FC76FC /* AIIEntityQuery.m in Sources */,
 				888B077C1ABFFDDA00294D58 /* AIIEventCollection.m in Sources */,
 				888B07681ABFFDDA00294D58 /* AIICategoryCollection.m in Sources */,
 				888B07B11ABFFDDA00294D58 /* FileListPacket.m in Sources */,
+				88748D9F1ACA86E500364642 /* AIIIqPacket.m in Sources */,
 				888B07BE1ABFFDDA00294D58 /* AIIPointSubmitPacket.m in Sources */,
 				888B07CB1ABFFDDA00294D58 /* AIITaskJoinListPacket.m in Sources */,
+				88748D921ACA86E500364642 /* AIIDataItem.m in Sources */,
 				888B07851ABFFDDA00294D58 /* AIIRemindCollection.m in Sources */,
 				888B07791ABFFDDA00294D58 /* AIIEvaluate.m in Sources */,
 				888B07D91ABFFDDA00294D58 /* AIIWeiboOperateListPacket.m in Sources */,
 				88C774A11AA80E04007A2BE1 /* AII_Entity_UpdatePacket.m in Sources */,
 				888B07A11ABFFDDA00294D58 /* AIIUserBadgeNumberPacket.m in Sources */,
+				88748D841ACA86E500364642 /* AIICacheManager.m in Sources */,
 				888B07E01ABFFDDA00294D58 /* DepartmentsTable.m in Sources */,
 				888B07781ABFFDDA00294D58 /* AIICommentCollection.m in Sources */,
 				888B07A51ABFFDDA00294D58 /* AIIUserDetailsPacket.m in Sources */,
 				888B07E91ABFFDDA00294D58 /* SchoolTable.m in Sources */,
 				888B07C51ABFFDDA00294D58 /* AIIRemindRemovePacket.m in Sources */,
-				888B07F21ABFFDDA00294D58 /* FMDatabaseQueue.m in Sources */,
+				88748D181ACA86D300364642 /* FMDatabaseQueue.m in Sources */,
 				888B078E1ABFFDDA00294D58 /* AIIAdListPacket.m in Sources */,
 				887D0F691A32F3AE00B1CAEF /* AII_Namespace_SwitchPacket.m in Sources */,
 				888B07B01ABFFDDA00294D58 /* ExceptionResponse.m in Sources */,
-				886C1BBB19D5212A00FC76FC /* AIIIqPacket.m in Sources */,
 				888B07CF1ABFFDDA00294D58 /* AIITaskOperateListPacket.m in Sources */,
+				88748D891ACA86E500364642 /* AIIPacketHttpConnection.m in Sources */,
 				888B07C31ABFFDDA00294D58 /* AIIRemindBadgeNumberPacket.m in Sources */,
 				888B076C1ABFFDDA00294D58 /* AIIImageCollection.m in Sources */,
-				888B07F11ABFFDDA00294D58 /* FMDatabasePool.m in Sources */,
-				886C1BAC19D5212A00FC76FC /* AIIEntity.m in Sources */,
-				888B07EF1ABFFDDA00294D58 /* FMDatabase.m in Sources */,
-				886C1BB019D5212A00FC76FC /* AIIDataField.m in Sources */,
-				886C1BB619D5212A00FC76FC /* AIITable.m in Sources */,
+				88748DA81ACA86E500364642 /* SQLiteConnection.m in Sources */,
 				888B07991ABFFDDA00294D58 /* AIIMessageListPacket.m in Sources */,
+				88748D8C1ACA86E500364642 /* AIIFile.m in Sources */,
 				888B07AF1ABFFDDA00294D58 /* AIIUserUploadImagePacket.m in Sources */,
 				888B07C61ABFFDDA00294D58 /* AIITaskCommentListPacket.m in Sources */,
-				886C1BBC19D5212A00FC76FC /* AIIListPacket.m in Sources */,
 				888B07821ABFFDDA00294D58 /* AIIRecord.m in Sources */,
-				886C1BAA19D5212A00FC76FC /* AIIPacketHttpConnection.m in Sources */,
 				888B07891ABFFDDA00294D58 /* AIIWeibo.m in Sources */,
 				888B076A1ABFFDDA00294D58 /* AIIFavoriteCollection.m in Sources */,
 				888B079C1ABFFDDA00294D58 /* AIIReferenceItemListPacket.m in Sources */,
 				888B07921ABFFDDA00294D58 /* AIICoordinateCollectionSubmitPacket.m in Sources */,
 				888B07DA1ABFFDDA00294D58 /* AIIWeiboOperateSwitchPacket.m in Sources */,
+				88748D8B1ACA86E500364642 /* AIIEntity.m in Sources */,
 				888B07A41ABFFDDA00294D58 /* AIIUserDataTablePacket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2027,9 +2029,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AiitecOpenAPISource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AiitecOpenAPISource/libAiitecOpenAPIa",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2040,9 +2047,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AiitecOpenAPISource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AiitecOpenAPISource/libAiitecOpenAPIa",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

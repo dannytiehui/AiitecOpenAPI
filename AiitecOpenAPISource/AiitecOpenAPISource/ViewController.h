@@ -11,6 +11,8 @@
 
 @interface ViewController : UIViewController <AIIPacketConnectionDelegate>
 
+@property (nonatomic, strong) IBOutlet UITextField *textField;
+@property (nonatomic, strong) IBOutlet UIButton *button;
 
 @end
 

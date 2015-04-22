@@ -118,7 +118,7 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 
 /** 测试NSObject(NSKeyValueCoding)的mutableArrayValueForKey:方法. */
 @property (nonatomic, copy) NSDictionary *json;
-@property (nonatomic, copy) NSArray *array;
+@property (nonatomic, strong) NSArray *array;
 
 /// option
 /** 背景图片id. */

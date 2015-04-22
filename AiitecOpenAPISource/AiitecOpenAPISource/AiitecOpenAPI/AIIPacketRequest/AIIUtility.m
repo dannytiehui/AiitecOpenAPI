@@ -28,6 +28,13 @@ NSString *const DeviceTokenKey = @"deviceId";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         path = [[AIIUtility cachesPath] stringByAppendingPathComponent:@"com.aiitec.AiitecOpenAPI"];
+        
+        // 判断目录是否存在,不存在则创建
+        NSFileManager *fm = [NSFileManager defaultManager];
+        BOOL isDir;
+        if (!([fm fileExistsAtPath:path isDirectory:&isDir] && isDir)) {
+            [fm createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+        }
     });
     return path;
 }
@@ -329,9 +336,17 @@ NSString *const DeviceTokenKey = @"deviceId";
             NSArray *array = (NSArray *)[dict objectForKey:key];
             NSUInteger count = [array count];
             for (NSUInteger i = 0; i < count; i ++) {
-                string = [string stringByAppendingString:@"{"];
-                string = [AIIUtility stringWithDictionaryRecursive:[array objectAtIndex:i] string:string];
-                string = [string stringByAppendingString:@","];
+                
+//                NSLog(@"2. %@, %@, %@, %@", key, [[array objectAtIndex:i] superclass], [[array objectAtIndex:i] class], [array objectAtIndex:i]);
+                /** 考虑NSArray包含的每一项为基本数据类型的情况,如:NSArray *array = @[@0, @1, @"2"]. */
+                if ([[array objectAtIndex:i] superclass] == [NSNumber class] || [[array objectAtIndex:i] superclass] == [NSMutableString class] || [[array objectAtIndex:i] superclass] == [@"a" superclass]) {
+                    string = [string stringByAppendingFormat:@"%@,", [array objectAtIndex:i]];
+                }
+                else {
+                    string = [string stringByAppendingString:@"{"];
+                    string = [AIIUtility stringWithDictionaryRecursive:[array objectAtIndex:i] string:string];
+                    string = [string stringByAppendingString:@","];
+                }
             }
 
             /** 考虑数组为空的情况. */
@@ -342,7 +357,7 @@ NSString *const DeviceTokenKey = @"deviceId";
             string = [string stringByAppendingString:@"],"];
         }
         else {
-//            NSLog(@"%@, %@,%@", key, [[dict objectForKey:key] superclass] , [NSMutableString class]);
+//            NSLog(@"3. %@, %@, %@, %@", key, [[dict objectForKey:key] superclass], [NSMutableString class], [dict objectForKey:key]);
             if ([[dict objectForKey:key] superclass] == [NSNumber class]) {
                 string = [string stringByAppendingFormat:@"\"%@\":%@,", key, [dict objectForKey:key]];
             }
@@ -380,6 +395,25 @@ NSString *const DeviceTokenKey = @"deviceId";
         string = [string substringToIndex:string.length - 1];
     }
     return [string stringByAppendingString:@"}"];
+}
+
++ (NSString *)stringWithArray:(NSArray *)array
+{
+    NSString *temp = @"";
+    for (id value in array) {
+        if ([value superclass] == [NSNumber class]) {
+            temp = [temp stringByAppendingFormat:@"%@,", value];
+        }
+        else {
+            temp = [temp stringByAppendingFormat:@"\"%@\",", value];
+        }
+    }
+    
+    if (array.count) {
+        temp = [temp substringToIndex:temp.length - 1];
+    }
+    
+    return [NSString stringWithFormat:@"[%@]", temp];
 }
 
 + (NSArray *)arrayWithJSONString:(NSString *)jsonString

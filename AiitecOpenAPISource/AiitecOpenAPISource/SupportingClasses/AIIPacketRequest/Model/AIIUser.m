@@ -98,9 +98,8 @@
         [mutableDictionary setObject:[self.itemCollection arrayWithObject] forKey:self.itemCollection.key];
     }
     [mutableDictionary removeObjectForKey:k];
-      
-    dict = mutableDictionary;
     
+    dict = mutableDictionary;
     return dict;
 }
 

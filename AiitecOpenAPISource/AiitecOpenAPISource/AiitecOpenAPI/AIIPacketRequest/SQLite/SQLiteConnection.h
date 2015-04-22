@@ -6,11 +6,7 @@
 //  Copyright (c) 2013年 Aiitec. All rights reserved.
 //
 
-#import "FMDatabase.h"
-#import "FMDatabaseAdditions.h"
-//#import "FMDatabasePool.h"
-//#import "FMDatabaseQueue.h"
-//#import "FMResultSet.h"
+#import "FMDB.h"
 
 @interface SQLiteConnection : NSObject
 

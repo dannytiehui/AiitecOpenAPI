@@ -41,7 +41,7 @@
 //    [self testMessageListRequest];
 //    [self testSMSCodeRequest];
 //    [self testAdListRequest];
-    [self testSettingRequest];
+//    [self testSettingRequest];
 //    [self testReferenceItemListRequest];
 //    [self testUploadImageRequest];//!< Collection
 //    [self testUploadFilesRequest];//!< Collection
@@ -307,6 +307,9 @@
 //        NSLog(@"%lu,%@", item2.identifier, item2.name);
 //    }
     
+    
+    // Emoji
+
     
 }
 
@@ -615,7 +618,21 @@
     user.idImage = 1;
     user.referrer = @"13527262005";
     
-    user.properties = @[@"idName", @"sex", @"schoolId", @"idNumber", @"studentIdImage", @"idImage", @"referrer"];
+//    user.array = @[@1, @2, @3];
+//    NSNumber *n = [NSNumber numberWithInteger:0];
+//    NSString *s = [NSString stringWithFormat:@"%@", @"2"];
+//    user.array = @[n, @1, s, @"3"];
+    
+    NSMutableArray *mArray = [NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:10], @11, [NSString stringWithFormat:@"%@", @"12"], @"13", nil];
+    user.array = mArray;
+    
+    AIIAddress *address = [[AIIAddress alloc] init];
+    address.identifier = 34;
+    address.name = @"广州市";
+    address.properties = @[@"identifier", @"name"];
+    user.address = address;
+    
+    user.properties = @[@"idName", @"sex", @"schoolId", @"idNumber", @"studentIdImage", @"idImage", @"referrer", @"array", @"address"];
     
     request.query.action = AIIQueryActionFirst;
     request.query.entity = user;
@@ -1077,8 +1094,20 @@
 //    AIITaskListResponse *response = [[AIITaskListResponse alloc] initWithJSONString:jsonString];
 //    AIITaskListResponseQuery *query = (AIITaskListResponseQuery *)response.query;
 //    NSLog(@"%d", query.total);
+    
+    // Emoji
+    
 }
-
+- (IBAction)handleEmoji:(id)sender
+{
+    AIIMessageSubmitRequest *request = [[AIIMessageSubmitRequest alloc] init];
+    AIIMessage *message = [[AIIMessage alloc] init];
+    message.content = _textField.text;
+    message.properties = @[@"content"];
+    request.query.entity = message;
+    
+    [AIIPacketConnection sendAsyn:request delegate:self context:nil];
+}
 
 
 @end
