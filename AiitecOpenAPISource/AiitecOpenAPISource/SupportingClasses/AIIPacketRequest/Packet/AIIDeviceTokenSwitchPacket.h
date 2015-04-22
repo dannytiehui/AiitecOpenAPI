@@ -25,7 +25,10 @@
 
 @interface AIIDeviceTokenSwitchRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIDeviceTokenSwitchRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

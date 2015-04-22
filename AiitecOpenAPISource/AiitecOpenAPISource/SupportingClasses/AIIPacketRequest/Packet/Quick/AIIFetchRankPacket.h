@@ -28,7 +28,10 @@
 
 @interface AIIFetchRankRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIFetchRankRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 
@@ -36,7 +39,10 @@
 
 @interface AIIFetchRankResponse : AIIResponse
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIFetchRankResponseQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

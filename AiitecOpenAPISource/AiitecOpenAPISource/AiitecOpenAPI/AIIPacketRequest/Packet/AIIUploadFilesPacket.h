@@ -29,13 +29,19 @@
 
 @interface AIIUploadFilesRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIUploadFilesRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 
 
 @interface AIIUploadFilesResponse : AIIResponse
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIUploadFilesResponseQuery *query;
+#pragma clang diagnostic pop
 
 @end

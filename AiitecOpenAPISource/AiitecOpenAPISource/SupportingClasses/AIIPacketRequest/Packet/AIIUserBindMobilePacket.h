@@ -20,7 +20,10 @@
 
 @interface AIIUserBindMobileRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIUserBindMobileRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

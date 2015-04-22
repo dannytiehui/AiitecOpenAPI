@@ -27,10 +27,20 @@
 
 
 @interface AIIUserLoginRequest : AIIRequest
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIUserLoginRequestQuery *query;
+#pragma clang diagnostic pop
+
 @end
 
 
 @interface AIIUserLoginResponse : AIIEntityResponse
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIUserLoginResponseQuery *query;
+#pragma clang diagnostic pop
+
 @end

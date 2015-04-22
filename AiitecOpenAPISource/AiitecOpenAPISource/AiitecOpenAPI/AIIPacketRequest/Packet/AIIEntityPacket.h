@@ -12,7 +12,10 @@
 
 @interface AIIEntityRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIEntityQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

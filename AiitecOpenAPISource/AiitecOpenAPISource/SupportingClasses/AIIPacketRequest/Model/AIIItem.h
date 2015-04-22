@@ -10,7 +10,8 @@
 
 @interface AIIItem : AIIEntity
 
-@property (nonatomic, copy) NSString *key;
+/** 考虑到key为基类保留关键词（已用于设置对象的key,用于解析JSON对象）,建议key当作对象的属性时,用name代替. */
+//@property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) NSString *value;
 
 #pragma mark - Option

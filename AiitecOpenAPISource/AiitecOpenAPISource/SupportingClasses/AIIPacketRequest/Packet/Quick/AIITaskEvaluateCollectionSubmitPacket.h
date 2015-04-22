@@ -15,7 +15,10 @@
 
 @interface AIITaskEvaluateCollectionSubmitRequest : AIICollectionRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIITaskEvaluateCollectionSubmitRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

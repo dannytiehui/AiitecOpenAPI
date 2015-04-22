@@ -17,7 +17,10 @@
 
 @interface AIIUserUpdateRequest : AIIEntityRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIUserUpdateRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

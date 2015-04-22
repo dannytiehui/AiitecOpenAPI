@@ -19,7 +19,10 @@
 
 @interface AIIWishSubmitRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIWishSubmitRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

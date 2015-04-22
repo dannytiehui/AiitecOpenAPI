@@ -25,6 +25,9 @@
 
 @interface AIIFetchPositionResponse : AIIResponse
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIFetchPositionResponseQuery *query;
+#pragma clang diagnostic pop
 
 @end

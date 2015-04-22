@@ -15,7 +15,10 @@
 
 @interface AII_Namespace_Request : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AII_Namespace_RequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

@@ -163,7 +163,7 @@
                 // 2)获取新增的数据
                 // ListRequest *requestInsert = [[NSClassFromString(requestName) alloc] init];
                 listRequest.timestampLatest = timestampLatest;
-                listRequest.Cache = AIICacheFullThird;
+                listRequest.cache = AIICacheFullThird;
                 [AIIPacketConnection sendAsynchronous:listRequest delegate:[AIICacheManager defaultManager] context:@"insert"];
             }
         }

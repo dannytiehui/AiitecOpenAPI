@@ -34,7 +34,10 @@ typedef NS_ENUM(NSUInteger, AIISMSCodeType) {
 
 @interface AIISMSCodeRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIISMSCodeRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

@@ -28,7 +28,10 @@ typedef NS_ENUM(NSUInteger, AIIOrderCancelType) {
 
 @interface AIIOrderStatusUpdateRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIOrderStatusUpdateRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

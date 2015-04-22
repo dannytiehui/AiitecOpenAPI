@@ -22,6 +22,5 @@ typedef NS_ENUM(NSUInteger, FavoritesType){
 @property (nonatomic, assign) NSUInteger userId;
 @property (nonatomic, assign) NSUInteger foreignId;
 @property (nonatomic, assign) FavoritesType type;
-@property (nonatomic, copy) NSString *desc;
 
 @end

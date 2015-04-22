@@ -33,6 +33,9 @@
 
 @interface AIISettingResponse : AIIResponse
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIISettingResponseQuery *query;
+#pragma clang diagnostic pop
 
 @end

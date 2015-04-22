@@ -26,7 +26,6 @@
 @property (nonatomic, copy) NSString *weibo;
 /** 默认收货人 */
 @property (nonatomic, assign) BOOL selected;
-@property (nonatomic, copy) NSString *desc;
 
 @property (nonatomic, strong) AIIAddress *address;
 

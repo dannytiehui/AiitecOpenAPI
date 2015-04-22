@@ -11,7 +11,6 @@
 
 @interface AIIWeiboDetailsResponseQuery : AIIEntityQuery
 
-@property (nonatomic, strong) AIIWeibo *entity;
 @property (nonatomic, strong) AIIWeibo *repostWeibo;
 
 @end

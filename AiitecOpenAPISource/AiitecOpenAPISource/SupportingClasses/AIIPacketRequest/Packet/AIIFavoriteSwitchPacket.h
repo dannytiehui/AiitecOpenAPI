@@ -18,7 +18,10 @@
 
 @interface AIIFavoriteSwitchRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIFavoriteSwitchRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

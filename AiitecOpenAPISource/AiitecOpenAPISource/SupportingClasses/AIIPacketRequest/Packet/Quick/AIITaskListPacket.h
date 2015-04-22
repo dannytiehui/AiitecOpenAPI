@@ -33,7 +33,6 @@ typedef NS_ENUM(NSUInteger, AIITaskConditionType) {
 @interface AIITaskListRequestQuery : AIIListRequestQuery
 
 @property (nonatomic, assign) AIITaskType type;
-@property (nonatomic, assign) NSUInteger identifier;
 
 @end
 
@@ -45,7 +44,10 @@ typedef NS_ENUM(NSUInteger, AIITaskConditionType) {
 
 @interface AIITaskListRequest : AIIListRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIITaskListRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

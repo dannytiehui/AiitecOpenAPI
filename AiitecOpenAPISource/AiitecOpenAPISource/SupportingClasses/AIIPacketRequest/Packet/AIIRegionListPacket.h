@@ -12,7 +12,6 @@
 @interface AIIRegionListRequestQuery : AIIListRequestQuery
 
 @property (nonatomic, assign) NSUInteger parentId;
-@property (nonatomic, assign) NSUInteger identifier;
 @property (nonatomic, copy) NSString *name;
 
 @end
@@ -24,7 +23,10 @@
 
 @interface AIIRegionListRequest : AIIListRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIIRegionListRequestQuery *query;
+#pragma clang diagnostic pop
 
 
 @end

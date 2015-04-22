@@ -22,7 +22,10 @@
 
 @interface AIIRankListRequest : AIIListRequest
 
-@property(nonatomic, strong) AIIRankListRequestQuery *query;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
+@property (nonatomic, strong) AIIRankListRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 

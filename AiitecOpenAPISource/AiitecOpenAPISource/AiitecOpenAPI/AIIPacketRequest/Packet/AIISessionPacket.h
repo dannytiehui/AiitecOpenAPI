@@ -58,7 +58,10 @@ typedef NS_ENUM(NSUInteger, AIIDeviceType){
 
 @interface AIISessionRequest : AIIRequest
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIISessionRequestQuery *query;
+#pragma clang diagnostic pop
 
 @end
 
@@ -67,6 +70,10 @@ typedef NS_ENUM(NSUInteger, AIIDeviceType){
 @interface AIISessionResponse : AIIResponse
 
 @property (nonatomic, copy) NSString *sessionId;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-property-synthesis"
 @property (nonatomic, strong) AIISessionResponseQuery *query;
+#pragma clang diagnostic pop
 
 @end
