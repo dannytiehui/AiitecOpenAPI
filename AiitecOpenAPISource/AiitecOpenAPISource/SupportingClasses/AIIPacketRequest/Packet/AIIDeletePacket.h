@@ -1,5 +1,5 @@
 //
-//  AIIDeleteActionPacket.h
+//  AIIDeletePacket.h
 //  AII
 //
 //  Created by iMac on 14-3-24.
@@ -8,9 +8,9 @@
 
 #import "AIIDetailsPacket.h"
 
-@interface AIIDeleteActionRequest : AIIDetailsRequest
+@interface AIIDeleteRequest : AIIDetailsRequest
 @end
 
 
-@interface AIIDeleteActionResponse : AIIResponse
+@interface AIIDeleteResponse : AIIResponse
 @end

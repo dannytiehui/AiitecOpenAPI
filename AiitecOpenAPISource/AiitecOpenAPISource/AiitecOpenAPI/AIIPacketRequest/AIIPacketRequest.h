@@ -35,6 +35,7 @@ typedef NS_ENUM(NSUInteger, AIIPacketSetting){
 
 + (id)packetSetting:(AIIPacketSetting)key;
 + (void)packetSetting:(AIIPacketSetting)key value:(id)value;
++ (void)start;
 
 @end
 

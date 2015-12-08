@@ -8,6 +8,19 @@
 
 #import "AIIJSONModel.h"
 
+typedef NS_ENUM(NSUInteger, AIIEntityAction) {
+    AIIEntityActionDefault,
+    AIIEntityActionFirst,
+    AIIEntityActionSecond,
+    AIIEntityActionThird,
+    AIIEntityActionFourth,
+    AIIEntityActionFifth,
+    AIIEntityActionSixth,
+    AIIEntityActionSeventh,
+    AIIEntityActionEighth,
+    AIIEntityActionNinth
+};
+
 /** AIIEntity.
  *
  *  对象模型基类.
@@ -24,6 +37,14 @@
 @property (nonatomic, assign) BOOL deleted;
 @property (nonatomic, copy) NSString *timestampUpdate;
 @property (nonatomic, copy) NSString *timestamp;
+
+#pragma mark - option 测试Objective-C相关语言特性.
+@property (nonatomic, copy) NSString *string;
+@property (nonatomic, strong) NSMutableString *mutableString;
+@property (nonatomic, strong) NSDictionary *dictionary;
+@property (nonatomic, strong) NSMutableDictionary *mutableDictionary;
+@property (nonatomic, strong) NSArray *array;
+@property (nonatomic, strong) NSMutableArray *mutableArray;
 
 /**
  * @brief 将JSON格式的字符串转换为self(Entity)对象

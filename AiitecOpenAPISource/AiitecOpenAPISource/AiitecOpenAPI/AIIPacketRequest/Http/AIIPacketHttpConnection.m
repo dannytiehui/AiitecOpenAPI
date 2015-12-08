@@ -286,9 +286,20 @@ static bool delegateIntercept;
 
 + (void)sessionIdRequest:(AIIPacketHttpConnection *)connection
 {
-    [AIIPacketManager defaultManager].sessionRequesting = YES;
-    AIIRequest *request = [[AIISessionRequest alloc] init];
-    [AIIPacketHttpConnection sendAsynchronous:request delegate:connection.delegate context:connection.context];
+    /// 如果没有获取到设备号，则延时1s发起请求(2015-12-08).
+    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceTokenKey];
+    if (!deviceToken) {
+        double delayInSeconds = 1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [AIIPacketManager defaultManager].sessionRequesting = YES;
+            AIIRequest *request = [[AIISessionRequest alloc] init];
+            [AIIPacketHttpConnection sendAsynchronous:request delegate:connection.delegate context:connection.context];
+        });
+    }
+//    [AIIPacketManager defaultManager].sessionRequesting = YES;
+//    AIIRequest *request = [[AIISessionRequest alloc] init];
+//    [AIIPacketHttpConnection sendAsynchronous:request delegate:connection.delegate context:connection.context];
 }
 
 - (void)connectionDidFinish

@@ -44,6 +44,13 @@
 @property (nonatomic, copy) NSArray *entityProperties;
 
 /**
+ *  @brief  AIIJSONModel对象缓存文件路径.
+ *
+ *  @return AIIJSONModel对象缓存文件路径.
+ */
+@property (nonatomic, readonly) NSString *filePath;
+
+/**
  * @brief 将JSON格式的数组转换为self(ModelCollection)对象
  *
  * @param jsonArray JSON格式的数组字符串.
@@ -58,5 +65,20 @@
  *  @return 集合的identifier数组.
  */
 - (NSArray *)entityIds;
+
+/**
+ *  @brief  读取缓存数据,并转化为AIIJSONModel对象.
+ *
+ *  @return AIIJSONModel对象.
+ */
+- (id)initWithContentsOfFile;
+//+ (id)objectWithContentsOfFile;
+
+/**
+ *  @brief  将服务器响应的数据缓存到文件里面.
+ *
+ *  @return 缓存状态.
+ */
+- (BOOL)writeToFile;
 
 @end

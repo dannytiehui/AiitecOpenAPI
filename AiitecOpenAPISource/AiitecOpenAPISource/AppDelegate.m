@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PacketRequest.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    /** AiitecOpenAPI初始化. */
+    [AIIPacketRequest start];
+    
     return YES;
 }
 

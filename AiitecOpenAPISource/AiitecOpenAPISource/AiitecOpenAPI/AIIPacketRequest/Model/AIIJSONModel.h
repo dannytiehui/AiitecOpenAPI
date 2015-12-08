@@ -62,6 +62,28 @@
  */
 @property (nonatomic, readonly) NSDictionary *abbreviationKeys;
 
+/**
+ *  @brief  AIIJSONModel对象缓存文件路径.
+ *
+ *  @return AIIJSONModel对象缓存文件路径.
+ */
+@property (nonatomic, readonly) NSString *filePath;
+
+/**
+ *  @brief  读取缓存数据,并转化为AIIJSONModel对象.
+ *
+ *  @return AIIJSONModel对象.
+ */
+- (id)initWithContentsOfFile;
+//+ (id)objectWithContentsOfFile;
+
+/**
+ *  @brief  将AIIJSONModel对象写入(缓存)到文件.
+ *
+ *  @return 写入(缓存)状态.
+ */
+- (BOOL)writeToFile;
+
 //- (void)print;
 
 @end

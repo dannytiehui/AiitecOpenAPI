@@ -10,6 +10,43 @@
 
 @implementation AIIUserLoginRequestQuery
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIIUserLoginRequestQuery *query = [super copyWithZone:zone];
+    query.name = [_name copy];
+    query.password = [_password copy];
+    return query;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIIUserLoginRequestQuery *query = [super mutableCopyWithZone:zone];
+    query.name = [_name mutableCopy];
+    query.password = [_password mutableCopy];
+    return query;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.name forKey:@"UserLoginRequestQueryName"];
+    [aCoder encodeObject:self.password forKey:@"UserLoginRequestQueryPassword"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    self.name = [aDecoder decodeObjectForKey:@"UserLoginRequestQueryName"];
+    self.password = [aDecoder decodeObjectForKey:@"UserLoginRequestQueryPassword"];
+    return self;
+}
+
 #pragma mark - NSObject(NSKeyValueCoding)
 
 - (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys

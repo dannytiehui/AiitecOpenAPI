@@ -33,6 +33,58 @@
     return self;
 }
 
+- (id)initWithContentsOfFile
+{
+    if (self = [super init]) {
+        NSFileManager *fm = [NSFileManager defaultManager];
+        BOOL isDir;
+        BOOL fileExists = [fm fileExistsAtPath:self.filePath isDirectory:&isDir];
+        BOOL isCachesFileExists = !isDir && fileExists;
+        
+        if (isCachesFileExists) {
+            NSArray *array = [NSArray arrayWithContentsOfFile:self.filePath];
+            [self setObjectWithArray:array];
+        }
+        else {
+            NSLog(@"initWithContentsOfFile (缓存文件不存在). %@", self.filePath);
+        }
+    }
+    return self;
+}
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIIModelCollection *modelCollection = [super copyWithZone:zone];
+    modelCollection.key = [_key copy];
+    return modelCollection;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIIModelCollection *modelCollection = [super mutableCopyWithZone:zone];
+    modelCollection.key = [_key mutableCopy];
+    return modelCollection;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.key forKey:@"ModelCollectionKey"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    self.key = [aDecoder decodeObjectForKey:@"ModelCollectionKey"];
+    return self;
+}
+
 #pragma mark - ValueToArray
 
 - (NSArray *)arrayWithObject
@@ -82,6 +134,17 @@
         }
     }
     return array;
+}
+
+- (NSString *)filePath
+{
+    return [NSString stringWithFormat:@"%@/%@.plist", [AIIUtility cachesPacketPath], NSStringFromClass(self.class)];
+}
+
+- (BOOL)writeToFile
+{
+    NSArray *array = [self arrayWithObject];
+    return [array writeToFile:self.filePath atomically:YES];
 }
 
 @end

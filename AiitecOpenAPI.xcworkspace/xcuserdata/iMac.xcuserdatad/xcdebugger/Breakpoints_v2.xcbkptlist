@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiitecOpenAPISource/AiitecOpenAPISource/AiitecOpenAPI/AIIPacketRequest/Packet/Query/AIIQuery.m"
-            timestampString = "433676182.153709"
+            timestampString = "451993697.487356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-valueForUndefinedKey:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiitecOpenAPISource/AiitecOpenAPISource/AiitecOpenAPI/AIIPacketRequest/Model/Table/AIITable.m"
-            timestampString = "433759392.549995"
+            timestampString = "451997282.83567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-setValue:forKey:"
             landmarkType = "5">
          </BreakpointContent>
@@ -80,22 +80,6 @@
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "-valueForUndefinedKey:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AiitecOpenAPISource/AiitecOpenAPISource/AiitecOpenAPI/AIIPacketRequest/Model/AIIModelCollection.m"
-            timestampString = "437914926.721647"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "-initWithJSONArray:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiitecOpenAPISource/AiitecOpenAPISource/ViewController.m"
-            timestampString = "449642255.670909"
+            timestampString = "460443649.821535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1062"
-            endingLineNumber = "1062"
+            startingLineNumber = "1287"
+            endingLineNumber = "1287"
             landmarkName = "-packetConnectionFinished:"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,13 +250,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiitecOpenAPISource/AiitecOpenAPISource/ViewController.m"
-            timestampString = "449642255.670909"
+            timestampString = "460443649.821535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "945"
-            endingLineNumber = "945"
-            landmarkName = "@implementation ViewController"
-            landmarkType = "3">
+            startingLineNumber = "1169"
+            endingLineNumber = "1169"
+            landmarkName = "-packetConnectionFinished:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -298,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiitecOpenAPISource/AiitecOpenAPISource/SupportingClasses/AIIPacketRequest/Model/AIIUser.m"
-            timestampString = "449640050.845466"
+            timestampString = "460443649.821535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109">
+            startingLineNumber = "155"
+            endingLineNumber = "155">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

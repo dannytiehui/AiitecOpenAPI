@@ -10,6 +10,59 @@
 
 @implementation AIIQuery
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIIQuery *query = [super copyWithZone:zone];
+
+    query.action = _action;
+    query.identifier = _identifier;
+    query.status = _status;
+    query.desc = [_desc copy];
+    query.timestamp = [_timestamp copy];
+
+    return query;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIIQuery *query = [super mutableCopyWithZone:zone];
+    
+    query.action = _action;
+    query.identifier = _identifier;
+    query.status = _status;
+    query.desc = [_desc mutableCopy];
+    query.timestamp = [_timestamp mutableCopy];
+    
+    return query;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeInteger:self.action forKey:@"QueryAction"];
+    [aCoder encodeInteger:self.identifier forKey:@"QueryIdentifier"];
+    [aCoder encodeInteger:self.status forKey:@"QueryStatus"];
+    [aCoder encodeObject:self.desc forKey:@"QueryDesc"];
+    [aCoder encodeObject:self.timestamp forKey:@"QueryTimestamp"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    self.action = [aDecoder decodeIntegerForKey:@"QueryAction"];
+    self.identifier = [aDecoder decodeIntegerForKey:@"QueryIdentifier"];
+    self.status = [aDecoder decodeIntegerForKey:@"QueryStatus"];
+    self.desc = [aDecoder decodeObjectForKey:@"QueryDesc"];
+    self.timestamp = [aDecoder decodeObjectForKey:@"QueryTimestamp"];
+    return self;
+}
+
 #pragma mark - NSObject(NSKeyValueCoding)
 
 - (id)valueForUndefinedKey:(NSString *)key

@@ -20,7 +20,7 @@
 #import "AIIReferenceItemListPacket.h"
 #import "AIICategoryListPacket.h"
 #import "AIIUploadImagePacket.h"
-#import "AIIDeleteActionPacket.h"
+#import "AIIDeletePacket.h"
 #import "AIIHTMLPacket.h"
 
 

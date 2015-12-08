@@ -185,4 +185,11 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
  */
 + (NSString *)iqPacketEncryption;
 
+/**
+ *  @brief  获取当前版本号.
+ *
+ *  @return 版本号.如:1.5.1202(是不是有点2015年12月02日的意思呢^_^).
+ */
++ (NSString *)currentVersion;
+
 @end

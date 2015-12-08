@@ -10,6 +10,39 @@
 
 @implementation AIIModelCollectionQuery
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIIModelCollectionQuery *modelCollectionQuery = [super copyWithZone:zone];
+    modelCollectionQuery.modelCollection = [_modelCollection copyWithZone:zone];
+    return modelCollectionQuery;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIIModelCollectionQuery *modelCollectionQuery = [super mutableCopyWithZone:zone];
+    modelCollectionQuery.modelCollection = [_modelCollection mutableCopyWithZone:zone];
+    return modelCollectionQuery;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.modelCollection forKey:@"ModelCollectionQueryModelCollection"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    self.modelCollection = [aDecoder decodeObjectForKey:@"ModelCollectionQueryModelCollection"];
+    return self;
+}
+
 #pragma mark - NSObject(NSKeyValueCoding)
 
 - (void)setValue:(id)value forKey:(NSString *)key

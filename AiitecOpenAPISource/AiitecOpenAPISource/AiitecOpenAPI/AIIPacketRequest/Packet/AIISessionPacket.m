@@ -68,6 +68,10 @@
         
         /// sessionId保存方案.
         [[NSUserDefaults standardUserDefaults] setObject:value forKey:@"sessionId"];
+        
+        /// version需要同时保存,用于在启动APP时判断当前版本号是否与保存的版本号相等,否则重新获取sessionId.
+        /// 解决的问题:当版本号从1.0升级到2.0时,需要重新获取sessionId,用于防止服务器对应的协议接口发生重大变化时无法识别的严重BUG(2015-12-02).
+        [[NSUserDefaults standardUserDefaults] setObject:[AIIUtility currentVersion] forKey:@"version"];
     }
     else {
         [super setValue:value forKey:key];

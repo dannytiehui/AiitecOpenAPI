@@ -28,15 +28,6 @@
 
 
 @implementation AIIUserDetailsResponseQuery
-
-- (id)init
-{
-    if (self = [super init]) {
-        self.entity = [[AIIUser alloc] init];
-    }
-    return self;
-}
-
 @end
 
 

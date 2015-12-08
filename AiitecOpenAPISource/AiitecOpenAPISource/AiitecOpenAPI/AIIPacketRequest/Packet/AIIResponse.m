@@ -13,10 +13,8 @@
 
 @property (nonatomic, copy) NSString *JSONString;
 @property (nonatomic, copy) NSString *JSONFormatString;
-@property (nonatomic, readonly) NSString *cachesPacketFilePath;
 
 @end
-
 
 
 @implementation AIIResponse
@@ -53,37 +51,38 @@
     return self;
 }
 
-- (id)initWithCachesPacketFile
+/// 重写父类方法
+- (id)initWithContentsOfFile
 {
-    if (self = [super init]) {
-        NSFileManager *fm = [NSFileManager defaultManager];
-        BOOL isDir;
-        BOOL fileExists = [fm fileExistsAtPath:self.cachesPacketFilePath isDirectory:&isDir];
-        BOOL isCachesPacketFileExists = !isDir && fileExists;
-
-        if (isCachesPacketFileExists) {
-            NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:self.cachesPacketFilePath];
-            [self setValuesForKeysWithDictionary:dict];
-        }
-        else {
-            NSLog(@"initWithCachesPacketFile (协议缓存文件不存在). %@", self.cachesPacketFilePath);
-        }
-        
+    if (self = [super initWithContentsOfFile]) {
         self.query.status = Cache_Packet_STATUS;
         self.query.desc = Cache_Packet_DESC;
     }
     return self;
 }
 
-- (NSString *)cachesPacketFilePath
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    return [NSString stringWithFormat:@"%@/%@.plist", [AIIUtility cachesPacketPath], self.nameSpace];
+    /// 子类实现
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    /// 子类实现
+    return self;
+}
+
+/**
+ *  @brief 「重写父类方法」将服务器响应的数据(self.JSONString)写入(缓存)到文件.
+ *
+ *  @return 写入(缓存)状态.
+ */
 - (BOOL)writeToFile
 {
     NSDictionary *dict = [AIIUtility dictionaryWithJSONString:self.JSONString];
-    return [dict writeToFile:self.cachesPacketFilePath atomically:YES];
+    return [dict writeToFile:self.filePath atomically:YES];
 }
 
 @end

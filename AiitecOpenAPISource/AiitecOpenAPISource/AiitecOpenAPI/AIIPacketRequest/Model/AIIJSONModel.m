@@ -32,18 +32,38 @@
     return self;
 }
 
+- (id)initWithContentsOfFile
+{
+//    if (self = [super init]) {
+    if (self = [self init]) { // 注意,子类中有部分属性(属性为对象时,如:self.address.key方可取到值)需要初始化.
+        NSFileManager *fm = [NSFileManager defaultManager];
+        BOOL isDir;
+        BOOL fileExists = [fm fileExistsAtPath:self.filePath isDirectory:&isDir];
+        BOOL isCachesFileExists = !isDir && fileExists;
+        
+        if (isCachesFileExists) {
+            NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:self.filePath];
+            [self setValuesForKeysWithDictionary:dict];
+        }
+        else {
+            NSLog(@"WithContentsOfFile (缓存文件不存在). %@", self.filePath);
+        }
+    }
+    return self;
+}
+
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    return [[self class] allocWithZone:zone];
+    return [[[self class] allocWithZone:zone] init];
 }
 
 #pragma mark - NSMutableCopying
 
 - (id)mutableCopyWithZone:(NSZone *)zone
 {
-    return [[self class] mutableCopy];
+    return [[[self class] allocWithZone:zone] init];
 }
 
 #pragma mark - NSCoding
@@ -74,7 +94,10 @@
         isNumber = [@[@"TQ",@"TB",@"Tc",@"Tf",@"Td"] containsObject:array[0]];//!< 判断属性的类型是否为:NSInteger/NSUInteger,BOOL,float,double.
     }
     
-    if (!isNumber) {
+    // 修复iPhone4s的BUG,2015-06-05
+    BOOL isObject = (([value superclass] == [NSMutableDictionary class]) || ([value superclass] == [NSMutableArray class])) ? YES : NO;
+    
+    if (!isNumber && isObject) {
         [super setValue:value forKey:key];
         return;
     }
@@ -141,7 +164,7 @@
     [mutableArray removeObject:@"key"];
     [mutableArray removeObject:@"properties"];
     [mutableArray removeObject:@"propertysAttributes"];
-    [mutableArray removeObjectsInArray:@[@"abbreviationKeys", @"hash",@"superclass",@"description",@"debugDescription"]];
+    [mutableArray removeObjectsInArray:@[@"filePath", @"abbreviationKeys", @"hash",@"superclass",@"description",@"debugDescription"]];
     
     _defaultProperties = mutableArray;
     return _defaultProperties;
@@ -180,6 +203,17 @@
 //    NSDictionary *dict = @{@"namespace": @"n", @"sessionId": @"s", @"timestampLatest": @"t", @"cache": @"c", @"query": @"q", @"action": @"a", @"table": @"ta", @"page": @"pa", @"limit": @"li", @"orderBy": @"ob", @"orderType": @"ot", @"where": @"w", @"searchKey": @"sk", @"status": @"s", @"desc": @"description", @"timestamp": @"t", @"identifier": @"id"};
     NSDictionary *dict = @{@"n": @"nameSpace", @"s": @"sessionId", @"t": @"timestampLatest", @"c": @"cache", @"q": @"query", @"a": @"action", @"ta": @"table", @"pa": @"page", @"li": @"limit", @"ob": @"orderBy", @"ot": @"orderType", @"w": @"where", @"sk": @"searchKey", @"s": @"status", @"description": @"desc", @"t": @"timestamp", @"id": @"identifier"};
     return dict;
+}
+
+- (NSString *)filePath
+{
+    return [NSString stringWithFormat:@"%@/%@.plist", [AIIUtility cachesPacketPath], NSStringFromClass(self.class)];
+}
+
+- (BOOL)writeToFile
+{
+    NSDictionary *dict = [self dictionaryWithValuesForKeys:self.keys];
+    return [dict writeToFile:self.filePath atomically:YES];
 }
 
 //- (void)print

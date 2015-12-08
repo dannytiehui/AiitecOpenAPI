@@ -33,7 +33,7 @@
 
 - (id)mutableCopyWithZone:(NSZone *)zone
 {
-    return [[self class] mutableCopy];
+    return [[self class] allocWithZone:zone];
 }
 
 #pragma mark - NSCoding

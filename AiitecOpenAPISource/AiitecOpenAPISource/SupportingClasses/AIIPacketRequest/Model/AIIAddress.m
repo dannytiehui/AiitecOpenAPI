@@ -26,6 +26,75 @@
     return self;
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIIAddress *address = [super copyWithZone:zone];
+    address.regionId = _regionId;
+    address.latitude = _latitude;
+    address.longitude = _longitude;
+    address.coordinate = _coordinate;
+    address.selected = _selected;
+    address.regionInfo = [_regionInfo copy];
+    address.street = [_street copy];
+    address.postcode = [_postcode copy];
+    address.contacts = [_contacts copy];
+    address.mobile = [_mobile copy];
+    return address;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIIAddress *address = [super mutableCopyWithZone:zone];
+    address.regionId = _regionId;
+    address.latitude = _latitude;
+    address.longitude = _longitude;
+    address.coordinate = _coordinate;
+    address.selected = _selected;
+    address.regionInfo = [_regionInfo mutableCopy];
+    address.street = [_street mutableCopy];
+    address.postcode = [_postcode mutableCopy];
+    address.contacts = [_contacts mutableCopy];
+    address.mobile = [_mobile mutableCopy];
+    return address;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeInteger:self.regionId forKey:@"AddressRegionId"];
+    [aCoder encodeInteger:self.latitude forKey:@"AddressLatitude"];
+    [aCoder encodeInteger:self.longitude forKey:@"AddressLongitude"];
+//    [aCoder encodeInteger:self.coordinate forKey:@"AddressCoordinate"];
+    [aCoder encodeInteger:self.selected forKey:@"AddressSelected"];
+    [aCoder encodeObject:self.regionInfo forKey:@"AddressRegionInfo"];
+    [aCoder encodeObject:self.street forKey:@"AddressStreet"];
+    [aCoder encodeObject:self.postcode forKey:@"AddressPostcode"];
+    [aCoder encodeObject:self.contacts forKey:@"AddressContacts"];
+    [aCoder encodeObject:self.mobile forKey:@"AddressMobile"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    self.regionId = [aDecoder decodeIntegerForKey:@"AddressRegionId"];
+    self.latitude = [aDecoder decodeIntegerForKey:@"AddressLatitude"];
+    self.longitude = [aDecoder decodeIntegerForKey:@"AddressLongitude"];
+//    self.coordinate = [aDecoder decodeIntegerForKey:@"AddressCoordinate"];
+    self.selected = [aDecoder decodeIntegerForKey:@"AddressSelected"];
+    self.regionInfo = [aDecoder decodeObjectForKey:@"AddressRegionInfo"];
+    self.street = [aDecoder decodeObjectForKey:@"AddressStreet"];
+    self.postcode = [aDecoder decodeObjectForKey:@"AddressPostcode"];
+    self.contacts = [aDecoder decodeObjectForKey:@"AddressContacts"];
+    self.mobile = [aDecoder decodeObjectForKey:@"AddressMobile"];
+    return self;
+}
+
 #pragma mark - NSObject(NSKeyValueCoding)
 
 - (void)setValue:(id)value forKey:(NSString *)key

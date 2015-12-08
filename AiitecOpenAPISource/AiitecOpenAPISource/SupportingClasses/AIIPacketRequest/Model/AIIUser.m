@@ -30,11 +30,51 @@
     return self;
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIIUser *user = [super copyWithZone:zone];
+    user.nickname = [_nickname copy];
+    user.address = [_address copyWithZone:zone];
+    return user;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIIUser *user = [super mutableCopyWithZone:zone];
+    user.nickname = [_nickname mutableCopy];
+    user.address = [_address mutableCopyWithZone:zone];
+    return user;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.nickname forKey:@"UserNickname"];
+    [aCoder encodeObject:self.address forKey:@"UserAddress"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    self.nickname = [aDecoder decodeObjectForKey:@"UserNickname"];
+    self.address = [aDecoder decodeObjectForKey:@"UserAddress"];
+    return self;
+}
+
 #pragma mark - NSObject(NSKeyValueCoding)
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    if ([key isEqualToString:@"class"]) {
+    if ([key isEqualToString:@"isShare"]) {
+        self.isShare = [value isEqualToString:@"1"] ? YES : NO;
+    }
+    else if ([key isEqualToString:@"class"]) {
         self.classes = value;
     }
     else if ([key isEqualToString:self.address.key]) {
@@ -71,6 +111,12 @@
         [mutableDictionary setObject:[AIIUtility md5:self.password] forKey:k];
     }
     
+    k = @"isShare";
+    if ([keys containsObject:k]) {
+        NSString *isShare = self.isShare ? @"1" : @"2";
+        [mutableDictionary setObject:isShare forKey:k];
+    }
+
     k = @"classes";
     if ([keys containsObject:k]) {
         [mutableDictionary setObject:self.classes forKey:@"class"];

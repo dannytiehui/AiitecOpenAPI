@@ -11,6 +11,7 @@
 #import "AIIUtility.h"
 
 #import "Fraction.h"
+#import "ABC.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -153,25 +154,25 @@
     
     
 //    BOOL b;
-    // Entity
+//     Entity
 //    NSArray *entityArray = @[@"AttrCategory"];
 //    b = [AIIFileCache createIqPacketWithEntityArray:entityArray];
 
     // Default
 //    b = [AIIFileCache createIqPacketWithNamespace:@"ExpressSearch" template:AIITemplateDefault];
-//    NSArray *namespaceArray = @[@"Operate",@"SignIn",@"OrderRemindDelivery",@"OrderReturnApply",@"ResumeSend",@"pay"];
+//    NSArray *namespaceArray = @[@"Pay"];
 //    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceArray template:AIITemplateDefault];
     
     // List
-//    NSArray *namespaceListArray = @[@"Record", @"Bonus", @"SignInRecord", @"ShopCartGoods", @"Order", @"Info", @"ForumPost", @"ForumComment", @"Goods", @"Comment", @"Report", @"Activity"];
+//    NSArray *namespaceListArray = @[@"Apply", @"Goods", @"Remind", @"Position", @"Rank"];
 //    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceListArray template:AIITemplateList];
     
     // Details
-//    NSArray *namespaceDetailsArray = @[@"Company", @"Bonus", @"Order", @"Info", @"ForumPost", @"Goods", @"Seller", @"Report"];
+//    NSArray *namespaceDetailsArray = @[@"Apply", @"Goods"];
 //    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceDetailsArray template:AIITemplateDetails];
     
     // Submit
-//    NSArray *namespaceSubmitArray = @[@"Order", @"Comment", @"Info", @"ForumPost", @"ForumComment", @"Report"];
+//    NSArray *namespaceSubmitArray = @[@"Apply", @"Order", @"Remind", @"Financial"];
 //    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceSubmitArray template:AIITemplateSubmit];
 
     // CollectionSubmit
@@ -179,16 +180,14 @@
 //    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceCollectionSubmitArray template:AIITemplateCollectionSubmit];
     
     // Update
-//    NSArray *namespaceUpdateArray = @[@"Company", @"ShopCartGoods"];
+//    NSArray *namespaceUpdateArray = @[@"Apply", @"Position"];
 //    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceUpdateArray template:AIITemplateUpdate];
     
     // Switch
-//    NSArray *namespaceSwitchArray = @[@"Praise"];
-//    BOOL b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceSwitchArray template:AIITemplateSwitch];
+//    NSArray *namespaceSwitchArray = @[@"Remind"];
+//    b = [AIIFileCache createIqPacketWithNamespaceArray:namespaceSwitchArray template:AIITemplateSwitch];
     
 //    NSLog(@"b:%d", b);
-    
-    
 
     // 十进制转二进制
 //    NSLog(@"%@", [AIIUtility toBinarySystemWithDecimalSystem:@20141209]);
@@ -306,11 +305,229 @@
 //    for (AIIUser *item2 in userCollection2) {
 //        NSLog(@"%lu,%@", item2.identifier, item2.name);
 //    }
+
+//    NSString *string = @"dddd";
+//    NSString *stringCopy = [string copy];
+////    stringCopy = @"aaa";
+//    NSMutableString *stringMCopy = [string mutableCopy];
+//    [stringMCopy appendString:@"!!"];
+//    
+//    NSLog(@"%p, %@", string, string);
+//    NSLog(@"%p, %@", stringCopy, stringCopy);
+//    NSLog(@"%p, %@", stringMCopy, stringMCopy);
+//    NSLog(@"-");
+//    
+//    AIIUser *user = [[AIIUser alloc] init];
+//    user.identifier = 34;
+//    user.name = @"习大大";
+//    user.nickname = @"老大";
+//    user.address.identifier = 440000;
+//    user.address.name = @"广东省";
+//    user.mutableString = [NSMutableString stringWithString:@"User对象"];
+//    user.dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"34", @"number", nil];
+//    user.mutableArray = [NSMutableArray arrayWithObjects:[NSMutableString stringWithFormat:@"one"], @"two", @"three", @"four", nil];
+//    [self AIINSLog:user];
     
+    // 第一种情况: user2的改变会完完全全影响到user
+//    AIIUser *user2 = user;
+//    user2.name = @"=第二个用户";
+//    NSMutableString *mStr = [NSMutableString stringWithString:[user.mutableArray objectAtIndex:0]];
+//    [mStr appendString:@"100"];
+//    [user2.mutableArray replaceObjectAtIndex:0 withObject:mStr];
+
+    // 第二种情况: userCopy为不可变副本,user的改变不会不会影响到userCopy.
+//    AIIUser *userCopy = [user copy];
+//    user.name = @"习大大+";
+//    [user.mutableString appendString:@"+"];
+//    AIIAddress *address = [[AIIAddress alloc] init];
+//    address.identifier = 440010;
+//    address.name = @"广东省2";
+//    userCopy.address = address;
+//    userCopy.address.name = @"广东省2";
+//    userCopy.dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"35", @"number2", nil];
+//    [user.dictionary setValue:@"第二个值" forKey:@"two"];//会崩溃
     
-    // Emoji
+//    NSMutableString *mStr = [NSMutableString stringWithString:[user.mutableArray objectAtIndex:0]];
+//    [mStr appendString:@"100"];
+//    [userCopy.mutableArray replaceObjectAtIndex:0 withObject:mStr];
+    
+//    NSLog(@"userCopy-");
+//    [self AIINSLog:userCopy];
+//    NSLog(@"user-");
+//    [self AIINSLog:user];
+//
+//    // 第三种情况: userMCopy为可变副本,user的改变不会不会影响到userCopy.
+//    AIIUser *userMCopy = [user mutableCopy];//BUG
+//    userMCopy.name = @"M牛大大";
+////    userMCopy.address.name = @"M广东省2";
+//    AIIAddress *address2 = [[AIIAddress alloc] init];
+//    address2.identifier = 440010;
+//    address2.name = @"M广东省2";
+//    userMCopy.address = address2;
+//    [userMCopy.dictionary setValue:@"第三个值" forKey:@"three"];
+//    
+//    NSMutableString *mStr = [NSMutableString stringWithString:[user.mutableArray objectAtIndex:0]];
+//    [mStr appendString:@"100"];
+//    [userMCopy.mutableArray replaceObjectAtIndex:0 withObject:mStr];
+//    
+//    NSLog(@"userMCopy-");
+//    [self AIINSLog:userMCopy];
+//    NSLog(@"user-");
+//    [self AIINSLog:user];
+//
+//    NSLog(@"--- NSDictionary ---");
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"34", @"number", nil];
+//    NSLog(@"dict:%@", dict);
+//    NSDictionary *dictCopy = [dict copy];
+//    [dict setValue:@"352" forKey:@"number"];
+////    dictCopy = [NSDictionary dictionaryWithObjectsAndKeys:@"35", @"number", nil];
+//    NSLog(@"dictCopy:%@", dictCopy);
+//    NSLog(@"dict:%@", dict);
+//    NSMutableDictionary *dictMCopy = [dict mutableCopy];
+//    [dict setValue:@"353" forKey:@"number"];
+////    dictMCopy = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"35", @"number", nil];
+//    NSLog(@"dictMCopy:%@", dictMCopy);
+//    NSLog(@"dict:%@", dict);
+//
+//    NSLog(@"--- NSMutableArray ---");
+//    NSMutableArray *mutableArray = [NSMutableArray arrayWithObjects:[NSMutableString stringWithFormat:@"one"], @"two", @"three", @"four", nil];
+//    NSMutableArray *mutableArray2;
+//    NSMutableArray *mutableArray3;
+//    NSMutableString *mutableString;
+//    
+//    mutableArray2 = [mutableArray copy];
+////    [mutableArray2 removeObjectAtIndex:0];
+////    [mutableArray removeObjectAtIndex:0];
+//    ;
+//    
+//    mutableArray3 = [mutableArray mutableCopy];
+//    mutableString = [NSMutableString stringWithString:[mutableArray objectAtIndex:0]];
+//    [mutableString appendString:@"100"];
+//    [mutableArray3 replaceObjectAtIndex:0 withObject:mutableString];
+////    [[mutableArray objectAtIndex:0] appendString:@"100"];
+////    [mutableArray3 removeObjectAtIndex:0];
 
     
+    // 1.将AIIJSONModel对象缓存到plist文件
+    AIIUser *user = [[AIIUser alloc] init];
+    user.identifier = 34;
+    user.name = @"习大大";
+    user.nickname = @"老大";
+    user.address.identifier = 440000;
+    user.address.name = @"广东省";
+    user.address.regionId = 440010;
+//    user.address.contacts = @"";
+//    user.address.mobile = @"";
+//    user.address.postcode = @"";
+//    user.address.string = @"";
+    user.mutableString = [NSMutableString stringWithString:@"User对象"];
+    user.dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"34", @"number", nil];
+    user.mutableArray = [NSMutableArray arrayWithObjects:[NSMutableString stringWithFormat:@"one"], @"two", @"three", @"four", nil];
+    
+    user.address.properties = @[@"identifier", @"name"];
+    user.properties = @[@"identifier", @"name", @"nickname", @"address", @"mutableString", @"dictionary", @"mutableArray"];
+    [user writeToFile];
+    
+    AIIUser *user2 = [[AIIUser alloc] initWithContentsOfFile];
+    // 注意,属性中如果有值为NULL的要移除,否则缓存文件写入失败.
+    user2.address.properties = @[@"identifier", @"name"];// @"contacts"
+    NSLog(@"- %@", user2.name);
+    
+    // 2.将AIIJSONCollection对象缓存到plist文件
+    user2.name = @"习大大+";
+    
+    AIIUserCollection *userCollection = [[AIIUserCollection alloc] init];
+    [userCollection addObject:user];
+    [userCollection addObject:user2];
+    userCollection.entityProperties = @[@"identifier", @"name", @"nickname", @"address", @"mutableString", @"dictionary", @"mutableArray"];
+    BOOL b = [userCollection writeToFile];
+    NSLog(@"b:%d", b);
+    
+    AIIUserCollection *userCollection2 = [[AIIUserCollection alloc] initWithContentsOfFile];
+    NSLog(@"%ld", userCollection2.count);
+    
+    // 3.将AIIRequest对象缓存到plist文件
+    AIIUserLoginRequest *request = [[AIIUserLoginRequest alloc] init];
+    request.query.action = AIIQueryActionFirst;
+    request.query.name = @"17092087507";
+    request.query.password = @"123456";
+    
+    BOOL b2 = [request writeToFile];
+    NSLog(@"b2:%d", b2);
+    
+    AIIUserLoginRequest *userLoginRequest = [[AIIUserLoginRequest alloc] initWithContentsOfFile];
+    NSLog(@"userLoginRequest:%@", userLoginRequest);
+
+    
+    // 4.将AIIResponse对象缓存到plist文件
+    
+    
+    // 归档
+
+    // 1.NSKeyedArchiver
+    NSString *path = [NSString stringWithFormat:@"%@/user.archiver", [AIIUtility cachesPacketPath]];
+    
+    BOOL b3 = [NSKeyedArchiver archiveRootObject:user toFile:path];
+    NSLog(@"b3:%d", b3);
+    
+    AIIUser *userArchiver = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    NSLog(@"userArchiver:%@", userArchiver);
+
+    // 2.
+    NSMutableData *mutableData = [NSMutableData data];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mutableData];
+    
+    [archiver encodeObject:user forKey:@"user"];
+    [archiver encodeObject:request forKey:@"userLoginRequest"];
+    
+    [archiver finishEncoding];
+    
+    NSString *path2 = [NSString stringWithFormat:@"%@/mutableData.archiver", [AIIUtility cachesPacketPath]];
+    BOOL b4 = [mutableData writeToFile:path2 atomically:YES];
+    NSLog(@"b4:%d", b4);
+    
+    NSData *dataArea = [NSData dataWithContentsOfFile:path2];
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:dataArea];
+    
+    AIIUser *userUnarchiver = [unarchiver decodeObjectForKey:@"user"];
+    AIIUserLoginRequest *requestUnarchiver = [unarchiver decodeObjectForKey:@"userLoginRequest"];
+    NSLog(@"%@, %@", userUnarchiver, requestUnarchiver);
+    
+    
+    // 3.
+    AIIUser *userNew = user;
+    userNew.name = @"userNew";
+    
+    AIIUser *userCopy = [user copy];
+    userCopy.name = @"userCopy";
+    
+    // 使用archivedDataWithRootObject类方法,自定义对象必须实现NSCoding协议
+    NSData *dataUser = [NSKeyedArchiver archivedDataWithRootObject:user];
+    AIIUser *userFromKeyedArchiver = [NSKeyedUnarchiver unarchiveObjectWithData:dataUser];
+    userFromKeyedArchiver.name = @"+userFromKeyedArchiver+";
+    NSLog(@"%@", userFromKeyedArchiver);
+    
+    // 3.2 测试用 - 以下代码会报错.
+//    ABC *abc = [[ABC alloc] init];
+//    abc.identifier = 1;
+//    abc.name = @"第一个";
+//    abc.mutableArray = [NSMutableArray arrayWithObjects:@"第一个", @"1", nil];
+//    
+//    NSData *dataABC = [NSKeyedArchiver archivedDataWithRootObject:abc];
+//    ABC *abcFromKeyedArchiver = [NSKeyedUnarchiver unarchiveObjectWithData:dataABC];
+//    abcFromKeyedArchiver.name = @"+abcFromKeyedArchiver+";
+//    NSLog(@"%@", abcFromKeyedArchiver);
+}
+
+- (void)AIINSLog:(AIIUser *)user
+{
+    NSLog(@"%p, %ld", user, user.identifier);
+    NSLog(@"%p, %@", user, user.name);
+    NSLog(@"%p, %@", user, user.nickname);
+    NSLog(@"%p, %ld", user, user.address.identifier);
+    NSLog(@"%p, %@", user, user.address.name);
+    NSLog(@"%p, %@", user, user.dictionary);
+    NSLog(@"%p, %@", user, user.array);
 }
 
 + (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate
@@ -398,7 +615,7 @@
 {
     AIISMSCodeRequest *request = [[AIISMSCodeRequest alloc] init];
     request.query.action = AIIQueryActionFirst;
-    request.query.type = AIISMSCodeTypeBindResetPassword;
+    request.query.type = AIISMSCodeTypeSecond;
     request.query.mobile = @"17092087507";
     request.query.where.code = @"8350";
 
@@ -416,7 +633,6 @@
 - (void)testSettingRequest
 {
     AIISettingRequest *request = [[AIISettingRequest alloc] init];
-    
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
 }
 
@@ -491,7 +707,7 @@
 
 - (void)testDeleteActionRequest
 {
-    AIIDeleteActionRequest *request = [[AIIDeleteActionRequest alloc] init];
+    AIIDeleteRequest *request = [[AIIDeleteRequest alloc] init];
     request.query.action = AIIQueryActionFirst;
     request.query.identifier = 1;
     [AIIPacketConnection sendAsyn:request delegate:self context:self];
@@ -615,7 +831,7 @@
     user.schoolId = 1;
     user.idNumber = @"430781198610296519";
     user.studentIdImage = 1;
-    user.idImage = 1;
+    user.idImageId = 1;
     user.referrer = @"13527262005";
     
 //    user.array = @[@1, @2, @3];
@@ -963,19 +1179,20 @@
     else if ([connection.response isKindOfClass:[AIISettingResponse class]]) {
         if (!connection.response.query.status) {
             // 成功
-            AIISettingResponseQuery *responseQuery = (AIISettingResponseQuery *)connection.response.query;
-            AIIItemCollection *itemCollection = (AIIItemCollection *)responseQuery.itemCollection;
-            NSLog(@"itemCollection:%@", itemCollection);
-            
-            for (AIIItem *item in itemCollection) {
-                NSLog(@"%lu, %@, %@", (unsigned long)item.identifier, item.name, item.value);
-            }
+//            AIISettingResponseQuery *responseQuery = (AIISettingResponseQuery *)connection.response.query;
+//            AIIItemCollection *itemCollection = (AIIItemCollection *)responseQuery.itemCollection;
+//            NSLog(@"itemCollection:%@", itemCollection);
+//            
+//            for (AIIItem *item in itemCollection) {
+//                NSLog(@"%lu, %@, %@", (unsigned long)item.identifier, item.name, item.value);
+//            }
             
             // 1.写入协议文件缓存.
-            [connection.response writeToFile];
+            BOOL b = [connection.response writeToFile];
+            NSLog(@"+b:%d", b);
             
             // 2.读取协议文件缓存
-            AIISettingResponse *response2 = [[AIISettingResponse alloc] initWithCachesPacketFile];
+            AIISettingResponse *response2 = [[AIISettingResponse alloc] initWithContentsOfFile];
             NSLog(@"%@", response2);
 
         }

@@ -35,6 +35,8 @@ NSString *const DeviceTokenKey = @"deviceId";
         if (!([fm fileExistsAtPath:path isDirectory:&isDir] && isDir)) {
             [fm createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
         }
+        
+        NSLog(@"cachesPacketPath:%@", path);
     });
     return path;
 }
@@ -590,6 +592,12 @@ NSString *const DeviceTokenKey = @"deviceId";
     
     // 3.把十进制数字转二进制
     return [AIIUtility toBinarySystemWithDecimalSystem:[NSNumber numberWithInteger:dateInteger]];
+}
+
++ (NSString *)currentVersion
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    return [infoDictionary objectForKey:@"CFBundleShortVersionString"];
 }
 
 @end

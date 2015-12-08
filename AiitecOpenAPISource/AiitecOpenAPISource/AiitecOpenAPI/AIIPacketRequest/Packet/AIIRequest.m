@@ -37,6 +37,53 @@
     return self;
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIIRequest *request = [super copyWithZone:zone];
+    request.timestampLatest = [_timestampLatest copy];
+    request.md5 = [_md5 copy];
+    request.cache = _cache;
+    request.cacheSupporting = _cacheSupporting;
+    return request;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIIRequest *request = [super mutableCopyWithZone:zone];
+    request.timestampLatest = [_timestampLatest mutableCopy];
+    request.md5 = [_md5 mutableCopy];
+    request.cache = _cache;
+    request.cacheSupporting = _cacheSupporting;
+    return request;
+
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.timestampLatest forKey:@"RequestTimestampLatest"];
+    [aCoder encodeObject:self.md5 forKey:@"RequestMd5"];
+    [aCoder encodeInteger:self.cache forKey:@"RequestCache"];
+    [aCoder encodeInteger:self.cacheSupporting forKey:@"RequestCacheSupporting"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    self.timestampLatest = [aDecoder decodeObjectForKey:@"RequestTimestampLatest"];
+    self.md5 = [aDecoder decodeObjectForKey:@"RequestMd5"];
+    self.cache = [aDecoder decodeIntegerForKey:@"RequestCache"];
+    self.cacheSupporting = [aDecoder decodeIntegerForKey:@"RequestCacheSupporting"];
+    
+    return self;
+}
+
 #pragma mark - NSObject(NSKeyValueCoding)
 
 - (id)valueForUndefinedKey:(NSString *)key

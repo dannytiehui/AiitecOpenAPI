@@ -36,14 +36,14 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    return [[self class] allocWithZone:zone];
+    return [[[self class] allocWithZone:zone] init];
 }
 
 #pragma mark - NSMutableCopying
 
 - (id)mutableCopyWithZone:(NSZone *)zone
 {
-    return [[self class] mutableCopy];
+    return [[[self class] allocWithZone:zone] init];
 }
 
 #pragma mark - NSCoding

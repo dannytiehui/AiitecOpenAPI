@@ -68,4 +68,13 @@
     [packetRequest.settingDictionary writeToFile:[AIIPacketRequest settingPlistPath] atomically:YES];
 }
 
++ (void)start
+{
+    /// 检查缓存的版本号是否与当前版本号相同,否则清除sessionId.
+    NSString *cacheVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+    if (![[AIIUtility currentVersion] isEqualToString:cacheVersion]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sessionId"];
+    }
+}
+
 @end

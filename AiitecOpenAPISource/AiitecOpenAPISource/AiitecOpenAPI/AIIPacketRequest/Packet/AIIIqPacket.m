@@ -60,16 +60,16 @@
 {
     /// 子类实现
     [super encodeWithCoder:aCoder];
-    [aCoder encodeObject:self.query forKey:@"AIIIqPacketQuery"];
-    [aCoder encodeObject:self.nameSpace forKey:@"AIIIqPacketNameSpace"];
+    [aCoder encodeObject:self.query forKey:@"IqPacketQuery"];
+    [aCoder encodeObject:self.nameSpace forKey:@"IqPacketNameSpace"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     /// 子类实现
     self = [super initWithCoder:aDecoder];
-    self.query = [aDecoder decodeObjectForKey:@"AIIIqPacketQuery"];
-    self.nameSpace = [aDecoder decodeObjectForKey:@"AIIIqPacketNameSpace"];
+    self.query = [aDecoder decodeObjectForKey:@"IqPacketQuery"];
+    self.nameSpace = [aDecoder decodeObjectForKey:@"IqPacketNameSpace"];
     return self;
 }
 

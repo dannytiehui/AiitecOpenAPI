@@ -23,6 +23,59 @@
     return self;
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIITable *table = [super copyWithZone:zone];
+
+    table.page = _page;
+    table.limit = _limit;
+    table.orderBy = _orderBy;
+    table.orderType = _orderType;
+    table.where = [_where copyWithZone:zone];
+
+    return table;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIITable *table = [super mutableCopyWithZone:zone];
+    
+    table.page = _page;
+    table.limit = _limit;
+    table.orderBy = _orderBy;
+    table.orderType = _orderType;
+    table.where = [_where mutableCopyWithZone:zone];
+
+    return table;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeInteger:self.page forKey:@"TablePage"];
+    [aCoder encodeInteger:self.limit forKey:@"TableLimit"];
+    [aCoder encodeInteger:self.orderBy forKey:@"TableOrderBy"];
+    [aCoder encodeInteger:self.orderType forKey:@"TableOrderType"];
+    [aCoder encodeObject:self.where forKey:@"TableWhere"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    self.page = [aDecoder decodeIntegerForKey:@"TablePage"];
+    self.limit = [aDecoder decodeIntegerForKey:@"TableLimit"];
+    self.orderBy = [aDecoder decodeIntegerForKey:@"TableOrderBy"];
+    self.orderType = [aDecoder decodeIntegerForKey:@"TableOrderType"];
+    self.where = [aDecoder decodeObjectForKey:@"TableWhere"];
+    return self;
+}
+
 #pragma mark - NSObject(NSKeyValueCoding)
 
 - (void)setValue:(id)value forKey:(NSString *)key

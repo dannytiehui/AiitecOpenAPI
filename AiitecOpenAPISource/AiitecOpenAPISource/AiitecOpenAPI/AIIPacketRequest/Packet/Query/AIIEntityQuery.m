@@ -10,6 +10,39 @@
 
 @implementation AIIEntityQuery
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIIEntityQuery *entityQuery = [super copyWithZone:zone];
+    entityQuery.entity = [_entity copyWithZone:zone];
+    return entityQuery;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIIEntityQuery *entityQuery = [super mutableCopyWithZone:zone];
+    entityQuery.entity = [_entity mutableCopyWithZone:zone];
+    return entityQuery;
+}
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.entity forKey:@"EntityQueryEntity"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    self.entity = [aDecoder decodeObjectForKey:@"EntityQueryEntity"];
+    return self;
+}
+
 #pragma mark - NSObject(NSKeyValueCoding)
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
@@ -34,7 +67,6 @@
     [mutableDictionary removeObjectForKey:k];
     
     dict = mutableDictionary;
-    
     return dict;
 }
 

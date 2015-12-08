@@ -64,7 +64,7 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 /** 身份证号码. */
 @property (nonatomic, copy) NSString *idNumber;
 /** 身份证图片id. */
-@property (nonatomic, assign) NSUInteger idImage;
+@property (nonatomic, assign) NSUInteger idImageId;
 /** 身份证图片. */
 @property (nonatomic, copy) NSString *idImagePath;
 /** 生日. */
@@ -118,7 +118,7 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 
 /** 测试NSObject(NSKeyValueCoding)的mutableArrayValueForKey:方法. */
 @property (nonatomic, copy) NSDictionary *json;
-@property (nonatomic, strong) NSArray *array;
+//@property (nonatomic, strong) NSArray *array;
 
 /// option
 /** 背景图片id. */
@@ -203,5 +203,23 @@ typedef NS_ENUM(NSUInteger, AIIUserAuthStatus) {
 @property (nonatomic, assign) float statisticsConsumer;
 /** 是否已经签到:0未签到;1已签到. */
 @property (nonatomic, assign) BOOL sign;
+
+#pragma mark - 快卡
+/** 工作id. */
+@property (nonatomic, assign) NSUInteger jobId;
+/** 信用卡使用情况. */
+@property (nonatomic, assign) NSUInteger overdueId;
+/** 工作证件. */
+@property (nonatomic, assign) NSUInteger certificateId;
+/** 车辆价格，空表示没车. */
+@property (nonatomic, copy) NSString *carPrice;
+/** 房子价格，空表示没房子. */
+@property (nonatomic, copy) NSString *housePrice;
+/** 房子面积，空表示没房子. */
+@property (nonatomic, copy) NSString *houseArea;
+/** 水晶数量. */
+@property (nonatomic, assign) NSUInteger crystal;
+/** 1已获取分享奖励;2未获取分享奖励;. */
+@property (nonatomic, assign) BOOL isShare;
 
 @end

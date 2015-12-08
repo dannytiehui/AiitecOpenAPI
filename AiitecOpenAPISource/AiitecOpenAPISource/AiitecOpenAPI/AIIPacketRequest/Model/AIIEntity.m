@@ -33,6 +33,50 @@
     return self;
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    AIIEntity *entity = [super copyWithZone:zone];
+    entity.identifier = _identifier; //self.identifier;
+    entity.name = [_name copy];
+    entity.desc = [_desc copy];
+    entity.deleted = _deleted;
+    entity.timestampUpdate = [_timestampUpdate copy];
+    entity.timestamp = [_timestamp copy];
+    
+    entity.string = [_string copy];
+    entity.mutableString = [_mutableString copy];
+    entity.dictionary = [_dictionary copy];
+    entity.mutableDictionary = [_mutableDictionary copy];
+    entity.array = [_array copy];
+    entity.mutableArray = [_mutableArray copy];
+    
+    return entity;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    AIIEntity *entity = [super mutableCopyWithZone:zone];
+    entity.identifier = _identifier;
+    entity.name = [_name mutableCopy];
+    entity.desc = [_desc mutableCopy];
+    entity.deleted = _deleted;
+    entity.timestampUpdate = [_timestampUpdate mutableCopy];
+    entity.timestamp = [_timestamp mutableCopy];
+    
+    entity.string = [_string mutableCopy];
+    entity.mutableString = [_mutableString mutableCopy];
+    entity.dictionary = [_dictionary mutableCopy];
+    entity.mutableDictionary = [_mutableDictionary mutableCopy];
+    entity.array = [_array mutableCopy];
+    entity.mutableArray = [_mutableArray mutableCopy];
+    
+    return entity;
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
@@ -44,6 +88,13 @@
     [aCoder encodeBool:self.deleted forKey:@"EntityDeleted"];
     [aCoder encodeObject:self.timestampUpdate forKey:@"EntityTimestampUpdate"];
     [aCoder encodeObject:self.timestamp forKey:@"EntityTimestamp"];
+    
+    [aCoder encodeObject:self.string forKey:@"EntityString"];
+    [aCoder encodeObject:self.mutableString forKey:@"EntityMutableString"];
+    [aCoder encodeObject:self.dictionary forKey:@"EntityDictionary"];
+    [aCoder encodeObject:self.mutableDictionary forKey:@"EntityMutableDictionary"];
+    [aCoder encodeObject:self.array forKey:@"EntityArray"];
+    [aCoder encodeObject:self.mutableArray forKey:@"EntityMutableArray"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -55,6 +106,14 @@
     self.deleted = [aDecoder decodeBoolForKey:@"EntityDeleted"];
     self.timestampUpdate = [aDecoder decodeObjectForKey:@"EntityTimestampUpdate"];
     self.timestamp = [aDecoder decodeObjectForKey:@"EntityTimestamp"];
+    
+    self.string = [aDecoder decodeObjectForKey:@"EntityString"];
+    self.mutableString = [aDecoder decodeObjectForKey:@"EntityMutableString"];
+    self.dictionary = [aDecoder decodeObjectForKey:@"EntityDictionary"];
+    self.mutableDictionary = [aDecoder decodeObjectForKey:@"EntityMutableDictionary"];
+    self.array = [aDecoder decodeObjectForKey:@"EntityArray"];
+    self.mutableArray = [aDecoder decodeObjectForKey:@"EntityMutableArray"];
+    
     return self;
 }
 
