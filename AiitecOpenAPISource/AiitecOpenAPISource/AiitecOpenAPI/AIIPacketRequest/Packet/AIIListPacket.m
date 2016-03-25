@@ -82,6 +82,11 @@
     return [AIIListRequestQuery class];
 }
 
+- (AIIJSONCacheLevel)jsonCacheLevel
+{
+    return AIIJSONCacheLevelThird;
+}
+
 @end
 
 

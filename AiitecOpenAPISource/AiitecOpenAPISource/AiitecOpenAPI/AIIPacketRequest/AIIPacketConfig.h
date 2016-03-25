@@ -49,8 +49,11 @@
 #define NotReachable_STATUS         100
 #define NotReachable_DESC           @"哎呀！网络数据不对啦。"
 
-#define Cache_Packet_STATUS         99
+#define Cache_Packet_STATUS         91020
 #define Cache_Packet_DESC           @"来自缓存的协议文件"
+
+#define Packet_Request_Too_Fast_STATUS         91021
+#define Packet_Request_Too_Fast_DESC           @"操作太快，请稍后再试(0)"
 
 //#warning 设置开关，允许底层架构启用/禁用sessionId方案.
 /// 开关.允许底层架构启用/禁用sessionId方案.
@@ -58,6 +61,13 @@
 
 /** 是否启用通讯协议加密方案. */
 #define IqPacket_Encryption  YES
+
+/** 客户端是否启用「通讯协议请求太快,请稍后再试...」 默认YES，对同样的协议请求进行拦截;否则NO，同样的协议请求依旧发起网络请求. */
+#define Packet_Request_Too_Fast_Restricted YES
+
+/** 底层保留关键字. */
+// 1. [[NSUserDefaults standardUserDefaults] setObject:[AIIUtility currentVersion] forKey:@"CFBundleShortVersionString"];
+
 
 @interface AIIPacketConfig : NSObject
 

@@ -168,6 +168,9 @@ static NSMutableArray *_objectArray;
                 _newVersion = YES;
                 break;
             }
+            else if ([bundleShortVersionArray[i] integerValue] >  [versionArray[i] integerValue]) {
+                break;
+            }
         }
     }
     else {

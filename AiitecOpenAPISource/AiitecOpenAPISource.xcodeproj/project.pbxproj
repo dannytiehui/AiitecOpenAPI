@@ -259,6 +259,9 @@
 		889BA8EF1AB2C6EE00BE8129 /* XYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BA8EE1AB2C6EE00BE8129 /* XYPoint.m */; };
 		889BA8F51AB2CBE700BE8129 /* Fraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BA8F41AB2CBE700BE8129 /* Fraction.m */; };
 		889BF4F91A10AB43004F86F9 /* HttpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889BF4F81A10AB43004F86F9 /* HttpViewController.m */; };
+		88A4B3371CA554560035D433 /* AIIPacketJSONCacheObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A4B3321CA554560035D433 /* AIIPacketJSONCacheObject.m */; };
+		88A4B3381CA554560035D433 /* AIIPacketJSONCacheObjectCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A4B3341CA554560035D433 /* AIIPacketJSONCacheObjectCollection.m */; };
+		88A4B3391CA554560035D433 /* AIIPacketJSONCacheObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A4B3361CA554560035D433 /* AIIPacketJSONCacheObjectManager.m */; };
 		88C7749F1AA80DC8007A2BE1 /* AII_Entity_UpdatePacket.h in Resources */ = {isa = PBXBuildFile; fileRef = 88C7749E1AA80DC8007A2BE1 /* AII_Entity_UpdatePacket.h */; };
 		88C774A11AA80E04007A2BE1 /* AII_Entity_UpdatePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C774A01AA80E04007A2BE1 /* AII_Entity_UpdatePacket.m */; };
 		88C774A41AA810FD007A2BE1 /* AII_Entity_UpdatePacket_h in Resources */ = {isa = PBXBuildFile; fileRef = 88C774A21AA810FD007A2BE1 /* AII_Entity_UpdatePacket_h */; };
@@ -734,6 +737,12 @@
 		889BA8F41AB2CBE700BE8129 /* Fraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fraction.m; sourceTree = "<group>"; };
 		889BF4F71A10AB43004F86F9 /* HttpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpViewController.h; sourceTree = "<group>"; };
 		889BF4F81A10AB43004F86F9 /* HttpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpViewController.m; sourceTree = "<group>"; };
+		88A4B3311CA554560035D433 /* AIIPacketJSONCacheObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketJSONCacheObject.h; sourceTree = "<group>"; };
+		88A4B3321CA554560035D433 /* AIIPacketJSONCacheObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketJSONCacheObject.m; sourceTree = "<group>"; };
+		88A4B3331CA554560035D433 /* AIIPacketJSONCacheObjectCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketJSONCacheObjectCollection.h; sourceTree = "<group>"; };
+		88A4B3341CA554560035D433 /* AIIPacketJSONCacheObjectCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketJSONCacheObjectCollection.m; sourceTree = "<group>"; };
+		88A4B3351CA554560035D433 /* AIIPacketJSONCacheObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPacketJSONCacheObjectManager.h; sourceTree = "<group>"; };
+		88A4B3361CA554560035D433 /* AIIPacketJSONCacheObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPacketJSONCacheObjectManager.m; sourceTree = "<group>"; };
 		88C2F7151A1DA3F00039A7C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		88C2F7171A1DA3F50039A7C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		88C7749E1AA80DC8007A2BE1 /* AII_Entity_UpdatePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AII_Entity_UpdatePacket.h; sourceTree = "<group>"; };
@@ -1066,6 +1075,12 @@
 				88748D411ACA86E500364642 /* AIIJSONModel.m */,
 				88748D421ACA86E500364642 /* AIIModelCollection.h */,
 				88748D431ACA86E500364642 /* AIIModelCollection.m */,
+				88A4B3311CA554560035D433 /* AIIPacketJSONCacheObject.h */,
+				88A4B3321CA554560035D433 /* AIIPacketJSONCacheObject.m */,
+				88A4B3331CA554560035D433 /* AIIPacketJSONCacheObjectCollection.h */,
+				88A4B3341CA554560035D433 /* AIIPacketJSONCacheObjectCollection.m */,
+				88A4B3351CA554560035D433 /* AIIPacketJSONCacheObjectManager.h */,
+				88A4B3361CA554560035D433 /* AIIPacketJSONCacheObjectManager.m */,
 				88748D441ACA86E500364642 /* DataForm */,
 				88748D511ACA86E500364642 /* Table */,
 			);
@@ -1711,6 +1726,7 @@
 				888B07931ABFFDDA00294D58 /* AIIDeletePacket.m in Sources */,
 				882602121A31BF3E00C6C843 /* AII_Entity_.m in Sources */,
 				886C19D019D515E300FC76FC /* ViewController.m in Sources */,
+				88A4B3381CA554560035D433 /* AIIPacketJSONCacheObjectCollection.m in Sources */,
 				888B07EB1ABFFDDA00294D58 /* AAUIImageClipView.m in Sources */,
 				888B07BC1ABFFDDA00294D58 /* AIIPointDetailsPacket.m in Sources */,
 				888B07641ABFFDDA00294D58 /* AIIArticleCollection.m in Sources */,
@@ -1719,6 +1735,7 @@
 				888B07A21ABFFDDA00294D58 /* AIIUserBindMobilePacket.m in Sources */,
 				88748D951ACA86E500364642 /* AIIDataTable.m in Sources */,
 				88748D9D1ACA86E500364642 /* AIIDetailsPacket.m in Sources */,
+				88A4B3371CA554560035D433 /* AIIPacketJSONCacheObject.m in Sources */,
 				888B07B21ABFFDDA00294D58 /* ImageListPacket.m in Sources */,
 				888B07BF1ABFFDDA00294D58 /* AIIPositionUpdatePacket.m in Sources */,
 				888B077F1ABFFDDA00294D58 /* AIIOperate.m in Sources */,
@@ -1825,6 +1842,7 @@
 				88D208B51B71BD72008B3FB9 /* AIIHeartbeatPacket.m in Sources */,
 				888B079B1ABFFDDA00294D58 /* AIIOperatePacket.m in Sources */,
 				888B075D1ABFFDDA00294D58 /* AIIAd.m in Sources */,
+				88A4B3391CA554560035D433 /* AIIPacketJSONCacheObjectManager.m in Sources */,
 				888B07D71ABFFDDA00294D58 /* AIIWeiboDetailsPacket.m in Sources */,
 				886C19CA19D515E300FC76FC /* main.m in Sources */,
 				888B07A91ABFFDDA00294D58 /* AIIUserOperateListPacket.m in Sources */,

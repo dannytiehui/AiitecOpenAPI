@@ -74,6 +74,8 @@
     return self;
 }
 
+#pragma mark - Public
+
 /**
  *  @brief 「重写父类方法」将服务器响应的数据(self.JSONString)写入(缓存)到文件.
  *
@@ -83,6 +85,17 @@
 {
     NSDictionary *dict = [AIIUtility dictionaryWithJSONString:self.JSONString];
     return [dict writeToFile:self.filePath atomically:YES];
+}
+
+- (NSString *)filePathWithSubfolder:(NSString *)userId filename:(NSString *)md5
+{
+    return [NSString stringWithFormat:@"%@/%@_%@.json", [AIIUtility cachesPacketPathWithSubfolder:userId], self.nameSpace, md5];
+}
+
+- (BOOL)writeToFileWithSubfolder:(NSString *)userId filename:(NSString *)md5
+{
+    NSDictionary *dict = [AIIUtility dictionaryWithJSONString:self.JSONString];
+    return [dict writeToFile:[self filePathWithSubfolder:userId filename:md5] atomically:YES];
 }
 
 @end

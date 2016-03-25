@@ -135,6 +135,8 @@
     
     /** 默认移除md5属性. */
     [mutableDictionary removeObjectForKey:@"md5"];
+    /** 默认移除jsonCacheReadWay属性. */
+    [mutableDictionary removeObjectForKey:@"jsonCacheReadWay"];
     
     dict = mutableDictionary;
     return dict;
@@ -202,10 +204,56 @@
     return AIICacheWaySQLite;
 }
 
+- (AIIJSONCacheLevel)jsonCacheLevel
+{
+    return AIIJSONCacheLevelNone;
+}
+
 - (NSString *)packetNickname
 {
     // 子类实现
     return @"";
+}
+
+//- (NSString *)md5
+//{
+//    return [self md5IncludeTimestampLatest:YES];
+//}
+
+- (NSString *)md5IncludeTimestampLatest:(BOOL)flag
+{
+    NSString *md5Str = @"";
+    
+//    NSString *jsonString = [AIIUtility stringWithDictionary:[self dictionaryWithValuesForKeys:self.keys]];
+    NSDictionary *dictionary = [self dictionaryWithValuesForKeys:self.keys];
+    NSMutableDictionary *md = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+    [md setObject:@"" forKey:@"m"];
+    [md removeObjectForKey:@"m"];
+    
+    if (!flag) {
+        [md setObject:@"" forKey:@"t"];
+        [md removeObjectForKey:@"t"];
+    }
+    
+    NSString *jsonString = [AIIUtility stringWithDictionary:md];
+//    NSLog(@"jsonString 1:%@", jsonString);
+    
+    /** jsonString 去除格式化. */
+    jsonString = [AIIUtility stringWithDictionaryClearFormat:md];
+//    NSLog(@"jsonString 2:%@", jsonString);
+    
+    md5Str = [AIIUtility md5:jsonString];
+//    NSLog(@"1._md5:%@", md5Str);
+    
+    if (IqPacket_Encryption) {
+        md5Str = [md5Str stringByAppendingString:[AIIUtility iqPacketEncryption]];
+//        NSLog(@"2._md5:%@", md5Str);
+        
+        md5Str = [AIIUtility md5:md5Str];
+//        NSLog(@"3.md5Str:%@", md5Str);
+    }
+    
+    return md5Str;
 }
 
 @end

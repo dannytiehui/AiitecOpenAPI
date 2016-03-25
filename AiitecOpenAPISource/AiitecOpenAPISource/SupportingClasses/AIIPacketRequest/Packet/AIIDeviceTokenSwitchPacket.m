@@ -30,7 +30,7 @@
     
     NSString *k = @"deviceToken";
 //    if (![[dict objectForKey:k] isKindOfClass:[NSNull class]]) {
-    [mutableDictionary setObject:[[NSUserDefaults standardUserDefaults] objectForKey:DeviceTokenKey] forKey:k];
+    [mutableDictionary setObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceId"] forKey:k];
 //    }
     dict = mutableDictionary;
     

@@ -41,6 +41,28 @@ NSString *const DeviceTokenKey = @"deviceId";
     return path;
 }
 
++ (NSString *)cachesPacketPathWithSubfolder:(NSString *)userId;
+{
+    static NSString *path = nil;
+    
+    NSString *subfolder = [userId isEqualToString:@""] ? @"0" : userId;
+    NSString *_tempPath = [[AIIUtility cachesPacketPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"JSONCache/%@", subfolder]];
+    
+    if (![path isEqualToString:_tempPath]) {
+        path = _tempPath;
+        
+        // 判断目录是否存在,不存在则创建
+        NSFileManager *fm = [NSFileManager defaultManager];
+        BOOL isDir;
+        if (!([fm fileExistsAtPath:path isDirectory:&isDir] && isDir)) {
+            [fm createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+        
+        NSLog(@"cachesPacketPathWithSubfolder:%@", path);
+    }
+    return path;
+}
+
 + (void)setObject:(id)anObject forKey:(id <NSCopying>)aKey toDictionary:(NSMutableDictionary *)dict
 {
     if (anObject) {

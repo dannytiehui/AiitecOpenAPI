@@ -177,6 +177,38 @@
             endingLineNumber = "1287"
             landmarkName = "-packetConnectionFinished:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController packetConnectionFinished:]"
+                  moduleName = "AiitecOpenAPISource"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///svnonline/github.com/AiitecOpenAPI/AiitecOpenAPISource/AiitecOpenAPISource/ViewController.m"
+                  timestampString = "480599140.082885"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1287"
+                  endingLineNumber = "1287"
+                  offsetFromSymbolStart = "3739">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController packetConnectionFinished:]"
+                  moduleName = "AiitecOpenAPISource"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///svnonline/github.com/AiitecOpenAPI/AiitecOpenAPISource/AiitecOpenAPISource/ViewController.m"
+                  timestampString = "480599140.083173"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1287"
+                  endingLineNumber = "1287"
+                  offsetFromSymbolStart = "3760">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiitecOpenAPISource/AiitecOpenAPISource/AiitecOpenAPI/AIIPacketRequest/Cache/AIIPacketConnection.m"
-            timestampString = "440148275.658783"
+            timestampString = "480599052.749253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "607"
-            endingLineNumber = "607"
+            startingLineNumber = "618"
+            endingLineNumber = "618"
             landmarkName = "+queryCacheSchoolList:table:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AiitecOpenAPISource/AiitecOpenAPISource/AiitecOpenAPI/AIIPacketRequest/Cache/AIIPacketConnection.m"
-            timestampString = "440147668.806948"
+            timestampString = "480599052.749253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "+sendAsynchronous:target:action:context:"
             landmarkType = "5">
          </BreakpointContent>

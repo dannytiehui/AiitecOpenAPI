@@ -36,6 +36,7 @@ UIKIT_EXTERN NSString *const DeviceTokenKey;
 
 + (NSString *)cachesPath;
 + (NSString *)cachesPacketPath;
++ (NSString *)cachesPacketPathWithSubfolder:(NSString *)userId;
 
 /// 判断添加到 NSMutableDictionary 的对象是否为nil, 为nil则忽略.
 

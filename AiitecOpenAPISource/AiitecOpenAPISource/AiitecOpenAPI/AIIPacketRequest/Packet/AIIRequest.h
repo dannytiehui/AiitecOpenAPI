@@ -28,6 +28,41 @@ typedef NS_ENUM(NSUInteger, AIICache){
     AIICacheFullFourth        //!< 4[完全缓存]获取 > timestampLatest且delete数据[仅针对列表].
 };
 
+/** AIIPacketType.
+ *
+ *  通讯协议类型.
+ *
+ */
+typedef NS_ENUM(NSUInteger, AIIPacketType){
+    AIIPacketTypeDefault,           //!< 默认.
+    AIIPacketTypeList,              //!< 列表List.
+    AIIPacketTypeDetails,           //!< 详情Details.
+    AIIPacketTypeSubmit,            //!< 提交Submit.
+    AIIPacketTypeCollectionSubmit,  //!< 数组提交CollectionSubmit.
+    AIIPacketTypeUpdate,            //!< 更新Update.
+    AIIPacketTypeSwitch,            //!< 开关Switch.
+    //    AIIPacketTypeUpload,            //!< 上传Upload(图片/视频等).
+};
+
+/** AIIJSONCache.
+ *
+ *  查询类型通讯协议缓存级别.
+ *
+ */
+typedef NS_ENUM(NSUInteger, AIIJSONCacheLevel){
+    AIIJSONCacheLevelNone,          //!< 0不缓存。默认。
+    AIIJSONCacheLevelFirst,         //!< 1完全缓存。数据量大，更新频繁1。仅安装APP后初始化时（或者版本升级）需要请求网络一次。例如：省市区。(暂不考虑)
+    AIIJSONCacheLevelSecond,        //!< 2不完全缓存。数据量小，更新频繁2。APP每次启动或者从后台切换到前台时。如：CategoryList等。
+    AIIJSONCacheLevelThird,         //!< 3按需缓存。数据量小，更新频繁3。每次都需要网络探测。如：以Details后缀的协议（包括：用户详情协议）
+};
+
+typedef NS_ENUM(NSUInteger, AIIJSONCacheReadWay){
+    AIIJSONCacheReadWayDefault,       //!< 0 默认。
+    AIIJSONCacheReadWayFirst,         //!< 1 不发起网络请求,直接读取「JSONCache文件缓存数据」.
+    AIIJSONCacheReadWaySecond,        //!< 2 发起网络请求,若返回1020,再读取「JSONCache文件缓存数据」.
+};
+
+
 /// AIIRequest
 /**  协议请求基类.
  *
@@ -41,10 +76,13 @@ typedef NS_ENUM(NSUInteger, AIICache){
 @property (nonatomic, copy) NSString *md5;
 @property (nonatomic, assign) AIICache cache;
 @property (nonatomic, assign) AIICacheSupporting cacheSupporting;
+@property (nonatomic, assign) AIIJSONCacheReadWay jsonCacheReadWay;
 
 //- (AIICacheSupporting)cacheSupporting;
 - (AIICacheWay)cacheWay;
+- (AIIJSONCacheLevel)jsonCacheLevel;
 - (NSString *)packetNickname;
+- (NSString *)md5IncludeTimestampLatest:(BOOL)flag;
 
 
 #pragma mark - Private

@@ -8,6 +8,7 @@
 
 #import "AIIPacketHttpConnection.h"
 #import "AIIPacketManager.h"
+#import "AIIPacketJSONCacheObjectManager.h"
 
 #import "AIISessionPacket.h"
 #import "AIIListPacket.h"
@@ -41,6 +42,12 @@ typedef NS_ENUM(NSUInteger, HttpMethod){
 + (void)sessionIdRequest:(AIIPacketHttpConnection *)connection;
 
 - (void)connectionDidFinish;
+/**
+ *  @brief  若请求队列中包含同样的协议请求，则拦截网络请求直接回调.
+ *
+ *  @param  sessionIdIsNull sessionId是否为空.
+ */
+- (void)connectionDidFinishImmediately:(BOOL)sessionIdIsNull;
 
 @end
 
@@ -49,11 +56,11 @@ typedef NS_ENUM(NSUInteger, HttpMethod){
 @implementation AIIPacketHttpConnection
 
 static NSMutableArray *_packetHttpConnectionArray;
-static NSMutableArray *_packetHttpConnectionQueue;
+static NSMutableArray *_packetHttpConnectionQueue;// 获取到sessionId前，存放通讯协议请求队列.
 /**
  *  @brief  拦截delegate开关.适用于ViewController需要根据代理自动跳转到登录页面,同时防止多次触发.
  *
- *  例如:当用户同时发起1,2,3个请求,其中1,3需要用户登录,2不需要,底层自动拦截掉3的请求代理.
+ *  例如:当用户同时发起A,B,C个请求,其中A,C需要用户登录,B不需要,底层自动拦截掉C的请求代理(不需要回调给页面).
  */
 static bool delegateIntercept;
 
@@ -160,14 +167,29 @@ static bool delegateIntercept;
         _packetHttpConnectionArray = [[NSMutableArray alloc] init];
     }
     
-//    NSLog(@"--%@, %d", request.nameSpace, [_packetHttpConnectionArray containsObject:connection]);
-    if (![_packetHttpConnectionArray containsObject:connection]) {
+    NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionId"];
+    
+//    NSLog(@"1--%@, hash:%ld, containsObject:%d; _packetHttpConnectionArray.count:%lu", request.nameSpace, [connection hash], [_packetHttpConnectionArray containsObject:connection], (unsigned long)[_packetHttpConnectionArray count]);
+    
+    if ([_packetHttpConnectionQueue containsObject:connection] && !sessionId.length && Packet_Request_Too_Fast_Restricted) {
+        [connection connectionDidFinishImmediately:YES];
+        return;
+    }
+    else if ([_packetHttpConnectionQueue containsObject:connection] && sessionId.length) {
+        // _packetHttpConnectionQueue里面发起的请求，直接执行.
+    }
+    else if([_packetHttpConnectionArray containsObject:connection] && Packet_Request_Too_Fast_Restricted){
+        [connection connectionDidFinishImmediately:NO];
+        return;
+    }
+    else {
         [_packetHttpConnectionArray addObject:connection];
     }
+//    NSLog(@"2--%lu", (unsigned long)[_packetHttpConnectionArray count]);
     
-    NSString *path = connection.apiPath;
-//    ASIFormDataRequest *req = [AIIPacketHttpConnection formDataRequest:request URLString:path];
-    NSMutableURLRequest *req = [AIIPacketHttpConnection formDataRequest:request URLString:path];
+//    NSString *path = connection.apiPath;
+////    ASIFormDataRequest *req = [AIIPacketHttpConnection formDataRequest:request URLString:path];
+//    NSMutableURLRequest *req = [AIIPacketHttpConnection formDataRequest:request URLString:path];
     
     if (![ReachabilityUtility defaultManager].isReachable) {
         NSLog(NotReachableAlertMessage);
@@ -175,6 +197,17 @@ static bool delegateIntercept;
         double delayInSeconds = 0.1;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            
+            // JSONCache文件缓存(2016-3-23).无网络,若存在缓存文件则直接读取.
+            AIIJSONCacheLevel jsonCacheLevel = connection.request.jsonCacheLevel;
+            if (jsonCacheLevel == AIIJSONCacheLevelSecond || jsonCacheLevel == AIIJSONCacheLevelThird) {
+                BOOL includeRequest = [[AIIPacketJSONCacheObjectManager shareInstance].finishedJSONCacheLevelSecondPacketRequestMutableArray containsObject:[connection.request md5IncludeTimestampLatest:YES]];
+                if (includeRequest) { //!< 直接返回缓存数据.
+                    connection.request.jsonCacheReadWay = AIIJSONCacheReadWayFirst;
+                    NSLog(@"无网络，直接读取缓存数据. %@", connection.request.nameSpace);
+                }
+            }
+            
             [connection connectionDidFinish];
         });
         return;
@@ -195,7 +228,7 @@ static bool delegateIntercept;
         return;
     }
     
-    NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionId"];
+//    NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionId"];
 //    if (OPEN_SESSION_VALIDATE && !bSessionRequest && ![AIIPacketManager defaultManager].sessionId.length) {
     /// 情况一: sessionId为空或不存在时.
     if (OPEN_SESSION_VALIDATE && !bSessionRequest && !sessionId.length) {
@@ -216,7 +249,42 @@ static bool delegateIntercept;
         return;
     }
     
+    // JSONCache文件缓存(2016-3-23).
+    AIIJSONCacheLevel jsonCacheLevel = connection.request.jsonCacheLevel;
+    if (jsonCacheLevel == AIIJSONCacheLevelSecond) {
+        BOOL includeRequest = [[AIIPacketJSONCacheObjectManager shareInstance].finishedJSONCacheLevelSecondPacketRequestMutableArray containsObject:[connection.request md5IncludeTimestampLatest:YES]];
+        if (includeRequest) { //!< 直接返回缓存数据.
+            double delayInSeconds = 0.1;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                connection.request.jsonCacheReadWay = AIIJSONCacheReadWayFirst;
+                [connection connectionDidFinish];
+            });
+            return;
+        }
+        else {
+            [[AIIPacketJSONCacheObjectManager shareInstance].finishedJSONCacheLevelSecondPacketRequestMutableArray addObject:[connection.request md5IncludeTimestampLatest:NO]];
+        }
+    }
+    
+    if (jsonCacheLevel == AIIJSONCacheLevelSecond || jsonCacheLevel == AIIJSONCacheLevelThird) { // 获取缓存时间,继续发起网络请求.
+        request.timestampLatest = [[AIIPacketJSONCacheObjectManager shareInstance].md5AndTimestampLatestMutableDictionary objectForKey:[request md5IncludeTimestampLatest:NO]];
+        [request jsonStringWithObjectStringSetNull];
+    }
+    
+    // 当用户登录时，自动保存缓存数据.
+    if ([connection.request.nameSpace isEqualToString:@"UserLogin"]) {
+        [[AIIPacketJSONCacheObjectManager shareInstance] save];
+    }
+    
+    NSString *path = connection.apiPath;
+//    ASIFormDataRequest *req = [AIIPacketHttpConnection formDataRequest:request URLString:path];
+    NSMutableURLRequest *req = [AIIPacketHttpConnection formDataRequest:request URLString:path];
+    
+#if AiitecOpenAPI_DEBUG
     NSLog(@"主线:%@", [request jsonStringWithObject]);
+#endif
+    
     NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:req delegate:connection];
     if (!urlConnection) {
         NSLog(@"NSURLConnection.%@", @"创建失败");
@@ -287,7 +355,7 @@ static bool delegateIntercept;
 + (void)sessionIdRequest:(AIIPacketHttpConnection *)connection
 {
     /// 如果没有获取到设备号，则延时1s发起请求(2015-12-08).
-    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceTokenKey];
+    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceId"];
     if (!deviceToken) {
         double delayInSeconds = 1;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -297,20 +365,35 @@ static bool delegateIntercept;
             [AIIPacketHttpConnection sendAsynchronous:request delegate:connection.delegate context:connection.context];
         });
     }
-//    [AIIPacketManager defaultManager].sessionRequesting = YES;
-//    AIIRequest *request = [[AIISessionRequest alloc] init];
-//    [AIIPacketHttpConnection sendAsynchronous:request delegate:connection.delegate context:connection.context];
+    else {
+        [AIIPacketManager defaultManager].sessionRequesting = YES;
+        AIIRequest *request = [[AIISessionRequest alloc] init];
+        [AIIPacketHttpConnection sendAsynchronous:request delegate:connection.delegate context:connection.context];
+    }
 }
 
 - (void)connectionDidFinish
 {
-    _responseString = [[NSString alloc] initWithData:_receiveData encoding:NSUTF8StringEncoding];
-//#ifdef DEBUG
-    NSLog(@"%@(responseString) = %@", self.request.nameSpace, _responseString);
-//#endif
     NSString *className = [self responseClassName];
-    self.response = [[NSClassFromString(className) alloc] initWithJSONString:_responseString];
     
+    if (self.request.jsonCacheReadWay == AIIJSONCacheReadWayFirst) { //!< 网络拦截，直接读缓存.
+        NSString *path = [self.response filePathWithSubfolder:[AIIPacketJSONCacheObjectManager shareInstance].subfolder filename:[self.request md5IncludeTimestampLatest:NO]];
+        self.response = [[NSClassFromString(className) alloc] initWithContentsOfFile:path];
+        
+        self.response.query.status = Cache_Packet_STATUS;
+        self.response.query.desc = Cache_Packet_DESC;
+        NSLog(@"网络拦截, 直接读缓存: %@, %d, %@", self.request.nameSpace, Cache_Packet_STATUS, Cache_Packet_DESC);
+    }
+    else {
+        _responseString = [[NSString alloc] initWithData:_receiveData encoding:NSUTF8StringEncoding];
+//#if AiitecOpenAPI_DEBUG
+NSLog(@"%@(responseString) = %@", self.request.nameSpace, _responseString);
+//#endif
+//        NSString *className = [self responseClassName];
+        self.response = [[NSClassFromString(className) alloc] initWithJSONString:_responseString];
+    }
+    
+    NSUInteger status = self.response.query.status;
     BOOL bSessionResponse = [self.request.nameSpace isEqualToString:@"Session"];
     if (bSessionResponse) {
         NSString *sessionId = ((AIISessionResponse *)self.response).sessionId;
@@ -348,6 +431,28 @@ static bool delegateIntercept;
             delegateIntercept = YES;
         }
     }
+    /// 情况四: 通讯协议文件缓存可用.
+    else if (status == 1020) {
+        self.request.jsonCacheReadWay = AIIJSONCacheReadWaySecond;
+        
+        NSString *desc = self.response.query.desc;
+        NSString *timestamp = self.response.query.timestamp;
+        
+        NSString *path = [self.response filePathWithSubfolder:[AIIPacketJSONCacheObjectManager shareInstance].subfolder filename:[self.request md5IncludeTimestampLatest:NO]];
+        self.response = [[NSClassFromString(className) alloc] initWithContentsOfFile:path];
+        
+        self.response.query.status = status;
+        self.response.query.desc = desc;
+        self.response.query.timestamp = timestamp;
+        
+        //        NSLog(@"connectionDidFinish: %@, %lu, %@, %@", self.request.nameSpace, self.response.query.status, self.response.query.desc, self.response.query.timestamp);
+    }
+    else if (status == 0) {
+        // 当用户登出时，自动保存缓存数据.
+        if ([self.request.nameSpace isEqualToString:@"UserLogout"]) {
+            [[AIIPacketJSONCacheObjectManager shareInstance] save];
+        }
+    }
     
     if (_packetHttpConnectionQueue.count) {
         AIIPacketHttpConnection *connection = [_packetHttpConnectionQueue firstObject];
@@ -383,6 +488,31 @@ static bool delegateIntercept;
     }
 }
 
+- (void)connectionDidFinishImmediately:(BOOL)sessionIdIsNull
+{
+    NSLog(@"获取到 sessionId%@ 拦截通讯协议: %@, %@", sessionIdIsNull ? @"前" : @"后", self.request.nameSpace, Packet_Request_Too_Fast_DESC);
+    
+    AIISessionRequest *sessionRequest = [[AIISessionRequest alloc] init];
+    if ([self.request.nameSpace isEqualToString:sessionRequest.nameSpace]) {
+        return;
+    }
+    
+    NSString *className = [self responseClassName];
+    self.response = [[NSClassFromString(className) alloc] init];
+    self.response.query.status = Packet_Request_Too_Fast_STATUS;
+    self.response.query.desc = Packet_Request_Too_Fast_DESC;
+    
+    if (self.delegate) {
+        [self.delegate packetRequestFinished:self];
+    }
+    else if ([self.target respondsToSelector:self.action]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self.target performSelector:self.action withObject:self];
+#pragma clang diagnostic pop
+    }
+}
+
 #pragma mark - Public Method
 
 + (AIIResponse *)sendSynchronous:(AIIRequest *)request
@@ -409,6 +539,28 @@ static bool delegateIntercept;
     connection.action = action;
     
     [AIIPacketHttpConnection sendAsynchronous:connection request:request];    
+}
+
+#pragma mark - Override
+
+- (BOOL)isEqual:(id)other
+{
+//    NSLog(@"1.isEqual++%@", self.request.jsonStringWithObject);
+//    NSLog(@"2.isEqual++%@", ((AIIPacketHttpConnection *)other).request.jsonStringWithObject);
+    if (other == self) {
+        return YES;
+    }
+//    else if (![super isEqual:other]) {
+//        return NO;
+//    }
+    else {
+        return [self.request.jsonStringWithObject isEqualToString:((AIIPacketHttpConnection *)other).request.jsonStringWithObject];
+    }
+}
+
+- (NSUInteger)hash
+{
+    return [self.request.jsonStringWithObject hash];
 }
 
 @end

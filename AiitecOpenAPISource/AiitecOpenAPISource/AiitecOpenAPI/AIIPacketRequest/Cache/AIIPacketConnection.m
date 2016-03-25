@@ -8,6 +8,7 @@
 
 #import "AIIPacketConnection.h"
 
+#import "AIIPacketJSONCacheObjectManager.h"
 #import "AIIFileCache.h"
 
 #import "AIIListPacket.h"
@@ -45,7 +46,8 @@
 
 + (NSString *)responseClassName:(NSString *)className;
 + (NSString *)responseTableClassName:(NSString *)className;
-+ (void)_sendAsynchronous:(AIIRequest *)request delegate:(id<PacketHttpConnectionDelegate>)delegate context:(id)context;
+//+ (void)_sendAsynchronous:(AIIRequest *)request delegate:(id<PacketHttpConnectionDelegate>)delegate context:(id)context;
++ (void)_sendAsynchronous:(AIIPacketConnection *)connection;
 
 - (BOOL)judgeCacheHandle;
 - (void)judgeCacheHandleFinished;
@@ -78,13 +80,15 @@ static NSMutableArray *_packetConnectionArray;
     return [className stringByReplacingOccurrencesOfString:suffix withString:@"Table"];
 }
 
-+ (void)_sendAsynchronous:(AIIRequest *)request delegate:(id<PacketHttpConnectionDelegate>)newDelegate context:(id)context
+//+ (void)_sendAsynchronous:(AIIRequest *)request delegate:(id<PacketHttpConnectionDelegate>)newDelegate context:(id)context
++ (void)_sendAsynchronous:(AIIPacketConnection *)connection
 {
     if (!_packetConnectionArray) {
         _packetConnectionArray = [[NSMutableArray alloc] init];
     }
-    [_packetConnectionArray addObject:newDelegate];
+    [_packetConnectionArray addObject:connection];
     
+    AIIRequest *request = connection.request;
     if (request.cacheSupporting == AIICacheSupportingNormal) {
         request.cache = AIICacheNormalFirst;
     }
@@ -93,7 +97,7 @@ static NSMutableArray *_packetConnectionArray;
     }
     
 //    NSLog(@"主线:%@", [request jsonStringWithObject]);
-    [AIIPacketHttpConnection sendAsynchronous:request delegate:newDelegate context:context];
+    [AIIPacketHttpConnection sendAsynchronous:request delegate:connection context:connection.context];
 }
 
 #pragma mark - Public Method
@@ -143,7 +147,8 @@ static NSMutableArray *_packetConnectionArray;
 //        NSLog(@"主线:%@", [request toJSON]);
 //        [AIIPacketHttpConnection sendAsynchronous:request delegate:connection context:context];
         
-        [AIIPacketConnection _sendAsynchronous:request delegate:connection context:context];
+//        [AIIPacketConnection _sendAsynchronous:request delegate:connection context:context];
+        [AIIPacketConnection _sendAsynchronous:connection];
     }
 }
 
@@ -179,7 +184,8 @@ static NSMutableArray *_packetConnectionArray;
 //        NSLog(@"主线:%@", [request toJSON]);
 //        [AIIPacketHttpConnection sendAsynchronous:request delegate:connection context:context];
         
-        [AIIPacketConnection _sendAsynchronous:request delegate:connection context:context];
+//        [AIIPacketConnection _sendAsynchronous:request delegate:connection context:context];
+        [AIIPacketConnection _sendAsynchronous:connection];
     }
 }
 
@@ -257,6 +263,11 @@ static NSMutableArray *_packetConnectionArray;
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [self.target performSelector:self.action withObject:self];
 #pragma clang diagnostic pop
+    }
+    
+    if (connection.response.query.status != Packet_Request_Too_Fast_STATUS) {
+        // 通讯协议文件缓存相关操作(2016-3-24)
+        [[AIIPacketJSONCacheObjectManager shareInstance] updatePacketJSONCacheObjectCollectionWithPacketConnection:self];
     }
     
     [_packetConnectionArray removeObject:self];

@@ -33,6 +33,11 @@
     return @"参照项列表";
 }
 
+- (AIIJSONCacheLevel)jsonCacheLevel
+{
+    return AIIJSONCacheLevelSecond;
+}
+
 @end
 
 

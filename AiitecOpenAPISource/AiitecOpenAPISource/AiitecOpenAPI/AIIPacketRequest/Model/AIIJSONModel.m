@@ -14,6 +14,8 @@
     NSDictionary *_propertysAttributes;
 }
 
+- (NSString *)filePath;
+
 @end
 
 
@@ -47,6 +49,26 @@
         }
         else {
             NSLog(@"WithContentsOfFile (缓存文件不存在). %@", self.filePath);
+        }
+    }
+    return self;
+}
+
+- (id)initWithContentsOfFile:(NSString *)path
+{
+    //    if (self = [super init]) {
+    if (self = [self init]) { // 注意,子类中有部分属性(属性为对象时,如:self.address.key方可取到值)需要初始化.
+        NSFileManager *fm = [NSFileManager defaultManager];
+        BOOL isDir;
+        BOOL fileExists = [fm fileExistsAtPath:path isDirectory:&isDir];
+        BOOL isCachesFileExists = !isDir && fileExists;
+        
+        if (isCachesFileExists) {
+            NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+            [self setValuesForKeysWithDictionary:dict];
+        }
+        else {
+            NSLog(@"WithContentsOfFile (缓存文件不存在). %@", path);
         }
     }
     return self;

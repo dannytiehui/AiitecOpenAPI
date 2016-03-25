@@ -57,6 +57,15 @@
         NSString *path = [sqliteDirectories stringByAppendingPathComponent:dbName];
         
         NSFileManager *fm = [NSFileManager defaultManager];
+        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:dbName ofType:@"sqlite"];
+        
+        /** 当APP版本更新时，需要先移除SQLite再重新缓存。防止数据库结构或数据发生变化时，新版本无法使用的问题(2016-01-04). */
+        BOOL equal = [[AIIUtility currentVersion] isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"CFBundleShortVersionString"]];
+        if (!equal) {
+            [fm removeItemAtPath:path error:nil];
+            NSLog(@"SQLiteConnection: 清除SQLite缓存. \r\n当前版本: %@, 旧版本: %@", [AIIUtility currentVersion], [[NSUserDefaults standardUserDefaults] objectForKey:@"CFBundleShortVersionString"]);
+        }
+        
         BOOL exists = [fm fileExistsAtPath:path];
         // 若已经存在，则不用从应用程式的资料档内拷贝到 Documents
         if (!exists) {
@@ -66,8 +75,11 @@
             }
             
             // 否则从应用程式里面复制到 Documents 目录
-            NSString *resourcePath = [[NSBundle mainBundle] pathForResource:dbName ofType:@"sqlite"];
+//            NSString *resourcePath = [[NSBundle mainBundle] pathForResource:dbName ofType:@"sqlite"];
             [fm copyItemAtPath:resourcePath toPath:path error:nil];
+            
+            /** 缓存版本号. */
+            [[NSUserDefaults standardUserDefaults] setObject:[AIIUtility currentVersion] forKey:@"CFBundleShortVersionString"];
         }
         _db = [FMDatabase databaseWithPath:path];
         b = [_db open];

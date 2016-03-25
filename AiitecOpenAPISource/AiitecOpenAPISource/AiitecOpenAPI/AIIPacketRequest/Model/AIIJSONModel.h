@@ -76,6 +76,7 @@
  */
 - (id)initWithContentsOfFile;
 //+ (id)objectWithContentsOfFile;
+- (id)initWithContentsOfFile:(NSString *)path;
 
 /**
  *  @brief  将AIIJSONModel对象写入(缓存)到文件.

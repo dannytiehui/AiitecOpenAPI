@@ -101,6 +101,23 @@
 
 @interface PacketRequest : NSObject
 
++ (PacketRequest *)shareInstance;
+
 + (void)packetConnectionFinishedWarningHandle:(AIIPacketConnection *)connection;
+
+#pragma mark - 通讯协议缓存相关
+
+/**
+ *  @brief 初始化需要缓存的通讯协议请求数据.
+ *
+ *  @param userId 当前用户id,默认0.
+ */
++ (void)beginPacketJSONCacheWithUserId:(NSUInteger)userId;
+
+/**
+ *  @brief 将缓存的通讯协议信息写入文件.
+ *
+ */
++ (void)savePacketJSONCacheObjectManager;
 
 @end

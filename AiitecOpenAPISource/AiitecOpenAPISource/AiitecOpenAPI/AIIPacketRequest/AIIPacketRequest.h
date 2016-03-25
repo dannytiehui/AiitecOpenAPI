@@ -8,6 +8,7 @@
 
 #import "AIIPacketConfig.h"
 #import "AIIPacketManager.h"
+#import "AIIPacketJSONCacheObjectManager.h"
 #import "AIIUtility.h"
 
 #import "AIISessionPacket.h"

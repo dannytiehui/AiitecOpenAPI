@@ -30,6 +30,11 @@
 //    return CacheWayFile;
 //}
 
+- (AIIJSONCacheLevel)jsonCacheLevel
+{
+    return AIIJSONCacheLevelSecond;
+}
+
 @end
 
 

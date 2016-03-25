@@ -9,6 +9,12 @@
 #import "AIIDetailsPacket.h"
 
 @implementation AIIDetailsRequest
+
+- (AIIJSONCacheLevel)jsonCacheLevel
+{
+    return AIIJSONCacheLevelThird;
+}
+
 @end
 
 
