@@ -51,4 +51,22 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSString *description = deviceToken.description;
+    NSLog(@"成功取得設備編號:%@", description);
+    // 取得設備 i (去除掉不需要的字元)
+    NSString *deviceId = [description substringWithRange:NSMakeRange(1, description.length - 2)];
+    deviceId = [deviceId stringByReplacingOccurrencesOfString:@" " withString:@""];
+    deviceId = [deviceId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    NSString *oldDeviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceTokenKey];
+    [[NSUserDefaults standardUserDefaults] setObject:deviceId forKey:DeviceTokenKey];
+    
+    NSLog(@"Start: Connect to Provider: %@", deviceId);
+    
+    // 添加日期: 2016-4-27
+    [PacketRequest updateDeviceTokenWithSessionPacket:oldDeviceToken];
+}
+
 @end

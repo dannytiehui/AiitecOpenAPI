@@ -99,7 +99,7 @@
 #import "AIIRemindRemovePacket.h"
 
 
-@interface PacketRequest : NSObject
+@interface PacketRequest : NSObject <AIIPacketConnectionDelegate>
 
 + (PacketRequest *)shareInstance;
 
@@ -119,5 +119,14 @@
  *
  */
 + (void)savePacketJSONCacheObjectManager;
+
+/**
+ *  @brief 更新DeviceToken. 
+ *          当用户「不允许」接收消息通知后，然后通过系统设置－通知，又开启「允许通知」，则会重新发起SessionId请求，告诉服务器DeviceToken更新了.
+ *          注意:更新DeviceToken会重新获取SessionId，重新获取到的SessionId会对已登录用户的产生影响，例如突然登出了，这需要服务器做配合.
+ *
+ *  @param oldDeviceToken 第一次随机生成的32位设备号.
+ */
++ (void)updateDeviceTokenWithSessionPacket:(NSString *)oldDeviceToken;
 
 @end

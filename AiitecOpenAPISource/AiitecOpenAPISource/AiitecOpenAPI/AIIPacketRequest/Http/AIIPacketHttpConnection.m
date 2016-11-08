@@ -147,7 +147,7 @@ static bool delegateIntercept;
     NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
 
     NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-#ifdef DEBUG
+#ifdef AiitecOpenAPI_DEBUG
     NSLog(@"%@, %@(responseString) = %@", req.HTTPMethod, request.nameSpace, responseString);
 #endif
     
@@ -377,6 +377,7 @@ static bool delegateIntercept;
     NSString *className = [self responseClassName];
     
     if (self.request.jsonCacheReadWay == AIIJSONCacheReadWayFirst) { //!< 网络拦截，直接读缓存.
+        self.response = [[NSClassFromString(className) alloc] init];
         NSString *path = [self.response filePathWithSubfolder:[AIIPacketJSONCacheObjectManager shareInstance].subfolder filename:[self.request md5IncludeTimestampLatest:NO]];
         self.response = [[NSClassFromString(className) alloc] initWithContentsOfFile:path];
         
@@ -445,7 +446,7 @@ NSLog(@"%@(responseString) = %@", self.request.nameSpace, _responseString);
         self.response.query.desc = desc;
         self.response.query.timestamp = timestamp;
         
-        //        NSLog(@"connectionDidFinish: %@, %lu, %@, %@", self.request.nameSpace, self.response.query.status, self.response.query.desc, self.response.query.timestamp);
+//        NSLog(@"connectionDidFinish: %@, %lu, %@, %@", self.request.nameSpace, self.response.query.status, self.response.query.desc, self.response.query.timestamp);
     }
     else if (status == 0) {
         // 当用户登出时，自动保存缓存数据.

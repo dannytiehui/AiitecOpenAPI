@@ -105,7 +105,9 @@ static NSMutableArray *_packetRequestArray;
     AIIPacketJSONCacheObject *object = packetJSONCacheObject;
     
     for (AIIPacketJSONCacheObject *o in self.packetJSONCacheObjectCollection) {
-        if ([o.md5RemoveTimestampLatest isEqualToString:packetJSONCacheObject.md5RemoveTimestampLatest] && [o.subfolder isEqualToString:packetJSONCacheObject.subfolder]) {
+        /// 我也不知道为什么要这样比较，总之用 [o.subfolder isEqualToString:object.subfolder] 会报错.
+        BOOL bSubfolder = [[NSString stringWithFormat:@"%@", o.subfolder] isEqualToString:[NSString stringWithFormat:@"%@", object.subfolder]];
+        if ([o.md5RemoveTimestampLatest isEqualToString:packetJSONCacheObject.md5RemoveTimestampLatest] && bSubfolder) {
             o.count ++;
             o.countOfRequest ++;
             o.timestampLatest = packetJSONCacheObject.timestampLatest;

@@ -10,6 +10,8 @@
 
 @implementation AIISessionRequestQuery
 
+static NSString *deviceTokenTemp; //!< 添加日期: 2016-4-27
+
 - (id)init
 {
     if (self = [super init]) {
@@ -35,10 +37,11 @@
         self.resolution = [NSString stringWithFormat:@"%.0f*%.0f", resolution.width, resolution.height]; //!> @"640*1136";
         self.screenSize = screenSize;
         self.deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceId"];
-        self.deviceType = AIIDeviceTypeIOS;
+        self.deviceType = [deviceTokenTemp isEqualToString:self.deviceToken] ? AIIDeviceTypeTemporary : AIIDeviceTypeIOS; //!< 更新日期: 2016-4-27
         if (!self.deviceToken) {
             self.deviceToken = [AIIUtility arc4random:32 stringType:(AIIStringTypeNumber | AIIStringTypeUppercase | AIIStringTypeLowercase)];
             self.deviceType = AIIDeviceTypeTemporary;
+            deviceTokenTemp = self.deviceToken; //!< 添加日期: 2016-4-27
             
             // 修复:当升级后,新版本无法获取旧版本存储的设备号问题.注意,一定要用@"deviceId",不能用DeviceTokenKey常量,否则也无法获取. 2016-02-22 Danny.
             [[NSUserDefaults standardUserDefaults] setObject:self.deviceToken forKey:@"deviceId"];

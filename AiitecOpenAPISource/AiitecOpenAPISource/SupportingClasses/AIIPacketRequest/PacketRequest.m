@@ -21,6 +21,15 @@
     return instance;
 }
 
++ (void)updateDeviceTokenWithSessionPacket:(NSString *)oldDeviceToken
+{
+    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceTokenKey];
+    if (![deviceToken isEqualToString:oldDeviceToken]) {
+        AIISessionRequest *request = [[AIISessionRequest alloc] init];
+        [AIIPacketConnection sendAsynchronous:request delegate:[PacketRequest shareInstance] context:nil];
+    }
+}
+
 + (void)packetConnectionFinishedWarningHandle:(AIIPacketConnection *)connection
 {
 #if AiitecOpenAPI_DEBUG
@@ -99,6 +108,21 @@
     
     // 获取JSONCache大小.
     NSLog(@"folderSize: %llu", [AIIPacketJSONCacheObjectManager folderSize]);
+}
+
+
+#pragma mark - AIIPacketConnectionDelegate
+
+- (void)packetConnectionFinished:(AIIPacketConnection *)connection
+{
+    if ([connection.response isKindOfClass:[AIISessionResponse class]]) {
+        if (connection.response.query.status == 0) {
+            NSLog(@"Success! updateDeviceTokenWithSessionPacket,更新DeviceToken操作成功.");
+        }
+        else {
+            NSLog(@"Fail! updateDeviceTokenWithSessionPacket,更新DeviceToken操作失败.");
+        }
+    }
 }
 
 @end
